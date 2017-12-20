@@ -1,0 +1,24 @@
+HKCR
+{
+	TraductProp.TraductProp.1 = s 'TraductProp Class'
+	{
+		CLSID = s '{D3A42354-0DC6-11D3-BCAB-00C04F71652D}'
+	}
+	TraductProp.TraductProp = s 'TraductProp Class'
+	{
+		CurVer = s 'TraductProp.TraductProp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D3A42354-0DC6-11D3-BCAB-00C04F71652D} = s 'TraductProp Class'
+		{
+			ProgID = s 'TraductProp.TraductProp.1'
+			VersionIndependentProgID = s 'TraductProp.TraductProp'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

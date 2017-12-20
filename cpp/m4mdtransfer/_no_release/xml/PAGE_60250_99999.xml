@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object PAGE
+
+@version 1.6
+
+-->
+
+<object name="PAGE">
+
+	<param name="ID_PAGE"/>
+
+	<call-table name="STC_PAGES">
+
+		<with-pk name="ID_PAGE" select="$ID_PAGE"/>
+
+		<fields>
+
+			<field name="DOCUMENT_PAGE" visible="false"/>
+
+		</fields>
+
+		<calculated-fields>
+
+			<field name="DOCUMENT_PAGE_DESC"/>
+
+			<field name="DOCUMENT_PAGE_EXT"/>
+
+			<field name="DOCUMENT_PAGE_FILE" content-type="external"/>
+
+		</calculated-fields>
+
+		<generate-funtions>
+
+			<call-template name="BLOB2External">
+
+				<with-arg name="blob" select="@DOCUMENT_PAGE"/>
+
+				<with-arg name="pk1" select="@ID_BP"/>
+
+				<with-arg name="pk2" select="@ID_LANGUAGE"/>
+
+				<with-arg name="pk3" select="@CODE_TYPE"/>
+
+				<with-arg name="pk4" select="@ID_FUN_MODULE"/>
+
+				<with-arg name="description" insert="@DOCUMENT_PAGE_DESC"/>
+
+				<with-arg name="extension" insert="@DOCUMENT_PAGE_EXT"/>
+
+				<with-arg name="file" insert="@DOCUMENT_PAGE_FILE"/>
+
+			</call-template>
+
+		</generate-funtions>
+
+		<update-funtions>
+
+			<call-template name="External2BLOB">
+
+				<with-arg name="description" select="@DOCUMENT_PAGE_DESC"/>
+
+				<with-arg name="extension" select="@DOCUMENT_PAGE_EXT"/>
+
+				<with-arg name="file" select="@DOCUMENT_PAGE_FILE"/>
+
+				<with-arg name="blob" insert="@DOCUMENT_PAGE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="STC_ITEM_ARG_DEP">
+
+		<with-pk name="ID_PAGE" select="$ID_PAGE"/>
+
+	</call-table>
+
+	<call-table name="STC_ITEMS_DEP">
+
+		<with-pk name="ID_PAGE" select="$ID_PAGE"/>
+
+	</call-table>
+
+	<call-table name="STC_META4OBJ_DEP">
+
+		<with-pk name="ID_PAGE" select="$ID_PAGE"/>
+
+	</call-table>
+
+	<call-table name="STC_NODES_DEP">
+
+		<with-pk name="ID_PAGE" select="$ID_PAGE"/>
+
+	</call-table>
+
+</object>
+
+

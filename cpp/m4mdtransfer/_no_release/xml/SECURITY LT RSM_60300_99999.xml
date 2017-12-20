@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SECURITY LT RSM
+
+@version 1.0
+
+-->
+
+<object name="SECURITY LT RSM">
+
+	<param name="ID_OBJECT"/>
+
+	<param name="ID_RSM"/>
+
+	<call-table name="M4RDC_SEC_LOBJ">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+		<read-table name="M4RSC_RSM">
+
+			<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+			<call-object name="RSM">
+
+				<with-param name="ID_RSM" select="@ID_RSM"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="M4RDC_SEC_FIELDS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+	</call-table>
+
+	<call-table name="M4RDC_SEC_LOBJ_FIL">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+		<read-table name="M4RDC_FILTERS">
+
+			<with-pk name="ID_FILTER" select="@ID_FILTER"/>
+
+			<call-object name="FILTER">
+
+				<with-param name="ID_FILTER" select="@ID_FILTER"/>
+
+			</call-object>
+
+		</read-table>
+
+		<read-table name="SCH_SENTENCES">
+
+			<with-pk name="ID_SENTENCE" select="@ID_FILTER"/>
+
+			<call-object name="SENTENCE">
+
+				<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			</call-object>
+
+		</read-table>	
+
+	</call-table>
+
+	<call-table name="M4RDC_SEC_RELATION">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+	</call-table>
+
+</object>

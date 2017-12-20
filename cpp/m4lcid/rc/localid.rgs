@@ -1,0 +1,23 @@
+HKCR
+{
+	M4LCID.LocalID.1 = s 'LocalID Class'
+	{
+		CLSID = s '{E03EF4EF-1771-11D3-BDB1-00C04FA49636}'
+	}
+	M4LCID.LocalID = s 'LocalID Class'
+	{
+		CLSID = s '{E03EF4EF-1771-11D3-BDB1-00C04FA49636}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {E03EF4EF-1771-11D3-BDB1-00C04FA49636} = s 'LocalID Class'
+		{
+			ProgID = s 'M4LCID.LocalID.1'
+			VersionIndependentProgID = s 'M4LCID.LocalID'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

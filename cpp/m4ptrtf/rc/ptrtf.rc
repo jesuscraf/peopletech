@@ -1,0 +1,147 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Modern) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+#ifdef _WINDOWS
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+#pragma code_page(1252)
+#endif //_WINDOWS
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""m4ptrtf.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_M4PTRTF             REGISTRY DISCARDABLE    "m4ptrtf.rgs"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "m4ptrtf"
+    IDS_ENG_NORMALTEXT      "Normal text"
+    IDS_ENG_COMMENTS        "Comments"
+    IDS_ENG_KEYWORDS        "Keywords"
+    IDS_ENG_FUNCTIONS       "Functions"
+    IDS_ENG_CONSTANTS       "Constants"
+    IDS_ENG_OPERATORS       "Operators"
+    IDS_ENG_NUMBERS         "Numbers"
+    IDS_ENG_STRINGS         "Strings"
+    IDS_ENG_BREAKPOINTS     "Breakpoints"
+    IDS_ENG_ACTIVELINE      "Active line in debugger"
+    IDS_ENG_CALLERLINE      "Caller line in debugger"
+    IDS_SPA_NORMALTEXT      "Texto normal"
+    IDS_SPA_COMMENTS        "Comentarios"
+    IDS_SPA_KEYWORDS        "Palabras clave"
+    IDS_SPA_FUNCTIONS       "Funciones"
+    IDS_SPA_CONSTANTS       "Constantes"
+    IDS_SPA_OPERATORS       "Operadores"
+    IDS_SPA_NUMBERS         "Números"
+    IDS_SPA_STRINGS         "Cadenas"
+    IDS_SPA_BREAKPOINTS     "Puntos de ruptura"
+    IDS_SPA_ACTIVELINE      "Línea activa en depuración"
+    IDS_SPA_CALLERLINE      "Línea llamante en depuración"
+    IDS_POR_NORMALTEXT      "Texto normal"
+    IDS_POR_COMMENTS        "Comentários"
+    IDS_POR_KEYWORDS        "Palavras chave"
+    IDS_POR_FUNCTIONS       "Funções"
+    IDS_POR_CONSTANTS       "Constantes"
+    IDS_POR_OPERATORS       "Operadores"
+    IDS_POR_NUMBERS         "Números"
+    IDS_POR_STRINGS         "Cadeias"
+    IDS_POR_BREAKPOINTS     "Pontos de ruptura"
+    IDS_POR_ACTIVELINE      "Linha activa em depuração"
+    IDS_POR_CALLERLINE      "Linha do chamador em depuração"
+    IDS_FRE_NORMALTEXT      "Texte normal"
+    IDS_FRE_COMMENTS        "Commentaires"
+    IDS_FRE_KEYWORDS        "Mots clés"
+    IDS_FRE_FUNCTIONS       "Fonctions"
+    IDS_FRE_CONSTANTS       "Constantes"
+    IDS_FRE_OPERATORS       "Opérateurs"
+    IDS_FRE_NUMBERS         "Nombres"
+    IDS_FRE_STRINGS         "Chaînes"
+    IDS_FRE_BREAKPOINTS     "Points d’interruption"
+    IDS_FRE_ACTIVELINE      "Ligne active en débogage"
+    IDS_FRE_CALLERLINE      "Ligne d’appel dans débogueur"
+    IDS_ITA_NORMALTEXT      "Normal text"
+    IDS_ITA_COMMENTS        "Comments"
+    IDS_ITA_KEYWORDS        "Keywords"
+    IDS_ITA_FUNCTIONS       "Functions"
+    IDS_ITA_CONSTANTS       "Constants"
+    IDS_ITA_OPERATORS       "Operators"
+    IDS_ITA_NUMBERS         "Numbers"
+    IDS_ITA_STRINGS         "Strings"
+    IDS_ITA_BREAKPOINTS     "Breakpoints"
+    IDS_ITA_ACTIVELINE      "Active line in debugger"
+    IDS_ITA_CALLERLINE      "Caller line in debugger"
+    IDS_BRA_NORMALTEXT      "Texto normal"
+    IDS_BRA_COMMENTS        "Comentários"
+    IDS_BRA_KEYWORDS        "Palavras chave"
+    IDS_BRA_FUNCTIONS       "Funções"
+    IDS_BRA_CONSTANTS       "Constantes"
+    IDS_BRA_OPERATORS       "Operadores"
+    IDS_BRA_NUMBERS         "Números"
+    IDS_BRA_STRINGS         "Cadeias"
+    IDS_BRA_BREAKPOINTS     "Pontos de ruptura"
+    IDS_BRA_ACTIVELINE      "Linha activa em depuração"
+    IDS_BRA_CALLERLINE      "Linha do chamador em depuração"
+END
+
+#endif    // Spanish (Modern) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "m4ptrtf.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

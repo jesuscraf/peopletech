@@ -1,0 +1,147 @@
+BEGIN Messages Messages
+	BEGIN Message m1
+		Text = "Nº Error: %C. Existe una cadena de caracteres detrás del último END."
+	END
+	BEGIN Message m2
+		Text = "Nº Error: %C. Existe más de un espacio en blanco después del BEGIN."
+	END
+	BEGIN Message m3
+		Text = "Nº Error: %C. Existe más de un espacio en blanco después de la declaración del objeto %O."
+	END
+	BEGIN Message m4
+		Text = "Nº Error: %C. El objeto %O tiene en el alias un espacio en blanco o \\ o /."
+	END
+	BEGIN Message m5
+		Text = "Nº Error: %C. El objeto %O no puede ser contenido por %A."
+	END
+	BEGIN Message m6
+		Text = "Nº Error: %C. El objeto %O no tiene alias."
+	END
+	BEGIN Message m7
+		Text = "Nº Error: %C. El objeto %O no es correcto."
+	END
+	BEGIN Message m8
+		Text = "Nº Error: %C. Existe más de un espacio en blanco o el objeto no ha sido declarado."
+	END
+	BEGIN Message m9
+		Text = "Nº Error: %C. El objeto no ha sido declarado."
+	END
+	BEGIN Message m10
+		Text = "Nº Error: %C. Existe una cadena de caracteres erroneos antes del BEGIN."
+	END
+	BEGIN Message m11
+		Text = "Nº Error: %C. Hay mas de un END para los BEGIN encontrados."
+	END
+	BEGIN Message m12
+		Text = "Nº Error: %C. Hay una cadena de caracteres detras del END."
+	END
+	BEGIN Message m13
+		Text = "Nº Error: %C. La propiedad %P con el valor %V no tiene el tipo declarado."
+	END
+	BEGIN Message m15
+		Text = "Nº Error: %C. Hay una cadena de caracteres o espacios en blanco detras del END."
+	END
+	BEGIN Message m17
+		Text = "Nº Error: %C. Existe en la propiedad %P más de un espacio en blanco después del =."
+	END
+	BEGIN Message m18
+		Text = "Nº Error: %C. No tiene asignado el valor la propiedad %P."
+	END
+	BEGIN Message m19
+		Text = "Nº Error: %C. En la propiedad %P debe haber un espacio en blanco despues =."
+	END
+	BEGIN Message m20
+		Text = "Nº Error: %C. Para la propiedad %P debe haber un = o un espacio en blanco antes del =."
+	END
+	BEGIN Message m21
+		Text = "Nº Error: %C. Debe haber un espacio en blanco antes =."
+	END
+	BEGIN Message m22
+		Text = "Nº Error: %C. La propiedad %P no encontrada en el objeto %O."
+	END
+	BEGIN Message m23
+		Text = "Nº Error:23. El objeto %O de la línea %L no tiene END."
+	END
+	BEGIN Message m24
+		Text = "Nº Error: %C. El objeto %A tiene contenidos mas objetos %O de los permitidos"
+	END
+	BEGIN Message m25
+		Text = "Nº Error: %C. El objeto %O tiene el alias repetido con un hermano."
+	END
+	BEGIN Message m26
+		Text = "Nº Error: %C. El objeto %O no puede ser contenido más veces por %A y tiene el alias repetido con un hermano."
+	END
+	BEGIN Message m27
+		Text = "Nº Error: %C. El objeto %A no tiene definido el objeto obligatorio %O"
+	END
+	BEGIN Message m28
+		Text = "Nº Error: %C. El objeto %O no tiene definida la propiedad obligatoria %P."
+	END
+	BEGIN Message m29
+		Text = "Nº Error: %C. La propiedad %P de tipo String le falta el comienzo o el final de las comillas."
+	END
+	BEGIN Message m30
+		Text = "Nº Error: %C. La propiedad %P no es una lista de cadenas."
+	END
+	BEGIN Message m31
+		Text = "Nº Error: %C. La propiedad %P de tipo Boolean no tiene un valor booleano."
+	END
+	BEGIN Message m32
+		Text = "Nº Error: %C. La propiedad %P de tipo Integer no es un númerico entero."
+	END
+	BEGIN Message m33
+		Text = "Nº Error: %C. La propiedad %P de tipo Integer es mayor que un númerico entero."
+	END
+	BEGIN Message m34
+		Text = "Nº Error: %C. La propiedad %P de tipo Long no es un númerico entero largo."
+	END
+	BEGIN Message m35
+		Text = "Nº Error: %C. La propiedad %P de tipo Long es mayor que un númerico entero largo."
+	END
+	BEGIN Message m36
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P donde el path no es válido."
+	END
+	BEGIN Message m37
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P para la cual se ha declarado una propiedad de runtime incorrecta."
+	END
+	BEGIN Message m38
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P para la cual se ha declarado un método de runtime incorrecto."
+	END
+	BEGIN Message m39
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P donde el path no es válido y para la cual se ha declarado una propiedad de runtime incorrecta."
+	END
+	BEGIN Message m40
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P donde el path no es válido y para la cual se ha declarado un método de runtime incorrecto."
+	END
+	BEGIN Message m41
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P donde el path no es válido, para la cual se ha declarado un método y una propiedad de runtime incorrecta."
+	END
+	BEGIN Message m42
+		Text = "Nº Error: %C. El objeto %O tiene un error en la propiedad %P para la cual se ha declarado un método y una propiedad de runtime incorrecta."
+	END
+	BEGIN Message m43
+            Text = "Nº Error: %C. El objeto %A tiene contenidos mas objetos %O de los permitidos"
+        END
+BEGIN Message m44
+        Text = "Nº Error: %C. El objeto base no esta definido"
+	END
+	BEGIN Message m45
+        Text = "Nº Error: %C. Existe BEGIN sin su correspondiente END"
+	END
+	BEGIN Message m101
+		Text = "Nº Error: %C. Action no comprende el rango de valores."
+	END
+        BEGIN Message m201
+            Text = "Nºlínea       Error"
+        END
+        BEGIN Message m202
+            Text = "Se ha producido un error en la apertura del fichero."
+        END
+        BEGIN Message m203
+            Text = "Nº de errores: "
+        END
+        BEGIN Message m204
+            Text = "errores."
+        END
+END
+

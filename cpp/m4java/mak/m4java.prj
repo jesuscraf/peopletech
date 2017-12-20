@@ -1,0 +1,41 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4java.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4java.cpp
+SRC = ../src/m4jconfiguration.cpp
+SRC = ../src/m4jcontext.cpp
+SRC = ../src/m4jhandledata.cpp
+SRC = ../src/m4jhandleprovider.cpp
+SRC = ../src/m4jobject.cpp
+SRC = ../src/m4jvm.cpp
+SRC = ../src/m4pprocess.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4date
+LIB = m4filemanager
+LIB = m4ini
+LIB = m4ipcs
+LIB = m4log
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4unicode
+LIB = m4variant
+LIB = z

@@ -1,0 +1,233 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<analex.cpp>
+//	File:				analex.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_ANALEX
+#define GROUP_BASE  ENG_TGB_ANALEX
+#define TRACE_ARRAY g_stENG_Analex_Msg
+
+enum ANALEX_MSG 
+{
+	ANALEX_MSG_10=0,	//Ojo, se usa como indice del array
+	ANALEX_MSG_20,
+	ANALEX_MSG_30,
+	ANALEX_MSG_40,
+	ANALEX_MSG_50,
+	ANALEX_MSG_60,
+	ANALEX_MSG_70,
+	ANALEX_MSG_80,
+	ANALEX_MSG_90,
+	ANALEX_MSG_100,
+	ANALEX_MSG_110,
+	ANALEX_MSG_120,
+	ANALEX_MSG_130,
+	ANALEX_MSG_140,
+	ANALEX_MSG_150,
+	ANALEX_MSG_155,
+	ANALEX_MSG_160,
+	ANALEX_MSG_170,
+	ANALEX_MSG_180,
+	ANALEX_MSG_190,
+	ANALEX_MSG_200,
+	ANALEX_MSG_210,
+	ANALEX_MSG_215,
+	ANALEX_MSG_220,
+	ANALEX_MSG_230,
+	ANALEX_MSG_240,
+	ANALEX_MSG_250,
+	ANALEX_MSG_260,
+	ANALEX_MSG_270,
+	ANALEX_MSG_280,
+	ANALEX_MSG_290,
+	ANALEX_MSG_300,
+	ANALEX_MSG_310,
+	ANALEX_MSG_320,
+	ANALEX_MSG_330,
+	ANALEX_MSG_340,
+	ANALEX_MSG_350,
+	ANALEX_MSG_360,
+	ANALEX_MSG_370,
+	ANALEX_MSG_380,
+	ANALEX_MSG_390,
+	ANALEX_MSG_400,
+	ANALEX_MSG_410,
+	ANALEX_MSG_420,
+	ANALEX_MSG_430,
+	ANALEX_MSG_440,
+
+	ANALEX_MSG_5000,	//PUSH_LINK
+	ANALEX_MSG_5010,
+
+	ANALEX_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, ANALEX_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Invalid call, token type is not ATOMIC_VALUE or OPERATOR" },
+
+	{ GROUP_ID, ANALEX_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Node Name required, there isn't a default node" },
+
+	{ GROUP_ID, ANALEX_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error in expression %0:s, incorrectly evaluated from %1:s" },
+
+	{ GROUP_ID, ANALEX_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Meta4Object is required" },
+
+	{ GROUP_ID, ANALEX_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Sons count overflow in the arguments analyze" },
+
+	{ GROUP_ID, ANALEX_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Syntax error: Missing parenthesis." },
+
+	{ GROUP_ID, ANALEX_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Syntax error: Closing bracket without opening bracket" },
+
+	{ GROUP_ID, ANALEX_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "There's more than an ATOMIC_VALUE without associated operator" },
+
+	{ GROUP_ID, ANALEX_MSG_90+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "ATOMIC_VALUE expected but not found" },
+
+	{ GROUP_ID, ANALEX_MSG_100+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Operator has a unsupported number of arguments (%0:s)" },
+
+	{ GROUP_ID, ANALEX_MSG_110+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Token ARG_SEPARATOR not allowed in this context" },
+
+	{ GROUP_ID, ANALEX_MSG_120+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "There's an ATOMIC_VALUE or other tokens without operator" },
+
+	{ GROUP_ID, ANALEX_MSG_130+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Subargument in token required but not found, or subargument overflow" },
+
+	{ GROUP_ID, ANALEX_MSG_140+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Argument overflow in function, maximum is %0:s" },
+
+	{ GROUP_ID, ANALEX_MSG_150+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Argument required but not found in function, maximum is %0:s, loaded %1:s" },
+
+	{ GROUP_ID, ANALEX_MSG_155+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Function without opening bracket" },
+
+ 	{ GROUP_ID, ANALEX_MSG_160+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Reserved word not found" },
+
+ 	{ GROUP_ID, ANALEX_MSG_170+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Token type unknown" },
+
+ 	{ GROUP_ID, ANALEX_MSG_180+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Evaluation requires a pre-analyzed expression" },
+
+ 	{ GROUP_ID, ANALEX_MSG_190+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Report required in this context" },
+
+ 	{ GROUP_ID, ANALEX_MSG_200+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Node name not required with GUIDE_LOAD mode" },
+
+ 	{ GROUP_ID, ANALEX_MSG_210+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Section required in this context" },
+
+ 	{ GROUP_ID, ANALEX_MSG_215+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Section with GoT = SLICE_GOT required in this context" },
+	
+	{ GROUP_ID, ANALEX_MSG_220+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Fields manager required in this context" },
+
+	{ GROUP_ID, ANALEX_MSG_230+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Syntax error: the correct syntax is $CT.IdCT.Level" },
+
+	{ GROUP_ID, ANALEX_MSG_240+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Totalizer required but not found in the crosstab tree" },
+
+	{ GROUP_ID, ANALEX_MSG_250+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Mid$, Incorrect parameters. String is not that long." },
+
+	{ GROUP_ID, ANALEX_MSG_260+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Mid$, Incorrect parameters. Start stands behind end." },
+
+	{ GROUP_ID, ANALEX_MSG_270+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loader not initialized. Can't access format database." },
+
+	{ GROUP_ID, ANALEX_MSG_280+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Align mode %0:s not defined." },
+
+	{ GROUP_ID, ANALEX_MSG_290+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Format identifier %0:s in expression not found in format database." },
+
+	{ GROUP_ID, ANALEX_MSG_300+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Type of expression not defined" },
+
+	{ GROUP_ID, ANALEX_MSG_310+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Type %0:s in expression not defined." },
+
+	{ GROUP_ID, ANALEX_MSG_320+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Default currency not specified." },
+
+	{ GROUP_ID, ANALEX_MSG_330+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Format identifier for the default currency not found in format database." },
+
+	{ GROUP_ID, ANALEX_MSG_340+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Unable to use default currency format with a non numerical item." },
+
+	{ GROUP_ID, ANALEX_MSG_350+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Can't get output information. Output File doesn't exist." },
+
+	{ GROUP_ID, ANALEX_MSG_360+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Device pointer in thread environment pointing to null." },
+
+	{ GROUP_ID, ANALEX_MSG_370+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "The layout page number specified as parameter is out of range." },
+
+	{ GROUP_ID, ANALEX_MSG_380+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Limit of recursive inclusions exceeded, probably fallen into an endless loop. "
+		 "Limit is %0:s and expression is %1:s." },
+
+	{ GROUP_ID, ANALEX_MSG_390+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Identifier %0:s of pre-printing not found" },
+
+	{ GROUP_ID, ANALEX_MSG_400+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Fields manager pointing to NULL. Unable to resolve the pre-printing list." },
+
+	{ GROUP_ID, ANALEX_MSG_410+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Usage of %PI() expression forbidden. Only allowed in %Print_PI()." },
+
+	{ GROUP_ID, ANALEX_MSG_420+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Syntax error: Correct syntax is $PRINT_PI.IdPi(Expresssion)" },
+
+	{ GROUP_ID, ANALEX_MSG_430+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error evaluating expression %0:s" },
+
+	{ GROUP_ID, ANALEX_MSG_440+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Syntax error in expression %0:s" },
+
+
+	{ GROUP_ID, ANALEX_MSG_5000+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Evaluating %0:s expression %1:s" },
+
+	{ GROUP_ID, ANALEX_MSG_5010+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Compiling expression %0:s" }
+
+
+} ;

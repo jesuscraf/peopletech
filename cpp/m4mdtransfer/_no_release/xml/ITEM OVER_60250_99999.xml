@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2007 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+<!--This XML defines call-table dependencies for repository object OVERWRITTEN ITEM 
+@version 1.2
+-->
+<object name="ITEM OVER">
+	<options>
+		<option name="dump-parameters" value="false" /> 
+	</options>
+	<param name="ID_TI"/>
+	<param name="ID_ITEM"/>
+	<read-table name="SCH_CONCEPTS_OWR" db="client">
+		<with-pk name="ID_CONCEPT_TI" select="$ID_TI_INHERIT" /> 
+		<with-pk name="ID_ITEM" select="$ID_ITEM_INHERIT" /> 
+		<call-table name="SCH_CONCEPTS_OWR">
+  			<with-pk name="ID_CONCEPT_TI" select="$ID_TI" />
+  			<with-pk name="ID_ITEM" select="$ID_ITEM" />
+			<fields>
+  				<field name="ID_CONCEPT_TI" value="@ID_CONCEPT_TI" />
+  			</fields>
+  		</call-table>
+	</read-table>
+	<read-table name="SCH_TOTAL_REF" db="client">
+		<with-pk name="ID_TOTAL_REF_TI" select="$ID_TI_INHERIT" /> 
+		<with-pk name="ID_ITEM" select="$ID_ITEM_INHERIT" /> 
+		<call-table name="SCH_TOTAL_REF">
+			<with-pk name="ID_TOTAL_REF_TI" select="$ID_TI" />
+			<with-pk name="ID_ITEM" select="$ID_ITEM" />
+			<with-pk name="ID_TI" select="@ID_TI" />
+			<with-pk name="DT_START" select="@DT_START" />
+			<with-pk name="DT_END" select="@DT_END" />
+			<with-pk name="ID_ITEM_USED" select="@ID_ITEM_USED" />
+			<with-pk name="DT_START_USED" select="@DT_START_USED" />
+			<with-pk name="ID_ITEM_USED_TI" select="@ID_ITEM_USED_TI" />
+			<with-pk name="ID_TOTAL_TI" select="@ID_TOTAL_TI" />
+			<fields>
+				<field name="ID_TOTAL_REF_TI" value="@ID_TOTAL_REF_TI" />
+  			</fields>
+  		</call-table>
+	</read-table>
+</object>
+

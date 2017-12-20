@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object ITEM
+
+@version 1.9
+
+-->
+
+<object name="ITEM">
+
+	<param name="ID_TI"/>
+
+	<param name="ID_ITEM"/>
+
+	<include-object name="NS ITEM">
+
+		<with-param name="ID_TI" select="$ID_TI"/>
+
+		<with-param name="ID_ITEM" select="$ID_ITEM"/>
+
+	</include-object>
+
+	<call-table name="SCH_CONNECTOR_ARGS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTOR_ITEM">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTOR_PAR">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_INDEX_ITEM">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_ITEM_CSDESC">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_NODE_FILTER">
+
+		<with-pk name="ID_TI_FILTER" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM_FILTER" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_ITEMS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_T3_CONNEC_ITEM">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_TAGS">
+
+		<with-pk name="ID_DIMENSION_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_DIMENSION_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_TI_SENT_PAR">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_TOTAL_REF">
+
+		<with-pk name="ID_TOTAL_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<with-pk name="ID_TOTAL_REF_TI" select="$ID_TI"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<read-table name="SCH_OVERWRITE_NODES">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<read-table name="SWP_NODES_CALC">
+
+			<with-pk name="ID_T3_PAYROLL" select="@ID_T3"/>
+
+			<with-pk name="ID_NODE_PAYROLL" select="@ID_NODE"/>
+
+			<read-table name="SCH_OVERWRITE_NODES">
+
+				<with-pk name="ID_NODE_T3" select="@ID_T3_PAYROLL"/>
+
+				<with-pk name="ID_NODE" select="@ID_NODE_REF"/>
+
+				<read-table name="SCH_ITEMS">
+
+					<with-pk name="ID_TI" select="@ID_TI"/>
+
+					<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+					<call-object name="ITEM">
+
+						<with-param name="ID_TI" select="@ID_TI"/>
+
+						<with-param name="ID_ITEM" select="@ID_ITEM"/>
+
+					</call-object>
+
+				</read-table>
+
+			</read-table>
+
+			<read-table name="SCH_OVERWRITE_NODES">
+
+				<with-pk name="ID_NODE_T3" select="@ID_T3_PAYROLL"/>
+
+				<with-pk name="ID_NODE" select="@ID_NODE_AUX"/>
+
+				<read-table name="SCH_ITEMS">
+
+					<with-pk name="ID_TI" select="@ID_TI"/>
+
+					<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+					<call-object name="ITEM">
+
+						<with-param name="ID_TI" select="@ID_TI"/>
+
+						<with-param name="ID_ITEM" select="@ID_ITEM"/>
+
+					</call-object>
+
+				</read-table>
+
+			</read-table>
+
+			<read-table name="SCH_OVERWRITE_NODES">
+
+				<with-pk name="ID_NODE_T3" select="@ID_T3_PAYROLL"/>
+
+				<with-pk name="ID_NODE" select="@ID_NODE_DIF"/>
+
+				<read-table name="SCH_ITEMS">
+
+					<with-pk name="ID_TI" select="@ID_TI"/>
+
+					<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+					<call-object name="ITEM">
+
+						<with-param name="ID_TI" select="@ID_TI"/>
+
+						<with-param name="ID_ITEM" select="@ID_ITEM"/>
+
+					</call-object>
+
+				</read-table>
+
+			</read-table>
+
+		</read-table>
+
+	</read-table>
+
+</object>
+
+

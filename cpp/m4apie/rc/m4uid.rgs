@@ -1,0 +1,24 @@
+HKCR
+{
+	M4UID.M4UID.1 = s 'M4UID Class'
+	{
+		CLSID = s '{7369EA6B-D86C-11D1-964E-00C04FC2444B}'
+	}
+	M4UID.M4UID = s 'M4UID Class'
+	{
+		CurVer = s 'M4UID.M4UID.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7369EA6B-D86C-11D1-964E-00C04FC2444B} = s 'M4UID Class'
+		{
+			ProgID = s 'M4UID.M4UID.1'
+			VersionIndependentProgID = s 'M4UID.M4UID'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	enumitem.enumitem.1 = s 'enumitem Class'
+	{
+		CLSID = s '{438DB1A5-28E9-11D1-A785-00C04FB75E70}'
+	}
+	enumitem.enumitem = s 'enumitem Class'
+	{
+		CurVer = s 'enumitem.enumitem.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {438DB1A5-28E9-11D1-A785-00C04FB75E70} = s 'enumitem Class'
+		{
+			ProgID = s 'enumitem.enumitem.1'
+			VersionIndependentProgID = s 'enumitem.enumitem'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

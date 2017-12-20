@@ -1,0 +1,24 @@
+HKCR
+{
+	CDefProp.CDefProp.1 = s 'CDefProp Class'
+	{
+		CLSID = s '{2D3708E5-64D8-11D2-BC7F-00C04F71652D}'
+	}
+	CDefProp.CDefProp = s 'CDefProp Class'
+	{
+		CurVer = s 'CDefProp.CDefProp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2D3708E5-64D8-11D2-BC7F-00C04F71652D} = s 'CDefProp Class'
+		{
+			ProgID = s 'CDefProp.CDefProp.1'
+			VersionIndependentProgID = s 'CDefProp.CDefProp'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

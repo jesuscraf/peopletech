@@ -1,0 +1,24 @@
+HKCR
+{
+	M4RegKey.M4RegKey.1 = s 'M4RegKey Class'
+	{
+		CLSID = s '{15CCB9C3-7C63-11D1-8D15-444553540000}'
+	}
+	M4RegKey.M4RegKey = s 'M4RegKey Class'
+	{
+		CurVer = s 'M4RegKey.M4RegKey.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {15CCB9C3-7C63-11D1-8D15-444553540000} = s 'M4RegKey Class'
+		{
+			ProgID = s 'M4RegKey.M4RegKey.1'
+			VersionIndependentProgID = s 'M4RegKey.M4RegKey'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

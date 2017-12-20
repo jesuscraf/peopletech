@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object EXECUTION PROJECT MEMBER
+
+@version 1.3
+
+-->
+
+<object name="EXECUTION PROJECT MEMBER">
+
+	<param name="ID_CLASS"/>
+
+	<param name="ID_INSTANCE"/>
+
+	<call-table name="SDM_OS_PROJECT_MEMBERS">
+
+		<with-pk name="ID_CLASS" select="$ID_CLASS"/>
+
+		<with-pk name="ID_INSTANCE" select="$ID_INSTANCE"/>
+
+	</call-table>
+
+</object>
+
+

@@ -1,0 +1,24 @@
+HKCR
+{
+	FontSelect.FontSelect.1 = s 'FontSelect Class'
+	{
+		CLSID = s '{4806B305-941D-11D2-BCC3-00C04F71652D}'
+	}
+	FontSelect.FontSelect = s 'FontSelect Class'
+	{
+		CurVer = s 'FontSelect.FontSelect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4806B305-941D-11D2-BCC3-00C04F71652D} = s 'FontSelect Class'
+		{
+			ProgID = s 'FontSelect.FontSelect.1'
+			VersionIndependentProgID = s 'FontSelect.FontSelect'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

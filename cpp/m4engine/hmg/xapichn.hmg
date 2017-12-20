@@ -1,0 +1,147 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<apichn.cpp>
+//	File:				apichn.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    MIT_TGI_APICHN
+#define GROUP_BASE  MIT_TGB_APICHN
+#define TRACE_ARRAY MIT_APICHN_MSG_ARRAY
+
+enum APICHN_MSG 
+{
+	APICHN_MSG_150=0, 	//Ojo, se usa como indice del array
+	APICHN_MSG_160, APICHN_MSG_170, APICHN_MSG_180, APICHN_MSG_190,	APICHN_MSG_200, 
+	APICHN_MSG_210, APICHN_MSG_220, APICHN_MSG_230, APICHN_MSG_240,	APICHN_MSG_250, 
+	APICHN_MSG_260, APICHN_MSG_270, APICHN_MSG_280, APICHN_MSG_281,
+	APICHN_MSG_290, APICHN_MSG_300, APICHN_MSG_310, APICHN_MSG_320, APICHN_MSG_330,
+	APICHN_MSG_340,	APICHN_MSG_350,	APICHN_MSG_360,	APICHN_MSG_370,	APICHN_MSG_380,	 
+	APICHN_MSG_390, APICHN_MSG_400, APICHN_MSG_410,
+	APICHN_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, APICHN_MSG_150+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No es posible inicializar la máquina virtual de Meta4Object." },
+
+	{ GROUP_ID, APICHN_MSG_160+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No es posible cerrar la máquina virtual de Meta4Object." },
+
+	{ GROUP_ID, APICHN_MSG_170+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No es posible inicializar el Meta4Object %0:s." },
+
+	{ GROUP_ID, APICHN_MSG_180+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Meta4Object %0:s, Nodo %1:s : Elemento %2:s no encontrado." },
+
+	{ GROUP_ID, APICHN_MSG_190+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Alcance de elemento no implementado: Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_200+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Tipo de elemento no implementado: Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_210+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Valor de elemento no implementado: Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_220+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Tipo de elemento extendido sólo puede ser implementado en elementos numéricos: Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_230+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Alcance no implementado." },
+
+	{ GROUP_ID, APICHN_MSG_240+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la localización obligatoria: Meta4Object %0:s, Nodo %1:s, Elemento %2:s, Valor %3:s." },
+
+	{ GROUP_ID, APICHN_MSG_250+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la localización obligatoria: Meta4Object %0:s, Nodo %1:s, Elemento %2:s, Valor %3:s." },
+
+	{ GROUP_ID, APICHN_MSG_260+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la localización obligatoria: Meta4Object %0:s, Nodo %1:s, Elemento %2:s, Cadena %3:s." },
+
+	{ GROUP_ID, APICHN_MSG_270+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Nodo %0:s no encontrado en el Meta4Object %1:s." },
+
+	{ GROUP_ID, APICHN_MSG_280+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la ejecución, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_281+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Ejecución denegada. El tipo no es método o concepto, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_290+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la carga, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_300+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error al grabar, recordset está en EOF, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_310+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la carga, Meta4Object %0:s." },
+
+	{ GROUP_ID, APICHN_MSG_320+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la descarga, Meta4Object %0:s." },
+
+	{ GROUP_ID, APICHN_MSG_330+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Problemas con el valor de moneda, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_340+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Acceso al Meta4Object para enlace de moneda no disponible." },
+
+	{ GROUP_ID, APICHN_MSG_350+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Variable de acceso para gestionar el cambio de moneda no inicializada. Intenatar reiniciar el Meta4Object de cambio de moneda." },
+
+	{ GROUP_ID, APICHN_MSG_360+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No es posible inicializar el Meta4Object de moneda mediante el Meta4Object %0:s." },
+
+	{ GROUP_ID, APICHN_MSG_370+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la operación de inserción in el Meta4Object %0:s, Nodo %1:s." },
+	
+	{ GROUP_ID, APICHN_MSG_380+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la operación de borrado en el Meta4Object %0:s, Nodo %1:s." },
+
+	{ GROUP_ID, APICHN_MSG_390+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la operación de conexión." },
+
+	{ GROUP_ID, APICHN_MSG_400+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error al inicializar la base de datos lógica." },
+
+	{ GROUP_ID, APICHN_MSG_410+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error al cerrar la base de datos lógica." }
+
+} ;
+
+
+#define GROUP_BASE_EX	MIT_TGB_APICHN_EX
+#define TRACE_ARRAY_EX	MIT_APICHN_MSG_ARRAY_EX
+
+enum APICHN_MSG_EX
+{
+	APICHN_MSG_1=0, 	//Ojo, se usa como indice del array
+	APICHN_MSG_2,
+	APICHN_EX_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY_EX[] =  
+{
+	{ GROUP_ID, APICHN_MSG_1+GROUP_BASE_EX, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Problemas con el valor del variant, Meta4Object %0:s, Nodo %1:s, Elemento %2:s." },
+
+	{ GROUP_ID, APICHN_MSG_2+GROUP_BASE_EX, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No se puede convertir el valor del variant, Meta4Object %0:s, Nodo %1:s, Elemento %2:s, valor %3:s." }
+} ;

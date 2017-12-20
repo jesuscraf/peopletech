@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object JSP METADATA
+
+@version 1.6
+
+-->
+
+<object name="JSP METADATA">
+
+	<param name="XML_ID"/>
+
+	<call-table name="STM_XML_FILES">
+
+		<with-pk name="XML_ID" select="$XML_ID"/>
+
+		<fields>
+
+			<field name="XML_FILE" visible="false"/>
+
+		</fields>
+
+		<calculated-fields>
+
+			<field name="XML_FILE_DESC"/>
+
+			<field name="XML_FILE_EXT"/>
+
+			<field name="XML_FILE_FILE" multiline="true" content-type="file"/>
+
+		</calculated-fields>
+
+		<generate-funtions>
+
+			<call-template name="BLOB2File">
+
+				<with-arg name="blob" select="@XML_FILE"/>
+
+				<with-arg name="description" insert="@XML_FILE_DESC"/>
+
+				<with-arg name="extension" insert="@XML_FILE_EXT"/>
+
+				<with-arg name="file" insert="@XML_FILE_FILE"/>
+
+			</call-template>
+
+		</generate-funtions>
+
+		<update-funtions>
+
+			<call-template name="file2BLOB">
+
+				<with-arg name="description" select="@XML_FILE_DESC"/>
+
+				<with-arg name="extension" select="@XML_FILE_EXT"/>
+
+				<with-arg name="file" select="@XML_FILE_FILE"/>
+
+				<with-arg name="filename" select="~mdtblobfile"/>
+
+				<with-arg name="blob" insert="@XML_FILE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+</object>
+
+

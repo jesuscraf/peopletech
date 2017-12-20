@@ -1,0 +1,60 @@
+// m4logsysvb.idl : IDL source for m4logsysvb.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (m4logsysvb.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	
+	[
+		object,
+		uuid(081BCFB2-BC99-4B9C-8B25-1AAB435D5C13),
+		dual,
+		helpstring("IM4LogSys Interface"),
+		pointer_default(unique)
+	]
+	interface IM4LogSys : IDispatch
+	{
+		[id(1), helpstring("method FormatString")] HRESULT FormatString([in] BSTR ai_psInString, [in] BSTR ai_psParams, [in] short ai_iByIdParamPos, [out] BSTR *ao_psOutString, [out, retval] short *ao_iRetVal);
+		[id(2), helpstring("method FormatStringByParams")] HRESULT FormatStringByParams([in] BSTR ai_psInString, [in] SAFEARRAY(VARIANT) *ai_saParams, [in] short ai_iByIdParamPos, [out] BSTR *ao_psOutString, [out, retval] short *ao_iRetVal);
+		[id(3), helpstring("method SerializeParameters")] HRESULT SerializeParameters([in] SAFEARRAY(VARIANT) *ai_asParams, [in] long ai_iSource, [out] BSTR *ao_psOutString, [out, retval] short *ao_iRetVal);
+		[id(4), helpstring("method DeserializeParameters")] HRESULT DeserializeParameters([in] BSTR ai_psInString, [in, out] long *aio_piInState, [in] short ai_iByIdParamPos, [out] SAFEARRAY(BSTR) *ai_asParams, [out] long *ao_piSource, [out] long *ao_piError, [out] long *ao_piExtra, [in] long *ai_iByParseOption, [out, retval] short *ao_iRetVal);
+		[id(5), helpstring("method M4ChWrapErrorLookup")] HRESULT M4ChWrapErrorLookup([in] IDispatch* oWrapCVM, [in, out] SAFEARRAY(long)* ErrorCodes);
+		[id(6), helpstring("method M4ChWrapGetErrorString")] HRESULT M4ChWrapGetErrorString([in] long ErrorCode, [in] BSTR strParams, [in] unsigned char pos_params, [in] IDispatch* oWrapCVM, [in, out] BSTR* strError, [out, retval] short* ao_iRetVal);
+		[id(7), helpstring("method M4ChWrapGetErrorStringByLang")] HRESULT M4ChWrapGetErrorStringByLang([in] long ErrorCode, [in] BSTR strParams, [in] unsigned char pos_params, [in] IDispatch* oWrapCVM, [in, out] BSTR* strError, [in] long lLang, [out, retval] short* ao_iRetVal);
+		[id(8), helpstring("method M4ChWrapGetErrorStringByParams")] HRESULT M4ChWrapGetErrorStringByParams([in] long ErrorCode, [in, out] SAFEARRAY(VARIANT)* ParamsArray, [in] unsigned char pos_params, [in] IDispatch* oWrapCVM, [in, out] BSTR* strError, [out, retval] short* ao_iRetVal);
+		[id(9), helpstring("method M4ChWrapGetErrorStringByParamsByLang")] HRESULT M4ChWrapGetErrorStringByParamsByLang([in] long ErrorCode,[in, out] SAFEARRAY(VARIANT)* ParamsArray, [in] unsigned char pos_params, [in] IDispatch* oWrapCVM, [in, out] BSTR* strError, [in] long lLang, [out, retval] short* ao_iRetVal);
+		[id(10), helpstring("method GetH_DecimalLastErrorCode")] HRESULT GetH_DecimalLastErrorCode([out] long* ErrorCode, [out, retval] short* ao_iRetVal);
+		[id(11), helpstring("method GetH_LastErrorType")] HRESULT GetH_LastErrorType([out] BSTR* ErrorType, [out, retval] short* ao_iRetVal);
+		[id(12), helpstring("method GetH_LastErrorTime")] HRESULT GetH_LastErrorTime([out] BSTR *ErrorTime, [out,retval] short *ao_iRetVal);
+		[id(13), helpstring("method GetH_LastErrorText")] HRESULT GetH_LastErrorText([out] BSTR* ErrorText, [out, retval] short *ao_iRetVal);
+		[id(14), helpstring("method Enable_TraceInfo_Logs")] HRESULT Enable_TraceInfo_Logs([out, retval] short *ao_iRetVal);
+		[id(15), helpstring("method Disable_TraceInfo_Logs")] HRESULT Disable_TraceInfo_Logs([out, retval] short *ao_iRetVal);
+		[id(16), helpstring("method Log_Pop_Back")] HRESULT Log_Pop_Back([out, retval] short* ao_iRetVal);
+		[id(17), helpstring("method IsEmptyLogStack")] HRESULT IsEmptyLogStack([out, retval] short *ao_iRetVal);
+		[id(18), helpstring("method InitializeLogManager")] HRESULT InitializeLogManager([in] BSTR iniFileName, [out, retval] short *ao_iRetVal);
+		[id(19), helpstring("method DestroyLogManager")] HRESULT DestroyLogManager([out, retval] short* ao_iRetVal);
+		[id(20), helpstring("method LogSetCode")] HRESULT LogSetCode([in] long icode, [in] short irango, [in, optional, defaultvalue("")] BSTR pmessage, [out, retval] short *ao_iRetVal);
+	};
+
+[
+	uuid(533C5770-36A1-4C8E-BC24-691A8C41AA1F),
+	version(1.0),
+	helpstring("m4logsysvb")
+]
+library M4LOGSYSVBLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+	[
+		uuid(533F7DA2-4D82-476C-B1A0-CDBC085202BE),
+		helpstring("M4LogSys Class"),
+		appobject
+	]
+	coclass M4LogSys
+	{
+		[default] interface IM4LogSys;
+	};
+};

@@ -1,0 +1,12 @@
+# Directorio donde iran los objetos intermedios:
+# Por defecto se asume el dir oculto .$PLATFORM
+
+OBJDIR = ../../obj/$PLATFORM/$LINKTYPE/$NPRJNAME
+
+# directorio para templates.
+# deprecated in Sun CC 5.0
+#[solaris] CCFLAGS = -ptr../../obj/$PLATFORM/$LINKTYPE/$NPRJNAME
+#[solaris] LINKFLAGS = -ptr../../obj/$PLATFORM/$LINKTYPE/$NPRJNAME
+
+[aix] CCFLAGS = -qtempinc=../../obj/$PLATFORM/$LINKTYPE/$NPRJNAME/templates
+

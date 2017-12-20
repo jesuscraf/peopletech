@@ -1,0 +1,71 @@
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> m4_index.html  -->
+
+<! --
+
+ Carga de las templates usadas para crear los indices:
+
+ <m4{brkfile}={m4_index.html}m4>
+ <m4{brkfile}={m4_index_node.html}m4>
+ <m4{brkfile}={m4_index_leaf.html}m4>
+ <m4{brkfile}={m4_index_close.html}m4> 
+
+ Estas son las templates usadas para crear los indices:
+
+ <m4{brkindex}={m4_index.html}m4>
+ <m4{brkindexnode}={m4_index_node.html}m4>
+ <m4{brkindexleaf}={m4_index_leaf.html}m4>
+ <m4{brkindexclose}={m4_index_close.html}m4> 
+ 
+ -->
+
+<body bgcolor=#ffffee>
+
+<style>
+	A { text-decoration: none }
+	A:hover { text-decoration:underline }
+</style>
+
+<script LANGUAGE='Javascript' src='<m4{glbfile}={m4_index.js}m4>'></script>
+
+<script>
+
+// CUSTOMIZABLE VARIABLES /////////////////////////////////////////////
+
+  Var[2]  = 1              // use branch collapsing option
+  Var[3]  = 1              // target frame number
+  Var[4]  = "main"      // name of target frame
+  Var[5]  = "&nbsp;"       // space insert command
+  
+  Var[11] = "<font face=Arial,Helvetica size=3 color=black>" // route folder's font size/color
+  Var[12] = "<font face=Arial,Helvetica size=2 color=black>" // other folders' font size/color
+  Var[13] = "<font face=Arial,Helvetica size=1 color=black>" // document's font size/color
+  
+  Var[14] = 1              // use folder text links
+  Var[15] = 1              // use document text links
+  Var[16] = 1              // use the +/- sign links
+  Var[17] = 4              // use folder image links
+  Var[18] = 1              // use document image links
+  Var[19] = 1              // initial state of tree
+  Var[21] = 0              // option to use company logo
+	
+	
+	Var[50] = "<m4{glbfile}={m4fopen.gif}m4>"
+	Var[51] = "<m4{glbfile}={m4fclosed.gif}m4>"
+	Var[52] = "<m4{glbfile}={m4doc.gif}m4>"
+	Var[53] = "<m4{glbfile}={m4logo.gif}m4>"
+	Var[54] = "<m4{glbfile}={m4mnode.gif}m4>"
+	Var[55] = "<m4{glbfile}={m4plastnode.gif}m4>"
+	Var[56] = "<m4{glbfile}={m4mlastnode.gif}m4>"
+	Var[57] = "<m4{glbfile}={m4pnode.gif}m4>"
+	Var[58] = "<m4{glbfile}={m4vline.gif}m4>"
+	Var[59] = "<m4{glbfile}={m4blank.gif}m4>"
+	Var[60] = "<m4{glbfile}={m4node.gif}m4>"
+	Var[61] = "<m4{glbfile}={m4lastnode.gif}m4>"
+	Var[62] = "<m4{glbfile}={m4root.gif}m4>" //DOF
+	Var[63] = "<m4{glbfile}={m4root.gif}m4>" //COF
+
+
+aux0 = getFolder(0, 0, Var[11]+"<b><m4{title}m4></b></font>", "")
+
+<!-- m4_index.html <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  -->
+

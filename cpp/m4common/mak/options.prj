@@ -1,0 +1,56 @@
+######################################################################
+# Diversas opciones de compilacion. Por defecto se asume 'no'
+# options between brackets are prj command line options.
+######################################################################
+
+#--------------------
+# multithreading
+# {$MULTITH == 1 || $THREADS == 1} THREADS = yes
+# {$MULTITH == 0 || $THREADS == 0} THREADS = no
+THREADS = yes
+
+#--------------------
+# debug
+{$DEBUG == 1} DEBUG = yes
+{$DEBUG == 0} DEBUG = no
+
+#--------------------
+# static or dynamic library
+# {$STATIC == 1} STATIC  = yes
+# {$STATIC == 0} STATIC  = no
+STATIC = no
+
+#--------------------
+# use purify tools
+# {$PURIFY == 1} PURIFY = yes
+# {$PURIFY == 0} PURIFY = no
+
+# {$PURECOV == 1} PURECOV = yes
+# {$PURECOV == 0} PURECOV = no
+
+# {$QUANTIFY == 1} QUANTIFY = yes
+# {$QUANTIFY == 0} QUANTIFY = no
+
+#--------------------
+# use sockets
+SOCKETS = yes
+
+#--------------------
+# use math library
+MATH = yes
+
+#--------------------
+# build type
+{$DEBUG == 1} LINKTYPE = debug
+{$DEBUG == 0} LINKTYPE = release
+
+#--------------------
+# exception handling
+EH = no
+
+#--------------------
+# use odbc.
+{$DRIVER_ODBC == 1 && $DRIVER_ODBC_311==0} ODBC = yes
+{$DRIVER_ODBC == 0} ODBC = no
+
+

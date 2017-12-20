@@ -1,0 +1,35 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4objcachedirectory.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/cachedirbase.cpp
+SRC = ../src/cachedircli.cpp
+SRC = ../src/cachedirsrv.cpp
+SRC = ../src/mdupdate.cpp
+
+# fuentes que no se optimizan.
+[aix] NO_OPTIMIZE_FILE = cachedirbase.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4dm
+LIB = m4ipcs
+LIB = m4log
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4serial
+LIB = m4variant
+LIB = m4cryptc

@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object PRESENTATION
+
+@version 2.4
+
+-->
+
+<object name="PRESENTATION">
+
+	<param name="ID_PRESENTATION"/>
+
+	<call-table name="SPT_PRESENTATION">
+
+		<with-pk name="ID_PRESENTATION" select="$ID_PRESENTATION"/>
+
+	</call-table>
+
+	<call-table name="SCH_MD_VERSION">
+
+		<with-pk name="ID_T3" select="$ID_PRESENTATION"/>
+
+		<with-pk name="ID_MD_TYPE" select="3"/>
+
+		<fields>
+
+			<field name="DT_MD_VERSION" visible="false"/>
+
+			<field name="DT_SYNC" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MD_VERSION"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_SYNC"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SPT_PRESENT_PKG">
+
+		<with-pk name="ID_PRESENTATION" select="$ID_PRESENTATION"/>
+
+		<fields>
+
+			<field name="PACKAGE" visible="false"/>
+
+			<field name="PKG_LNG" visible="false"/>
+
+			<field name="PKG_LNGBRA" visible="false"/>
+
+			<field name="PKG_LNGENG" visible="false"/>
+
+			<field name="PKG_LNGESP" visible="false"/>
+
+			<field name="PKG_LNGFRA" visible="false"/>
+
+			<field name="PKG_LNGGEN" visible="false"/>
+
+			<field name="PKG_LNGGER" visible="false"/>
+
+			<field name="PKG_LNGITA" visible="false"/>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_LAST_COMPILE" visible="false"/>
+
+			<field name="DT_LAST_UPDATE" visible="false"/>
+
+		</fields>
+
+		<calculated-fields>
+
+			<field name="OBL" multiline="true" content-type="presentation"/>
+
+		</calculated-fields>
+
+		<generate-funtions>
+
+			<call-template name="presentation2OBL">
+
+				<with-arg name="presentation" select="@ID_PRESENTATION"/>
+
+				<with-arg name="package" select="@PACKAGE"/>
+
+				<with-arg name="bra" select="@PKG_LNGBRA"/>
+
+				<with-arg name="eng" select="@PKG_LNGENG"/>
+
+				<with-arg name="esp" select="@PKG_LNGESP"/>
+
+				<with-arg name="fra" select="@PKG_LNGFRA"/>
+
+				<with-arg name="gen" select="@PKG_LNGGEN"/>
+
+				<with-arg name="ger" select="@PKG_LNGGER"/>
+
+				<with-arg name="ita" select="@PKG_LNGITA"/>
+
+				<with-arg name="obl" insert="@OBL"/>
+
+			</call-template>
+
+		</generate-funtions>
+
+		<update-funtions>
+
+			<call-template name="OBL2Presentation">
+
+				<with-arg name="presentation" select="@ID_PRESENTATION"/>
+
+				<with-arg name="obl" select="@OBL"/>
+
+				<with-arg name="package" insert="@PACKAGE"/>
+
+				<with-arg name="bra" insert="@PKG_LNGBRA"/>
+
+				<with-arg name="eng" insert="@PKG_LNGENG"/>
+
+				<with-arg name="esp" insert="@PKG_LNGESP"/>
+
+				<with-arg name="fra" insert="@PKG_LNGFRA"/>
+
+				<with-arg name="gen" insert="@PKG_LNGGEN"/>
+
+				<with-arg name="ger" insert="@PKG_LNGGER"/>
+
+				<with-arg name="ita" insert="@PKG_LNGITA"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_LAST_COMPILE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_LAST_UPDATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SPT_PRESENT_USE">
+
+		<with-pk name="ID_PRESENTATION" select="$ID_PRESENTATION"/>
+
+	</call-table>
+
+	<call-table name="SPT_PRES_INHERIT">
+
+		<with-pk name="ID_PRES" select="$ID_PRESENTATION"/>
+
+	</call-table>
+
+	<call-table name="SPT_PRES_STYLE">
+
+		<with-pk name="ID_PRESENTATION" select="$ID_PRESENTATION"/>
+
+	</call-table>
+
+	<call-table name="SPT_UNIT_GROUP">
+
+		<with-pk name="ID_PRESENTATION" select="$ID_PRESENTATION"/>
+
+	</call-table>
+
+</object>
+
+

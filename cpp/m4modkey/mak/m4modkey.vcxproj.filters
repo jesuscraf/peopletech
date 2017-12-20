@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\m4modkey_dll.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\encrypt.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\error.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\errorlabel.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\fileutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\globdec.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\key.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\license.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\licenseproperties.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\licres.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\version.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmlanalyzer.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmlanalyzerfactory.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmlanalyzerinterface.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmlcontainers.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmltaglabel.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\xmlutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rc\m4modkey.what.cpp">
+      <Filter>rc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\encrypt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\error.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\fileutil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\license.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\licenseproperties.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\version.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xmlanalyzer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xmlanalyzerfactory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xmlcontainers.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\xmlutil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4modkey.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4cryptc\mak\win32\debug\m4cryptclib.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win32\release\m4cryptclib.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win64\debug\m4cryptclib.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win64\release\m4cryptclib.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\debug\m4datedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\release\m4datedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\debug\m4datedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\release\m4datedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4tsap\mak\win32\debug\m4tsapdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4tsap\mak\win32\release\m4tsapdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4tsap\mak\win64\debug\m4tsapdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4tsap\mak\win64\release\m4tsapdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win32\debug\m4uuid.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win32\release\m4uuid.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win64\debug\m4uuid.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win64\release\m4uuid.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4win2ux\mak\win32\debug\m4win2ux.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4win2ux\mak\win32\release\m4win2ux.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4win2ux\mak\win64\debug\m4win2ux.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4win2ux\mak\win64\release\m4win2ux.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win32\debug\m4xmlutil.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win32\release\m4xmlutil.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win64\debug\m4xmlutil.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win64\release\m4xmlutil.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\debug\xerces-c.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\release\xerces-c.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\debug\xerces-c.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\release\xerces-c.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="m4modkey.prj">
+      <Filter>mak</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4modkey.touch">
+      <Filter>mak</Filter>
+    </None>
+  </ItemGroup>
+</Project>

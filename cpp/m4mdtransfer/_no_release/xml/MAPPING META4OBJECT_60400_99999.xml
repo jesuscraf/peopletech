@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object MAPPING META4OBJECT
+
+@version 1.0
+
+-->
+
+<object name="MAPPING META4OBJECT">
+
+	<param name="ID_T3_I"/>
+
+	<param name="ID"/>
+
+	<call-table name="SPR_DIN_OBJECTS">
+
+		<with-pk name="ID_T3_I" select="$ID_T3_I"/>
+
+		<with-pk name="ID" select="$ID"/>
+
+	</call-table>
+
+</object>
+
+
+
+

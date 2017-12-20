@@ -1,0 +1,218 @@
+META4-SITENODE-TABLE-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4DispatcherModule
+		FROM META4-DISPATCHER-MIB
+
+	dispatcher, dispatcherGroups
+		FROM META4-PRODUCTS-REG;
+
+
+meta4SiteNodeModule MODULE-IDENTITY
+	LAST-UPDATED "200405181200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Site Node Table."
+
+	REVISION "200405181200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4DispatcherModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+siteNodeGroup OBJECT-GROUP
+	OBJECTS {
+		nodeId,
+		nodeHost,
+		basePort,
+		state,
+		oltploadFactor,
+		xmlloadFactor,
+		serverMemory,
+		numSessions,
+		systemMemory,
+		cpuUsage,
+		oltpTime,
+		xmlTime
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { dispatcherGroups 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+
+siteNodeTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF SiteNodeEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { dispatcher 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+siteNodeEntry OBJECT-TYPE 
+	SYNTAX SiteNodeEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { siteNodeIndex }
+	::= { siteNodeTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+SiteNodeEntry ::= SEQUENCE {
+		siteNodeIndex Unsigned32,
+		nodeId DisplayString,
+		nodeHost DisplayString,
+		basePort DisplayString,
+		state INTEGER,
+		oltploadFactor DisplayString,
+		xmlloadFactor DisplayString,
+		serverMemory DisplayString,
+		numSessions DisplayString,
+		systemMemory DisplayString,
+		cpuUsage DisplayString,
+		oltpTime DisplayString,
+		xmlTime DisplayString
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+siteNodeIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { siteNodeEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+nodeId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Node ID"
+	::= { siteNodeEntry 2 }
+
+nodeHost OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Host"
+	::= { siteNodeEntry 3 }
+
+basePort OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Base Port"
+	::= { siteNodeEntry 4 }
+
+state OBJECT-TYPE
+	SYNTAX INTEGER {inactive(0), ready(1), starting(2), shuttingdown(3), shuttingdownmc(4), halted(5)}	
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Current state"
+	::= { siteNodeEntry 5 }
+
+oltploadFactor OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"OLTP Load Factor"
+	::= { siteNodeEntry 6 }
+
+xmlloadFactor OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"XML Load Factor"
+	::= { siteNodeEntry 7 }
+
+serverMemory OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Server Memory Usage"
+	::= { siteNodeEntry 8 }
+
+numSessions OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of current sessions"
+	::= { siteNodeEntry 9 }
+
+systemMemory OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"System Memory"
+	::= { siteNodeEntry 10 }
+
+cpuUsage OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"SSystem CPU Usage"
+	::= { siteNodeEntry 11 }
+
+oltpTime OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"OLTP execution Time"
+	::= { siteNodeEntry 12 }
+
+xmlTime OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"XML execution Time"
+	::= { siteNodeEntry 13 }
+
+END

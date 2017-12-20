@@ -1,0 +1,63 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<clargs.cpp>
+//	File:				clargs.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    MIT_TGI_CL_ARGS
+#define GROUP_BASE  MIT_TGB_CL_ARGS
+#define TRACE_ARRAY g_stMIT_ArgsMsg
+
+enum CLARGS_MSG 
+{
+	CLARGS_MSG_10=0,	//Ojo, se usa como indice del array
+	CLARGS_MSG_20, CLARGS_MSG_30, CLARGS_MSG_40, CLARGS_MSG_50, CLARGS_MSG_60, 
+	CLARGS_MSG_70, CLARGS_MSG_80,
+
+	CLARGS_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, CLARGS_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Subargumento %0:s no encontrado en %1:s." },
+
+	{ GROUP_ID, CLARGS_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Palabra reservada %0:s desconocida."},
+
+	{ GROUP_ID, CLARGS_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Argumento %0:s fuera de rango." },
+
+	{ GROUP_ID, CLARGS_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Valor %0:s (%1:s caracteres) no encontrado." },
+
+	{ GROUP_ID, CLARGS_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Argumento %0:s, índice %1:s, subargumento nombre %2:s no encontrado." },
+
+	{ GROUP_ID, CLARGS_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Palabra reservada %0:s desconocida." },
+
+	{ GROUP_ID, CLARGS_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Carácter de cierre %0:s requerido, pero no encontrado en %1:s." },
+
+	{ GROUP_ID, CLARGS_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "El subargumento separador no puede ser M4_END_STR. Comando %0:s." }
+} ;

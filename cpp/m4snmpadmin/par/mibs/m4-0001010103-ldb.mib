@@ -1,0 +1,220 @@
+META4-LDB-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ApplicationServerModule
+		FROM META4-APPLICATION-SERVER-MIB
+
+	applicationServer, applicationServerGroups
+		FROM META4-PRODUCTS-REG;
+
+
+-- La LDB es un modulo y es el tercer hijo del modulo raíz (applicationServer).
+
+meta4LdbSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the LDB Subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ApplicationServerModule 3 }
+
+
+-- Definimos objeto y grupo, que es el tercer hijo del objeto raíz (applicationServer).
+--
+--
+
+ldbSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Logical Database Subsystem"
+	::= { applicationServer 3 }
+
+
+ldbSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		connectionString,
+		maxNumConn,
+		maxNumCursor,
+		executeSQLStatement,
+		maxNumStmtCache,
+		maxNumObject,
+		isolationLevel,
+		databaseType,
+		logicalConnectionsInUse,
+		logicalObjectsInUse,
+		statementsInUse,
+		attemptsToConnectDB,
+		actionFlushDictionaryCache,
+		lastFlushDictionaryCache
+	}
+	STATUS current
+	DESCRIPTION
+		"Logical Database Group properties"
+	::= { applicationServerGroups 3 }
+
+
+-- Definimos la propiedades del objeto LDB.
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { ldbSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { ldbSubsystem 2 }
+
+connectionString OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Connection String"
+	::= { ldbSubsystem 3 }
+
+maxNumConn OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Maximum Number of Logical Connections"
+	::= { ldbSubsystem 4 }
+
+maxNumCursor OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Maximum Number of Cursors"
+	::= { ldbSubsystem 5 }
+
+
+executeSQLStatement OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"SQL Statement Executed after Connection"
+	::= { ldbSubsystem 6 }
+
+maxNumStmtCache OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Maximum Number of Cached Statements"
+	::= { ldbSubsystem 7 }
+
+maxNumObject OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Maximum Number of Logical Objects"
+	::= { ldbSubsystem 8 }
+
+isolationLevel OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Isolation Level"
+	::= { ldbSubsystem 9 }
+
+databaseType OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Database Type"
+	::= { ldbSubsystem 10 }
+
+logicalConnectionsInUse OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Logical Connection in Use"
+	::= { ldbSubsystem 11 }
+
+logicalObjectsInUse OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Logical Objects in Use"
+	::= { ldbSubsystem 12 }
+
+statementsInUse OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of statements in Use"
+	::= { ldbSubsystem 13 }
+
+attemptsToConnectDB OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Attempts of Establish the Connection with DDBB"
+	::= { ldbSubsystem 14 }
+
+actionFlushDictionaryCache OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Action Flush Dictionary Cache"
+	::= { ldbSubsystem 15 }
+
+lastFlushDictionaryCache OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Last Flush Dictionary Cache"
+	::= { ldbSubsystem 16 }
+
+
+-- Finalizamos el fichero MIB.
+
+END

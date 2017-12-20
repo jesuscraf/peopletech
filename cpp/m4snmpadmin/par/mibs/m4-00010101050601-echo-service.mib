@@ -1,0 +1,153 @@
+META4-ECHO-SERVICE-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4SuplementaryServicesSubsystemModule, suplementaryServicesSubsystem, suplementaryServicesSubsystemGroup
+		FROM META4-SUPLEMENTARY-SERVICES-SUBSYSTEM-MIB;
+
+meta4EchoServiceSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Echo subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4SuplementaryServicesSubsystemModule 1 }
+
+
+--
+-- 
+
+echoServiceSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Echo Service Subsystem"
+	::= { suplementaryServicesSubsystem 1001 }
+
+echoServiceSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		state,
+		startDate,
+		serviceId,
+		minExecutorsService,
+		maxExecutorsService,
+		criticalService,
+		outServiceExecutors,
+		exceptionHandling		
+	}
+	STATUS current
+	DESCRIPTION
+		"Echo Service Group properties"
+	::= { suplementaryServicesSubsystemGroup 1 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoServiceSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoServiceSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { echoServiceSubsystem 3 }
+
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { echoServiceSubsystem 4 }
+
+serviceId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Service ID"
+	::= { echoServiceSubsystem 5 }
+
+minExecutorsService OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Min. Number of Executors for the Service"
+	::= { echoServiceSubsystem 6 }
+
+maxExecutorsService OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Number of Executors for the Service"
+	::= { echoServiceSubsystem 7 }
+
+criticalService OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Critical Service"
+	::= { echoServiceSubsystem 8 }
+
+outServiceExecutors OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Out of Service Executors"
+	::= { echoServiceSubsystem 9 }
+
+exceptionHandling OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Exception Handling"
+	::= { echoServiceSubsystem 10 }
+
+END

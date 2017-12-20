@@ -1,0 +1,749 @@
+#!/bin/ksh
+#==============================================================================
+# @(#) FileVersion: [M4_FILE_VERSION]
+# @(#) FileDescription: This script launches and stops Meta4 Application Server.
+# @(#) CompanyName: Meta4 Spain, S.A.
+# @(#) LegalCopyright: (c) [M4_YEAR]
+# @(#) ProductName:  PeopleNet
+#==============================================================================
+
+#========================================================================
+# General m4server settings (user customizable)
+#========================================================================
+
+#-----------------------------------------------------------------------
+# set m4appserver installation paths: installation and configuration
+#-----------------------------------------------------------------------
+export M4_SERVER_CONFIGURATION_ROOT=/home/m4serversite-local/m4appserver-config
+export M4_SERVER_INSTALLATION_ROOT=/export/m4serversite/m4server
+
+cd "${M4_SERVER_CONFIGURATION_ROOT}"
+
+#------------------------------------------------------------------------
+# set run mode (debug or blank (for release))
+#------------------------------------------------------------------------
+export M4_RUN_MODE=
+
+#------------------------------------------------------------------------
+# set dbmode (oci or odbc)
+#------------------------------------------------------------------------
+export M4_DB_MODE=oci
+
+#------------------------------------------------------------------------
+# set extern doc management tables (1 or nothing (0))
+#------------------------------------------------------------------------
+export M4_SSR_EXTERN_DB=
+
+#------------------------------------------------------------------------
+# set database environment source (script or blank (for user shell))
+#------------------------------------------------------------------------
+export M4_DB_ENVIRONMENT_SOURCE=
+
+#------------------------------------------------------------------------
+# set startup security (encrypted or blank (for normal)
+#------------------------------------------------------------------------
+export M4_STARTUP_SECURITY=encrypted
+
+#------------------------------------------------------------------------
+# set m4appserver user and password (blank if startup security encrypted)
+#------------------------------------------------------------------------
+# -- export M4_USER=TESTER
+# -- export M4_PASSWORD=TESTER
+
+#========================================================================
+# General m4server settings (do not edit server settings below this line)
+#========================================================================
+
+#------------------------------------------------------------------------
+# set configuration files
+#------------------------------------------------------------------------
+export STARTUP_OBL=./startup.obl
+export SSC_APPUSER=./ssc_appuser
+export XMLMSGPATH=${M4_SERVER_INSTALLATION_ROOT}/workdir
+export EXTRA_ARGV=""
+export REGFILE=./regmeta4.reg
+
+#-----------------------------------------------------------------------------
+# set m4appserver exe names
+#-----------------------------------------------------------------------------
+export M4SERVER_EXE_NAME=m4server
+export M4SHUTDOWN_EXE_NAME=m4sdown
+export M4PINGSERVER_EXE_NAME=m4srvping
+
+#-----------------------------------------------------------------------------
+# set internal variables
+#-----------------------------------------------------------------------------
+export M4SERVER_PID_FILE_NAME=pid
+export TEMP_DIR=`/usr/bin/grep -w TempDir ${REGFILE} | awk -F'"' '{print $4}'`
+export STARTUP_LOG_FILE=${TEMP_DIR}/m4debug/startuplog.txt
+
+#-----------------------------------------------------------------------------
+# set m4appserver environment
+#-----------------------------------------------------------------------------
+SetM4appserverEnvironment()
+{
+	# m4appserver run paths
+	export M4SERVER_PATH=${M4_SERVER_CONFIGURATION_ROOT}
+	export M4SERVER_PATH=${M4SERVER_PATH}:${M4_SERVER_INSTALLATION_ROOT}/bin/${M4_RUN_MODE}
+
+	export M4SERVER_LIBPATH=${M4_SERVER_CONFIGURATION_ROOT}
+	export M4SERVER_LIBPATH=${M4SERVER_LIBPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/${M4_RUN_MODE}
+	export M4SERVER_LIBPATH=${M4SERVER_LIBPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/${M4_DB_MODE}/${M4_RUN_MODE}
+
+	export M4_LOGBASE_PATH=${M4_SERVER_INSTALLATION_ROOT}/workdir/logbase.ini
+	export M4_LOGMSG_PATH=
+	export PATH=${M4SERVER_PATH}:${PATH}
+
+
+    	# you cannot compare an empty LHS with an empty RHS using single square brackets.
+    	if [ "${LD_LIBRARY_PATH}x" = "x" ]; then
+       		export LD_LIBRARY_PATH=${M4SERVER_LIBPATH}
+    	else
+       		export LD_LIBRARY_PATH=${M4SERVER_LIBPATH}:${LD_LIBRARY_PATH}
+    	fi
+
+    	if [ "${LIBPATH}x" = "x" ]; then
+       		export LIBPATH=${M4SERVER_LIBPATH}
+    	else
+       		export LIBPATH=${M4SERVER_LIBPATH}:${LIBPATH}
+    	fi
+
+}
+
+CheckDataBaseEnvironment()
+{
+	# check database interface.
+	case ${M4_DB_MODE} in
+    'oci') # check oracle enrironment.
+		if [ ! ${ORACLE_HOME} ]; then
+			print "Database environment error: \$ORACLE_HOME not set."
+			exit
+		fi
+
+		# check if ORACLE_HOME is in PATH
+		if [ "${PATH#*${ORACLE_HOME}}" = "${PATH}" ]; then
+			print "Database environment error: \$ORACLE_HOME not in \$PATH."
+			exit
+		fi
+
+		# check if ORACLE_HOME is in LD_LIBRARY_PATH (Solaris) or LIBPATH (AIX)
+		pltform=`uname -s`
+		if [ ${pltform} = "SunOS" ]; then
+			if [ "${LD_LIBRARY_PATH#*${ORACLE_HOME}}" = "${LD_LIBRARY_PATH}" ]; then
+				print "Database environment error: \$ORACLE_HOME not in \$LD_LIBRARY_PATH."
+			exit
+			fi
+		fi
+		if [ ${pltform} = "AIX" ]; then
+			if [ "${LIBPATH#*${ORACLE_HOME}}" = "${LIBPATH}" ]; then
+				print "Database environment error: \$ORACLE_HOME not in \$LIBPATH."
+			exit
+			fi
+		fi
+
+		# get Oracle current version.
+		_SQLPLUS=$(whence sqlplus)
+		if [ "${_SQLPLUS}" = "" ] || [ ! ${_SQLPLUS} ] || [ ! -x ${_SQLPLUS} ]; then
+			print "Database environment warning: Can't get ORACLE current version."
+			return
+		fi
+		_ver=$(${_SQLPLUS} "-?" | grep Release | awk '{print $3}')
+
+		case ${_ver} in
+			11*)
+				export M4_DB_MODE=oci11g
+				;;
+			12*)
+				export M4_DB_MODE=oci12c
+				;;
+			*)
+				print "Database environment error: ORACLE current version not recognized."
+				exit
+				;;
+		esac
+		;;
+
+    'odbc')
+		# nothing to do.
+		;;
+	esac
+}
+
+SetJavaEnvironment()
+{
+	#-------------------------------------------------------------------------
+	# JRE Path - modify according to your current JRE setup
+	#-------------------------------------------------------------------------	
+	export M4JAVAHOME=
+	
+	#-------------------------------------------------------------------------
+	# JVM Classpath - no need to modify
+	#-------------------------------------------------------------------------	
+	export M4CLASSPATH=${M4_SERVER_INSTALLATION_ROOT}/lib/java/bcmail-jdk15-146.jar
+	export M4CLASSPATH=${M4CLASSPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/java/bcpg-jdk15on-149.jar
+	export M4CLASSPATH=${M4CLASSPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/java/bcprov-jdk15-146.jar
+    export M4CLASSPATH=${M4CLASSPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/java/m4documentsconverter.jar
+	export M4CLASSPATH=${M4CLASSPATH}:${M4_SERVER_INSTALLATION_ROOT}/lib/java/*
+	
+	#-------------------------------------------------------------------------
+	# JVM Arguments separated by ";" - example: "-Xmx256m;-Xms128m"
+	#-------------------------------------------------------------------------	
+	export M4JAVAARGS=
+
+	if [ "${M4JAVAHOME}x" != "x" ]; then
+		export LD_LIBRARY_PATH=${M4JAVAHOME}/lib/sparc/client:${M4JAVAHOME}/lib/sparc:${LD_LIBRARY_PATH}
+		export LIBPATH=${M4JAVAHOME}/bin/j9vm:${M4JAVAHOME}/bin:${M4JAVAHOME}/lib/ppc:${LIBPATH}
+		
+		# Necessary for execution out of process
+		export PATH=$M4JAVAHOME/bin:$PATH
+		export CLASSPATH=${M4CLASSPATH}
+	fi
+	
+	#-------------------------------------------------------------------------
+	# Java Trace
+	#-------------------------------------------------------------------------	
+	export M4JAVATRACE=0
+	
+	#-------------------------------------------------------------------------
+	# Java Timeout
+	#-------------------------------------------------------------------------	
+	export M4JAVATIMEOUT=-1
+	
+	#-------------------------------------------------------------------------
+	# Java In process activation
+	#-------------------------------------------------------------------------	
+	export M4JAVAALLOWINPROCESS=0
+}
+
+#=============================================================================
+# 3rdparty software integration environment - modify according to your setup
+#=============================================================================
+
+SetDataBaseEnvironment()
+{
+	#-------------------------------------------------------------------------
+	# Oracle OCI Environment - modify according to your current setup
+	#-------------------------------------------------------------------------
+	export ORACLE_HOME=/opt/app/oracle/product/11.2.0
+	if [ -d ${ORACLE_HOME}/lib32 ]; then
+		export ORACLE_LIB=${ORACLE_HOME}/lib32
+	else
+		export ORACLE_LIB=${ORACLE_HOME}/lib
+	fi
+	export LD_LIBRARY_PATH=${ORACLE_LIB}:${LD_LIBRARY_PATH}
+	export LIBPATH=${ORACLE_LIB}:${LIBPATH}
+	export TNS_ADMIN=/var/opt/oracle
+	export PATH=${ORACLE_HOME}/bin:${PATH}
+	export NLS_LANG=SPANISH_SPAIN.WE8ISO8859P1
+
+}
+
+#-----------------------------------------------------------------------------
+# function to check to see if a given executable is in the path
+# returns: 1 if it finds the executable, 0 if it does not.
+# IsExeInPath ldd
+#-----------------------------------------------------------------------------
+IsExeInPath()
+{
+	exename=$1
+	checked_path=`which $exename`
+	if [ -x "${checked_path}" ]; then
+		# -- echo "$exename found at $checked_path"
+		return 1
+	else
+		# -- echo "$exename not in path..."
+		return 0
+	fi
+}
+
+#-----------------------------------------------------------------------------
+# function to set system environment
+#-----------------------------------------------------------------------------
+SetSystemEnvironment()
+{
+	# -- set the hostname
+	export HOSTNAME=`hostname`
+
+   	# -- set locales to C (needed)
+	export LANG=C
+	export LC_ALL=C
+
+	# --- check for the superuser
+	# --- changed for the file-sharing issues when websites run on port 80.
+   	ISROOT=`id | grep 'uid=0'`
+   	if [ "${ISROOT}" != "" ]; then
+          echo "WARNING: Meta4 Server should not be launched as superuser"
+          echo "Do you want to continue? Enter to Continue, CTRL-C to Abort"
+		  read intro
+   	fi
+
+   	# -- set the user identity
+   	if [ -x /usr/ucb/whoami ]; then
+            export USER=`/usr/ucb/whoami`
+       		return 1
+    elif [ -x /usr/bin/whoami ]; then
+            export USER=`/usr/bin/whoami`
+    		return 1
+   	else
+        	echo ""
+            echo "ERROR: Command whoami must be present on system"
+            echo "Exiting..."
+        	return 0
+            exit
+   	fi
+}
+
+
+#---------------------------------------------------------------------------
+# function to print usage
+#---------------------------------------------------------------------------
+Usage()
+{
+	programName=$1
+ 		echo
+        echo "Usage:"
+        echo "  ${programName} -h         (help: show options)"
+        echo "  ${programName} -v         (show dependencies)"
+        echo "  ${programName} start      (start m4server)"
+        echo "  ${programName} stop       (shutdown m4server)"
+	echo "  ${programName} killAll    (kill all m4servers for this user)"
+	echo "  ${programName} kill       (kill this m4server instance)"
+	echo
+	exit
+}
+
+
+#-----------------------------------------------------------------------------
+# function to get the pid of the named processes
+# return value:
+#	0 		if there is not such process
+#	pidProcess	on success
+#-----------------------------------------------------------------------------
+GetProcessPid()
+{
+	gpp_ProgramName=$1
+	gpp_User=$2
+
+	# check the user
+	if [ "${gpp_User}" = "" ]; then
+		gpp_User=${USER}
+	fi
+
+	# get the PID
+	gpp_PID=`/usr/bin/ps -f -u ${gpp_User} |
+        	/usr/bin/grep -w ${gpp_ProgramName} |
+        	/usr/bin/grep -v grep |
+        	/usr/bin/awk '{print $2}'`
+	# return
+	if [ "$gpp_PID" = "" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+
+
+#-----------------------------------------------------------------------------
+# function to kill pid of the named processes
+# return value:
+#	0 		if there is not the process
+#	pidNumber 	of process killed
+#-----------------------------------------------------------------------------
+KillProcess()
+{
+	kp_ProgramName=$1
+	kp_User=$2
+	kp_TargetPID=$3
+
+	# check the user
+	if [ "${kp_User}x" = "x" ]; then
+		kp_User=${USER}
+	fi
+	    kp_PID=`/usr/bin/ps -f -u ${kp_User} |
+        	/usr/bin/grep -w ${kp_ProgramName} |
+        	/usr/bin/grep -v grep |
+	        /usr/bin/awk '{print $2}'`
+
+	if [ "${kp_PID}x" = "x" ]; then
+		echo "${kp_ProgramName} process not running."
+		return 0
+	fi
+
+	doneKill=0
+
+	for pid in $kp_PID
+	    do
+		if [ ${kp_TargetPID} = "0" ] || [ ${pid} = ${kp_TargetPID} ]; then 
+		    doneKill=1
+		    echo "Terminating $pid..."
+		    kill ${pid}
+		fi
+	    done
+
+	if [ ${doneKill} = 0 ]; then
+	    echo "${kp_ProgramName} process not running."
+	else
+	    echo "done... "
+	fi
+
+	return 1
+}
+
+
+#-----------------------------------------------------------------------------
+# function to remove semaphores.
+#-----------------------------------------------------------------------------
+RemoveSemaph()
+{
+    semphUser=$1
+    SemaphoresList=`ipcs -s | awk '{print $2, $5}' | grep ${semphUser} | awk '{print $1}'`
+    if [ "${SemaphoresList}" != "" ]; then
+        for semph in ${SemaphoresList}; do
+            ipcrm -s ${semph}
+        done
+    fi
+}
+
+
+#-----------------------------------------------------------------------------
+# function to print directories and libraries for this server.
+#-----------------------------------------------------------------------------
+ShowDependencies()
+{
+
+	cd ${M4_SERVER_CONFIGURATION_ROOT}
+
+	echo "Meta4 Application Server Directories:"
+	echo "====================================="
+	echo "   M4_SERVER_INSTALLATION_ROOT = ${M4_SERVER_INSTALLATION_ROOT}"
+	echo "   M4_SERVER_CONFIGURATION_ROOT = ${M4_SERVER_CONFIGURATION_ROOT}"
+
+	echo "Environment:"
+	echo "============"
+	echo "   PATH = ${PATH}"
+	echo "   LD_LIBRARY_PATH = ${LD_LIBRARY_PATH}"
+	echo "   LIBPATH = ${LIBPATH}"
+	echo "   ODBCHOME = ${ODBCHOME}"
+	echo "   ORACLE_HOME = ${ORACLE_HOME}"
+	echo "   TNS_ADMIN = ${TNS_ADMIN}"
+	echo "   CWD = `pwd`"
+	echo ""
+
+	#
+	# --- AIX does not ship ldd by default, we will have to ship it instead
+	#
+	IsExeInPath "ldd"; IS_LDD=$?
+	if [ "${IS_LDD}" != "0" ]; then
+		if [ -x ${M4_SERVER_INSTALLATION_ROOT}/bin/${M4_RUN_MODE}/${M4SERVER_EXE_NAME} ]; then
+			echo "Libraries:"
+			echo "========="
+		ldd ${M4_SERVER_INSTALLATION_ROOT}/bin/${M4_RUN_MODE}/${M4SERVER_EXE_NAME}
+		fi
+	fi
+}
+
+
+#-----------------------------------------------------------------------------
+# function to startup the server.
+#-----------------------------------------------------------------------------
+StartupServer()
+{
+	# set the working directory.
+	if [ -d ${M4_SERVER_CONFIGURATION_ROOT} ]; then
+		cd ${M4_SERVER_CONFIGURATION_ROOT}
+	else
+		echo "Directory ${M4_SERVER_CONFIGURATION_ROOT} does not exist"
+		echo "Please check your installation and configuration"
+		exit
+	fi
+	
+	removeTempFiles
+
+	M4SERVER_FULL_PATH=${M4_SERVER_INSTALLATION_ROOT}/bin/${M4_RUN_MODE}/${M4SERVER_EXE_NAME}
+	if [ ! -f ${M4SERVER_FULL_PATH} ]; then
+		echo "Error: ${M4SERVER_EXE_NAME} could not be found"
+		echo "No such file ${M4SERVER_FULL_PATH}"
+		echo "Please check your installation"
+		exit
+	fi
+
+	# manages the startup log file
+	echo ${USER} `date` "Args = " ${EXTRA_ARGV} >> ${STARTUP_LOG_FILE}
+
+	# start the server up
+	# syntax to redirect to a file 1> ${M4SERVER_EXE_OUTPUT} 2>&1 &
+	if [ "${M4_STARTUP_SECURITY}" = "encrypted"  ]; then
+		# startup user encrypted
+		${LAUNCH} ${M4SERVER_EXE_NAME} \
+			${STARTUP_OBL} \
+			${SSC_APPUSER} \
+			${EXTRA_ARGV} &
+	else
+		# no startup user security
+		${LAUNCH} ${M4SERVER_EXE_NAME} \
+			  ${STARTUP_OBL} \
+			  ${M4_USER} \
+			  ${M4_PASSWORD} &
+	fi
+	return
+}
+
+#-----------------------------------------------------------------------------
+# function to start the server with the good debugger.
+#-----------------------------------------------------------------------------
+StartupDebugger()
+{
+
+   	# find out a few variables
+	IsExeInPath "workshop"; IS_WORKSHOP=$?
+	IsExeInPath "dbx"; IS_DBX=$?
+
+	# set the working directory.
+	cd ${M4_SERVER_CONFIGURATION_ROOT}
+
+	# check if a core file exists
+	COREFILE=" "
+	if [ -f core ]; then
+        	COREFILE=core
+	fi
+	M4SERVER_FULL_PATH=${M4_SERVER_INSTALLATION_ROOT}/bin/${M4_RUN_MODE}/${M4SERVER_EXE_NAME}
+
+	case `uname -s`	in
+	'SunOS')
+
+		#
+		# AIX IDE cannot be launched unless from CDE. Sun is OK with that
+		#
+		if [ "${IS_WORKSHOP}" != "0" ]; then
+			if [ "${DISPLAY}x" != "x" ] ; then
+            			workshop -D ${M4SERVER_FULL_PATH} ${COREFILE} &
+	        	else
+        	   	echo "Your DISPLAY variable is not set. Quitting..."
+        		fi
+	    	elif  [ "${IS_DBX}" != "0" ]; then
+        		dbx ${M4SERVER_FULL_PATH} ${COREFILE}
+		else
+        		echo "You do not seem to have supported debuggers in your path"
+	    	fi
+
+		;;
+
+	*)
+
+		IsExeInPath "dbx"; IS_DBX=$?
+		if  [ "${IS_DBX}" != "0" ]; then
+        		dbx ${M4SERVER_FULL_PATH} ${COREFILE}
+		else
+        		echo "You do not seem to have supported debuggers in your path"
+	    	fi
+
+		;;
+
+	esac
+}
+
+#-----------------------------------------------------------------------------
+# function to shutdown the server.
+# 	valid shutdown options are
+#	a)	m4sdown -port 2224 -user TESTER -password TESTER
+#	b)	m4sdown -obl startup.obl -user TESTER -password TESTER
+#	a)	m4sdown -port 2224 -file ssc_appuser
+#	b)	m4sdown -obl startup.obl -file ssc_appuser
+#-----------------------------------------------------------------------------
+
+ShutdownServer()
+{
+    # set the working directory.
+	cd ${M4_SERVER_CONFIGURATION_ROOT}
+
+	# if the server is alive proceed.
+	GetProcessPid ${M4SERVER_EXE_NAME} ${USER}
+	ss_Pid=$?
+
+	# shut the server down (no shutdown user security)
+	if [ ${ss_Pid} -eq 0 ]; then
+		echo "This user has no Meta4 Application Servers started"
+	else
+
+		if [ "${M4_STARTUP_SECURITY}" = "encrypted"  ]; then
+			# startup user encrypted
+			${LAUNCH} ${M4SHUTDOWN_EXE_NAME} \
+				  -Host localhost \
+				  -Obl ${M4_SERVER_CONFIGURATION_ROOT}/startup.obl \
+			 	  -File ${SSC_APPUSER} \
+				  ${EXTRA_ARGV} &
+		else
+			# shutdown m4server (no startup user security)
+			${LAUNCH} ${M4SHUTDOWN_EXE_NAME} \
+				  -Host localhost \
+				  -Obl ${M4_SERVER_CONFIGURATION_ROOT}/startup.obl \
+				  -User ${M4_USER} \
+				  -Password ${M4_PASSWORD} \
+				  ${EXTRA_ARGV} &
+		fi
+	fi
+}
+
+#-----------------------------------------------------------------------------
+# function to kill all the servers for one users and clean up his/her sems.
+#-----------------------------------------------------------------------------
+
+Kill9AllServers()
+{
+    # set the working directory.
+	cd ${M4_SERVER_CONFIGURATION_ROOT}
+
+	# if the server is alive proceed.
+	GetProcessPid ${M4SERVER_EXE_NAME} ${USER}
+	ss_Pid=$?
+
+	# shut all servers down
+	if [ ${ss_Pid} -eq 0 ]; then
+		echo "This user has no Meta4 Application Servers started"
+	else
+	      KillProcess ${M4SERVER_EXE_NAME} ${USER} 0
+	fi
+
+	# remove semaphores
+	RemoveSemaph ${USER}
+}
+
+#-----------------------------------------------------------------------------
+# function to kill all the servers for one users and clean up his/her sems.
+#-----------------------------------------------------------------------------
+
+Kill9Server()
+{
+    # set the working directory.
+	cd ${M4_SERVER_CONFIGURATION_ROOT}
+
+	if [[ ! -e ${M4SERVER_PID_FILE_NAME} ]]; then
+	    echo "File '${M4SERVER_PID_FILE_NAME}' not found. Can't kill ${M4SERVER_EXE_NAME}."
+	    return 0
+	fi
+
+
+	ss_Pid=`cat ${M4SERVER_PID_FILE_NAME} | awk '{print $1}'`
+
+	# shut all servers down
+        KillProcess ${M4SERVER_EXE_NAME} ${USER} ${ss_Pid}
+}
+
+#-----------------------------------------------------------------------------
+# function to ping the server (not fully functional - safest netstat checks!)
+#-----------------------------------------------------------------------------
+PingServer()
+{
+    ps_Oblfile=${M4_SERVER_CONFIGURATION_ROOT}/startup.obl
+	ps_PingServer=${M4_SERVER_INSTALLATION_ROOT}/bin/${M4PINGSERVER_EXE_NAME}
+
+	# right syntax is m4srvping [-p port] [-t nconex] [-c] server
+    	if [ -x ${ps_PingServer} ]; then
+        	${ps_PingServer} -o ${ps_Oblfile} -t 1 $HOSTNAME
+    	else
+        	echo "${M4PINGSERVER_EXE_NAME} executable not available"
+    	fi
+}
+
+#-----------------------------------------------------------------------------
+# function to trace the server on startup
+#-----------------------------------------------------------------------------
+TrussServerOnStartup()
+{
+	IsExeInPath "truss"; IS_TRUSS=$?
+	if [ "$IS_TRUSS" != "0" ]; then
+		export LAUNCH="truss"
+        export M4SERVER_EXE_OUTPUT="m4server-syscalls.out"
+        export M4SERVER_SHUTDOWN_OUTPUT="/dev/null"
+
+		echo "-------------------">> ${M4_SERVER_CONFIGURATION_ROOT}/${M4SERVER_EXE_OUTPUT}
+		date +'%Y-%m-%d %H:%M:%S' >> ${M4_SERVER_CONFIGURATION_ROOT}/${M4SERVER_EXE_OUTPUT}
+		echo "-------------------">> ${M4_SERVER_CONFIGURATION_ROOT}/${M4SERVER_EXE_OUTPUT}
+
+        echo "Starting application server with system call traces"
+		echo "Log dumped in ${M4_SERVER_CONFIGURATION_ROOT}/${M4SERVER_EXE_OUTPUT}"
+		echo ""
+		sleep 5
+		exec tail -f ${M4_SERVER_CONFIGURATION_ROOT}/${M4SERVER_EXE_OUTPUT} &
+		StartupServer
+	else
+		echo "You do not seem to have a system call tracing facility that I know"
+	fi
+}
+
+#-----------------------------------------------------------------------------
+# remove temp files
+#-----------------------------------------------------------------------------
+removeTempFiles()
+{
+	cd temp
+	for dirname in $(ls | sed 's/ /---/g' | grep -v "m4cache" | grep -v m4debug | grep -v m4reports | grep -v JAR)
+	do
+		rm -rf "$(echo $dirname | sed 's/---/ /g')"
+	done
+	# Uncomment to clean reports temp files
+	# rm -rf ./m4reports/*
+	cd ..
+}
+
+#=============================================================================
+# main
+#=============================================================================
+
+#-----------------------------------------------------------------------------
+# set environment.
+#-----------------------------------------------------------------------------
+SetSystemEnvironment
+if [ "${M4_DB_ENVIRONMENT_SOURCE}x" != "x" ]; then
+	SetDataBaseEnvironment
+fi
+# this is the right order. do not change the order of these methods.
+CheckDataBaseEnvironment
+SetM4appserverEnvironment
+SetJavaEnvironment
+
+#-----------------------------------------------------------------------------
+# check input arguments
+#-----------------------------------------------------------------------------
+case "$1" in
+'-h' | '/h' | '-help' | '--help' | '/help' | 'help' )
+	Usage $0
+	;;
+
+'-v' | 'depends' | 'DEPENDS' )
+	ShowDependencies
+	return 0
+	;;
+
+'stop' | 'STOP' | 'Stop')
+	export EXTRA_ARGV=$*
+	ShutdownServer
+	;;
+
+'start' | 'START' | 'Start')
+	StartupServer
+	;;
+
+'kill' | 'KILL' | 'Kill')
+	Kill9Server
+	;;
+
+'killall' | 'KILLALL' | 'KillAll' | 'Killall')
+	Kill9AllServers
+	;;
+
+'debugger' | 'DEBUGGER' | 'Debugger')
+	StartupDebugger
+	;;
+
+'truss' | 'TRUSS' | 'Truss')
+	TrussServerOnStartup
+	;;
+
+*)
+	# extra arguments used when appserver is launched by m4dispatcher.
+	export EXTRA_ARGV=$*
+	StartupServer
+	;;
+esac

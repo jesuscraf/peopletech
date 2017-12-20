@@ -1,0 +1,61 @@
+// M4Anim.idl : IDL source for M4Anim.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4Anim.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	typedef [ uuid(F0E50B13-2E4C-11D2-B669-F350D341FB13),
+				helpstring("AnimateType")
+			]
+	enum nAnimateType {
+		aviFromFile = 0,
+		aviSearchFolder = 1,
+		aviSearchFile = 2,
+		aviFileDestroy = 3,
+		aviRecFileDestroy = 4,
+		aviFileToRec = 5,
+		aviSearchComputer = 6,
+		aviCopyFiles = 7,
+		aviCopyFile = 8,
+		aviMindInit = 9,
+		aviMindFour = 10,
+		aviMindSave = 11
+	} nAnimateType;
+
+	[
+		object,
+		uuid(62141883-47DE-11D2-BC55-00C04FC2444B),
+		dual,
+		helpstring("IAnimate Interface"),
+		pointer_default(unique)
+	]
+	interface IAnimate : IDispatch
+	{
+		[id(1), helpstring("method ShowAnimate")] HRESULT ShowAnimate([in] long hWnd, [in] long nLeft, [in] long nTop, [in] long nWidth, [in] long nHeight, [in] nAnimateType nType, [in, optional] BSTR strFileName, [in, optional, defaultvalue(-1)] VARIANT_BOOL bTransparent, [in, optional, defaultvalue(-1)] VARIANT_BOOL bFirstFrame);
+		[id(2), helpstring("method move")] HRESULT move([in] long nTop, [in] long nLeft, [in] long nWidth, [in] long nHeight);
+		[id(3), helpstring("method Play")] HRESULT Play();
+		[id(4), helpstring("method Stop")] HRESULT Stop([in, defaultvalue(-1)] VARIANT_BOOL bPosInFirstFrame);
+	};
+[
+	uuid(F62DD994-47CC-11D2-BC54-00C04FC2444B),
+	version(1.0),
+	helpstring("M4Anim 1.0 Type Library")
+]
+library M4ANIMLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(3E69F4BF-3806-11D2-96B6-00C04FC2444B),
+		helpstring("Animate Class")
+	]
+	coclass Animate
+	{
+		[default] interface IAnimate;
+	};
+};
+

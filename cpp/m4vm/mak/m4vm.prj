@@ -1,0 +1,95 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4vm.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/attrib.cpp
+SRC = ../src/breakpoint.cpp
+SRC = ../src/breakpointlist.cpp
+SRC = ../src/clstringpool.cpp
+SRC = ../src/currlib.cpp
+SRC = ../src/execontx.cpp
+SRC = ../src/executionpoint.cpp
+SRC = ../src/executor.cpp
+SRC = ../src/exertinfo.cpp
+SRC = ../src/finder.cpp
+SRC = ../src/finderjit.cpp
+SRC = ../src/function.cpp
+SRC = ../src/functiondesc.cpp
+SRC = ../src/intln4.cpp
+SRC = ../src/lexyy.cpp
+SRC = ../src/parser.cpp
+SRC = ../src/priorstack.cpp
+SRC = ../src/prnodef.cpp
+SRC = ../src/runningforminfo.cpp
+SRC = ../src/stack.cpp
+SRC = ../src/tablafuncdesc.cpp
+SRC = ../src/tablasimbolos.cpp
+SRC = ../src/tablatt.cpp
+SRC = ../src/tablfunc.cpp
+SRC = ../src/trad.cpp
+SRC = ../src/vm0dx.cpp
+SRC = ../src/vm0errorio.cpp
+SRC = ../src/vm0general.cpp
+SRC = ../src/vm0str.cpp
+SRC = ../src/vm1av.cpp
+SRC = ../src/vm1cmcr.cpp
+SRC = ../src/vm1compjit.cpp
+SRC = ../src/vm1filtsort.cpp
+SRC = ../src/vm1ind.cpp
+SRC = ../src/vm1ldb.cpp
+SRC = ../src/vm1lib1.cpp
+SRC = ../src/vm1pr.cpp
+SRC = ../src/vm1prop.cpp
+SRC = ../src/vm1reg.cpp
+SRC = ../src/vmachin1.cpp
+SRC = ../src/vmachin2.cpp
+SRC = ../src/vmachine.cpp
+SRC = ../src/vmattrib.cpp
+SRC = ../src/vmcscontext.cpp
+SRC = ../src/vmcycle.cpp
+SRC = ../src/vmdebug.cpp
+SRC = ../src/vmlabel.cpp
+SRC = ../src/vmprapplier.cpp
+SRC = ../src/vmstepper.cpp
+SRC = ../src/vmtypes.cpp
+SRC = ../src/vvm.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4cryptc
+LIB = m4date
+LIB = m4dm
+LIB = m4filemanager
+LIB = m4hsparser
+LIB = m4ini
+LIB = m4ipcs
+LIB = m4log
+LIB = m4logsys
+LIB = m4mdfac
+LIB = m4mdrt
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4servenvdll
+LIB = m4serverbasedll
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4uuid
+LIB = m4variant
+LIB = m4win2ux
+
+

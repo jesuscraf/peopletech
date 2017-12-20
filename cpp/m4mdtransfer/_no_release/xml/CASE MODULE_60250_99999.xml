@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object CASE MODULE
+
+@version 1.6
+
+-->
+
+<object name="CASE MODULE">
+
+	<param name="ID_MODULE"/>
+
+	<call-table name="SDD_CASE_MODULES">
+
+		<with-pk name="ID_MODULE" select="$ID_MODULE"/>
+
+	</call-table>
+
+	<call-table name="SDD_CMOD_EXTRA_POINTS">
+
+		<with-pk name="ID_MODULE" select="$ID_MODULE"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_CMOD_OBJECTS">
+
+		<with-pk name="ID_MODULE" select="$ID_MODULE"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_CMOD_RELATIONS">
+
+		<with-pk name="ID_MODULE" select="$ID_MODULE"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+</object>
+
+

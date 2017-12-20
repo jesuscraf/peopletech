@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<patternlist>
+  <include startswith='m4siteinfo.xml'/>
+  <include startswith='m4supportfiles/help'/>
+  <include startswith='m4windowsclient'/>
+  <exclude startswith='m4windowsclient/bin/M4PeopleNet.exe.config'/>
+  <exclude startswith='m4windowsclient/bin/M4PeopleNetStart.exe'/>
+  <exclude startswith='m4windowsclient/bin/regmeta4.xml'/>
+  <exclude startswith='m4windowsclient/bin/regmeta4custom.xml'/>
+  <exclude endswith='Thumbs.db'/>
+  <exclude endswith='.bak'/>
+</patternlist>

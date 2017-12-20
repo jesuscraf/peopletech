@@ -1,0 +1,44 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4jssubsystemdll.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/cljssubsystem.cpp
+SRC = ../src/jsadministrator.cpp
+SRC = ../src/jsmapjobexe.cpp
+SRC = ../src/jsscancel.cpp
+SRC = ../src/jsservicecancel.cpp
+SRC = ../src/jsserviceexecute.cpp
+SRC = ../src/jssexecute.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4configtreedll
+LIB = m4configurationdll
+LIB = m4date
+LIB = m4eventhandler
+LIB = m4executivedll
+LIB = m4ipcs
+LIB = m4jsexejobdll
+LIB = m4jsrecoverdll
+LIB = m4log
+LIB = m4pdus
+LIB = m4servenvdll
+LIB = m4serverbasedll
+LIB = m4servereventdll
+LIB = m4subsystemsdll
+
+

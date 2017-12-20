@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SECURITY M4O RSM
+
+@version 1.0
+
+-->
+
+<object name="SECURITY M4O RSM">
+
+	<param name="ID_T3"/>
+
+	<param name="ID_RSM"/>
+
+	<call-table name="M4RCH_T3_RSM">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+		<read-table name="M4RSC_RSM">
+
+			<with-pk name="ID_RSM" select="$ID_RSM"/>
+
+			<call-object name="RSM">
+
+				<with-param name="ID_RSM" select="@ID_RSM"/>
+
+			</call-object>
+
+		</read-table>
+
+		<call-table name="M4RCH_T3_MASK">
+
+			<with-pk name="ID_T3" select="$ID_T3"/>
+
+			<with-pk name="ID_MAKS" select="@ID_MASK"/>		
+
+        	</call-table>
+
+        <call-table name="SCH_FILTER_MASK">
+
+        	<with-pk name="ID_T3" select="$ID_T3"/>
+
+        	<with-pk name="ID_MASK" select="@ID_MASK"/>
+
+        </call-table>
+
+        <call-table name="M4RCH_ITEM_MASK">
+
+        	<with-pk name="ID_T3" select="$ID_T3"/>
+
+        	<with-pk name="ID_MASK" select="@ID_MASK"/>
+
+        </call-table>	
+
+        <call-table name="M4RCH_NODE_MASK">
+
+        	<with-pk name="ID_T3" select="$ID_T3"/>
+
+        	<with-pk name="ID_MASK" select="@ID_MASK"/>
+
+			<read-table name="SCH_SENTENCES">
+
+				<with-pk name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+				<call-object name="SENTENCE">
+
+					<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+				</call-object>
+
+			</read-table>
+
+        </call-table>
+
+        <call-table name="M4RCH_T3_CON_MASK">
+
+        	<with-pk name="ID_T3" select="$ID_T3"/>
+
+        	<with-pk name="ID_MASK" select="@ID_MASK"/>
+
+        </call-table>
+
+        <call-table name="SCH_TI_MASK">
+
+        	<with-pk name="ID_T3" select="$ID_T3"/>
+
+        	<with-pk name="ID_MASK" select="@ID_MASK"/>
+
+        </call-table>
+
+	</call-table>	
+
+	<call-table name="SCH_MD_VERSION">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_MD_TYPE" select="2"/>
+
+		<fields>
+
+			<field name="DT_MD_VERSION" visible="false"/>
+
+			<field name="DT_SYNC" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MD_VERSION"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_SYNC"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+</object>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object PI TEMPLATE EASY
+
+@version 1.4
+
+-->
+
+<object name="PI TEMPLATE EASY">
+
+	<param name="ID_TEMPLATE"/>
+
+	<call-table name="SCH_PI_XML_TEMPLATES">
+
+		<with-pk name="ID_TEMPLATE" select="$ID_TEMPLATE"/>
+
+		<fields>
+
+			<field name="XML_TEMPLATE" visible="false"/>
+
+		</fields>
+
+		<calculated-fields>
+
+			<field name="XML_TEMPLATE_DESC"/>
+
+			<field name="XML_TEMPLATE_EXT"/>
+
+			<field name="XML_TEMPLATE_FILE" multiline="true" content-type="file"/>
+
+		</calculated-fields>
+
+		<generate-funtions>
+
+			<call-template name="BLOB2File">
+
+				<with-arg name="blob" select="@XML_TEMPLATE"/>
+
+				<with-arg name="description" insert="@XML_TEMPLATE_DESC"/>
+
+				<with-arg name="extension" insert="@XML_TEMPLATE_EXT"/>
+
+				<with-arg name="file" insert="@XML_TEMPLATE_FILE"/>
+
+			</call-template>
+
+		</generate-funtions>
+
+		<update-funtions>
+
+			<call-template name="File2BLOB">
+
+				<with-arg name="description" select="@XML_TEMPLATE_DESC"/>
+
+				<with-arg name="extension" select="@XML_TEMPLATE_EXT"/>
+
+				<with-arg name="file" select="@XML_TEMPLATE_FILE"/>
+
+				<with-arg name="filename" select="~mdtblobfile"/>
+
+				<with-arg name="blob" insert="@XML_TEMPLATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+</object>
+
+

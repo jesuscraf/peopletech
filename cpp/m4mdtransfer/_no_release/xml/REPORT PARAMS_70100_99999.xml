@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object REPORT PARAMS
+
+@version 1.0
+
+-->
+
+<object name="REPORT PARAMS">
+
+	<param name="ID_PARAM_REQUEST"/>
+
+	<call-table name="ADB_PARAM_REQUEST">
+
+		<with-pk name="ID_PARAM_REQUEST" select="$ID_PARAM_REQUEST"/>
+
+	</call-table>
+
+	<call-table name="ADB_PARAMETERS">
+
+		<with-pk name="ID_PARAM_REQUEST" select="$ID_PARAM_REQUEST"/>
+
+	</call-table>
+
+	<call-table name="ADB_PARAMETERS_REL">
+
+		<with-pk name="ID_PAR_REQUEST_FROM" select="$ID_PARAM_REQUEST"/>
+
+	</call-table>
+
+</object>
+
+

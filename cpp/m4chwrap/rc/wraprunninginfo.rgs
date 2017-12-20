@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapRunningFormInfo.WrapRunningFormInfo.1 = s 'WrapRunningFormInfo Class'
+	{
+		CLSID = s '{51C12973-1C5D-11d4-BE67-00C04FA499B2}'
+	}
+	WrapRunningFormInfo.WrapRunningFormInfo = s 'WrapRunningFormInfo Class'
+	{
+		CurVer = s 'WrapRunningFormInfo.WrapRunningFormInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {51C12973-1C5D-11d4-BE67-00C04FA499B2} = s 'WrapRunningFormInfo Class'
+		{
+			ProgID = s 'WrapRunningFormInfo.WrapRunningFormInfo.1'
+			VersionIndependentProgID = s 'WrapRunningFormInfo.WrapRunningFormInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

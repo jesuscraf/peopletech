@@ -1,0 +1,26 @@
+HKCR
+{
+	M4DHO.OFCollection.1 = s 'OFCollection Class'
+	{
+		CLSID = s '{135B2E06-E60B-11D3-BDB5-00C04F71652D}'
+	}
+	M4DHO.OFCollection = s 'OFCollection Class'
+	{
+		CLSID = s '{135B2E06-E60B-11D3-BDB5-00C04F71652D}'
+		CurVer = s 'M4DHO.OFCollection.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {135B2E06-E60B-11D3-BDB5-00C04F71652D} = s 'OFCollection Class'
+		{
+			ProgID = s 'M4DHO.OFCollection.1'
+			VersionIndependentProgID = s 'M4DHO.OFCollection'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{135B2DF1-E60B-11D3-BDB5-00C04F71652D}'
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	veranle.veranle.1 = s 'veranle Class'
+	{
+		CLSID = s '{AA9A176F-CB03-11D2-BC56-00C04FA92178}'
+	}
+	veranle.veranle = s 'veranle Class'
+	{
+		CurVer = s 'veranle.veranle.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {AA9A176F-CB03-11D2-BC56-00C04FA92178} = s 'veranle Class'
+		{
+			ProgID = s 'veranle.veranle.1'
+			VersionIndependentProgID = s 'veranle.veranle'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

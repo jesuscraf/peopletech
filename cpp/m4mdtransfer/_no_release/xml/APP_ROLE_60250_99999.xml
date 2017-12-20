@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object APP ROLE
+
+@version 1.5
+
+-->
+
+<object name="APP ROLE">
+
+	<param name="ID_APP_ROLE"/>
+
+	<call-table name="M4RSC_APPROLE">
+
+		<with-pk name="ID_APP_ROLE" select="$ID_APP_ROLE"/>
+
+		<read-table name="SCH_SENTENCES">
+
+			<with-pk name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			<call-object name="SENTENCE">
+
+				<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SSC_ROLE_ORG">
+
+		<with-pk name="ID_APP_ROLE_USED" select="$ID_APP_ROLE"/>
+
+	</call-table>
+
+	<call-table name="SSC_SEC_PR_OPT">
+
+		<with-pk name="ID_APP_ROLE" select="$ID_APP_ROLE"/>
+
+	</call-table>
+
+</object>
+
+
+
+

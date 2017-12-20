@@ -1,0 +1,80 @@
+META4-TRACE-LOG-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4TraceSubsystemModule, traceSubsystem, traceSubsystemGroup
+		FROM META4-TRACE-SUBSYSTEM-MIB;
+
+
+meta4TraceLogSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Trace Log subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4TraceSubsystemModule 1 }
+
+--
+--
+  
+traceLogSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Trace Log"
+	::= { traceSubsystem 1001 }
+    
+traceLogSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type
+	}
+	STATUS current
+	DESCRIPTION
+		"Trace Log Group properties"
+	::= { traceSubsystemGroup 1 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { traceLogSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { traceLogSubsystem 2 }
+
+   
+END

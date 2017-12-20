@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SECURITY BP ROLE
+
+@version 1.0
+
+-->
+
+<object name="SECURITY BP ROLE">
+
+	<param name="ID_BP"/>
+
+	<param name="ID_APPROLE_BP"/>
+
+	<call-table name="SBP_APPROLE">
+
+		<with-pk name="ID_BP" select="$ID_BP"/>
+
+		<with-pk name="ID_APPROLE_BP" select="$ID_APPROLE_BP"/>
+
+		<read-table name="M4RSC_APPROLE">
+
+			<with-pk name="ID_APP_ROLE" select="$ID_APPROLE_BP"/>
+
+			<call-object name="APP_ROLE">
+
+				<with-param name="ID_APP_ROLE" select="@ID_APP_ROLE"/>
+
+			</call-object>
+
+		</read-table>		
+
+	</call-table>
+
+</object>

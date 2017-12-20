@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapOper.WrapOper.1 = s 'WrapOper Class'
+	{
+		CLSID = s '{CA0DB14A-116A-11D1-A774-00C04FB75E70}'
+	}
+	WrapOper.WrapOper = s 'WrapOper Class'
+	{
+		CurVer = s 'WrapOper.WrapOper.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CA0DB14A-116A-11D1-A774-00C04FB75E70} = s 'WrapOper Class'
+		{
+			ProgID = s 'WrapOper.WrapOper.1'
+			VersionIndependentProgID = s 'WrapOper.WrapOper'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+HKCR
+{
+	MDObject.MDObject.1 = s 'MDObject Class'
+	{
+		CLSID = s '{0F7ED165-5CF7-11D2-BC6E-00C04FC2444B}'
+	}
+	MDObject.MDObject = s 'MDObject Class'
+	{
+		CurVer = s 'MDObject.MDObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0F7ED165-5CF7-11D2-BC6E-00C04FC2444B} = s 'MDObject Class'
+		{
+			ProgID = s 'MDObject.MDObject.1'
+			VersionIndependentProgID = s 'MDObject.MDObject'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

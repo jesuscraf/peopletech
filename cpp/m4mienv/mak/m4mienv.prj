@@ -1,0 +1,47 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libmienv.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/clargs.cpp
+SRC = ../src/clfile.cpp
+SRC = ../src/clmetric.cpp
+SRC = ../src/clstr.cpp
+SRC = ../src/cltimer.cpp
+SRC = ../src/memprof.cpp
+SRC = ../src/mit.cpp
+SRC = ../src/mitdates.cpp
+SRC = ../src/mitdefs.cpp
+SRC = ../src/replace.cpp
+SRC = ../src/sysinfo.cpp
+SRC = ../src/trace.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+{$DEBUG == 1} CCFLAGS = -DMIT_TRACE -DMIT_MEM_PROF 
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../hmg
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4date
+#LIB = m4doc
+LIB = m4ini
+LIB = m4ipcs
+LIB = m4log
+LIB = m4oeinit
+LIB = m4unicode
+

@@ -1,0 +1,24 @@
+HKCR
+{
+	M4XmlRegistry.M4XmlRegistry.1 = s 'M4XmlRegistry Class'
+	{
+		CLSID = s '{A94F0357-E506-49B6-ADE6-FEB341B0E617}'
+	}
+	M4XmlRegistry.M4XmlRegistry = s 'M4XmlRegistry Class'
+	{
+		CurVer = s 'M4XmlRegistry.M4XmlRegistry.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A94F0357-E506-49B6-ADE6-FEB341B0E617} = s 'M4XmlRegistry Class'
+		{
+			ProgID = s 'M4XmlRegistry.M4XmlRegistry.1'
+			VersionIndependentProgID = s 'M4XmlRegistry.M4XmlRegistry'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

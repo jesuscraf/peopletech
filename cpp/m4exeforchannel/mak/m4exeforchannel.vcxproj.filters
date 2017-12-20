@@ -1,0 +1,604 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\m4exeforchannel_dll.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cancelevent.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\channelutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clexecutorcache.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clexecutorstate.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clexecutorstatemanager.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\executiveforoe.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\executiveforoess.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeforchannel.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeform4xml.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeformd.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeforproxy.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeforsessionch.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exeforuuss.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\exem4xml.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\itemaccess.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4srvefcres.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4xmlsubsys.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4xmlutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\metadatasubsys.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\oltpsubsys.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\proxspacsss.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\proxysubsys.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\sergenproxy.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\serverm4xml.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\srvm4xmlsax.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rc\m4exeforchannel.what.cpp">
+      <Filter>rc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\channelutil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clexecutorcache.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clexecutorstate.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clexecutorstatemanager.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\executiveforoe.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\executiveforoess.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeforchannel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeform4xml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeformd.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeforproxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeforsessionch.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exeforuuss.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\exem4xmlsax.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\itemaccess.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4xmlsubsys.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4xmlutil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\metadatasubsys.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\oltpsubsys.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\proxspacsss.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\proxysubsys.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sergenproxy.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\serverm4xml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\srvm4xmlsax.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4exeforchannel.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4cacertmngr\mak\win32\debug\m4cacertmngr.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cacertmngr\mak\win32\release\m4cacertmngr.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cacertmngr\mak\win64\debug\m4cacertmngr.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cacertmngr\mak\win64\release\m4cacertmngr.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win32\debug\m4cachedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win32\release\m4cachedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win64\debug\m4cachedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win64\release\m4cachedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4configtree\mak\win32\debug\m4configtreedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4configtree\mak\win32\release\m4configtreedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4configtree\mak\win64\debug\m4configtreedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4configtree\mak\win64\release\m4configtreedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4credentials\mak\win32\debug\m4credentials.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4credentials\mak\win32\release\m4credentials.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4credentials\mak\win64\debug\m4credentials.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4credentials\mak\win64\release\m4credentials.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win32\debug\m4cryptclib.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win32\release\m4cryptclib.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win64\debug\m4cryptclib.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cryptc\mak\win64\release\m4cryptclib.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\debug\m4datedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\release\m4datedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\debug\m4datedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\release\m4datedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\debug\m4dm.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\release\m4dm.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\debug\m4dm.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\release\m4dm.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4eventhandler\mak\win32\debug\m4eventhandlerdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4eventhandler\mak\win32\release\m4eventhandlerdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4eventhandler\mak\win64\debug\m4eventhandlerdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4eventhandler\mak\win64\release\m4eventhandlerdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4executive\mak\win32\debug\m4executivedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4executive\mak\win32\release\m4executivedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4executive\mak\win64\debug\m4executivedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4executive\mak\win64\release\m4executivedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\debug\m4filemanager.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\release\m4filemanager.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\debug\m4filemanager.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\release\m4filemanager.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win32\debug\m4ipcsdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win32\release\m4ipcsdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\debug\m4ipcsdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\release\m4ipcsdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\debug\m4logdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\release\m4logdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\debug\m4logdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\release\m4logdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win32\debug\m4logsys.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win32\release\m4logsys.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win64\debug\m4logsys.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win64\release\m4logsys.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\debug\m4mdrt.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\release\m4mdrt.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\debug\m4mdrt.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\release\m4mdrt.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4memdbg\mak\win32\debug\m4memdbg.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4memdbg\mak\win32\release\m4memdbg.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4memdbg\mak\win64\debug\m4memdbg.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4memdbg\mak\win64\release\m4memdbg.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objcachedirectory\mak\win32\debug\m4objcachedirectory.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objcachedirectory\mak\win32\release\m4objcachedirectory.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objcachedirectory\mak\win64\debug\m4objcachedirectory.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objcachedirectory\mak\win64\release\m4objcachedirectory.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\debug\m4objglb.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\release\m4objglb.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\debug\m4objglb.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\release\m4objglb.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\debug\m4objlog.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\release\m4objlog.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\debug\m4objlog.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\release\m4objlog.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\debug\m4objreg.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\release\m4objreg.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\debug\m4objreg.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\release\m4objreg.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win32\debug\server\m4oeinit.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win32\release\server\m4oeinit.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win64\debug\server\m4oeinit.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win64\release\server\m4oeinit.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4pdus\mak\win32\debug\m4pdusdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4pdus\mak\win32\release\m4pdusdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4pdus\mak\win64\debug\m4pdusdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4pdus\mak\win64\release\m4pdusdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\debug\m4serial.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\release\m4serial.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\debug\m4serial.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\release\m4serial.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4servenv\mak\win32\debug\m4servenvdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4servenv\mak\win32\release\m4servenvdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4servenv\mak\win64\debug\m4servenvdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4servenv\mak\win64\release\m4servenvdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serverbase\mak\win32\debug\m4serverbasedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serverbase\mak\win32\release\m4serverbasedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serverbase\mak\win64\debug\m4serverbasedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serverbase\mak\win64\release\m4serverbasedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serverevent\mak\win32\debug\m4serverevent.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serverevent\mak\win32\release\m4serverevent.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serverevent\mak\win64\debug\m4serverevent.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serverevent\mak\win64\release\m4serverevent.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4subsystems\mak\win32\debug\m4subsystemsdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4subsystems\mak\win32\release\m4subsystemsdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4subsystems\mak\win64\debug\m4subsystemsdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4subsystems\mak\win64\release\m4subsystemsdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4sysall\mak\win32\debug\m4sysall.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4sysall\mak\win32\release\m4sysall.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4sysall\mak\win64\debug\m4sysall.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4sysall\mak\win64\release\m4sysall.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4userinterface\mak\win32\debug\m4userinterfacedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4userinterface\mak\win32\release\m4userinterfacedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4userinterface\mak\win64\debug\m4userinterfacedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4userinterface\mak\win64\release\m4userinterfacedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win32\debug\m4uuid.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win32\release\m4uuid.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win64\debug\m4uuid.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4uuid\mak\win64\release\m4uuid.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\debug\m4variant.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\release\m4variant.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\debug\m4variant.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\release\m4variant.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win32\debug\m4vm.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win32\release\m4vm.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win64\debug\m4vm.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win64\release\m4vm.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\debug\xerces-c.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\release\xerces-c.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\debug\xerces-c.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\release\xerces-c.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="m4exeforchannel.prj">
+      <Filter>mak</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4exeforchannel.touch">
+      <Filter>mak</Filter>
+    </None>
+  </ItemGroup>
+</Project>

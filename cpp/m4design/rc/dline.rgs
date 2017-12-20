@@ -1,0 +1,22 @@
+HKCR
+{
+	M4Design.Line.1 = s 'Line Class'
+	{
+		CLSID = s '{2C1F5257-4B43-11D4-BE08-00C04F71652D}'
+	}
+	M4Design.Line = s 'Line Class'
+	{
+		CLSID = s '{2C1F5257-4B43-11D4-BE08-00C04F71652D}'
+		CurVer = s 'M4Design.Line.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2C1F5257-4B43-11D4-BE08-00C04F71652D} = s 'Line Class'
+		{
+			ProgID = s 'M4Design.Line.1'
+			VersionIndependentProgID = s 'M4Design.Line'
+			ForceRemove 'Programmable'
+			'TypeLib' = s '{87FB91C1-112B-11D4-BDE9-00C04F71652D}'
+		}
+	}
+}

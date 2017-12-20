@@ -1,0 +1,157 @@
+META4-USERS-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4UsersSubsystemModule, usersSubsystem, usersSubsystemGroup
+		FROM META4-USERS-SUBSYSTEM-MIB;
+
+
+meta4UsersTableModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Users Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4UsersSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+usersTableGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		userName,
+		activeSessions
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { usersSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+usersTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF UsersEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { usersSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+usersTableEntry OBJECT-TYPE 
+	SYNTAX UsersEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { usersTableIndex }
+	::= { usersTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+UsersEntry ::= SEQUENCE {
+		usersTableIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		state DisplayString,
+		userName DisplayString,
+		activeSessions Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+usersTableIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { usersTableEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { usersTableEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { usersTableEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { usersTableEntry 4 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { usersTableEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { usersTableEntry 6 }
+
+activeSessions OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Active Sessions"
+	::= { usersTableEntry 501 }
+
+END

@@ -1,0 +1,70 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = m4mail.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4mail.cpp
+SRC = ../src/sinkpop3.cpp
+SRC = ../src/sinksmtp.cpp
+
+SRC = ../mailutils/filter.cpp
+SRC = ../mailutils/filter_rfc822.cpp
+SRC = ../mailutils/filter_trans.cpp
+SRC = ../mailutils/iterator.cpp
+SRC = ../mailutils/list.cpp
+SRC = ../mailutils/memory_stream.cpp
+SRC = ../mailutils/monitor.cpp
+SRC = ../mailutils/property.cpp
+SRC = ../mailutils/rfc2047.cpp
+SRC = ../mailutils/strcasecmp.cpp
+SRC = ../mailutils/stream.cpp
+SRC = ../mailutils/strtok_r.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -DPROTOTYPES -DXP_UNIX
+{$DEBUG == 1} CCFLAGS = -D_M4MAIL_PRINT_DEBUG
+
+#-------------------
+# dependencias (includes y libs).
+INC = ..
+INC = ../inc
+INC = ../mailutils
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_lib_dir.prj
+
+INC = ../../public/nsmsgsdk/include
+INC = ../../public/nsmsgsdk/protocol/imap4/include
+INC = ../../public/nsmsgsdk/protocol/mime/include
+INC = ../../public/nsmsgsdk/protocol/pop3/include
+INC = ../../public/nsmsgsdk/protocol/smtp/include
+LIBDIR = ../../public/nsmsgsdk/mak/$PLATFORM/$LINKTYPE
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4dm
+LIB = m4ipcs
+LIB = m4log
+LIB = m4objreg
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4variant
+
+#librerias Netscape de mail
+[aix]LIB = comm_shr
+[aix]LIB = mime_shr
+[aix]LIB = pop3_shr
+[aix]LIB = smtp_shr
+
+[solaris]LIB = comm
+[solaris]LIB = mime
+[solaris]LIB = pop3
+[solaris]LIB = smtp

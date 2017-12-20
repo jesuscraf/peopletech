@@ -1,0 +1,13 @@
+[ uuid(eab36df6-e585-11d1-92c2-00c04fbf8192),
+  version(2.0),
+  pointer_default(unique),
+  endpoint("ncalrpc:[rpcspy]")
+]
+
+interface RPCSPY
+{
+short LogEvent_S ([in] handle_t ai_hBinding, [in] long lIcon, [in, string] char * pszSource,
+                  [in, string] char * pszOpCode, [in, string] char * pszObjType,
+                  [in, string] char * pszOrigin, [in, string] char * pszSink,
+                  [in, string] char * pszBrief , [in, string] char * pszText);
+}

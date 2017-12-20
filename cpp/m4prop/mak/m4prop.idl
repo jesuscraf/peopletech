@@ -1,0 +1,245 @@
+// M4Prop.idl : IDL source for M4Prop.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4Prop.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Definitions.idl";
+
+
+
+[
+	uuid(ECBA54F3-1A61-11D2-9697-00C04FC2444B),
+	version(1.0),
+	helpstring("M4Property Cols")
+]
+library M4PROPLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	interface IRefresh;
+	interface IFEDesControl;
+	interface IDataProps;
+	interface IMenu;
+	interface IVirtualActivation;
+	interface ITranslate;
+	interface IPropertiesEx;
+
+	[
+		uuid(ECBA5501-1A61-11D2-9697-00C04FC2444B),
+		helpstring("CProperty Class")
+	]
+	coclass CProperty
+	{
+		[default] interface ICProperty;
+	};
+	[
+		uuid(ECBA5504-1A61-11D2-9697-00C04FC2444B),
+		helpstring("PropCol Class")
+	]
+	coclass PropCol
+	{
+		[default] interface IPropCol;
+	};
+	[
+		uuid(13313655-2584-11D2-969E-00C04FC2444B),
+		helpstring("CSingleProp Class")
+	]
+	coclass CSingleProp
+	{
+		[default] interface ICSingleProp;
+	};
+	[
+		uuid(13313657-2584-11D2-969E-00C04FC2444B),
+		helpstring("CPropCol Class")
+	]
+	coclass CPropCol
+	{
+		[default] interface ICPropCol;
+	};
+	[
+		uuid(13313659-2584-11D2-969E-00C04FC2444B),
+		helpstring("CPropBag Class")
+	]
+	coclass CPropBag
+	{
+		[default] interface ICPropBag;
+	};
+	[
+		uuid(1331365B-2584-11D2-969E-00C04FC2444B),
+		helpstring("CChildCol Class")
+	]
+	coclass CChildCol
+	{
+		[default] interface ICChildCol;
+	};
+
+	[
+		uuid(2D3708E5-64D8-11D2-BC7F-00C04F71652D),
+		helpstring("CDefProp Class")
+	]
+	coclass CDefProp
+	{
+		[default] interface ICDefProp;
+	};
+	[
+		uuid(2D3708E7-64D8-11D2-BC7F-00C04F71652D),
+		helpstring("CPropColDef Class")
+	]
+	coclass CPropColDef
+	{
+		[default] interface ICPropColDef;
+	};
+	[
+		uuid(2D3708E9-64D8-11D2-BC7F-00C04F71652D),
+		helpstring("CPropBagDef Class")
+	]
+	coclass CPropBagDef
+	{
+		[default] interface ICPropBagDef;
+	};
+	[
+		uuid(2D3708EB-64D8-11D2-BC7F-00C04F71652D),
+		helpstring("CChildColDef Class")
+	]
+	coclass CChildColDef
+	{
+		[default] interface ICChildColDef;
+	};
+	
+	[
+		uuid(1331365D-2584-11D2-969E-00C04FC2444B),
+		helpstring("ConvertPropBag Class")
+	]
+	coclass ConvertPropBag
+	{
+		[default] interface IConvertPropBag;
+	};
+	[
+		uuid(DF5B3E85-583B-11D2-BC6A-00C04FC2444B),
+		helpstring("ContainedObjects Class")
+	]
+	coclass ContainedObjects
+	{
+		[default] interface IContainedObjects;
+	};
+	[
+		uuid(DF5B3E87-583B-11D2-BC6A-00C04FC2444B),
+		helpstring("EOCollection Class")
+	]
+	coclass EOCollection
+	{
+		[default] interface IEOCollection;
+	};
+	[
+		uuid(0F7ED165-5CF7-11D2-BC6E-00C04FC2444B),
+		helpstring("MDObject Class")
+	]
+	coclass MDObject
+	{
+		[default] interface IMDObject;
+	};
+	[
+		uuid(0F7ED167-5CF7-11D2-BC6E-00C04FC2444B),
+		helpstring("MDCollection Class")
+	]
+	coclass MDCollection
+	{
+		[default] interface IMDCollection;
+	};
+	[
+		uuid(B4981954-0D0C-11D3-BCAA-00C04F71652D),
+		helpstring("DataProperties Class")
+	]
+	coclass DataProperties
+	{
+		[default] interface IDataProperties;
+	};
+	[
+		uuid(D3A42354-0DC6-11D3-BCAB-00C04F71652D),
+		helpstring("TraductProp Class")
+	]
+	coclass TraductProp
+	{
+		[default] interface ITraductProp;
+	};
+
+	[
+		uuid(DD7D4842-0DFF-11D3-BCAB-00C04F71652D),
+		helpstring("PersistObject Class")
+	]
+	coclass PersistObject
+	{
+		[default] interface IPersistObject;
+	};
+
+	[
+		uuid(F9E7497B-3A8F-11D3-BCF3-00C04F71652D),
+		helpstring("DGenericObject Class")
+	]
+	coclass DGenericObject
+	{
+		[default] interface IDGenericObject;
+	};
+
+	interface IDesignObject;
+	[
+		uuid(B069FA17-40D9-11D3-BCFB-00C04F71652D),
+		helpstring("MenuItem Class")
+	]
+	coclass MenuItem
+	{
+		[default] interface IMenuItem;
+	};
+
+	[
+		uuid(12D09A25-436C-11D3-BCFC-00C04F71652D),
+		helpstring("MenuPopPup Events")
+	]
+	dispinterface _MenuPopPupEvents
+	{
+		properties:
+		methods:
+			[id(1)] void MenuClick([in, out] BSTR * bstrKey);
+	}
+
+	[
+		uuid(B069FA19-40D9-11D3-BCFB-00C04F71652D),
+		helpstring("MenuPopPup Class")
+	]
+	coclass MenuPopPup
+	{
+		[default] interface IMenuPopPup;
+		[default, source] dispinterface _MenuPopPupEvents;
+	};
+
+	[
+		uuid(122B2624-5EBA-11D3-BD11-00C04F71652D),
+		helpstring("OBLParser Class")
+	]
+	coclass OBLParser
+	{
+		[default] interface IOBLParser;
+	};
+
+	interface IDesignObject;
+
+	typedef [uuid(A70085C3-702A-11D3-BD29-00C04F71652D), helpstring("Presentation Type")]
+	enum M4PresentationType {
+		FE_PRES_NOT_DEFINED = -1,
+		FE_PRES_NORMAL = 0,
+		FE_PRES_QBFASK = 1
+	} M4PresentationType;
+
+	typedef [uuid(06820030-823E-11d3-BD3B-00C04F71652D), helpstring("Relationship Type")]
+	enum RelationShip {
+		rsNone = 0,
+		rsAscendant = 1,
+		rsEqual = 2,
+		rsDescendant = 3
+	} RelationShip;
+
+};

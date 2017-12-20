@@ -1,0 +1,186 @@
+META4-SERVER-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ApplicationServerModule
+		FROM META4-APPLICATION-SERVER-MIB
+
+	applicationServer, applicationServerGroups
+		FROM META4-PRODUCTS-REG;
+
+meta4ServerSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Meta4 Application Server properties and subsystems."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ApplicationServerModule 1 }
+
+--
+-- 
+
+serverSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { applicationServer 1 }
+
+serverSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		architecture,
+		buildVersion,
+		timeZoneAppServer,
+		configDescription,
+		currentMemoryLevel,
+		serverMachineHostName,
+		systemMemoryInUse,
+		systemCpuUsage,
+		serverMemoryUsage
+	}
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { applicationServerGroups 1 }
+
+--
+-- 
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { serverSubsystem 1 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { serverSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { serverSubsystem 3 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { serverSubsystem 4 }
+
+architecture OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Architecture"
+	::= { serverSubsystem 5 }
+
+buildVersion OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Build Version"
+	::= { serverSubsystem 6 }
+
+timeZoneAppServer OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Time Zone at Application Server"
+	::= { serverSubsystem 7 }
+
+configDescription OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Configuration Description"
+	::= { serverSubsystem 8 }
+
+currentMemoryLevel OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Memory Level"
+	::= { serverSubsystem 9 }
+
+serverMachineHostName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Server Machine Host Name"
+	::= { serverSubsystem 10 }
+
+
+systemMemoryInUse OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"System Memory in Use"
+	::= { serverSubsystem 501 }
+
+systemCpuUsage OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"System CPU Usage"
+	::= { serverSubsystem 502 }
+
+serverMemoryUsage OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "MB"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Server Memory Usage"
+	::= { serverSubsystem 503 }
+
+END

@@ -1,0 +1,709 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4chwrap.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\rc\chwrap.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4appclient\mak\win32\debug\m4appclientdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4appclient\mak\win32\release\m4appclientdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4appclient\mak\win64\debug\m4appclientdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4appclient\mak\win64\release\m4appclientdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win32\debug\m4buildversion.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win32\release\m4buildversion.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win64\debug\m4buildversion.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win64\release\m4buildversion.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ctlhelper\mak\win32\debug\m4ctlhelper.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ctlhelper\mak\win32\release\m4ctlhelper.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ctlhelper\mak\win64\debug\m4ctlhelper.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ctlhelper\mak\win64\release\m4ctlhelper.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\debug\m4datedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\release\m4datedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\debug\m4datedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\release\m4datedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\debug\m4dm.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\release\m4dm.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\debug\m4dm.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\release\m4dm.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\debug\m4filemanager.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\release\m4filemanager.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\debug\m4filemanager.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\release\m4filemanager.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win32\debug\m4hsparser.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win32\release\m4hsparser.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win64\debug\m4hsparser.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win64\release\m4hsparser.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win32\debug\m4inidll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win32\release\m4inidll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win64\debug\m4inidll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win64\release\m4inidll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4loadll\mak\win32\debug\m4loadll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4loadll\mak\win32\release\m4loadll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4loadll\mak\win64\debug\m4loadll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4loadll\mak\win64\release\m4loadll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\debug\m4logdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\release\m4logdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\debug\m4logdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\release\m4logdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdfac\mak\win32\debug\m4mdfac.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdfac\mak\win32\release\m4mdfac.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdfac\mak\win64\debug\m4mdfac.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdfac\mak\win64\release\m4mdfac.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\debug\m4mdrt.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\release\m4mdrt.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\debug\m4mdrt.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\release\m4mdrt.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\debug\m4objglb.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\release\m4objglb.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\debug\m4objglb.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\release\m4objglb.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\debug\m4objlog.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\release\m4objlog.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\debug\m4objlog.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\release\m4objlog.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\debug\m4objreg.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\release\m4objreg.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\debug\m4objreg.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\release\m4objreg.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win32\debug\dic\m4oeinit.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win32\release\dic\m4oeinit.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win64\debug\dic\m4oeinit.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4oeinit\mak\win64\release\dic\m4oeinit.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4presentation\mak\win32\debug\m4presentation.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4presentation\mak\win32\release\m4presentation.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4presentation\mak\win64\debug\m4presentation.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4presentation\mak\win64\release\m4presentation.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4prop\mak\win32\debug\m4prop.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4prop\mak\win32\release\m4prop.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4prop\mak\win64\debug\m4prop.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4prop\mak\win64\release\m4prop.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\debug\m4serial.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\release\m4serial.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\debug\m4serial.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\release\m4serial.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\debug\m4variant.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\release\m4variant.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\debug\m4variant.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\release\m4variant.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win32\debug\m4vm.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win32\release\m4vm.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win64\debug\m4vm.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4vm\mak\win64\release\m4vm.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4chwrap.touch">
+      <Filter>mak</Filter>
+    </None>
+    <None Include="m4chwrap.def">
+      <Filter>mak</Filter>
+    </None>
+    <None Include="..\rc\enumitem.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapaccess.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapbookmark.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapbreakpoint.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapchandef.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapchannel.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapchannelmeminfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapcolitems.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapcolprop.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapcvm.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapexecutor.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapimap.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapitem.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapitemdef.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapitems.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapitit.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapnode.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapnodedef.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapoper.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapproxylistit.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wraprecordset.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapregister.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wraprgit.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wraprgit_blockwalker.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wraprunninginfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapslice.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapslit.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapstchannelmeminfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapstnodememinfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapstrgmeminfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapstrsmeminfo.rgs">
+      <Filter>rc</Filter>
+    </None>
+    <None Include="..\rc\wrapvmsign.rgs">
+      <Filter>rc</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\apichannelwrapper.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cacherep.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cpchannelwrapper.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\enumitem.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\gstring.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwrapargument.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwrapcolargument.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwrapcolnodedef.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwrapfilter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwraprgit.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\iwraprgitfilter.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\logcomobject.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\newinterface.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\rerror.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\stdafx.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\variantref.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wores.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapaccess.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapbookmark.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapbreakpoint.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapchandef.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapchannel.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapchannelmeminfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapcolitems.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapcolprop.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapcvm.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapdef.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapexecutor.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapimap.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapitem.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapitemdef.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapitems.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapitit.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapnode.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapnodedef.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapoper.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapproxylistit.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wraprecordset.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapregister.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wraprgit.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wraprgit_blockwalker.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wraprunninginfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapslice.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapslit.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapstchannelmeminfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapstnodememinfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapstrgmeminfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapstrsmeminfo.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\wrapvmsign.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rc\resource.h">
+      <Filter>rc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\cacherep.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\channelwrapper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\enumitem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\gstring.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwrapargument.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwrapcolargument.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwrapcolnodedef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwrapfilter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwraprgit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\iwraprgitfilter.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\logcomobject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\newinterface.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\rerror.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapaccess.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapbookmark.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapbreakpoint.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapchandef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapchannel.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapchannelmeminfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapcolitems.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapcolprop.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapcvm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapexecutor.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapimap.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapitem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapitemdef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapitems.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapitit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapnode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapnodedef.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapoper.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapproxylistit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wraprecordset.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapregister.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wraprgit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wraprgit_blockwalker.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wraprunninginfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapslice.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapslit.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapstchannelmeminfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapstnodememinfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapstrgmeminfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapstrsmeminfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\wrapvmsign.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="m4chwrap.idl">
+      <Filter>mak</Filter>
+    </Midl>
+    <Midl Include="wrapperold.idl">
+      <Filter>mak</Filter>
+    </Midl>
+  </ItemGroup>
+</Project>

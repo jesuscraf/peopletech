@@ -1,0 +1,408 @@
+META4-PROXY-EXECUTOR-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4ProxySubsystemModule, proxySubsystem, proxySubsystemGroup
+		FROM META4-PROXY-SUBSYSTEM-MIB;
+
+
+meta4ProxyExecutorModule MODULE-IDENTITY
+	LAST-UPDATED "200406071200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Proxy Executor Table (Dynamic table)."
+
+	REVISION "200406071200Z"
+	DESCRIPTION
+		"New parameters (service_id, methodDescription and objectsInVM) in proxy executor."
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ProxySubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+proxyExecutorGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		serviceId,
+		userName,
+		sessionId,
+		executionBeginDate,
+		executionEndDate,
+		methodDescription,
+		objectsInVM,
+		actionCancelExec,
+		avgExecutionTime15Min,
+		executionCount,
+		errorExecutionCount,
+		timeoutExecutionCount,
+		userAbortedExecutionCount,
+		adminAbortedExecutionCount,
+		successfulExecutionCount,
+		tps5Sec,
+		tps30Sec,
+		tps5Min,
+		avgExecutionTime5Sec,
+		avgExecutionTime30Sec,
+		avgExecutionTime5Min,
+		avgSSUse5Sec,
+		avgSSUse30Sec,
+		avgSSUse5Min,
+		avgWaitTime5Sec,
+		avgWaitTime30Sec,
+		avgWaitTime5Min
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { proxySubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+proxyExecutorTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF ProxyExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+proxyExecutorEntry OBJECT-TYPE 
+	SYNTAX ProxyExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { proxyExecutorIndex }
+	::= { proxyExecutorTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+ProxyExecutorEntry ::= SEQUENCE {
+		proxyExecutorIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		serviceId DisplayString,
+--- 		cacheName DisplayString,
+		userName DisplayString,
+		sessionId DisplayString,
+		executionBeginDate DisplayString,
+		executionEndDate DisplayString,
+		methodDescription DisplayString,
+		objectsInVM Integer32,
+		actionCancelExec DisplayString,
+		avgExecutionTime15Min Integer32,
+		executionCount Integer32,
+		errorExecutionCount Integer32,
+		timeoutExecutionCount Integer32,
+		userAbortedExecutionCount Integer32,
+		adminAbortedExecutionCount Integer32,
+		successfulExecutionCount Integer32,
+		tps5Sec Integer32,
+		tps30Sec Integer32,
+		tps5Min Integer32,
+		avgExecutionTime5Sec Integer32,
+		avgExecutionTime30Sec Integer32,
+		avgExecutionTime5Min Integer32,
+		avgSSUse5Sec Integer32,
+		avgSSUse30Sec Integer32,
+		avgSSUse5Min Integer32,
+		avgWaitTime5Sec Integer32,
+		avgWaitTime30Sec Integer32,
+		avgWaitTime5Min Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+proxyExecutorIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxyExecutorEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxyExecutorEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxyExecutorEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { proxyExecutorEntry 4 }
+
+serviceId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxyExecutorEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { proxyExecutorEntry 6 }
+
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { proxyExecutorEntry 7 }
+
+executionBeginDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Begin Date"
+	::= { proxyExecutorEntry 8 }
+
+executionEndDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution End Date"
+	::= { proxyExecutorEntry 9 }
+
+methodDescription OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Method Description"
+	::= { proxyExecutorEntry 10 }
+
+objectsInVM OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Meta4 Objects in Virtual Machive"
+	::= { proxyExecutorEntry 11 }
+	
+actionCancelExec  OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Action Cancel Execution"
+	::= { proxyExecutorEntry 12 }
+
+avgExecutionTime15Min OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 15 Minutes"
+	::= { proxyExecutorEntry 501 }
+
+executionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Count"
+	::= { proxyExecutorEntry 502 }
+
+errorExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Error Execution Count"
+	::= { proxyExecutorEntry 503 }
+
+timeoutExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Timed Out Execution Count"
+	::= { proxyExecutorEntry 504 }
+
+userAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Aborted Execution Count"
+	::= { proxyExecutorEntry 505 }
+
+adminAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Admin. Aborted Execution Count"
+	::= { proxyExecutorEntry 506 }
+
+successfulExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Successful Execution Count"
+	::= { proxyExecutorEntry 507 }
+
+tps5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Seconds"
+	::= { proxyExecutorEntry 508 }
+
+tps30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 30 Seconds"
+	::= { proxyExecutorEntry 509 }
+
+tps5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Minutes"
+	::= { proxyExecutorEntry 510 }
+
+avgExecutionTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Seconds"
+	::= { proxyExecutorEntry 511 }
+
+avgExecutionTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 30 Seconds"
+	::= { proxyExecutorEntry 512 }
+
+avgExecutionTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Minutes"
+	::= { proxyExecutorEntry 513 }
+
+avgSSUse5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Seconds"
+	::= { proxyExecutorEntry 514 }
+
+avgSSUse30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 30 Seconds"
+	::= { proxyExecutorEntry 515 }
+
+avgSSUse5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Minutes"
+	::= { proxyExecutorEntry 516 }
+
+avgWaitTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Seconds"
+	::= { proxyExecutorEntry 517 }
+
+avgWaitTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 30 Seconds"
+	::= { proxyExecutorEntry 518 }
+
+avgWaitTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Minutes"
+	::= { proxyExecutorEntry 519 }
+
+
+END

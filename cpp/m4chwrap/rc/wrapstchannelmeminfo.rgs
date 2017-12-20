@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapStChannelMemInfo.WrapStChannelMemInfo.1 = s 'WrapStChannelMemInfo Class'
+	{
+		CLSID = s '{46861CCE-11B9-11D3-8C8E-00C04FA49854}'
+	}
+	WrapStChannelMemInfo.WrapStChannelMemInfo = s 'WrapStChannelMemInfo Class'
+	{
+		CurVer = s 'WrapStChannelMemInfo.WrapStChannelMemInfo.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {46861CCE-11B9-11D3-8C8E-00C04FA49854} = s 'WrapStChannelMemInfo Class'
+		{
+			ProgID = s 'WrapStChannelMemInfo.WrapStChannelMemInfo.1'
+			VersionIndependentProgID = s 'WrapStChannelMemInfo.WrapStChannelMemInfo'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

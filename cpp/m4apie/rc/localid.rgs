@@ -1,0 +1,24 @@
+HKCR
+{
+	LocalID.LocalID.1 = s 'LocalID Class'
+	{
+		CLSID = s '{F727EFEF-4C89-11D2-BCD9-00C04FA49636}'
+	}
+	LocalID.LocalID = s 'LocalID Class'
+	{
+		CurVer = s 'LocalID.LocalID.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F727EFEF-4C89-11D2-BCD9-00C04FA49636} = s 'LocalID Class'
+		{
+			ProgID = s 'LocalID.LocalID.1'
+			VersionIndependentProgID = s 'LocalID.LocalID'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

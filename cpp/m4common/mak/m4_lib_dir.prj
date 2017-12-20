@@ -1,0 +1,22 @@
+# Fichero .prj que contiene los path de todas las librerias meta4. (no incluidas en basicas, mvc o nobasicas) 
+#-----------------------------------------------------------------
+
+# reports.
+INC = ../../m4mienv/inc
+LIBDIR = ../../m4mienv/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4fmetrics/inc
+LIBDIR = ../../m4fmetrics/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4fmt32/inc
+LIBDIR = ../../m4fmt32/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4engprn/inc
+LIBDIR = ../../m4engprn/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4engine/inc
+LIBDIR = ../../m4engine/mak/$PLATFORM/$LINKTYPE
+
+# objects.
+INC = ../../m4ldap/inc
+LIBDIR = ../../m4ldap/mak/$PLATFORM/$LINKTYPE

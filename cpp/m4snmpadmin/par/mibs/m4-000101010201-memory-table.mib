@@ -1,0 +1,180 @@
+META4-MEMORY-TABLE-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4MemorySubsystemModule, memorySubsystem, memorySubsystemGroup
+		FROM META4-MEMORY-SUBSYSTEM-MIB;
+
+
+meta4MemoryLevelModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Memory Level Table."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4MemorySubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+memoryLevelGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		color,
+	        absMemoryLimit,
+		absMemoryThreshold,
+		percMemoryLimit,
+		percMemoryThreshold
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { memorySubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- Para el subsistema de memoria tendremos 3 registros (Normal, Alert, Critical) y tendremos cuatro propiedades (columnas).
+
+memoryLevelTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF MemoryLevelEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memorySubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+memoryLevelEntry OBJECT-TYPE 
+	SYNTAX MemoryLevelEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { memoryLevelIndex }
+	::= { memoryLevelTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+MemoryLevelEntry ::= SEQUENCE {
+		memoryLevelIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		color DisplayString,
+		absMemoryLimit Integer32,
+		absMemoryThreshold Integer32,
+		percMemoryLimit Integer32,
+		percMemoryThreshold Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+memoryLevelIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memoryLevelEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memoryLevelEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memoryLevelEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memoryLevelEntry 4 }
+
+color OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Memory Level"
+	::= { memoryLevelEntry 5 }
+
+absMemoryLimit OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "MB"
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Absolute Memory Limit"
+	::= { memoryLevelEntry 6 }
+
+absMemoryThreshold OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "MB"
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Absolute Memory Threshold"
+	::= { memoryLevelEntry 7 }
+
+percMemoryLimit OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Percent Memory Limit"
+	::= { memoryLevelEntry 8 }
+
+percMemoryThreshold OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Percent Memory Threshold"
+	::= { memoryLevelEntry 9 }
+
+END

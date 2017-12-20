@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapNode.WrapNode.1 = s 'WrapNode Class'
+	{
+		CLSID = s '{43BED882-FB6B-11D0-A763-00C04FB75E70}'
+	}
+	WrapNode.WrapNode = s 'WrapNode Class'
+	{
+		CurVer = s 'WrapNode.WrapNode.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {43BED882-FB6B-11D0-A763-00C04FB75E70} = s 'WrapNode Class'
+		{
+			ProgID = s 'WrapNode.WrapNode.1'
+			VersionIndependentProgID = s 'WrapNode.WrapNode'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

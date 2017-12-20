@@ -1,0 +1,30 @@
+# default configuration for any component.
+
+#-------------------
+# prj options.
+READFILE = ../../m4common/mak/options.prj
+
+#-------------------
+# compiler name.
+READFILE = ../../m4common/mak/compiler.prj
+
+#-------------------
+# ouput directory.
+READFILE = ../../m4common/mak/bindir.prj
+
+#-------------------
+# obj and temp directory.
+READFILE = ../../m4common/mak/objdir.prj
+
+#-------------------
+# compiler flags.
+READFILE = ../../m4common/mak/ccflags_base.prj
+
+#-------------------
+# linker flags.
+READFILE = ../../m4common/mak/linkflags.prj
+
+#-------------------
+# fichero de versionado.
+VERSION_FILE = ../rc/$LINKTYPE/$NPRJNAME.rc
+

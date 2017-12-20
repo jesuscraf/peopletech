@@ -1,0 +1,59 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<clformat.cpp>
+//	File:				clformat.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_CLFORMAT
+#define GROUP_BASE  ENG_TGB_CLFORMAT
+#define TRACE_ARRAY g_stENG_ClFormat_Msg
+
+enum CLFORMAT_MSG 
+{
+	CLFORMAT_MSG_10=0,	//Ojo, se usa como indice del array
+	CLFORMAT_MSG_20, CLFORMAT_MSG_30, CLFORMAT_MSG_40, CLFORMAT_MSG_50, CLFORMAT_MSG_60,
+	CLFORMAT_MSG_70,
+	CLFORMAT_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, CLFORMAT_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Unable to create the specified format: Format %0:s" },
+
+	{ GROUP_ID, CLFORMAT_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Unable to destroy the specified format %0:s" },
+
+	{ GROUP_ID, CLFORMAT_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Unable to set the specified property %0:s to value %1:s in format %2:s" },
+
+	{ GROUP_ID, CLFORMAT_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Unable to apply the specified format in format %0:s, input string %1:s" },
+
+	{ GROUP_ID, CLFORMAT_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Index %0:s out of range %1:s-%2:s" },
+
+	{ GROUP_ID, CLFORMAT_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Format identifier %0:s not found" },
+
+	{ GROUP_ID, CLFORMAT_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Currency identifier %0:s not found" }
+} ;

@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object LOGICAL TABLE
+
+@version 2.3
+
+-->
+
+<object name="LOGICAL TABLE">
+
+	<param name="ID_OBJECT"/>
+
+	<call-table name="SDC_LOGIC_OBJECTS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+			<field name="DT_MOD_SCRIPT" visible="false"/>
+
+			<field name="DT_PK" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD_SCRIPT"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_PK"/>
+
+			</call-template>
+
+		</update-funtions>
+
+		<read-table name="SDC_LOGIC_OBJECTS">
+
+			<with-pk name="ID_OBJECT" select="@ID_AUDIT_OBJECT"/>
+
+			<call-object name="LOGICAL TABLE">
+
+				<with-param name="ID_OBJECT" select="@ID_OBJECT"/>
+
+			</call-object>
+
+		</read-table>
+
+		<read-table name="SDC_LOGIC_OBJECTS">
+
+			<with-pk name="ID_OBJECT" select="@ID_MIRROR_OBJECT"/>
+
+			<call-object name="LOGICAL TABLE">
+
+				<with-param name="ID_OBJECT" select="@ID_OBJECT"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SAU_LOBJ_OPE">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+	</call-table>
+
+	<call-table name="SCH_VALUES">
+
+		<with-pk name="ID_OBJECT_VALUES" select="$ID_OBJECT"/>
+
+	</call-table>
+
+	<call-table name="SDC_REAL_OBJECTS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+			<field name="DT_MOD_SCRIPT" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD_SCRIPT"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDC_REL_FROM_SUBREC">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="DC_TH_PLANA">
+
+		<with-pk name="ID_HIJA" select="$ID_OBJECT"/>
+
+	</call-table>
+
+	<call-table name="SDC_VIEW_CODE">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+			<field name="DT_MOD_SCRIPT" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD_SCRIPT"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_LOGIC_OBJECTS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_REL_FROM_SUBREC">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="DD_TH_PLANA">
+
+		<with-pk name="ID_HIJA" select="$ID_OBJECT"/>
+
+	</call-table>
+
+	<call-table name="SDD_VIEW_CODE">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<read-table name="SDC_FIELDS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<call-object name="FIELD">
+
+			<with-param name="ID_OBJECT" select="@ID_OBJECT"/>
+
+			<with-param name="ID_FIELD" select="@ID_FIELD"/>
+
+		</call-object>
+
+	</read-table>
+
+	<read-table name="SDC_INDEX">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<call-object name="LOGICAL INDEX">
+
+			<with-param name="ID_OBJECT" select="@ID_OBJECT"/>
+
+			<with-param name="ID_INDEX" select="@ID_INDEX"/>
+
+		</call-object>
+
+	</read-table>
+
+	<read-table name="SDC_RELATIONS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<call-object name="RELATION">
+
+			<with-param name="ID_OBJECT" select="@ID_OBJECT"/>
+
+			<with-param name="ID_RELATION" select="@ID_RELATION"/>
+
+		</call-object>
+
+	</read-table>
+
+</object>
+
+

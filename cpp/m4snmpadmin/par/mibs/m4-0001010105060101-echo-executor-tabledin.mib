@@ -1,0 +1,323 @@
+META4-ECHO-EXECUTOR-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4EchoServiceSubsystemModule, echoServiceSubsystem, echoServiceSubsystemGroup
+		FROM META4-ECHO-SERVICE-SUBSYSTEM-MIB;
+
+
+meta4EchoExecutorModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Echo Executor Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4EchoServiceSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+echoExecutorGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		serviceId,
+		userName,
+		sessionId,
+		executionBeginDate,
+		executionEndDate,
+		userAbortedExecutionCount,
+		successfulExecutionCount,
+		tps5Sec,
+		tps30Sec,
+		tps5Min,
+		avgExecutionTime5Sec,
+		avgExecutionTime30Sec,
+		avgExecutionTime5Min,
+		avgSSUse5Sec,
+		avgSSUse30Sec,
+		avgSSUse5Min,
+		avgWaitTime5Sec,
+		avgWaitTime30Sec,
+		avgWaitTime5Min
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { echoServiceSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+echoExecutorTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF EchoExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoServiceSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+echoExecutorEntry OBJECT-TYPE 
+	SYNTAX EchoExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { echoExecutorIndex }
+	::= { echoExecutorTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+EchoExecutorEntry ::= SEQUENCE {
+		echoExecutorIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		serviceId DisplayString,
+		userName DisplayString,
+		sessionId DisplayString,
+		executionBeginDate DisplayString,
+		executionEndDate DisplayString,
+		userAbortedExecutionCount Integer32,
+		successfulExecutionCount Integer32,
+		tps5Sec Integer32,
+		tps30Sec Integer32,
+		tps5Min Integer32,
+		avgExecutionTime5Sec Integer32,
+		avgExecutionTime30Sec Integer32,
+		avgExecutionTime5Min Integer32,
+		avgSSUse5Sec Integer32,
+		avgSSUse30Sec Integer32,
+		avgSSUse5Min Integer32,
+		avgWaitTime5Sec Integer32,
+		avgWaitTime30Sec Integer32,
+		avgWaitTime5Min Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+echoExecutorIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoExecutorEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoExecutorEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { echoExecutorEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { echoExecutorEntry 4 }
+
+serviceId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Service ID"
+	::= { echoExecutorEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { echoExecutorEntry 6 }
+
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { echoExecutorEntry 7 }
+
+executionBeginDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Begin Date"
+	::= { echoExecutorEntry 8 }
+
+executionEndDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution End Date"
+	::= { echoExecutorEntry 9 }
+
+userAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Aborted Execution Count"
+	::= { echoExecutorEntry 501 }
+
+successfulExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Successful Execution Count"
+	::= { echoExecutorEntry 502 }
+
+tps5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Seconds"
+	::= { echoExecutorEntry 503 }
+
+tps30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 30 Seconds"
+	::= { echoExecutorEntry 504 }
+
+tps5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Minutes"
+	::= { echoExecutorEntry 505 }
+
+avgExecutionTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Seconds"
+	::= { echoExecutorEntry 506 }
+
+avgExecutionTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 30 Seconds"
+	::= { echoExecutorEntry 507 }
+
+avgExecutionTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Minutes"
+	::= { echoExecutorEntry 508 }
+
+avgSSUse5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Seconds"
+	::= { echoExecutorEntry 509 }
+
+avgSSUse30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 30 Seconds"
+	::= { echoExecutorEntry 510 }
+
+avgSSUse5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Minutes"
+	::= { echoExecutorEntry 511 }
+
+avgWaitTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Seconds"
+	::= { echoExecutorEntry 512 }
+
+avgWaitTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 30 Seconds"
+	::= { echoExecutorEntry 513 }
+
+avgWaitTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Minutes"
+	::= { echoExecutorEntry 514 }
+
+END

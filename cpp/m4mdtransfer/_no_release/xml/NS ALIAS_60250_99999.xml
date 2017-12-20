@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object NS ALIAS
+
+@version 1.4
+
+-->
+
+<object name="NS ALIAS">
+
+	<param name="ID_TI"/>
+
+	<param name="ALIAS"/>
+
+	<call-table name="SCH_TI_ALIAS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ALIAS" select="$ALIAS"/>
+
+	</call-table>
+
+</object>
+
+

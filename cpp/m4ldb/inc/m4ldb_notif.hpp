@@ -1,0 +1,9 @@
+
+#ifndef _M4LDB_NOTIF_HPP
+#define _M4LDB_NOTIF_HPP
+// Eventos que lanza la bdl
+#include "m4notif_id.hpp"
+#define M4_NOTIF_DB_RYPTURE_CONNECTION		M4_NOTIF_DB_CONNECTION_BASE +0x0001	
+#define M4_NOTIF_RETRY_CONNECTION			M4_NOTIF_DB_CONNECTION_BASE +0x0002	
+
+#endif

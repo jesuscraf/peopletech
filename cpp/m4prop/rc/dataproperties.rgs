@@ -1,0 +1,24 @@
+HKCR
+{
+	DataProperties.DataProperties.1 = s 'DataProperties Class'
+	{
+		CLSID = s '{B4981954-0D0C-11D3-BCAA-00C04F71652D}'
+	}
+	DataProperties.DataProperties = s 'DataProperties Class'
+	{
+		CurVer = s 'DataProperties.DataProperties.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B4981954-0D0C-11D3-BCAA-00C04F71652D} = s 'DataProperties Class'
+		{
+			ProgID = s 'DataProperties.DataProperties.1'
+			VersionIndependentProgID = s 'DataProperties.DataProperties'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

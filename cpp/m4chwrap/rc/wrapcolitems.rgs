@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapColItems.WrapColItems.1 = s 'WrapColItems Class'
+	{
+		CLSID = s '{FFA83636-FB6B-11D0-A763-00C04FB75E70}'
+	}
+	WrapColItems.WrapColItems = s 'WrapColItems Class'
+	{
+		CurVer = s 'WrapColItems.WrapColItems.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FFA83636-FB6B-11D0-A763-00C04FB75E70} = s 'WrapColItems Class'
+		{
+			ProgID = s 'WrapColItems.WrapColItems.1'
+			VersionIndependentProgID = s 'WrapColItems.WrapColItems'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

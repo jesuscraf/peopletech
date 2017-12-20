@@ -1,0 +1,520 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="m2">
+      <UniqueIdentifier>{1ed88053-8ce2-4f24-a909-c0dc90a27ea1}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\m4mdfac_dll.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clmapcac.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clmappings.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltalias.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltarg.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltbarg.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltbmeth.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltchann.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltconn.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltcpt.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltfilt.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltiform.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltindex.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltindit.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltinst.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltiplug.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltitem.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltitinh.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltndinh.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltnform.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltngrp.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltnicon.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltnitem.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltnode.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltplug.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltrsm.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltsent.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltt3al.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltt3inh.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttag.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\cltti.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttiinh.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttiref.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttotal.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttotaltag.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\clttrig.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\facide.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\instru.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4facdef.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4facres.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4mdfac.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4mdfaci.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\mdfacglb.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\sliarray.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rc\m4mdfac.what.cpp">
+      <Filter>rc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clmapcac.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clmappings.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltalias.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltarg.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltbarg.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltbmeth.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltchann.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltconn.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltcpt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltfilt.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltiform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltindex.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltinst.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltiplug.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltitem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltitinh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltndinh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltnform.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltngrp.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltnicon.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltnitem.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltnode.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltplug.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltrsm.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltsent.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltt3al.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltt3inh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttag.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\cltti.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttiinh.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttiref.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttotal.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttotaltag.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\clttrig.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\facide.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4facacc.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4facfil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4facsec.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4facxml.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4mdfac.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\mdfacglb.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\sliarray.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4mdfac.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4buildversion\mak\win32\debug\m4buildversion.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win32\release\m4buildversion.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win64\debug\m4buildversion.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4buildversion\mak\win64\release\m4buildversion.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win32\debug\m4cachedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win32\release\m4cachedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win64\debug\m4cachedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4cache\mak\win64\release\m4cachedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\debug\m4datedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\release\m4datedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\debug\m4datedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\release\m4datedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\debug\m4dm.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\release\m4dm.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\debug\m4dm.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\release\m4dm.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win32\debug\m4hsparser.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win32\release\m4hsparser.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win64\debug\m4hsparser.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4hsparser\mak\win64\release\m4hsparser.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+	<Library Include="..\..\m4ipcs\mak\win32\debug\m4ipcsdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win32\release\m4ipcsdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\debug\m4ipcsdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\release\m4ipcsdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+	<Library Include="..\..\m4log\mak\win32\debug\m4logdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\release\m4logdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\debug\m4logdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\release\m4logdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win32\debug\m4logsys.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win32\release\m4logsys.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win64\debug\m4logsys.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4logsys\mak\win64\release\m4logsys.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\debug\m4mdrt.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win32\release\m4mdrt.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\debug\m4mdrt.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4mdrt\mak\win64\release\m4mdrt.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\debug\m4objglb.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\release\m4objglb.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\debug\m4objglb.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\release\m4objglb.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\debug\m4objlog.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\release\m4objlog.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\debug\m4objlog.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\release\m4objlog.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\debug\m4objreg.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win32\release\m4objreg.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\debug\m4objreg.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objreg\mak\win64\release\m4objreg.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\debug\m4serial.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win32\release\m4serial.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\debug\m4serial.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4serial\mak\win64\release\m4serial.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\debug\m4variant.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win32\release\m4variant.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\debug\m4variant.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4variant\mak\win64\release\m4variant.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="m4mdfac.prj">
+      <Filter>mak</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4mdfac.touch">
+      <Filter>mak</Filter>
+    </None>
+    <None Include="..\m2\m4dict.m2">
+      <Filter>m2</Filter>
+    </None>
+    <None Include="..\m2\m4load.m2">
+      <Filter>m2</Filter>
+    </None>
+    <None Include="..\m2\m4objxm2.dtd">
+      <Filter>m2</Filter>
+    </None>
+    <None Include="..\m2\m4sec.m2">
+      <Filter>m2</Filter>
+    </None>
+    <None Include="..\m2\m4sys.m2">
+      <Filter>m2</Filter>
+    </None>
+    <None Include="..\m2\m4trans.m2">
+      <Filter>m2</Filter>
+    </None>
+  </ItemGroup>
+</Project>

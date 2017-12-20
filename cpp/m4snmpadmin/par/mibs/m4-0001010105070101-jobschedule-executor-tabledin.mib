@@ -1,0 +1,240 @@
+META4-JOBSCHEDULE-EXECUTOR-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4JobScheduleServiceSubsystemModule, jobScheduleServiceSubsystem, jobScheduleServiceSubsystemGroup
+		FROM META4-JOBSCHEDULE-SERVICE-SUBSYSTEM-MIB;
+
+
+meta4JobScheduleExecutorModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Job Schedule Executor Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4JobScheduleServiceSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+jobScheduleExecutorGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		subsystemDisableDate,
+		executionState,
+		actionCancelExec,
+		numLaunchedJobs,
+		numJobsCompletedWithErrors,
+		numJobsCompletedSuccessfully,
+		user,
+		jobExecutionId,
+		executionElapsedTime,
+		executionBeginDate,
+		executionEndDate
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { jobScheduleServiceSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+jobScheduleExecutorTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF JobScheduleExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleServiceSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+jobScheduleExecutorEntry OBJECT-TYPE 
+	SYNTAX JobScheduleExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { jobScheduleExecutorIndex }
+	::= { jobScheduleExecutorTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+JobScheduleExecutorEntry ::= SEQUENCE {
+		jobScheduleExecutorIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		subsystemDisableDate DisplayString,
+		executionState Integer32,
+		actionCancelExec DisplayString,
+		numLaunchedJobs Integer32,
+		numJobsCompletedWithErrors Integer32,
+		numJobsCompletedSuccessfully Integer32,
+		user DisplayString,
+		jobExecutionId DisplayString,
+		executionElapsedTime DisplayString,
+		executionBeginDate DisplayString,
+		executionEndDate DisplayString
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+jobScheduleExecutorIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleExecutorEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleExecutorEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleExecutorEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { jobScheduleExecutorEntry 4 }
+
+subsystemDisableDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Subsystem Disable Date"
+	::= { jobScheduleExecutorEntry 5 }
+
+executionState OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution State"
+	::= { jobScheduleExecutorEntry 6 }
+	
+actionCancelExec  OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Action Cancel Execution"
+	::= { jobScheduleExecutorEntry 7 }
+
+numLaunchedJobs OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Launched Jobs"
+	::= { jobScheduleExecutorEntry 501 }
+
+numJobsCompletedWithErrors OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Jobs Completed with Errors"
+	::= { jobScheduleExecutorEntry 502 }
+
+numJobsCompletedSuccessfully OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Jobs Completed Successfully"
+	::= { jobScheduleExecutorEntry 503 }
+
+user OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User"
+	::= { jobScheduleExecutorEntry 504 }
+
+jobExecutionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Job Execution ID"
+	::= { jobScheduleExecutorEntry 505 }
+
+executionElapsedTime OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Elapsed Time"
+	::= { jobScheduleExecutorEntry 506 }
+
+executionBeginDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Begin Date"
+	::= { jobScheduleExecutorEntry 507 }
+
+executionEndDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution End Date"
+	::= { jobScheduleExecutorEntry 508 }
+
+END

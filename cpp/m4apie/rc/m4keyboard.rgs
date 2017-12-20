@@ -1,0 +1,24 @@
+HKCR
+{
+	M4Keyboard.M4Keyboard.1 = s 'M4Keyboard Class'
+	{
+		CLSID = s '{287B9115-6F1E-11D2-BC91-00C04F71652D}'
+	}
+	M4Keyboard.M4Keyboard = s 'M4Keyboard Class'
+	{
+		CurVer = s 'M4Keyboard.M4Keyboard.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {287B9115-6F1E-11D2-BC91-00C04F71652D} = s 'M4Keyboard Class'
+		{
+			ProgID = s 'M4Keyboard.M4Keyboard.1'
+			VersionIndependentProgID = s 'M4Keyboard.M4Keyboard'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

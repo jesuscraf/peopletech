@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object MAPPING PRESENTATION
+
+@version 1.0
+
+-->
+
+<object name="MAPPING PRESENTATION">
+
+	<param name="ID_PRESENTATION_I"/>
+
+	<param name="ID"/>
+
+	<call-table name="SPR_DIN_PRESENTS">
+
+		<with-pk name="ID_PRESENTATION_I" select="$ID_PRESENTATION_I"/>
+
+		<with-pk name="ID" select="$ID"/>
+
+	</call-table>
+
+</object>
+
+
+
+

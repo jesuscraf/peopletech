@@ -1,0 +1,54 @@
+#############################################################
+#	CCFLAGS BASE
+#############################################################
+
+#-------------------
+# debug
+{$DEBUG == 1} CCFLAGS = -D_DEBUG
+
+#-------------------
+# defines de plataforma
+CCFLAGS = -DUNIX -D_UNIX -D__unix -D__unix__
+[solaris] CCFLAGS = -D_SOLARIS -D_REENTRANT 
+[aix] CCFLAGS = -D_AIX -D_THREAD_SAFE -D_REENTRANT
+
+#-------------------
+# definiciones de meta4 plataforma
+[solaris] CCFLAGS = -D_M4SOLSPARC_
+[aix] CCFLAGS = -D_M4AIX_
+
+#-------------------
+# flags del compilador
+[solaris] CCFLAGS = -mt -KPIC -features=no%conststrings -library=%none,iostream,Crun -xustr=ascii_utf16_ushort
+[aix] CCFLAGS = -brtl -qtempinc -qfuncsect -qchars=signed -qfullpath -qnoro -qsrcmsg
+[aix] {$DEBUG==1} CCFLAGS = -qdbxextra
+
+#-------------------
+# excepciones
+[solaris] CCFLAGS_EH = -features=except
+[solaris] CCFLAGS_NOEH = -features=no%except -D_RWSTD_NO_EXCEPTIONS
+
+[aix] CCFLAGS_EH = -qeh
+[aix] CCFLAGS_NOEH = -qnoeh
+
+#-------------------
+# optimizacion
+# el -fast se quita del base para que la m4dm no lo tenga
+[solaris] CCFLAGS_OPT = -xtarget=generic -xarch=generic
+[solaris] CCFLAGS_NOOPT = -xO0
+
+[aix] CCFLAGS_OPT = -qOPTimize=2 -qstrict
+[aix] CCFLAGS_NOOPT = -qOPTimize=0
+
+#-------------------
+# openssl
+CCFLAGS = -DOPENSSL_SYS_UNIX
+
+#-------------------
+# objectspace (stl-toolkit)
+CCFLAGS	= -DM4_OBJECTSPACE 
+[solaris] CCFLAGS = -DOS_SOLARIS_2_7
+[solaris] CCFLAGS = -DOS_NO_WSTRING -DOS_MULTI_THREADED -DOS_SOLARIS_PTHREADS -DOS_PTHREADS -DOS_REALTIME
+[aix] CCFLAGS = -DOS_AIX_5_1 
+[aix] CCFLAGS = -DOS_NO_WSTRING -DOS_MULTI_THREADED -DOS_AIX_PTHREADS -DOS_PTHREADS
+

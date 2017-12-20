@@ -1,0 +1,39 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<clstr.cpp>
+//	File:				clstr.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    MIT_TGI_CL_STR
+#define GROUP_BASE  MIT_TGB_CL_STR
+#define TRACE_ARRAY g_stMIT_ClStrMsg
+
+enum CLSTR_MSG 
+{
+	CLSTR_OVERSTRING=0,	//Ojo, se usa como indice del array
+	CLSTR_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, GROUP_BASE+CLSTR_OVERSTRING, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Caracteres sobreescritos en la cadena %0:s." }
+} ;

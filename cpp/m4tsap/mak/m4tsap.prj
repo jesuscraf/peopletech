@@ -1,0 +1,42 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4tsap.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/inet.cpp
+SRC = ../src/servertsap.cpp
+SRC = ../src/ssltsapimpl.cpp
+SRC = ../src/tsap.cpp
+SRC = ../src/tsapimpl.cpp
+SRC = ../src/tsapselect.cpp
+SRC = ../src/unix/unixselectmask.cpp
+SRC = ../src/unix/unixtsapimpl.cpp
+SRC = ../src/unix/unixtsapselectimpl.cpp
+[solaris] SRC = ../src/unix/moveupfds.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -DM4_POLL_IMPLEMENTATION
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../inc/unix
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4ipcs
+LIB = m4log
+LIB = crypto
+LIB = ssl
+LIB = nsl
+[solaris] LIB = socket
+
+

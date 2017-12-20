@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SENTENCE
+
+@version 1.4
+
+-->
+
+<object name="SENTENCE">
+
+	<param name="ID_SENTENCE"/>
+
+	<call-table name="SCH_SENTENCES">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_FILTER_PRED">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_ADD_FIELD">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="M4RCH_SENT_CALCULU">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="M4RCH_SENT_CLC_FLD">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="M4RCH_SENT_CLC_FUN">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_FUNCTIONS">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_ITEMS">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_OBJ_FIELD">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_OBJ_REL">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_SENT_OBJECTS">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="M4RCH_SNT_CLC_PRM">
+
+		<with-pk name="ID_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+	<call-table name="SCH_TI_SENT_PAR">
+
+		<with-pk name="ID_READ_SENTENCE" select="$ID_SENTENCE"/>
+
+	</call-table>
+
+</object>
+
+

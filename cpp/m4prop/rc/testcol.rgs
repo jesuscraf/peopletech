@@ -1,0 +1,26 @@
+HKCR
+{
+	M4Prop.TestCol.1 = s 'TestCol Class'
+	{
+		CLSID = s '{81A34A94-8ABB-11D3-BD45-00C04F71652D}'
+	}
+	M4Prop.TestCol = s 'TestCol Class'
+	{
+		CLSID = s '{81A34A94-8ABB-11D3-BD45-00C04F71652D}'
+		CurVer = s 'M4Prop.TestCol.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {81A34A94-8ABB-11D3-BD45-00C04F71652D} = s 'TestCol Class'
+		{
+			ProgID = s 'M4Prop.TestCol.1'
+			VersionIndependentProgID = s 'M4Prop.TestCol'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+			'TypeLib' = s '{ECBA54F3-1A61-11D2-9697-00C04FC2444B}'
+		}
+	}
+}

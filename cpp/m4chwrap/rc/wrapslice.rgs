@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapSlice.WrapSlice.1 = s 'WrapSlice Class'
+	{
+		CLSID = s '{CDF75AE8-1D24-11D1-A77A-00C04FB75E70}'
+	}
+	WrapSlice.WrapSlice = s 'WrapSlice Class'
+	{
+		CurVer = s 'WrapSlice.WrapSlice.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CDF75AE8-1D24-11D1-A77A-00C04FB75E70} = s 'WrapSlice Class'
+		{
+			ProgID = s 'WrapSlice.WrapSlice.1'
+			VersionIndependentProgID = s 'WrapSlice.WrapSlice'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

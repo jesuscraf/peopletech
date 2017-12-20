@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2004 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+<!--
+This XML defines table dependencies for repository object META4OBJECT
+@version 2.8
+-->
+<object name="META4OBJECT">
+	<param name="ID_T3"/>
+	<call-table name="SCH_T3S">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+		<fields>
+			<field name="DT_CREATE" visible="false"/>
+			<field name="DEP_CROSS_MOD" visible="false"/>
+			<field name="OLE_CLASS_ID" visible="false"/>
+		</fields>
+		<update-funtions>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_CREATE"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SCH_BO_METHOD">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SCH_MD_VERSION">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+		<with-pk name="ID_MD_TYPE" select="1"/>
+		<fields>
+			<field name="DT_MD_VERSION" visible="false"/>
+			<field name="DT_SYNC" visible="false"/>
+		</fields>
+		<update-funtions>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_MD_VERSION"/>
+			</call-template>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_SYNC"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="M4RCH_QUERY_USER">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SRP_PUB_QUERIES">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SCH_T3_INHERIT">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SCH_T3_MIG">
+		<with-pk name="ID_T3_MIG" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SPM_PAYROLL_MENU">
+		<with-pk name="ID_T3_EXE" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SPM_PAYROLL_T3S">
+		<with-pk name="ID_T3_EXE" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SSC_CLIENT_USE">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+	</call-table>
+	<call-table name="SXM_M4OBJECT_MAP">
+		<with-pk name="ID_META4OBJECT" select="$ID_T3"/>
+		<fields>
+			<field name="XML_DEF_FILE" visible="false"/>
+		</fields>
+		<calculated-fields>
+			<field name="XML_DEF_FILE_DESC"/>
+			<field name="XML_DEF_FILE_EXT"/>
+			<field name="XML_DEF_FILE_FILE" content-type="external"/>
+		</calculated-fields>
+		<generate-funtions>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@XML_DEF_FILE"/>
+				<with-arg name="pk1" select="@MAP_TYPE"/>
+				<with-arg name="description" insert="@XML_DEF_FILE_DESC"/>
+				<with-arg name="extension" insert="@XML_DEF_FILE_EXT"/>
+				<with-arg name="file" insert="@XML_DEF_FILE_FILE"/>
+			</call-template>
+		</generate-funtions>
+		<update-funtions>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@XML_DEF_FILE_DESC"/>
+				<with-arg name="extension" select="@XML_DEF_FILE_EXT"/>
+				<with-arg name="file" select="@XML_DEF_FILE_FILE"/>
+				<with-arg name="blob" insert="@XML_DEF_FILE"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<read-table name="SCH_T3_INHERIT">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+		<read-table name="SCH_NODES">
+			<with-pk name="ID_T3" select="@ID_T3_BASE"/>
+			<call-object name="NODE">
+				<with-param name="ID_T3" select="$ID_T3"/>
+				<with-param name="ID_NODE" select="@ID_NODE"/>
+			</call-object>
+		</read-table>
+	</read-table>
+	<read-table name="SCH_PAYROLL_ITEM">
+		<with-pk name="ID_T3" select="$ID_T3"/>
+		<call-object name="PAYROLL ITEM">
+			<with-param name="ID_T3" select="@ID_T3"/>
+			<with-param name="ID_PAYROLL_ITEM" select="@ID_PAYROLL_ITEM"/>
+		</call-object>
+	</read-table>
+	<read-table name="SPR_DIN_OBJECTS">
+		<with-pk name="ID_T3_I" select="$ID_T3"/>
+		<call-object name="MAPPING META4OBJECT">
+			<with-param name="ID_T3_I" select="@ID_T3_I"/>
+			<with-param name="ID" select="@ID"/>
+		</call-object>
+	</read-table>
+</object>
+

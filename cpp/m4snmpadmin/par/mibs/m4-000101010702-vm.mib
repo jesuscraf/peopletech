@@ -1,0 +1,170 @@
+META4-TRACE-VM-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4TraceSubsystemModule, traceSubsystem, traceSubsystemGroup
+		FROM META4-TRACE-SUBSYSTEM-MIB;
+
+meta4TraceVmSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Trace VM subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4TraceSubsystemModule 2 }
+
+
+--
+--
+
+traceVmSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Trace Log"
+	::= { traceSubsystem 1002 }
+    
+traceVmSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		systemDebugEnable,
+		systemDebugDetailLevel,
+		systemDebugLevel,
+		maxDebugPeriod,
+		javaTrace,
+		transportDumpStatus,
+		transportDumpDirectory,
+		transportDumpPrefixFile,
+		transportDumpMaxFileSize,
+		transportDumpMaxNumFiles
+	}
+	STATUS current
+	DESCRIPTION
+		"Trace VM Group properties"
+	::= { traceSubsystemGroup 2 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { traceVmSubsystem 1 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { traceVmSubsystem 2 }
+
+-- Lo ponemos DisplayString a pesar de el set es numerico.
+systemDebugEnable OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"LDB Debug Level (SystemDebugEnable)"
+	::= { traceVmSubsystem 3 }
+
+systemDebugDetailLevel OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"LDB Debug Detail Level (SystemDebugDetailLevel)"
+	::= { traceVmSubsystem 4 }
+
+systemDebugLevel OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Virtual Machine Debug Level (SystemDebugLevel)"
+	::= { traceVmSubsystem 5 }
+
+maxDebugPeriod OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Max Debug Period"
+	::= { traceVmSubsystem 6 }
+
+javaTrace OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Java Trace"
+	::= { traceVmSubsystem 7 }
+
+transportDumpStatus OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Transport Dump Status"
+	::= { traceVmSubsystem 8 }
+
+transportDumpDirectory OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Transport Dump Directory"
+	::= { traceVmSubsystem 9 }
+
+transportDumpPrefixFile OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Prefix for Transport Dump Files"
+	::= { traceVmSubsystem 10 }
+
+transportDumpMaxFileSize OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max Transport Dump File Size"
+	::= { traceVmSubsystem 11 }
+
+transportDumpMaxNumFiles OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max Number of Transport Dump File"
+	::= { traceVmSubsystem 12 }
+
+
+END

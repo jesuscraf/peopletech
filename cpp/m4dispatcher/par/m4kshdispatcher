@@ -1,0 +1,374 @@
+#!/bin/ksh
+# ----------------------------------------------------------------------
+# @(#) FileVersion: [M4_FILE_VERSION]
+# @(#) FileDescription: UNIX startup script for Meta4 Dispatcher.
+# @(#) CompanyName: Meta4 Spain, S.A.
+# @(#) LegalCopyright: (c) [M4_YEAR]
+# @(#) ProductName:  PeopleNet
+# ----------------------------------------------------------------------
+
+#=======================================================================
+# General app settings (user customizable)
+#=======================================================================
+
+#-----------------------------------------------------------------------
+# set m4dispatcher installation paths
+#-----------------------------------------------------------------------
+export M4_APP_DESCRIPTION="Meta4 Dispatcher"
+export M4_APP_INSTALL_ROOTDIR=..
+export M4_APP_CONFIG_ROOTDIR=..
+export M4_APP_BINDIR=${M4_APP_INSTALL_ROOTDIR}/bin
+export M4_APP_EXE_NAME="m4dispatcher"
+export M4_APP_PID_NAME="pid"
+
+#------------------------------------------------------------------------
+# set run mode (debug or blank (for release))
+#------------------------------------------------------------------------
+export M4_RUN_MODE=
+
+#-----------------------------------------------------------------------------
+# set application environment
+#-----------------------------------------------------------------------------
+export M4_APP_PATH=${M4_APP_BINDIR}/${M4_RUN_MODE}
+export M4_APP_LIBPATH=${M4_APP_BINDIR}/${M4_RUN_MODE}
+
+export M4_LOGBASE_PATH=${M4_APP_INSTALL_ROOTDIR}/conf/logbase.ini
+export M4_LOGMSG_PATH=${M4_APP_INSTALL_ROOTDIR}/conf/
+export XMLMSGPATH=${M4_APP_BINDIR}
+
+export PATH=${M4_APP_PATH}:${PATH}
+
+if [ "${LD_LIBRARY_PATH}" = "" ]; then
+   export LD_LIBRARY_PATH=${M4_APP_LIBPATH}
+else
+   export LD_LIBRARY_PATH=${M4_APP_LIBPATH}:${LD_LIBRARY_PATH}
+fi 
+
+if [ "${LIBPATH}" = "" ]; then
+   export LIBPATH=${M4_APP_LIBPATH}
+else
+   export LIBPATH=${M4_APP_LIBPATH}:${LIBPATH}
+fi
+
+#---------------------------------------------------------------------------
+# Console ouput trace level
+#---------------------------------------------------------------------------
+export M4_SRV_COUT=0
+export M4_SRV_TRACE_LEVEL=3
+
+#---------------------------------------------------------------------------
+# function to print usage
+#---------------------------------------------------------------------------
+Usage()
+{
+	programName=$1
+	
+	echo
+	echo "Usage:"
+	echo "  ${programName} -h         (help: show options)"
+	echo "  ${programName} -v         (show dependencies)"
+	echo "  ${programName} start"
+	echo "  ${programName} stop"
+	echo "  ${programName} kill"
+	echo
+	exit
+}
+
+#-----------------------------------------------------------------------------
+# function to check to see if a given executable is in the path
+# returns: 1 if it finds the executable, 0 if it does not.
+# IsExeInPath ldd
+#-----------------------------------------------------------------------------
+IsExeInPath()
+{
+	exename=$1
+	checked_path=`which $exename`
+	if [ -x "${checked_path}" ]; then
+		# -- echo "$exename found at $checked_path"
+		return 1
+	else
+		# -- echo "$exename not in path..."
+		return 0
+	fi
+}
+
+#-----------------------------------------------------------------------------
+# function to print directories and libraries for this server.
+#-----------------------------------------------------------------------------
+ShowDependencies() 
+{
+	echo "${M4_APP_DESCRIPTION}"
+	echo "====================================="
+	echo "   M4_APP_INSTALL_ROOTDIR = ${M4_APP_INSTALL_ROOTDIR}"
+	echo "   M4_APP_CONFIG_ROOTDIR = ${M4_APP_CONFIG_ROOTDIR}"
+	
+	echo "Environment:"
+	echo "============"
+	echo "   PATH = ${PATH}"
+	echo "   LD_LIBRARY_PATH = ${LD_LIBRARY_PATH}"
+	echo "   LIBPATH = ${LIBPATH}"
+	echo "   CWD = `pwd`"
+	echo ""
+	
+	#
+	# --- AIX does not ship ldd by default, we will have to ship it instead
+	# 
+	IsExeInPath "ldd"; IS_LDD=$?
+	if [ "${IS_LDD}" != "0" ]; then
+		echo "Libraries:"
+		echo "========="
+		ldd ${M4_APP_BINDIR}/${M4_RUN_MODE}/${M4_APP_EXE_NAME}
+	fi
+}
+
+
+#-----------------------------------------------------------------------------
+# function to user name.
+#-----------------------------------------------------------------------------
+GetUserName()
+{
+	ao_user=$1
+
+   	# -- set the user identity
+   	if [ -x /usr/ucb/whoami ]; then
+            USER=`/usr/ucb/whoami`
+    elif [ -x /usr/bin/whoami ]; then
+            USER=`/usr/bin/whoami`
+   	else
+        	echo "" 
+            echo "ERROR: Command whoami must be present on system"
+            echo "Exiting..."
+        	return 0
+   	fi
+	
+	export ${ao_user}=${USER}
+}
+
+
+#-----------------------------------------------------------------------------
+# function to get the pid of the named processes
+# return value:
+#	0 		if there is not such process
+#	pidProcess	on success
+#-----------------------------------------------------------------------------
+GetProcessPid() 
+{
+	gpp_ProgramName=$1
+	gpp_User=$2
+	
+	# get the PID
+	gpp_PID=`/usr/bin/ps -ef -u ${gpp_User} | 
+        	/usr/bin/grep -w ${gpp_ProgramName} | 
+        	/usr/bin/grep -v grep | 
+        	/usr/bin/awk '{print $2}'`
+	# return
+	if [ "$gpp_PID" = "" ]; then
+		return 0
+	else
+		return 1
+	fi
+}
+
+
+#-----------------------------------------------------------------------------
+# function to startup the application.
+#-----------------------------------------------------------------------------
+StartupApplication() 
+{
+	# check if it is already running
+	if [[ -e ${M4_APP_PID_NAME} ]]; then
+	        
+		PID=`cat ${M4_APP_PID_NAME}`
+
+		kp_PID=`/usr/bin/ps -ef | 
+	        	/usr/bin/grep -w ${M4_APP_EXE_NAME} | 
+	        	/usr/bin/awk '{print $2}' |
+			/usr/bin/grep ${PID}`
+			
+		if [ "${kp_PID}x" != "x" ]; then
+			echo "${M4_APP_EXE_NAME} process with process id is already running."
+			return 0
+		fi
+			
+	fi
+
+
+	# checks directory permissions
+	rm -f ${M4_APP_PID_NAME}
+	if [[ -e ${M4_APP_PID_NAME} ]]; then
+		echo "Can't delete ${M4_APP_PID_NAME} file. You don't have enough permissions."
+		exit 1
+	fi
+	
+	echo "0" > ${M4_APP_PID_NAME}
+	if [[ ! -e ${M4_APP_PID_NAME} ]]; then
+		echo "Can't write to ${M4_APP_PID_NAME} file. You don't have enough permissions."
+		exit 1
+	fi
+
+	# start.
+	echo "Starting ${M4_APP_EXE_NAME}..."
+	${M4_APP_EXE_NAME} &
+	echo $! > ${M4_APP_PID_NAME}
+	return 0
+}
+
+#-----------------------------------------------------------------------------
+# function to kill pid of the named processes
+# return value:
+#	0 		if there is not the process
+#	pidNumber 	of process killed
+#-----------------------------------------------------------------------------
+KillProcess() 
+{
+	kp_ProgramName=$1
+	kp_User=$2
+	
+	# check the user
+	if [ "${kp_User}" = "" ]; then
+		kp_User=${USER}	
+	fi
+	    kp_PID=`/usr/bin/ps -ef -u ${kp_User} | 
+        	/usr/bin/grep -w ${kp_ProgramName} | 
+        	/usr/bin/grep -v grep | 
+	        /usr/bin/awk '{print $2}'`
+
+	if [ "${kp_PID}x" = "x" ]; then
+		echo "${kp_ProgramName} process not running."
+		return 0
+	fi
+	
+	echo "Terminating \c" 
+	for pid in $kp_PID
+		do
+		echo "$pid... \c"
+		kill -9 ${kp_PID}
+		done
+	echo "done... "
+	return 1
+}
+
+#-----------------------------------------------------------------------------
+# function to kill this application in the old way.
+#-----------------------------------------------------------------------------
+Kill9ApplicationOld() 
+{
+	# get user.
+	GetUserName l_USER
+	
+	# if the application is alive proceed.
+	GetProcessPid ${M4_APP_EXE_NAME} ${l_USER}
+	ss_Pid=$?  
+	
+	# shut all servers down
+	if [ ${ss_Pid} -eq 0 ]; then
+		echo "This user has no ${M4_APP_DESCRIPTION} started."
+	else
+	      KillProcess ${M4_APP_EXE_NAME} ${l_USER}
+	fi
+}
+
+#-----------------------------------------------------------------------------
+# function to kill this application using a pid file.
+#-----------------------------------------------------------------------------
+Kill9Application() 
+{
+	# checks if the pid file exists
+	if [[ ! -e ${M4_APP_PID_NAME} ]]; then 
+	   echo PID file doesn''t exist
+	   return 0
+	fi
+
+        PID=`cat ${M4_APP_PID_NAME}`
+
+	kp_PID=`/usr/bin/ps -ef | 
+        	/usr/bin/grep -w ${M4_APP_EXE_NAME} | 
+	        /usr/bin/awk '{print $2}' |
+		/usr/bin/grep ${PID}`
+
+	if [ "${kp_PID}x" = "x" ]; then
+		echo "${M4_APP_EXE_NAME} process with process id ${PID} is not running."
+		return 0
+	fi
+	
+	# checks the child process
+	kp_PID_child=`/usr/bin/ps -ef | 
+	        /usr/bin/awk '{print $3, $2}' |
+		/usr/bin/sed -n -e "/^${PID} /p" |
+		/usr/bin/awk '{print $2}'`
+
+	echo "Terminating ${M4_APP_EXE_NAME} with process id ${PID}"
+	kill -9 ${PID} $kp_PID_child
+	
+	return 0
+}
+
+#-----------------------------------------------------------------------------
+# function to start the server with the good debugger.
+#-----------------------------------------------------------------------------
+StartupDebugger() 
+{
+
+   	# find out a few variables
+	IsExeInPath "workshop"; IS_WORKSHOP=$?
+	IsExeInPath "dbx"; IS_DBX=$?
+
+	# check if a core file exists
+	COREFILE=" "
+	if [ -f core ]; then
+        	COREFILE=core
+	fi
+	M4APP_FULL_PATH=${M4_APP_BINDIR}/${M4_RUN_MODE}/${M4_APP_EXE_NAME}
+	
+	#
+	# AIX IDE cannot be launched unless from CDE. Sun is OK with that
+	#  
+	if [ "${IS_WORKSHOP}" != "0" ]; then
+		if [ "${DISPLAY}x" != "x" ] ; then 
+			workshop -D ${M4APP_FULL_PATH} ${COREFILE} &
+		else
+			echo "Your DISPLAY variable is not set. Quitting..."
+		fi
+	elif  [ "${IS_DBX}" != "0" ]; then
+		dbx ${M4APP_FULL_PATH} ${COREFILE}
+	else
+		echo "You do not seem to have supported debuggers in your path"
+	fi
+}
+
+
+#-----------------------------------------------------------------------------
+# set the working directory.
+#-----------------------------------------------------------------------------
+M4_APP_WORKDIR=$( dirname $0 )
+cd ${M4_APP_WORKDIR}
+	
+#-----------------------------------------------------------------------------
+# analize input arguments
+#-----------------------------------------------------------------------------
+case "$1" in
+'-h' | '/h' | '-help' | '--help' | '/help' | 'help' )
+	Usage $0
+	;;
+	
+'-v' | 'depends' | 'DEPENDS' )
+	ShowDependencies
+	return 0
+	;;
+
+'stop' | 'STOP' | 'Stop')
+	Kill9Application
+	;;
+	
+'kill' | 'KILL' | 'Kill')
+	Kill9Application
+	;;
+
+'debugger' | 'DEBUGGER' | 'Debugger')
+	StartupDebugger
+	;;
+ 
+*)
+	StartupApplication
+	;;
+esac

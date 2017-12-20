@@ -1,0 +1,4 @@
+# Directorio donde ira el ejecutable, por defecto se toma "."
+# Este directorio tiene que existir ya, no se crea automaticamente.
+BINDIR = ./$PLATFORM/$LINKTYPE
+

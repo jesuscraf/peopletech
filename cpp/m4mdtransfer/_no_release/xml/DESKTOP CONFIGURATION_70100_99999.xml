@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object DESKTOP CONFIGURATION
+
+@version 1.4
+
+-->
+
+<object name="DESKTOP CONFIGURATION">
+
+	<param name="ID_DESKTOP"/>
+
+	<call-table name="SDT_DESKTOPS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+	<call-table name="SDT_DESKTOP_BPCS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+	<call-table name="SDT_DESKTOP_REPORTS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+	<call-table name="SDT_DESKTOP_GRAPHS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+	<call-table name="SDT_DESKTOP_MENU_OPTIONS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+	<call-table name="SDT_DESKTOP_REPORT_BPS">
+
+		<with-pk name="ID_DESKTOP" select="$ID_DESKTOP"/>
+
+	</call-table>
+
+</object>
+
+

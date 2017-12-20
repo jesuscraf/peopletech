@@ -1,0 +1,83 @@
+# Fichero .prj que contiene los path de todas las librerias nobasicas. 
+#----------------------------------------------------------------------
+
+INC = ../../m4adminsrv/inc
+LIBDIR = ../../m4adminsrv/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4cryptstore/inc
+LIBDIR = ../../m4cryptstore/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4executive/inc
+LIBDIR = ../../m4executive/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4exeforchannel/inc
+LIBDIR = ../../m4exeforchannel/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4jsutils/inc
+LIBDIR = ../../m4jsutils/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4ldbsubsy/inc
+LIBDIR = ../../m4ldbsubsy/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4parser/inc
+LIBDIR = ../../m4parser/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4request/inc
+LIBDIR = ../../m4request/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4userinterface/inc
+LIBDIR = ../../m4userinterface/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4jssubsystem/inc
+LIBDIR = ../../m4jssubsystem/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4jsexejob/inc
+LIBDIR = ../../m4jsexejob/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4jsrecover/inc
+LIBDIR = ../../m4jsrecover/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4cachesubsystem/inc
+LIBDIR = ../../m4cachesubsystem/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4configtree/inc
+LIBDIR = ../../m4configtree/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4configuration/inc
+LIBDIR = ../../m4configuration/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4exefactory/inc
+LIBDIR = ../../m4exefactory/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4subsystems/inc
+LIBDIR = ../../m4subsystems/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4meminfo/inc
+LIBDIR = ../../m4meminfo/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4jssubsystem/inc
+LIBDIR = ../../m4jssubsystem/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4jsexecutor/inc
+LIBDIR = ../../m4jsexecutor/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4uuid/inc
+LIBDIR = ../../m4uuid/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4comsrv/inc
+LIBDIR = ../../m4comsrv/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4snmpadmin/inc
+LIBDIR = ../../m4snmpadmin/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4snmpss/inc
+LIBDIR = ../../m4snmpss/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4xmlutil/inc
+LIBDIR = ../../m4xmlutil/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4echoservice/inc
+LIBDIR = ../../m4echoservice/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4doc/inc
+LIBDIR = ../../m4doc/mak/$PLATFORM/$LINKTYPE

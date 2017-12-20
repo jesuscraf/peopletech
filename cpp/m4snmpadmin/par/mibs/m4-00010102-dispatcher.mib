@@ -1,0 +1,34 @@
+META4-DISPATCHER-MIB DEFINITIONS ::= BEGIN
+
+
+IMPORTS
+	MODULE-IDENTITY
+		FROM SNMPv2-SMI
+
+	meta4ProductsModule
+		FROM META4-PRODUCTS-REG;
+
+meta4DispatcherModule MODULE-IDENTITY
+	LAST-UPDATED "200405181200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Meta4 Dispatcher properties and subsystems."
+
+	REVISION "200405181200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ProductsModule 1 1 2 }
+
+END

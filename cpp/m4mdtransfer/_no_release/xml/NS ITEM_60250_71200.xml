@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object NS ITEM
+
+@version 2.1
+
+-->
+
+<object name="NS ITEM">
+
+	<param name="ID_TI"/>
+
+	<param name="ID_ITEM"/>
+
+	<call-table name="SCH_ITEMS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="DT_CONCURRENCY" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CONCURRENCY"/>
+
+			</call-template>
+
+		</update-funtions>
+
+		<read-table name="SCH_DMD_COMPONENTS">
+
+			<with-pk name="ID_DMD" select="@ID_DMD"/>
+
+			<with-pk name="ID_DMD_COMPONENT" select="@ID_DMD_COMPONENT"/>
+
+			<call-table name="SCH_DMD_COMPONENTS">
+
+				<with-pk name="ID_DMD" select="@ID_DMD"/>
+
+				<with-pk name="ID_DMD_COMPONENT" select="@ID_DMD_COMPONENT"/>
+
+			</call-table>
+
+		</read-table>
+
+		<read-table name="SCH_DMD_GRP_COMP">
+
+			<with-pk name="ID_DMD" select="@ID_DMD"/>
+
+			<with-pk name="ID_DMD_COMPONENT" select="@ID_DMD_COMPONENT"/>
+
+			<call-table name="SCH_DMD_GRP_COMP">
+
+				<with-pk name="ID_DMD" select="@ID_DMD"/>
+
+				<with-pk name="ID_DMD_COMPONENT" select="@ID_DMD_COMPONENT"/>
+
+			</call-table>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SAU_PAR_AUDIT_LOBJ">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONCEPT_NODE">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONCEPTS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONCEPTS_OWR">
+
+		<with-pk name="ID_CONCEPT_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_ITEM_ARGS">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_ITEM_PI">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_QUERY_LETTER_DEP">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_TAGS">
+
+		<with-pk name="ID_TAG_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_TI_CONNEC_ITEM">
+
+		<with-pk name="ID_TRIGGER_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_TOTAL_REF">
+
+		<with-pk name="ID_TOTAL_REF_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM_USED" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_TOTAL_REF">
+
+		<with-pk name="ID_TOTAL_REF_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<with-pk name="ID_TOTAL_TI" select="$ID_TI" op="distinct"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_TOTALS">
+
+		<with-pk name="ID_TOTAL_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SXM_ITEM_MAP">
+
+		<with-pk name="ID_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+	</call-table>
+
+	<read-table name="SCH_RULES">
+
+		<with-pk name="ID_RULE_TI" select="$ID_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<call-object name="RULE">
+
+			<with-param name="ID_RULE_TI" select="@ID_RULE_TI"/>
+
+			<with-param name="ID_ITEM" select="@ID_ITEM"/>
+
+			<with-param name="ID_RULE" select="@ID_RULE"/>
+
+			<with-param name="DT_START" select="@DT_START"/>
+
+		</call-object>
+
+	</read-table>
+
+</object>
+
+

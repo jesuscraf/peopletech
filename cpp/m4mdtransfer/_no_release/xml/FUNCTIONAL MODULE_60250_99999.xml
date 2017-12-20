@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object FUNCTIONAL MODULE
+
+@version 1.4
+
+-->
+
+<object name="FUNCTIONAL MODULE">
+
+	<param name="ID_FUN_MODULE"/>
+
+	<call-table name="SSY_FUN_MODULES">
+
+		<with-pk name="ID_FUN_MODULE" select="$ID_FUN_MODULE"/>
+
+	</call-table>
+
+	<call-table name="SSY_FUN_MOD_OBJ">
+
+		<with-pk name="ID_FUN_MODULE" select="$ID_FUN_MODULE"/>
+
+	</call-table>
+
+	<call-table name="SSY_FUN_SMODULES">
+
+		<with-pk name="ID_FUN_MODULE" select="$ID_FUN_MODULE"/>
+
+	</call-table>
+
+</object>
+
+

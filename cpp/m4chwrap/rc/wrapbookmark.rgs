@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapBookMark.WrapBookMark.1 = s 'WrapBookMark Class'
+	{
+		CLSID = s '{0E2B35B8-DDC6-11D1-8BF1-00C04FA95230}'
+	}
+	WrapBookMark.WrapBookMark = s 'WrapBookMark Class'
+	{
+		CurVer = s 'WrapBookMark.WrapBookMark.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0E2B35B8-DDC6-11D1-8BF1-00C04FA95230} = s 'WrapBookMark Class'
+		{
+			ProgID = s 'WrapBookMark.WrapBookMark.1'
+			VersionIndependentProgID = s 'WrapBookMark.WrapBookMark'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

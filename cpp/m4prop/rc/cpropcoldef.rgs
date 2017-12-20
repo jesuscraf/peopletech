@@ -1,0 +1,24 @@
+HKCR
+{
+	CPropColDef.CPropColDef.1 = s 'CPropColDef Class'
+	{
+		CLSID = s '{2D3708E7-64D8-11D2-BC7F-00C04F71652D}'
+	}
+	CPropColDef.CPropColDef = s 'CPropColDef Class'
+	{
+		CurVer = s 'CPropColDef.CPropColDef.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2D3708E7-64D8-11D2-BC7F-00C04F71652D} = s 'CPropColDef Class'
+		{
+			ProgID = s 'CPropColDef.CPropColDef.1'
+			VersionIndependentProgID = s 'CPropColDef.CPropColDef'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

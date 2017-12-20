@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapRgIt_BlockWalker.WrapRgIt_BlockWalker.1 = s 'WrapRgIt_BlockWalker Class'
+	{
+		CLSID = s '{D993A5D5-EF4C-11D1-8BF8-00C04FA95230}'
+	}
+	WrapRgIt_BlockWalker.WrapRgIt_BlockWalker = s 'WrapRgIt_BlockWalker Class'
+	{
+		CurVer = s 'WrapRgIt_BlockWalker.WrapRgIt_BlockWalker.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D993A5D5-EF4C-11D1-8BF8-00C04FA95230} = s 'WrapRgIt_BlockWalker Class'
+		{
+			ProgID = s 'WrapRgIt_BlockWalker.WrapRgIt_BlockWalker.1'
+			VersionIndependentProgID = s 'WrapRgIt_BlockWalker.WrapRgIt_BlockWalker'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

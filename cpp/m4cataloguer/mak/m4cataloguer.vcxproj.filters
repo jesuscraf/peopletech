@@ -1,0 +1,198 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lzma-16.00">
+      <UniqueIdentifier>{3a56e9f8-5522-4929-95e6-1bb864ed2a0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="par">
+      <UniqueIdentifier>{54a35c7c-148e-468e-96f7-18efa25ddfc9}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\m4cataloguer.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4fileinfo.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\m4patternreader.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\7zfile.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\7ztypes.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\alloc.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\compiler.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\lzfind.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\lzfindmt.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\lzhash.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\lzmaenc.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\precomp.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+    <ClInclude Include="..\lzma-16.00\threads.h">
+      <Filter>lzma-16.00</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rc\m4cataloguer.what.cpp">
+      <Filter>rc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4cataloguer.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4fileinfo.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\m4patternreader.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\7zfile.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\alloc.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\lzfind.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\lzfindmt.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\lzmaenc.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+    <ClCompile Include="..\lzma-16.00\threads.c">
+      <Filter>lzma-16.00</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4cataloguer.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4date\mak\win32\debug\m4datedll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win32\release\m4datedll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\debug\m4datedll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4date\mak\win64\release\m4datedll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\debug\m4filemanager.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win32\release\m4filemanager.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\debug\m4filemanager.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4filemanager\mak\win64\release\m4filemanager.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\debug\xerces-c.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\release\xerces-c.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\debug\xerces-c.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\release\xerces-c.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\zlib\mak\win32\debug\zlibdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\zlib\mak\win32\release\zlibdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\zlib\mak\win64\debug\zlibdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\zlib\mak\win64\release\zlibdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="m4cataloguer.prj">
+      <Filter>mak</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4cataloguer.touch">
+      <Filter>mak</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\par\m4cataloguepattern.xml">
+      <Filter>par</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

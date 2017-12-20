@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object RELATION
+
+@version 1.7
+
+-->
+
+<object name="RELATION">
+
+	<param name="ID_OBJECT"/>
+
+	<param name="ID_RELATION"/>
+
+	<call-table name="SDC_RELATIONS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RELATION" select="$ID_RELATION"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+			<field name="DT_MOD_SCRIPT" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD_SCRIPT"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDC_RELATION_FLDS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RELATION" select="$ID_RELATION"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+			<field name="DT_MOD_SCRIPT" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD_SCRIPT"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_RELATIONS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RELATION" select="$ID_RELATION"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+	<call-table name="SDD_RELATION_FLDS">
+
+		<with-pk name="ID_OBJECT" select="$ID_OBJECT"/>
+
+		<with-pk name="ID_RELATION" select="$ID_RELATION"/>
+
+		<fields>
+
+			<field name="DT_CREATE" visible="false"/>
+
+			<field name="DT_MOD" visible="false"/>
+
+		</fields>
+
+		<update-funtions>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_CREATE"/>
+
+			</call-template>
+
+			<call-template name="today">
+
+				<with-arg name="date" insert="@DT_MOD"/>
+
+			</call-template>
+
+		</update-funtions>
+
+	</call-table>
+
+</object>
+
+

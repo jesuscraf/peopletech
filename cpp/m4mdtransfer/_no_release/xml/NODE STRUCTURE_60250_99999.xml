@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2007 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+
+<!--
+This XML defines table dependencies for repository object NODE STRUCTURE
+@version 2.0
+-->
+
+<object name="NODE STRUCTURE">
+	<param name="ID_TI"/>
+	<call-table name="SCH_TIS">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+		<read-table name="SCH_SENTENCES">
+			<with-pk name="ID_SENTENCE" select="@ID_READ_SENTENCE"/>
+			<call-object name="SENTENCE">
+				<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+			</call-object>
+		</read-table>
+		<fields>
+			<field name="DT_CREATE" visible="false"/>
+		</fields>
+		<update-funtions>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_CREATE"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SCH_LU_EXE_GROUP">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+	</call-table>
+	<call-table name="SCH_TI_ALIAS">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+	</call-table>
+	<call-table name="SCH_TI_MASK">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+	</call-table>
+	<call-table name="SCH_TI_MD_VERSION">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+		<fields>
+			<field name="DT_MD_VERSION" visible="false"/>
+			<field name="DT_SYNC" visible="false"/>
+		</fields>
+		<update-funtions>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_MD_VERSION"/>
+			</call-template>
+			<call-template name="today">
+				<with-arg name="date" insert="@DT_SYNC"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SCH_TI_T3_ALIAS">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+	</call-table>
+	<call-table name="SCH_TIS_INHERIT">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+	</call-table>
+	<read-table name="SCH_TIS_INHERIT">
+		<with-pk name="ID_TI" select="$ID_TI"/>
+		<read-table name="SCH_ITEMS">
+			<with-pk name="ID_TI" select="@ID_TI_BASE"/>
+			<call-object name="NS ITEM">
+				<with-param name="ID_TI" select="$ID_TI"/>
+				<with-param name="ID_ITEM" select="@ID_ITEM"/>
+			</call-object>
+		</read-table>
+	</read-table>
+</object>
+

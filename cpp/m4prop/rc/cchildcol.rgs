@@ -1,0 +1,23 @@
+HKCR
+{
+	CChildCol.CChildCol.1 = s 'CChildCol Class'
+	{
+		CLSID = s '{1331365B-2584-11D2-969E-00C04FC2444B}'
+	}
+	CChildCol.CChildCol = s 'CChildCol Class'
+	{
+		CurVer = s 'CChildCol.CChildCol.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1331365B-2584-11D2-969E-00C04FC2444B} = s 'CChildCol Class'
+		{
+			ProgID = s 'CChildCol.CChildCol.1'
+			VersionIndependentProgID = s 'CChildCol.CChildCol'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+		}
+	}
+}

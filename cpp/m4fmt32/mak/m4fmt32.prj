@@ -1,0 +1,41 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4fmt32.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/cadena.cpp
+SRC = ../src/castella.cpp
+SRC = ../src/clm4fmt.cpp
+SRC = ../src/contain.cpp
+SRC = ../src/english.cpp
+SRC = ../src/format.cpp
+SRC = ../src/fmtdf.cpp
+SRC = ../src/french.cpp
+SRC = ../src/german.cpp
+SRC = ../src/m4fmt.cpp
+SRC = ../src/plugin.cpp
+SRC = ../src/usa.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../hmg
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4dm
+LIB = m4loadll
+LIB = m4variant
+LIB = mienv
+

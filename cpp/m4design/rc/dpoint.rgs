@@ -1,0 +1,25 @@
+HKCR
+{
+	M4Design.DPoint.1 = s 'DPoint Class'
+	{
+		CLSID = s '{B8CBC6F5-58A0-11D4-BE14-00C04F71652D}'
+	}
+	M4Design.DPoint = s 'DPoint Class'
+	{
+		CLSID = s '{B8CBC6F5-58A0-11D4-BE14-00C04F71652D}'
+		CurVer = s 'M4Design.DPoint.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B8CBC6F5-58A0-11D4-BE14-00C04F71652D} = s 'DPoint Class'
+		{
+			ProgID = s 'M4Design.DPoint.1'
+			VersionIndependentProgID = s 'M4Design.DPoint'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+			'TypeLib' = s '{87FB91C1-112B-11D4-BDE9-00C04F71652D}'
+		}
+	}
+}

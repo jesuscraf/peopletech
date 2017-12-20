@@ -1,0 +1,23 @@
+HKCR
+{
+	ConvertPropBag.ConvertPropBag.1 = s 'ConvertPropBag Class'
+	{
+		CLSID = s '{1331365D-2584-11D2-969E-00C04FC2444B}'
+	}
+	ConvertPropBag.ConvertPropBag = s 'ConvertPropBag Class'
+	{
+		CurVer = s 'ConvertPropBag.ConvertPropBag.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {1331365D-2584-11D2-969E-00C04FC2444B} = s 'ConvertPropBag Class'
+		{
+			ProgID = s 'ConvertPropBag.ConvertPropBag.1'
+			VersionIndependentProgID = s 'ConvertPropBag.ConvertPropBag'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+			}
+		}
+	}
+}

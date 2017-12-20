@@ -1,0 +1,64 @@
+// m4xml.idl : IDL source for m4xml.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (m4xml.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	[
+		object,
+		uuid(87F9C917-C989-4E42-860C-AC3B39931780),
+		dual,
+		helpstring("IM4XmlDocument Interface"),
+		pointer_default(unique)
+	]
+	interface IM4XmlDocument : IDispatch
+	{
+		[id(1), helpstring("method Open")] HRESULT Open([in] BSTR ai_sXMLFileName, [out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+		[id(2), helpstring("method GetNextElement")] HRESULT GetNextElement([out] SHORT *ao_pbExists, [out] BSTR *ao_psName, [out] SAFEARRAY(BSTR) *ao_pasAttributes, [out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+	};
+
+	[
+		object,
+		uuid(B777727C-1B63-4B68-B0FA-F014DEE489F2),
+		dual,
+		helpstring("IM4XmlWriter Interface"),
+		pointer_default(unique)
+	]
+	interface IM4XmlWriter : IDispatch
+	{
+		[id(1), helpstring("method Open")] HRESULT Open([in] BSTR ai_sXMLFileName, [out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+		[id(2), helpstring("method Close")] HRESULT Close([out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+		[id(3), helpstring("method StartElement")] HRESULT StartElement([in] BSTR ai_sName, [in] SAFEARRAY(BSTR)* ai_pasAttributes, [in] SHORT ai_bClose, [out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+		[id(4), helpstring("method EndElement")] HRESULT EndElement([in] BSTR ai_sName, [out] BSTR *ao_psErrorMessage, [out, retval] LONG *ao_plResult);
+	};
+
+[
+	uuid(7B06E07C-CAF9-4752-9B32-00FE6D220F83),
+	version(1.0),
+	helpstring("Meta4 XML Wrapper")
+]
+library M4XMLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(831AC7B9-445A-4911-A736-5B3F77236CB1),
+		helpstring("M4XmlDocument Class")
+	]
+	coclass M4XmlDocument
+	{
+		[default] interface IM4XmlDocument;
+	};
+
+	[
+		uuid(397C2180-DFBF-48E7-BE62-1B1DFD485182),
+		helpstring("M4XmlWriter Class")
+	]
+	coclass M4XmlWriter
+	{
+		[default] interface IM4XmlWriter;
+	};
+};

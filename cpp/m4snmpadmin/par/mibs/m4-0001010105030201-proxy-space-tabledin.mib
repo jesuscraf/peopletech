@@ -1,0 +1,158 @@
+META4-PROXY-SPACE-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4ProxySSpacesSubsystemModule, proxySSpacesSubsystem, proxySSpacesSubsystemGroup
+		FROM META4-PROXY-S-SPACES-SUBSYSTEM-MIB;
+
+
+meta4ProxySpaceModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Proxy Space Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ProxySSpacesSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+proxySpaceGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		userName,
+		sessionId
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { proxySSpacesSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+proxySpaceTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF ProxySpaceEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySSpacesSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+proxySpaceEntry OBJECT-TYPE 
+	SYNTAX ProxySpaceEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { proxySpaceIndex }
+	::= { proxySpaceTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+ProxySpaceEntry ::= SEQUENCE {
+		proxySpaceIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		state DisplayString,
+		userName DisplayString,
+		sessionId DisplayString
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+proxySpaceIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySpaceEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySpaceEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySpaceEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { proxySpaceEntry 4 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { proxySpaceEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { proxySpaceEntry 6 }
+
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { proxySpaceEntry 7 }
+
+END

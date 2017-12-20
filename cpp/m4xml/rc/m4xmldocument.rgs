@@ -1,0 +1,26 @@
+HKCR
+{
+	M4xml.M4XmlDocument.1 = s 'M4XmlDocument Class'
+	{
+		CLSID = s '{831AC7B9-445A-4911-A736-5B3F77236CB1}'
+	}
+	M4xml.M4XmlDocument = s 'M4XmlDocument Class'
+	{
+		CLSID = s '{831AC7B9-445A-4911-A736-5B3F77236CB1}'
+		CurVer = s 'M4xml.M4XmlDocument.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {831AC7B9-445A-4911-A736-5B3F77236CB1} = s 'M4XmlDocument Class'
+		{
+			ProgID = s 'M4xml.M4XmlDocument.1'
+			VersionIndependentProgID = s 'M4xml.M4XmlDocument'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{7B06E07C-CAF9-4752-9B32-00FE6D220F83}'
+		}
+	}
+}

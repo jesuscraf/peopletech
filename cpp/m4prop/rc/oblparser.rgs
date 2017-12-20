@@ -1,0 +1,24 @@
+HKCR
+{
+	OBLParser.OBLParser.1 = s 'OBLParser Class'
+	{
+		CLSID = s '{122B2624-5EBA-11D3-BD11-00C04F71652D}'
+	}
+	OBLParser.OBLParser = s 'OBLParser Class'
+	{
+		CurVer = s 'OBLParser.OBLParser.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {122B2624-5EBA-11D3-BD11-00C04F71652D} = s 'OBLParser Class'
+		{
+			ProgID = s 'OBLParser.OBLParser.1'
+			VersionIndependentProgID = s 'OBLParser.OBLParser'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

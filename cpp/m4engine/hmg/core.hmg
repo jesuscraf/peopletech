@@ -1,0 +1,151 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<core.cpp>
+//	File:				core.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_CORE
+#define GROUP_BASE  ENG_TGB_CORE
+#define TRACE_ARRAY g_stENG_Core_Msg
+
+enum CORE_MSG 
+{
+	CORE_MSG_10=0,	//Ojo, se usa como indice del array
+	CORE_MSG_20, CORE_MSG_30, CORE_MSG_40, CORE_MSG_50, CORE_MSG_60, CORE_MSG_70,
+	CORE_MSG_80, CORE_MSG_90, CORE_MSG_100, CORE_MSG_110, CORE_MSG_120, 
+	CORE_MSG_140, CORE_MSG_150, CORE_MSG_160, CORE_MSG_170, CORE_MSG_180, CORE_MSG_190,
+	CORE_MSG_210, CORE_MSG_220, CORE_MSG_240, CORE_MSG_250,	 
+	CORE_MSG_600, CORE_MSG_610, CORE_MSG_620, CORE_MSG_630, 
+
+	CORE_MSG_2000, CORE_MSG_2020,
+
+	CORE_MSG_5000,	//Push locations
+	CORE_MSG_5010, CORE_MSG_5015, CORE_MSG_5020, CORE_MSG_5030, CORE_MSG_5040,
+
+	CORE_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, CORE_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS, 
+		 "Page number %0:s out of range (0 to %1:s)" },
+
+	{ GROUP_ID, CORE_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Field index out of range" },
+
+	{ GROUP_ID, CORE_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Field already updated" },
+
+	{ GROUP_ID, CORE_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Field out of container limits" },
+
+	{ GROUP_ID, CORE_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Printing-retry limit %0:s exceeded" },
+
+	{ GROUP_ID, CORE_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Container header has to be fixed" },
+
+	{ GROUP_ID, CORE_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Container footer has to be fixed" },
+
+	{ GROUP_ID, CORE_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "NextRecord null" },
+
+	{ GROUP_ID, CORE_MSG_90+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Not in final sections" },
+
+	{ GROUP_ID, CORE_MSG_100+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Son section index out of range" },
+
+	{ GROUP_ID, CORE_MSG_110+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Son section already initiated"  },
+
+	{ GROUP_ID, CORE_MSG_120+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Not in final sections" },
+
+	{ GROUP_ID, CORE_MSG_140+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Record container is obligatory" },
+
+	{ GROUP_ID, CORE_MSG_150+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Record container could'n be XYFixed" },
+
+	{ GROUP_ID, CORE_MSG_160+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Record container page isn't equal to section page" },
+
+	{ GROUP_ID, CORE_MSG_170+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Container number out of range" },
+
+	{ GROUP_ID, CORE_MSG_180+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Container number already initiated" },
+
+	{ GROUP_ID, CORE_MSG_190+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Section not found" },
+
+	{ GROUP_ID, CORE_MSG_210+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Internal variable type not implemented" },
+
+	{ GROUP_ID, CORE_MSG_220+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Break section %0:s not found" },
+
+	{ GROUP_ID, CORE_MSG_240+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Totalize %0:s out of range (valid range is from %1:s to %2:s)" },
+
+	{ GROUP_ID, CORE_MSG_250+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Attaching field %0:s " },
+
+	{ GROUP_ID, CORE_MSG_600+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "NONE_CNT_TOTAL not allowed if TotalCnt exist" },
+
+	{ GROUP_ID, CORE_MSG_610+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "RV Container is X_Y_FIXED or not found for a end-section" },
+
+	{ GROUP_ID, CORE_MSG_620+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Slice container is NULL" },
+
+	{ GROUP_ID, CORE_MSG_630+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "INHERIT_POS mode required with SUBGROUP_VR range mode" },
+
+	{ GROUP_ID, CORE_MSG_2000+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Cross-tab %0:s not inicializated" },
+
+	{ GROUP_ID, CORE_MSG_2020+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Instanciate aborted : can not print in a empty page"  },
+
+
+
+	{ GROUP_ID, CORE_MSG_5000+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Preload printing of container %0:s"  },
+
+	{ GROUP_ID, CORE_MSG_5010+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Compiling expressions in section %0:s"  },
+
+	{ GROUP_ID, CORE_MSG_5015+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Compiling expressions in container %0:s"  },
+
+	{ GROUP_ID, CORE_MSG_5020+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Printing container  %0:s"  },
+
+	{ GROUP_ID, CORE_MSG_5030+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Printing section %0:s"  },
+
+	{ GROUP_ID, CORE_MSG_5040+GROUP_BASE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Compiling report expressions "  },
+} ;

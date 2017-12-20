@@ -1,0 +1,264 @@
+META4-CACHE-TABLE-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4CacheSubsystemModule, cacheSubsystem, cacheSubsystemGroup
+		FROM META4-CACHE-SUBSYSTEM-MIB;
+
+
+meta4CacheModule MODULE-IDENTITY
+	LAST-UPDATED "200406161200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Cache Table."
+
+	REVISION "200406161200Z"
+	DESCRIPTION
+		"Change syntax for defaultMaxPeriod and defaultMaxUnusedPeriod attributes."
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4CacheSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+
+cacheGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		status,
+		cacheName,
+		maxCacheSizeMemory,
+		maxCacheNumItems,
+		refreshRatio,
+		defaultMaxPeriod,
+		defaultMaxUnusedPeriod,
+		sizeCache,
+		numObjectsInCache,
+		objectsInQueue,
+		objectsInLru,
+		numRefToCache,
+		hitRatio
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { cacheSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- Para el subsistema de memoria tendremos 3 registros (Normal, Alert, Critical) y tendremos cuatro propiedades (columnas).
+
+cacheTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF CacheEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+cacheEntry OBJECT-TYPE 
+	SYNTAX CacheEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { cacheIndex }
+	::= { cacheTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+CacheEntry ::= SEQUENCE {
+		cacheIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		status DisplayString,
+		cacheName DisplayString,
+		maxCacheSizeMemory Integer32,
+		maxCacheNumItems Integer32,
+		refreshRatio Integer32,
+		defaultMaxPeriod DisplayString,
+		defaultMaxUnusedPeriod DisplayString,
+		sizeCache Integer32,
+		numObjectsInCache Integer32,
+		objectsInQueue Integer32,
+		objectsInLru Integer32,
+		numRefToCache Integer32,
+		hitRatio Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+cacheIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { cacheEntry 4 }
+
+status OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { cacheEntry 5 }
+
+cacheName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Cache Name"
+	::= { cacheEntry 6 }
+
+maxCacheSizeMemory OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "MB"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Allowed Memory"
+	::= { cacheEntry 7 }
+
+maxCacheNumItems OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Number of Objects Allowed"
+	::= { cacheEntry 8 }
+
+refreshRatio OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Synchronization to Disk Interval (Insertions)"
+	::= { cacheEntry 9 }
+
+defaultMaxPeriod OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "Days"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Period objects can stay in cache"
+	::= { cacheEntry 10 }
+
+defaultMaxUnusedPeriod OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "Days"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Period objects can stay if not used"
+	::= { cacheEntry 11 }
+
+sizeCache OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "MB"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Memory Used"
+	::= { cacheEntry 501 }
+
+numObjectsInCache OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Valid Objects in Cache"
+	::= { cacheEntry 502 }
+
+objectsInQueue OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Objects in Deletion Queue"
+	::= { cacheEntry 503 }
+
+objectsInLru OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Unreferenced Objects"
+	::= { cacheEntry 504 }
+
+numRefToCache OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of References"
+	::= { cacheEntry 505 }
+
+hitRatio OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Hits Ratio"
+	::= { cacheEntry 506 }
+
+
+END

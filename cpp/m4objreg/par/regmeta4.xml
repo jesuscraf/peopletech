@@ -1,0 +1,49 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<HKEY_LOCAL_MACHINE>
+	<SOFTWARE>
+		<Meta4>
+			<PeopleNet>
+				<CLIENT>
+					<CVM Version='814.000.000' Unicode='1' WorkDir='c:\workdir' TempDir='c:\temp' FlattenItemPrecision='0'>
+						<Cache CacheDir='c:\temp' MDCacheMode='READ_WRITE' LDBCacheMode='NONE' DataCacheMode='READ_WRITE' SMCacheRefresh='1' MDCacheMaxMemory='50000000' SupFilesCacheMode='READ_WRITE' DataCacheMaxMemory='30000000' MDCacheExpiryRatio='1' MDCacheRefreshRatio='5' DataCacheExpiryRatio='1' MDCacheMaxNumObjects='1000' DataCacheRefreshRatio='5' ObjDataCacheMaxMemory='30000000' DataCacheMaxNumObjects='1000' MDCacheDefaultMaxPeriod='365' DataCacheDefaultMaxPeriod='365' ObjDataCacheMaxNumObjects='1000'/>
+						<CLIENTSERVER SMOLTP='1' CSTraceEnabled='0' VBTraceEnabled='0' CSDefaultTimeOut='300' CSGenericTimeOut='120' CSTraceShowCachedOperations='0'/>
+						<LDB ConnectionString='DSN=SQLPRU4;SRVR=ATLANTISSQL10;UID=SQLPRU4;PWD=%s' DBPassword=')(8fc04dc97cd14ecf304e83f91201ce' Database='1' MaxNumConn='50' MaxNumCursor='240' MaxNumStmtCache='1024' MaxNumObject='1024' MaxNumObjectTrans='100' IsolationLevel='' ConExec='set LOCK_TIMEOUT 300000' BlobBufferSize='200'/>
+						<LOG DebugDir='c:\temp' MaxDebugPeriod='24' SystemDebugEnable='1' SystemDebugDetailLevel='0' SystemDebugLevel='0' MaxLDBInspSize='50' MultipleFilesTrace='0' ShowData='1' MaxRollingFileSize='1024' MaxRollingFileNum='5' TraceTransferData='0'/>
+						<TIME TimeUnit='Day' LocalTimeCorrection='AUTO'/>
+					</CVM>
+					<JAVA JavaArgs='-Xmx128m' JavaHome='' ClassPath='u:\common\java\bcmail-jdk15-146.jar;u:\common\java\bcpg-jdk15on-149.jar;u:\common\java\bcprov-jdk15-146.jar;u:\common\java\m4documentsconverter.jar;u:\common\java\*' JavaTrace='0' AllowInProcess='0' TimeOut='-1'/>
+					<Servers>
+						<DefaultServer IdPort='2222' Server='localhost' AdminPort='2224' IdSSLPort='2223' AdminSSLPort='2225'/>
+					</Servers>
+					<TOOLS INSTALL_MODE='0'>
+						<XML DateSeparator='/'/>
+						<REPORTS SystemDebugEnable='0' Language='m4fmtpor' TempWebImages='' TraceFile='c:\temp\reports\trace.txt' WorkDir='c:\temp\reports' RFNPath='u:\m4reports\rfnfiles' GraphicsPath='u:\m4reports\bmps\Color' GraphicsPathBW='u:\m4reports\bmps\b_w' GraphicsPathHTML='u:\m4reports\htmlfiles' ParamsDir='u:\m4reports\params' UnicodeFontFileName='code2000.ttf'/>
+					</TOOLS>
+				</CLIENT>
+				<Machine LDAPServer='0' LDAPPort='0' LastLogged='' LogonTrace='0' LogonPath='c:\temp'>
+					<Languages>
+						<English id='2' LCID='1033' Name='English' IsDefault='1' FormatDates='mm-dd-yyyy' ErrorDateFormat='%m-%d-%Y' ErrorTimeFormat='%m-%d-%Y %H:%M:%S'/>
+						<Spanish id='3' LCID='3082' Name='Español' IsDefault='0' FormatDates='dd-mm-yyyy' ErrorDateFormat='%d-%m-%Y' ErrorTimeFormat='%d-%m-%Y %H:%M:%S'/>
+						<French id='4' LCID='1036' Name='Français' IsDefault='0' FormatDates='dd-mm-yyyy' ErrorDateFormat='%d-%m-%Y' ErrorTimeFormat='%d-%m-%Y %H:%M:%S'/>
+						<Português id='5' LCID='2070' Name='Português' IsDefault='0' FormatDates='dd-mm-yyyy' ErrorDateFormat='%d-%m-%Y' ErrorTimeFormat='%d-%m-%Y %H:%M:%S'/>
+						<Brazilian id='6' LCID='1046' Name='Brazilian' IsDefault='0' FormatDates='dd-mm-yyyy' ErrorDateFormat='%d-%m-%Y' ErrorTimeFormat='%d-%m-%Y %H:%M:%S'/>
+						<Italian id='7' LCID='1040' Name='Italiano' IsDefault='0' FormatDates='dd-mm-yyyy' ErrorDateFormat='%d-%m-%Y' ErrorTimeFormat='%d-%m-%Y %H:%M:%S'/>
+						<Generic id='8' LCID='1027' Name='Generic' IsDefault='0' FormatDates='mm-dd-yyyy' ErrorDateFormat='%m-%d-%Y' ErrorTimeFormat='%m-%d-%Y %H:%M:%S'/>
+					</Languages>
+					<TransportProtocol DefaultProtocol='M4'>
+						<HTTP CompressionType='2'>
+							<GateWay DefaultGateway='GateWayOne'>
+								<GateWayOne ServletName='/m4gateway/servlet/M4GatewayServlet' WebServerName='' WebServerPort='80'/>
+							</GateWay>
+						</HTTP>
+						<M4 CommWorkers='1' ControlPort='6666' CompressionType='2'/>
+					</TransportProtocol>
+				</Machine>
+				<User>
+					<Default UseWSSO='0' M4_USE_SSL='0' NameServer='DefaultServer' UseDirectory='0' AskConfigWSSO='0' DefaultLanguage='English'/>
+				</User>
+			</PeopleNet>
+		</Meta4>
+	</SOFTWARE>
+</HKEY_LOCAL_MACHINE>
+

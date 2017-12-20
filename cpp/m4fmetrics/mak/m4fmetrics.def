@@ -1,0 +1,17 @@
+LIBRARY	"fmetrics"
+EXPORTS
+	AddFont            = FONT_M_AddFont
+	DesignHeight       = FONT_M_DesignHeight
+	DesignHeightById   = FONT_M_DesignHeightById
+	DesignMaxWidth     = FONT_M_DesignMaxWidth
+	DesignMaxWidthById = FONT_M_DesignMaxWidthById
+	Height             = FONT_M_Height
+	HeightById         = FONT_M_HeightById
+	KillSession        = FONT_M_KillSession
+	MaxWidth           = FONT_M_MaxWidth
+	MaxWidthById       = FONT_M_MaxWidthById
+	StartSession       = FONT_M_StartSession
+	WidthChar          = FONT_M_WidthChar
+	WidthCharById      = FONT_M_WidthCharById
+	WindowsMetrics     = FONT_M_WindowsMetrics
+	WindowsMetricsById = FONT_M_WindowsMetricsById

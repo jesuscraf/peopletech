@@ -1,0 +1,24 @@
+HKCR
+{
+	PropCol.PropCol.1 = s 'PropCol Class'
+	{
+		CLSID = s '{ECBA5504-1A61-11D2-9697-00C04FC2444B}'
+	}
+	PropCol.PropCol = s 'PropCol Class'
+	{
+		CurVer = s 'PropCol.PropCol.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ECBA5504-1A61-11D2-9697-00C04FC2444B} = s 'PropCol Class'
+		{
+			ProgID = s 'PropCol.PropCol.1'
+			VersionIndependentProgID = s 'PropCol.PropCol'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

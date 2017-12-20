@@ -1,0 +1,60 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4communication.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../zdelta-2.1/adler32.c
+SRC = ../zdelta-2.1/deflate.c
+SRC = ../zdelta-2.1/infblock.c
+SRC = ../zdelta-2.1/infcodes.c
+SRC = ../zdelta-2.1/inffast.c
+SRC = ../zdelta-2.1/inflate.c
+SRC = ../zdelta-2.1/inftrees.c
+SRC = ../zdelta-2.1/infutil.c
+SRC = ../zdelta-2.1/trees.c
+SRC = ../zdelta-2.1/zd_mem.c
+SRC = ../zdelta-2.1/zdelta.c
+SRC = ../zdelta-2.1/zutil.c
+
+SRC = ../src/commaction.cpp
+SRC = ../src/commbase.cpp
+SRC = ../src/commbin.cpp
+SRC = ../src/commeventhandler.cpp
+SRC = ../src/commpduzdelta.cpp
+SRC = ../src/commproccessaction.cpp
+SRC = ../src/commprotocols.cpp
+SRC = ../src/commsocketpool.cpp
+SRC = ../src/commtask.cpp
+SRC = ../src/communicationlayer.cpp
+SRC = ../src/communicationlayerbase.cpp
+SRC = ../src/commworker.cpp 
+SRC = ../src/m4communication.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../zdelta-2.1
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4idgeneratordll
+LIB = m4ipcs
+LIB = m4log
+LIB = m4logsys
+LIB = m4memdbg
+LIB = m4objreg
+LIB = m4pdus
+LIB = m4serverbasedll
+LIB = m4transport
+LIB = m4tsap
+LIB = m4unicode
+

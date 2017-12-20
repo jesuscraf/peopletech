@@ -1,0 +1,101 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4comsrvdll.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/cladminfuncs.cpp
+SRC = ../src/clcmdarguments.cpp
+SRC = ../src/clcommand.cpp
+SRC = ../src/clcondictionary.cpp
+SRC = ../src/cllist.cpp
+SRC = ../src/clloadtables.cpp
+SRC = ../src/cllocalmonitor.cpp
+SRC = ../src/clmemorylevelss.cpp
+SRC = ../src/clservicedicc.cpp
+SRC = ../src/clserviceinfo.cpp
+SRC = ../src/clsubsystem.cpp
+SRC = ../src/clsupervisor.cpp
+SRC = ../src/cmdtable.cpp
+SRC = ../src/connects.cpp
+SRC = ../src/connects40.cpp
+SRC = ../src/controlmemoryss.cpp
+SRC = ../src/dispatcherss.cpp
+SRC = ../src/fileutil.cpp
+SRC = ../src/invoker.cpp
+SRC = ../src/lmstats.cpp
+SRC = ../src/lmsubsystem.cpp
+SRC = ../src/loadestimatorss.cpp
+SRC = ../src/loadrule.cpp
+SRC = ../src/logoninstance.cpp
+SRC = ../src/m4serverversion.cpp
+SRC = ../src/navigatorss.cpp
+SRC = ../src/requestdic.cpp
+SRC = ../src/sessiondic.cpp
+SRC = ../src/sessmanager.cpp
+SRC = ../src/ssccsubsystems.cpp
+SRC = ../src/ssfactory.cpp
+SRC = ../src/ssstats.cpp
+SRC = ../src/ssvisitors.cpp
+SRC = ../src/subsystems.cpp
+SRC = ../src/tracess.cpp
+SRC = ../src/userservicesss.cpp
+SRC = ../src/userss.cpp
+SRC = ../src/xmlrequest.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4adminsrvdll
+LIB = m4buildversion
+LIB = m4cachesubsystem
+LIB = m4communication
+LIB = m4configtreedll
+LIB = m4configurationdll
+LIB = m4credentials
+LIB = m4cryptc
+LIB = m4date
+LIB = m4echoservice
+LIB = m4eventhandler
+LIB = m4executivedll
+LIB = m4exefactorydll
+LIB = m4exeforchannel
+LIB = m4filemanager
+LIB = m4idgeneratordll
+LIB = m4ipcs
+LIB = m4java
+LIB = m4jssubsystemdll
+LIB = m4ldbsubsystemdll
+LIB = m4log
+LIB = m4memdbg
+LIB = m4meminfodll
+LIB = m4objreg
+LIB = m4obl
+LIB = m4oeinit
+LIB = m4pdus
+LIB = m4requestdll
+LIB = m4servenvdll
+LIB = m4serverbasedll
+LIB = m4servereventdll
+LIB = m4snmpss
+LIB = m4subsystemsdll
+LIB = m4sysall
+LIB = m4transport
+LIB = m4tsap
+LIB = m4unicode
+LIB = m4userinterfacedll
+LIB = m4xmlutil
+
+LIB = nsl
+

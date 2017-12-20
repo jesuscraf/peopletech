@@ -1,0 +1,26 @@
+HKCR
+{
+	M4PTRTF.M4PTRTF.1 = s 'M4PTRTF Class'
+	{
+		CLSID = s '{D9C6666E-A955-4114-99D6-711AACB01FF7}'
+	}
+	M4PTRTF.M4PTRTF = s 'M4PTRTF Class'
+	{
+		CLSID = s '{D9C6666E-A955-4114-99D6-711AACB01FF7}'
+		CurVer = s 'M4PTRTF.M4PTRTF.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {D9C6666E-A955-4114-99D6-711AACB01FF7} = s 'M4PTRTF Class'
+		{
+			ProgID = s 'M4PTRTF.M4PTRTF.1'
+			VersionIndependentProgID = s 'M4PTRTF.M4PTRTF'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{69D54578-6296-4896-90ED-C585205A56B2}'
+		}
+	}
+}

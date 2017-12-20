@@ -1,0 +1,121 @@
+META4-CACHE-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ApplicationServerModule
+		FROM META4-APPLICATION-SERVER-MIB
+
+	applicationServer, applicationServerGroups
+		FROM META4-PRODUCTS-REG;
+
+
+meta4CacheSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Cache Subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ApplicationServerModule 4 }
+
+--
+--
+
+cacheSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Cache Subsystem"
+	::= { applicationServer 4 }
+
+
+cacheSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		numCacheSubsystem,
+		actionCleanAllCaches,
+		lastCleanAllCaches
+	}
+	STATUS current
+	DESCRIPTION
+		"Cache Group properties"
+	::= { applicationServerGroups 4 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { cacheSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { cacheSubsystem 3 }
+
+numCacheSubsystem OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Caches"
+	::= { cacheSubsystem 4 }
+
+actionCleanAllCaches OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Action Clean all Caches"
+	::= { cacheSubsystem 5 }
+
+lastCleanAllCaches OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Last Clean all Caches"
+	::= { cacheSubsystem 6 }
+
+END

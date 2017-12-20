@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object WORKFLOW PROCESS
+
+@version 1.4
+
+-->
+
+<object name="WORKFLOW PROCESS">
+
+	<param name="ID_BPC"/>
+
+	<call-table name="SWF_BPC">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_ASSIGNEDROLE">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_DATADEF">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_EVENTASSOC">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_J_SBPC_MAP">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_JOINED_SBPC">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_RL_PARMAP">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_STATE">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_STATE_RULE">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_SUBBPC">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_SUBBPC_MAP">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_TASK">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_TASK_PARAM">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_TRANSCANCEL">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_TRANSITION">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+	<call-table name="SWF_XTRAPOINT">
+
+		<with-pk name="ID_BPC" select="$ID_BPC"/>
+
+	</call-table>
+
+</object>
+
+

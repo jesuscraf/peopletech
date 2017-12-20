@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object PROFILE
+
+@version 1.5
+
+-->
+
+<object name="PROFILE">
+
+	<param name="ID_PROFILE"/>
+
+	<call-table name="SSC_PROFILES">
+
+		<with-pk name="ID_PROFILE" select="$ID_PROFILE"/>
+
+	</call-table>
+
+	<call-table name="SSC_PROJ_PROF">
+
+		<with-pk name="ID_PROFILE" select="$ID_PROFILE"/>
+
+	</call-table>
+
+	<call-table name="SSC_OSPROJ_PROF">
+
+		<with-pk name="ID_PROFILE" select="$ID_PROFILE"/>
+
+	</call-table>
+
+</object>
+
+

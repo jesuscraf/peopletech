@@ -1,0 +1,34 @@
+// anle.idl : IDL source for anle.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (anle.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+import "Definitions.idl";
+
+[
+	uuid(AA9A1761-CB03-11D2-BC56-00C04FA92178),
+	version(1.0),
+	helpstring("anle 1.0 Type Library")
+]
+
+library ANLELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//##ModelId=3973076300DF
+	[
+		uuid(AA9A176F-CB03-11D2-BC56-00C04FA92178),
+		helpstring("veranle Class")
+	]
+	coclass veranle
+	{
+		//##ModelId=3973076300F0
+		[default] interface Iveranle;
+	};
+
+};

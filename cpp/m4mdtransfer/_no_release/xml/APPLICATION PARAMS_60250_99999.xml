@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object APPLICATION PARAMS
+
+@version 1.5
+
+-->
+
+<object name="APPLICATION PARAMS">
+
+	<param name="ID_APPLICATION"/>
+
+	<call-table name="SAV_APPLICATION">
+
+		<with-pk name="ID_APPLICATION" select="$ID_APPLICATION"/>
+
+	</call-table>
+
+	<call-table name="SAV_APP_VAL_LG">
+
+		<with-pk name="ID_APLICATION" select="$ID_APPLICATION"/>
+
+	</call-table>
+
+	<call-table name="SAV_KEY">
+
+		<with-pk name="ID_APPLICATION" select="$ID_APPLICATION"/>
+
+	</call-table>
+
+	<call-table name="SAV_SECTION">
+
+		<with-pk name="ID_APPLICATION" select="$ID_APPLICATION"/>
+
+	</call-table>
+
+</object>
+
+

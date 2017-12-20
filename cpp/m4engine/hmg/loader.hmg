@@ -1,0 +1,212 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<loader.cpp>
+//	File:				loader.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_LOADER
+#define GROUP_BASE  ENG_TGB_LOADER
+#define TRACE_ARRAY g_stENG_Loader_Msg
+
+enum LOADER_MSG 
+{
+	LOADER_MSG_10=0,	//Ojo, se usa como indice del array
+	LOADER_MSG_20,
+	LOADER_MSG_30,
+	LOADER_MSG_40,
+	LOADER_MSG_60,
+	LOADER_MSG_70,
+	LOADER_MSG_80,
+	LOADER_MSG_90,
+	LOADER_MSG_100,
+	LOADER_MSG_110,
+	LOADER_MSG_120,
+	LOADER_MSG_130,
+	LOADER_MSG_140,
+
+	LOADER_MSG_150,
+	LOADER_MSG_160,
+	LOADER_MSG_170,
+	LOADER_MSG_180,
+	LOADER_MSG_190,
+	LOADER_MSG_200,
+
+	LOADER_MSG_210,
+
+	LOADER_MSG_500,
+	LOADER_MSG_510,
+	LOADER_MSG_520,
+
+
+	LOADER_MSG_1000,	//PUSH_LINKS
+	LOADER_MSG_1010,
+	LOADER_MSG_1020,
+	LOADER_MSG_1030,
+	LOADER_MSG_1040,
+	LOADER_MSG_1050,
+	LOADER_MSG_1060,
+	LOADER_MSG_1070,
+	LOADER_MSG_1080,
+	LOADER_MSG_1090,
+	LOADER_MSG_1100,
+	LOADER_MSG_1110,
+	LOADER_MSG_1120,
+	LOADER_MSG_1130,
+
+	LOADER_MSG_LT1,
+	LOADER_MSG_LT0,
+	LOADER_MSG_RANGE,
+	LOADER_MSG_ENUM,
+
+	LOADER_MSG_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, LOADER_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Font identifier %0:s not found" },
+
+	{ GROUP_ID, LOADER_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Format identifier %0:s not found" },
+
+	{ GROUP_ID, LOADER_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Break section identifier required, because the break mode is not equal to NONE_BREAK" },
+
+	{ GROUP_ID, LOADER_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Sintax error in %0:s. Can not initialize NULL display strings." },
+
+	{ GROUP_ID, LOADER_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "%0:s container not found, but required for %0:s" },
+
+	{ GROUP_ID, LOADER_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Item is not a method: Node %0:s Item %1:s" },
+
+	{ GROUP_ID, LOADER_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Input error: Required data %0:s not loaded" },
+
+	{ GROUP_ID, LOADER_MSG_90+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Field source of field container should be FLD_FROM_DESIGN_CHN" },
+
+	{ GROUP_ID, LOADER_MSG_100+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Section %0:s has %1:s son sections, and %2:s sections have been loaded" },
+
+	{ GROUP_ID, LOADER_MSG_110+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Required only a VALUE or LITERAL_VALUE" },
+
+	{ GROUP_ID, LOADER_MSG_120+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Container type %0:s not allowed for Together" },
+
+	{ GROUP_ID, LOADER_MSG_130+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Crosstab merge expression %0:s is incorrect: NO_MERGE mode activated" },
+
+	{ GROUP_ID, LOADER_MSG_140+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error generating key" },
+
+
+	{ GROUP_ID, LOADER_MSG_150+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Errors in report design" },
+
+	{ GROUP_ID, LOADER_MSG_160+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Errors printing report" },
+
+	{ GROUP_ID, LOADER_MSG_170+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Errors performing report shutdown" },
+
+	{ GROUP_ID, LOADER_MSG_180+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Only warnings in report design" },
+
+	{ GROUP_ID, LOADER_MSG_190+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Only warnings printing report" },
+
+	{ GROUP_ID, LOADER_MSG_200+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::FE_OUT, ClMIT_Msg::SOFT_NOTIFY, 
+		 "Only warnings performing report shutdown" },
+
+	{ GROUP_ID, LOADER_MSG_210+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error loading design data of report" },
+
+	{ GROUP_ID, LOADER_MSG_500+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NO_WRAP,
+		 "(All in Hours:Min:Second:MiliSec) Start-up VM %0:s:%1:s:%2:s:%3:s "
+		 "Design channel %4:s:%5:s:%6:s:%7:s Data channel %8:s:%9:s:%10:s:%11:s "
+		 "Design load %12:s:%13:s:%14:s:%15:s Print design %16:s:%17:s:%18:s:%19:s "
+		 "Down phase %20:s:%21:s:%22:s:%23:s" },
+
+	{ GROUP_ID, LOADER_MSG_510+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NO_WRAP,
+		 "3.-Time used in File Access: %0:s:%1:s:%2:s:%3:s" },
+
+	{ GROUP_ID, LOADER_MSG_520+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NO_WRAP,
+		 "* Channel Processes: %0:s:%1:s:%2:s:%3:s" },
+	
+	//Para PUSH LINKS
+
+	{ GROUP_ID, LOADER_MSG_1000+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading Font Data Base" },
+
+	{ GROUP_ID, LOADER_MSG_1010+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading font %0:s" },
+
+	{ GROUP_ID, LOADER_MSG_1020+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading Format Data Base" },
+
+	{ GROUP_ID, LOADER_MSG_1030+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading format %0:s"},
+
+	{ GROUP_ID, LOADER_MSG_1040+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Building Output Device"},
+
+	{ GROUP_ID, LOADER_MSG_1050+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading layout page %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1060+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading page container %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1070+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading section %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1080+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Creating field %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1090+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Validating parameters of field %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1100+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading crosstab %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1110+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading crosstab template, level %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1120+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading crosstab keys for %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_1130+GROUP_BASE, ClMIT_Msg::MSG_DEBUG,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Loading container %0:s"} ,
+
+	{ GROUP_ID, LOADER_MSG_LT1+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "For the variable %0:s, value %1:s  is less than 1" },
+
+	{ GROUP_ID, LOADER_MSG_LT0+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "For the variable %0:s, value %1:s  is less than 0" },
+
+	{ GROUP_ID, LOADER_MSG_RANGE+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "For the variable %0:s, value %1:s  is out of range" },
+
+	{ GROUP_ID, LOADER_MSG_ENUM+GROUP_BASE, ClMIT_Msg::MSG_ERROR,  ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Enumeration test failed for value %0:s" }
+} ;

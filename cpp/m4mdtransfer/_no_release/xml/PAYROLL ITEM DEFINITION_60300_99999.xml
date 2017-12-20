@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object PAYROLL ITEM DEFINITION
+
+@version 1.0
+
+-->
+
+<object name="PAYROLL ITEM DEFINITION">
+
+	<param name="ID_T3"/>
+
+	<param name="ID_PAYROLL_ITEM"/>
+
+	<call-table name="SCH_PAYROLL_ITEM">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_PAYROLL_ITEM" select="$ID_PAYROLL_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_PI_TAGS">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_PAYROLL_ITEM" select="$ID_PAYROLL_ITEM"/>
+
+	</call-table>
+
+	<call-table name="SCH_PI_COMPONENTS">
+
+		<with-pk name="ID_COMPONENT_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_PAYROLL_ITEM" select="$ID_PAYROLL_ITEM"/>		
+
+	</call-table>
+
+</object>
+
+

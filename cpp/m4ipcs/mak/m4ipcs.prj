@@ -1,0 +1,38 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4ipcs.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/boolcondition.cpp
+SRC = ../src/m4exception.cpp
+SRC = ../src/m4thread.cpp
+SRC = ../src/synchutil.cpp
+SRC = ../src/syncronization.cpp
+SRC = ../src/syncrowait.cpp
+SRC = ../src/threadobjs.cpp
+SRC = ../src/unix/m4condition.cpp
+SRC = ../src/unix/syncro.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+EH = yes
+
+#-------------------
+# override CCFLAGS.
+[aix] CCFLAGS = -D_USE_ALGORITHM
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+
+
+
+
+

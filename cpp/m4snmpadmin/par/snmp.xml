@@ -1,0 +1,802 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- [=======================================================] -->
+<!-- @(#) FileVersion: [M4_FILE_VERSION]                       -->
+<!-- @(#) FileDescription: Configuration file for snmp.        -->
+<!-- @(#) CompanyName: Meta4 Spain, S.A.                       -->
+<!-- @(#) LegalCopyright: (c) [M4_YEAR]                        -->
+<!-- @(#) ProductName:  PeopleNet                              -->
+<!-- [=======================================================] -->
+
+<!-- 
+    property subsystem attributes:
+        oid: relative oid to its parent product oid
+        mibtype: 0(mibleaf (default)), 1(mib static table entry), 2(mib dynamic table entry)
+
+    property node attributes:
+        access: 0(NOACCESS), 1(READONLY (default)), 2(READWRITE), 3(READCREATE)
+        syntax: 2(INT, INT32), 4(OCTETS (default))
+        cmdid: the identifier of the subsystem command to execute in a set operation.
+        paramid: the identifier of this parameter in the above command. 
+-->
+ 
+<snmp>
+    <products>
+	<!-- PRODUCT APPLICATION SERVER -->
+        <product name="applicationserver" oid="1.3.6.1.4.1.19883.3.1.1.1">
+            <subsystems>
+
+		<!-- SERVER -->
+                <subsystem type="server" oid="1">
+                    <properties>
+                        <property name="stringid" oid="1" />
+                        <property name="type" oid="2" />
+                        <property name="start_date" oid="3" />
+                        <property name="state" oid="4"/>
+                        <property name="architecture" oid="5" />
+                        <property name="version" oid="6" />
+                        <property name="current_time" oid="7" />
+                        <property name="description" oid="8" />
+                        <property name="server_memory_level" oid="9" />
+                        <property name="server_host_name" oid="10" />
+                    </properties>
+                    <statistics>
+                        <statistic name="consumed_system_memory" oid="501" syntax="2" />
+                        <statistic name="cpu_usage" oid="502" syntax="2" />
+                        <statistic name="m4server_memory_countability" oid="503" syntax="2" />
+                    </statistics>
+
+	            <subsystems>
+
+			<!-- MEMORY_CONTROLER -->
+	                <subsystem type="memory_controler" oid="2" >
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                        <property name="start_date" oid="3" />
+	                        <property name="state" oid="4"/>
+	                    </properties>
+	                    
+	                    <subsystems>
+				<!-- Se reserva el 1 para el indice de la tabla. Las propiedades empiezan con 2. -->
+	                        <subsystem type="memory_level" oid="1001.1" mibtype="1">
+	                            <properties>
+	                                <property name="stringid" oid="2" />
+	                                <property name="type" oid="3" />
+	                                <property name="start_date" oid="4" />
+	                                <property name="color" oid="5" />
+	                                <property name="abs_high_memory" oid="6" syntax="2" />
+	                                <property name="abs_low_memory" oid="7" syntax="2" />
+	                                <property name="percent_high_memory" oid="8" syntax="2" />
+	                                <property name="percent_low_memory" oid="9" syntax="2" />
+	                            </properties>
+	                        </subsystem>
+	                    </subsystems>
+	                </subsystem>
+			<!-- FIN MEMORY_CONTROLER -->
+
+
+			<!-- LDB -->
+	                <subsystem type="ldb" oid="3">
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                        <property name="connection_string" oid="3" />
+	                        <property name="max_num_conn" oid="4" syntax="2" />
+	                        <property name="max_num_cursor" oid="5" syntax="2" />
+	                        <property name="con_exec" oid="6" />
+	                        <property name="max_num_statmnt_cache" oid="7" syntax="2" />
+	                        <property name="max_num_logic_object" oid="8" syntax="2" />
+	                        <property name="isolation_level" oid="9" />
+	                        <property name="database_type" oid="10" />
+	                        <property name="num_conn_in_use" oid="11" syntax="2" />
+	                        <property name="num_logic_object_in_use" oid="12" syntax="2" />
+	                        <property name="num_statmnt_in_use" oid="13" syntax="2" />
+	                        <property name="attempts_number" oid="14" syntax="2" />
+	                        <property name="action_flush_dictionary_cache" oid="15" access="2" cmdid="5" paramid="0" />
+	                        <property name="last_flush_dictionary_cache" oid="16" />
+	                    </properties>
+	                </subsystem>
+			<!-- FIN LDB -->
+
+			<!-- CACHES -->
+	                <subsystem type="caches" oid="4" >
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                        <property name="start_date" oid="3" />
+	                        <property name="number_of_cache_subsystem" oid="4" syntax="2" />
+	                    	<property name="action_clean_all_caches" oid="5" access="2" cmdid="2" paramid="0" />
+	                        <property name="last_clean_all_caches" oid="6" />
+	                    </properties>
+	                    
+			    <!-- TABLA CACHE -->
+	                    <subsystems>
+	                        <subsystem type="cache" oid="1001.1" mibtype="1">
+	                            <properties>
+	                                <property name="stringid" oid="2" />
+	                                <property name="type" oid="3" />
+	                                <property name="start_date" oid="4" />
+	                                <property name="state" oid="5" />
+	                                <property name="cache_name" oid="6" />
+	                                <property name="max_cache_size_memory" oid="7" syntax="2" />
+	                                <property name="max_cache_num_items" oid="8" syntax="2" />
+	                                <property name="refresh_ratio" oid="9" syntax="2" />
+	                        	    <property name="default_max_period" oid="10" />
+    	                        	<property name="default_max_unused_period" oid="11" />
+	                            </properties>
+	                            <statistics>
+    	                        	<statistic name="size_cache" oid="501" syntax="2" />
+    	                        	<statistic name="num_of_objs_in_cache" oid="502" syntax="2" />
+    	                        	<statistic name="objs_in_queue" oid="503" syntax="2" />
+    	                        	<statistic name="objs_in_lru" oid="504" syntax="2" />
+    	                        	<statistic name="num_of_ref_to_cache" oid="505" syntax="2" />
+    	                        	<statistic name="hit_ratio" oid="506" syntax="2" />
+	                            </statistics>
+	                        </subsystem>
+	                    </subsystems>
+			    <!-- FIN TABLA CACHE -->
+
+	                </subsystem>
+			<!-- FIN CACHES -->
+
+
+			<!-- DISPATCHER (Services en el Monitor) -->
+	                <subsystem type="dispatcher_subsystem" oid="5">
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                    </properties>
+                    
+			    <!-- Subsistemas del DISPATCHER -->
+	                    <subsystems>
+				<!-- METADATA -->
+	                        <subsystem type="metadata_subsystem" oid="1001">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                                <property name="state" oid="3" />
+	                                <property name="service_id" oid="4" />
+	                                <property name="start_date" oid="5" />
+	                                <property name="cmcr_cache" oid="6" />
+	                                <property name="cscr_cache" oid="7" />
+	                                <property name="pres_cache" oid="8" />
+	                                <property name="repository_key" oid="9" />
+	                                <property name="max_queue_items" oid="10" syntax="2" />
+	                                <property name="min_instances" oid="11" syntax="2" />
+	                                <property name="max_instances" oid="12" syntax="2" />
+	                                <property name="critical_service" oid="13" />
+	                                <property name="exited_executors" oid="14" syntax="2" />
+	                                <property name="exception_handling" oid="15" />
+	                            </properties>
+	                            <statistics>
+	                                <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                <statistic name="error_request_count" oid="502" syntax="2" />
+	                                <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                <statistic name="success_request_count" oid="506" syntax="2" />
+	                                <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                            </statistics>
+
+	                            <subsystems>
+				    	<!-- EJECUTOR METADATA -->
+	                                <subsystem type="executor_md" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+	                                        <property name="data_cache" oid="5" />
+	                                        <property name="launcher_user_id" oid="6" />
+	                                        <property name="launcher_session_id" oid="7" />
+	                                        <property name="launcher_start" oid="8" />
+	                                        <property name="launcher_end" oid="9" />
+	                                        <property name="current_exec_state" oid="10" syntax="2" />
+	                                    </properties>
+	                                    <statistics>
+	                                        <statistic name="avg_proc_items_id" oid="501" syntax="2" />
+	                                        <statistic name="proc_items_id" oid="502" syntax="2" />
+	                                        <statistic name="error_request_count" oid="503" syntax="2" />
+	                                        <statistic name="timed_out_request_count" oid="504" syntax="2" />
+	                                        <statistic name="user_aborted_request_count" oid="505" syntax="2" />
+	                                        <statistic name="admin_aborted_request_count" oid="506" syntax="2" />
+	                                        <statistic name="success_request_count" oid="507" syntax="2" />
+	                                        <statistic name="fiv_sec_tps" oid="508" syntax="2" />
+	                                        <statistic name="thir_sec_tps" oid="509" syntax="2" />
+	                                        <statistic name="fiv_min_tps" oid="510" syntax="2" />
+	                                        <statistic name="fiv_sec_avg_exec" oid="511" syntax="2" />
+	                                        <statistic name="thir_sec_avg_exec" oid="512" syntax="2" />
+	                                        <statistic name="fiv_min_avg_exec" oid="513" syntax="2" />
+	                                        <statistic name="fiv_sec_ssuse" oid="514" syntax="2" />
+	                                        <statistic name="thir_sec_ssuse" oid="515" syntax="2" />
+	                                        <statistic name="fiv_min_ssuse" oid="516" syntax="2" />
+	                                        <statistic name="fiv_sec_wait_time" oid="517" syntax="2" />
+	                                        <statistic name="thir_sec_wait_time" oid="518" syntax="2" />
+	                                        <statistic name="fiv_min_wait_time" oid="519" syntax="2" />
+	                                    </statistics>
+	                               </subsystem>
+				       <!-- FIN EJECUTOR METADATA -->
+	                            </subsystems>
+	                        </subsystem>
+				<!-- FIN METADATA -->
+
+
+				<!-- SUBSISTEMA DE USUARIOS -->
+	                        <subsystem type="users" oid="1002">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                                <property name="start_date" oid="3" />
+	                                <property name="user_timeout_mn" oid="4" syntax="2" access="2" cmdid="7" paramid="0"/>
+	                                <property name="user_timeout" oid="5" access="2" cmdid="8" paramid="0"/>
+									<property name="action_close_session" oid="6" access="2" cmdid="10" paramid="1" />
+	                            </properties>
+                                    <statistics>
+					<statistic name="users_loged" oid="501" syntax="2" />
+					<statistic name="total_sessions" oid="502" syntax="2" />
+					<statistic name="current_sessions" oid="503" syntax="2" />
+                                    </statistics>
+	                            <subsystems>
+					<!-- TABLA DE USUARIOS -->
+	                                <subsystem type="user" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+	                                        <property name="state" oid="5" />
+	                                        <property name="username" oid="6" />
+	                                    </properties>
+	                                    <statistics>
+						<statistic name="active_sessions" oid="501" syntax="2" />
+	                                    </statistics>
+	                                    <subsystems>
+						<!-- TABLA DE SESSIONES PARA EL USUARIO -->
+	                                        <subsystem type="session" oid="1001.1" mibtype="2">
+	                                            <properties>
+	                                                <property name="stringid" oid="2" />
+	                                                <property name="type" oid="3" />
+	                                                <property name="start_date" oid="4" />
+	                                                <property name="username" oid="5" />
+	                                                <property name="last_transaction_time" oid="6" />
+	                                                <property name="sessionid" oid="7" />
+	                                                <property name="hostname" oid="8" />
+	                                                <property name="connection_protocol" oid="9" />
+	                                            </properties>
+		                                    <statistics>
+	                                                <statistic name="logon_time" oid="501" />
+	                                                <statistic name="processed_request" oid="502" syntax="2" />
+	                                                <statistic name="pending_pdus" oid="503" syntax="2" />
+		                                    </statistics>
+	                                       </subsystem>
+					       <!-- FIN TABLA DE SESSIONES PARA EL USUARIO -->
+	                                    </subsystems>
+	                               </subsystem>
+					<!-- FIN TABLA DE USUARIOS -->
+	                            </subsystems>
+	                        </subsystem>
+				<!-- FIN SUBSISTEMA DE USUARIOS -->
+
+				<!-- SUBSISTEMA PROXY -->
+				<!-- PROXY -->
+	                        <subsystem type="proxy_subsystem" oid="1003">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                        	<property name="start_date" oid="3" />
+				        <property name="state" oid="4" />
+	                            </properties>
+	                            <statistics>
+	                                <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                <statistic name="error_request_count" oid="502" syntax="2" />
+	                                <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                <statistic name="success_request_count" oid="506" syntax="2" />
+	                                <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                            </statistics>
+
+	                            <subsystems>
+				    	<!-- EJECUTOR PROXY -->
+	                                <subsystem type="executor_proxy" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+                                            <property name="service_id" oid="5" />
+                                            <property name="launcher_user_id" oid="6" />
+	                                        <property name="launcher_session_id" oid="7" />
+	                                        <property name="launcher_start" oid="8" />
+	                                        <property name="launcher_end" oid="9" />
+	                                        <property name="execution_description" oid="10"/>
+	                                        <property name="object_list" oid="11" syntax="2" />
+											<property name="action_cancel_exec" oid="12" access="2" cmdid="6" paramid="0" />
+	                                    </properties>
+	                                    <statistics>
+	                                        <statistic name="avg_proc_items_id" oid="501" syntax="2" />
+	                                        <statistic name="proc_items_id" oid="502" syntax="2" />
+	                                        <statistic name="error_request_count" oid="503" syntax="2" />
+	                                        <statistic name="timed_out_request_count" oid="504" syntax="2" />
+	                                        <statistic name="user_aborted_request_count" oid="505" syntax="2" />
+	                                        <statistic name="admin_aborted_request_count" oid="506" syntax="2" />
+	                                        <statistic name="success_request_count" oid="507" syntax="2" />
+	                                        <statistic name="fiv_sec_tps" oid="508" syntax="2" />
+	                                        <statistic name="thir_sec_tps" oid="509" syntax="2" />
+	                                        <statistic name="fiv_min_tps" oid="510" syntax="2" />
+	                                        <statistic name="fiv_sec_avg_exec" oid="511" syntax="2" />
+	                                        <statistic name="thir_sec_avg_exec" oid="512" syntax="2" />
+	                                        <statistic name="fiv_min_avg_exec" oid="513" syntax="2" />
+	                                        <statistic name="fiv_sec_ssuse" oid="514" syntax="2" />
+	                                        <statistic name="thir_sec_ssuse" oid="515" syntax="2" />
+	                                        <statistic name="fiv_min_ssuse" oid="516" syntax="2" />
+	                                        <statistic name="fiv_sec_wait_time" oid="517" syntax="2" />
+	                                        <statistic name="thir_sec_wait_time" oid="518" syntax="2" />
+	                                        <statistic name="fiv_min_wait_time" oid="519" syntax="2" />
+	                                    </statistics>
+	                               </subsystem>
+				       <!-- FIN EJECUTOR PROXY -->
+
+				    	<!-- PROXY SPACES -->
+	                                <subsystem type="proxy_spaces" oid="1002" >
+	                                    <properties>
+	                                        <property name="stringid" oid="1" />
+	                                        <property name="type" oid="2" />
+	                                        <property name="start_date" oid="3" />
+	                                        <property name="state" oid="4" />
+	                                        <property name="max_n_spaces" oid="5" syntax="2"/>
+	                                        <property name="data_cache" oid="6" />
+	                                    </properties>
+		                            <subsystems>
+
+					    <!-- PROXY SPACE -->
+		                            <subsystem type="proxy_space" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+	                                        <property name="state" oid="5" />
+	                                        <property name="launcher_user_id" oid="6" />
+	                                        <property name="launcher_session_id" oid="7" />
+	                                    </properties>
+		                            </subsystem>
+					    <!-- FIN PROXY SPACE -->
+
+		                            </subsystems>
+	                               </subsystem>
+				       <!-- FIN PROXY SPACES -->
+
+	                            </subsystems>
+	                        </subsystem>
+				<!-- FIN SUBSISTEMA PROXY -->
+
+
+				<!-- OLTP -->
+	                        <subsystem type="oltp_subsystem" oid="1004">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                                <property name="start_date" oid="3" />
+	                                <property name="state" oid="4" />
+	                            </properties>
+	                            <statistics>
+	                                <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                <statistic name="error_request_count" oid="502" syntax="2" />
+	                                <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                <statistic name="success_request_count" oid="506" syntax="2" />
+	                                <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                            </statistics>
+	                            <subsystems>
+					<!-- EJECUTOR OLTP -->
+	                                <subsystem type="executor_channel" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+	                                        <property name="data_cache" oid="5" />
+	                                        <property name="launcher_user_id" oid="6" />
+	                                        <property name="launcher_session_id" oid="7" />
+	                                        <property name="launcher_start" oid="8" />
+	                                        <property name="launcher_end" oid="9" />
+	                                        <property name="execution_description" oid="10" />
+	                                        <property name="object_list" oid="11" />
+	                                        <property name="current_exec_state" oid="12" syntax="2" />
+											<property name="action_cancel_exec" oid="13" access="2" cmdid="6" paramid="0" />
+	                                    </properties>
+	                                    <statistics>
+	                                        <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                        <statistic name="error_request_count" oid="502" syntax="2" />
+	                                        <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                        <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                        <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                        <statistic name="success_request_count" oid="506" syntax="2" />
+	                                        <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                        <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                        <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                        <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                        <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                        <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                        <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                        <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                        <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                        <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                        <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                        <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                                    </statistics>
+	                               </subsystem>
+					<!-- FIN EJECUTOR OLTP -->
+	                            </subsystems>
+	                        </subsystem> 
+				<!-- FIN OLTP -->
+
+				<!-- XML -->
+	                        <subsystem type="xml_subsystem" oid="1005">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                                <property name="start_date" oid="3" />
+	                                <property name="state" oid="4" />
+	                                <property name="max_memory" oid="5" syntax="2" />
+	                                <property name="refr_ratio" oid="6" syntax="2" />
+	                                <property name="state_cache_dir" oid="7" />
+
+	                            </properties>
+	                            <statistics>
+	                                <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                <statistic name="error_request_count" oid="502" syntax="2" />
+	                                <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                <statistic name="success_request_count" oid="506" syntax="2" />
+	                                <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                            </statistics>
+	                            <subsystems>
+					<!-- EJECUTOR XML -->
+	                                <subsystem type="executor_xml" oid="1001.1" mibtype="2">
+	                                    <properties>
+	                                        <property name="stringid" oid="2" />
+	                                        <property name="type" oid="3" />
+	                                        <property name="start_date" oid="4" />
+	                                        <property name="service_id" oid="5" />
+	                                        <property name="launcher_user_id" oid="6" />
+	                                        <property name="launcher_session_id" oid="7" />
+	                                        <property name="launcher_start" oid="8" />
+	                                        <property name="launcher_end" oid="9" />
+	                                        <property name="execution_description" oid="10" />
+	                                        <property name="current_exec_state" oid="11" syntax="2" />
+											<property name="action_cancel_exec" oid="12" access="2" cmdid="6" paramid="0" />
+	                                    </properties>
+	                                    <statistics>
+	                                        <statistic name="proc_items_id" oid="501" syntax="2" />
+	                                        <statistic name="error_request_count" oid="502" syntax="2" />
+	                                        <statistic name="timed_out_request_count" oid="503" syntax="2" />
+	                                        <statistic name="user_aborted_request_count" oid="504" syntax="2" />
+	                                        <statistic name="admin_aborted_request_count" oid="505" syntax="2" />
+	                                        <statistic name="success_request_count" oid="506" syntax="2" />
+	                                        <statistic name="fiv_sec_tps" oid="507" syntax="2" />
+	                                        <statistic name="thir_sec_tps" oid="508" syntax="2" />
+	                                        <statistic name="fiv_min_tps" oid="509" syntax="2" />
+	                                        <statistic name="fiv_sec_avg_exec" oid="510" syntax="2" />
+	                                        <statistic name="thir_sec_avg_exec" oid="511" syntax="2" />
+	                                        <statistic name="fiv_min_avg_exec" oid="512" syntax="2" />
+	                                        <statistic name="fiv_sec_ssuse" oid="513" syntax="2" />
+	                                        <statistic name="thir_sec_ssuse" oid="514" syntax="2" />
+	                                        <statistic name="fiv_min_ssuse" oid="515" syntax="2" />
+	                                        <statistic name="fiv_sec_wait_time" oid="516" syntax="2" />
+	                                        <statistic name="thir_sec_wait_time" oid="517" syntax="2" />
+	                                        <statistic name="fiv_min_wait_time" oid="518" syntax="2" />
+	                                    </statistics>
+	                               </subsystem>
+					<!-- FIN EJECUTOR XML -->
+	                            </subsystems>
+	                        </subsystem>
+				<!-- FIN XML -->
+
+				<!-- SERVICES (Suplementary Services Subsystem en el Monitor) --> 
+		                <subsystem type="services" oid="1006">
+		                    <properties>
+		                        <property name="stringid" oid="1" />
+		                        <property name="type" oid="2" />
+		                    </properties>
+			            <subsystems>
+	                        	    <subsystem type="echo_service" oid="1001">
+		        	        	<properties>
+		                        		<property name="stringid" oid="1" />
+				                        <property name="type" oid="2" />
+			                                <property name="start_date" oid="3" />
+			                                <property name="state" oid="4" />
+			                                <property name="service_id" oid="5" />
+			                                <property name="min_instances" oid="6" syntax="2" />
+			                                <property name="max_instances" oid="7" syntax="2" />
+			                                <property name="critical_service" oid="8" />
+			                                <property name="exited_executors" oid="9" syntax="2" />
+			                                <property name="exception_handling" oid="10" />
+			                        </properties>
+
+			                        <subsystems>
+			                        	<subsystem type="executor_echo" oid="1001.1" mibtype="2">
+			                                    <properties>
+			                                        <property name="stringid" oid="2" />
+			                                        <property name="type" oid="3" />
+			                                        <property name="start_date" oid="4" />
+			                                        <property name="service_id" oid="5" />			                                        
+			                                        <property name="launcher_user_id" oid="6" />
+			                                        <property name="launcher_session_id" oid="7" />
+			                                        <property name="launcher_start" oid="8" />
+			                                        <property name="launcher_end" oid="9" />
+			                                    </properties>
+			                                    <statistics>
+			                                        <statistic name="user_aborted_request_count" oid="501" syntax="2" />
+			                                        <statistic name="success_request_count" oid="502" syntax="2" />
+			                                        <statistic name="fiv_sec_tps" oid="503" syntax="2" />
+			                                        <statistic name="thir_sec_tps" oid="504" syntax="2" />
+			                                        <statistic name="fiv_min_tps" oid="505" syntax="2" />
+			                                        <statistic name="fiv_sec_avg_exec" oid="506" syntax="2" />
+			                                        <statistic name="thir_sec_avg_exec" oid="507" syntax="2" />
+			                                        <statistic name="fiv_min_avg_exec" oid="508" syntax="2" />
+			                                        <statistic name="fiv_sec_ssuse" oid="509" syntax="2" />
+			                                        <statistic name="thir_sec_ssuse" oid="510" syntax="2" />
+			                                        <statistic name="fiv_min_ssuse" oid="511" syntax="2" />
+			                                        <statistic name="fiv_sec_wait_time" oid="512" syntax="2" />
+			                                        <statistic name="thir_sec_wait_time" oid="513" syntax="2" />
+			                                        <statistic name="fiv_min_wait_time" oid="514" syntax="2" />
+			                                    </statistics>
+			                        	</subsystem>
+			                    	</subsystems>
+		        	            </subsystem>
+
+			            </subsystems>
+		                </subsystem>
+				<!-- FIN SERVICES (Suplementary Services Subsystem en el Monitor) --> 
+
+				<!-- JOBSCHEDULE -->
+		                <subsystem type="job_scheduler_subsystem" oid="1007">
+		                    <properties>
+		                        <property name="stringid" oid="1" />
+		                        <property name="type" oid="2" />
+		                        <property name="start_date" oid="3" />
+		                        <property name="state" oid="4" access="2" cmdid="6" paramid="0" />
+		                        <property name="critical_service" oid="5" />
+		                        <property name="exception_handling" oid="6" />
+		                    </properties>
+		                    <statistics>
+		                        <statistic name="js_next_start_date" oid="501" />
+		                        <statistic name="js_next_stop_date" oid="502" />
+		                        <statistic name="js_cancel_frequency" oid="503" />
+		                        <statistic name="js_recover_frequency" oid="504" />
+		                        <statistic name="js_expired_frequency" oid="505" />
+		                        <statistic name="js_expired_res_frequency" oid="506" />
+		                        <statistic name="js_njobs_expired" oid="507" syntax="2" />
+		                        <statistic name="js_nresources_expired" oid="508" syntax="2" />
+		                    </statistics>
+			            <subsystems>
+	 				    <!-- JOBSCHEDULE SERVICE -->
+	                        	    <subsystem type="job_scheduler_executor_service" oid="1001">
+		        	        	<properties>
+		                        		<property name="stringid" oid="1" />
+				                        <property name="type" oid="2" />
+				                        <property name="min_instances" oid="3" syntax="2" />
+				                        <property name="max_instances" oid="4" syntax="2" />
+				                        <property name="exited_executors" oid="5" syntax="2" />
+				                        <property name="js_timeout" oid="6" />
+			                        </properties>
+				                <statistics>
+				                        <statistic name="num_jobs" oid="501" syntax="2" />
+				                        <statistic name="num_jobs_cancel" oid="502" syntax="2" />
+				                        <statistic name="num_task_ok" oid="503" syntax="2" />
+				                        <statistic name="num_task_error" oid="504" syntax="2" />
+				                        <statistic name="average_time" oid="505" />
+				                        <statistic name="average_delay" oid="506" />
+				                        <statistic name="use_percent" oid="507" syntax="2" />
+				                        <statistic name="num_executors_used" oid="508" syntax="2" />
+						</statistics>
+			                        <subsystems>
+		 				    	<!-- EJECUTOR JOBSCHEDULE -->
+			                        	<subsystem type="executor_job_execute" oid="1001.1" mibtype="2">
+			                                	<properties>
+			                                        	<property name="stringid" oid="2" />
+			                                        	<property name="type" oid="3" />
+						                        <property name="start_date" oid="4" />
+						                        <property name="end_date" oid="5" />
+						                        <property name="current_exec_state" oid="6" syntax="2" />
+												<property name="action_cancel_exec" oid="7" access="2" cmdid="6" paramid="0" />
+			                                    	</properties>
+								<statistics>
+						                        <statistic name="num_jobs_total" oid="501" syntax="2" />
+						                        <statistic name="num_jobs_erro" oid="502" syntax="2" />
+						                        <statistic name="num_jobs_success" oid="503" syntax="2" />
+						                        <statistic name="m4_user_job" oid="504" />
+						                        <statistic name="m4_js_id_execution" oid="505" />
+						                        <statistic name="m4_last_time_job" oid="506" />
+						                        <statistic name="m4_date_start_execution" oid="507" />
+						                        <statistic name="m4_date_end_execution" oid="508" />
+								</statistics>
+			                        	</subsystem>
+		 				    	<!-- FIN EJECUTOR JOBSCHEDULE -->
+			                    	</subsystems>
+		        	            </subsystem>
+	 				    <!-- FIN JOBSCHEDULE SERVICE -->
+
+			            </subsystems>
+		                </subsystem>
+				<!-- FIN JOBSCHEDULE -->
+
+                        
+	                    </subsystems>
+	                </subsystem>
+			<!-- FIN DISPATCHER (Services en el Monitor) -->
+
+
+			<!-- COMMUNICATION -->
+	                <subsystem type="communication_server" oid="6">
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                        <property name="base_port" oid="3" syntax="2" />
+	                        <property name="num_comm_workers" oid="4" syntax="2" />
+	                    </properties>
+			    <statistics>
+				<statistic name="processed_request" oid="501" syntax="2" />
+				<statistic name="fif_m_avg_rec_time" oid="502" syntax="2" />
+				<statistic name="fiv_s_avg_rec_time" oid="503" syntax="2" />
+				<statistic name="thir_s_avg_rec_time" oid="504" syntax="2" />
+				<statistic name="fiv_m_avg_rec_time" oid="505" syntax="2" />
+				<statistic name="fif_m_avg_send_time" oid="506" syntax="2" />
+				<statistic name="fiv_s_avg_send_time" oid="507" syntax="2" />
+				<statistic name="thir_s_avg_send_time" oid="508" syntax="2" />
+				<statistic name="fiv_m_avg_send_time" oid="509" syntax="2" />
+				<statistic name="fif_m_avg_total_time" oid="510" syntax="2" />
+				<statistic name="fiv_s_avg_total_time" oid="511" syntax="2" />
+				<statistic name="thir_s_avg_total_time" oid="512" syntax="2" />
+				<statistic name="fiv_m_avg_total_time" oid="513" syntax="2" />
+				<statistic name="fif_m_avg_reg_time" oid="514" syntax="2" />
+				<statistic name="fiv_s_avg_reg_time" oid="515" syntax="2" />
+				<statistic name="thir_s_avg_reg_time" oid="516" syntax="2" />
+				<statistic name="fiv_m_avg_reg_time" oid="517" syntax="2" />
+				<statistic name="fif_m_avg_dereg_time" oid="518" syntax="2" />
+				<statistic name="fiv_s_avg_dereg_time" oid="519" syntax="2" />
+				<statistic name="thir_s_avg_dereg_time" oid="520" syntax="2" />
+				<statistic name="fiv_m_avg_dereg_time" oid="521" syntax="2" />
+				<statistic name="fif_m_avg_getsess_time" oid="522" syntax="2" />
+				<statistic name="fiv_s_avg_getsess_time" oid="523" syntax="2" />
+				<statistic name="thir_s_avg_getsess_time" oid="524" syntax="2" />
+				<statistic name="fiv_m_avg_getsess_time" oid="525" syntax="2" />
+				<statistic name="fif_m_avg_input_bytes" oid="526" syntax="2" />
+				<statistic name="fiv_s_avg_input_bytes" oid="527" syntax="2" />
+				<statistic name="thir_s_avg_input_bytes" oid="528" syntax="2" />
+				<statistic name="fiv_m_avg_input_bytes" oid="529" syntax="2" />
+				<statistic name="fif_m_avg_output_bytes" oid="530" syntax="2" />
+				<statistic name="fiv_s_avg_output_bytes" oid="531" syntax="2" />
+				<statistic name="thir_s_avg_output_bytes" oid="532" syntax="2" />
+				<statistic name="fiv_m_avg_output_bytes" oid="533" syntax="2" />
+				<statistic name="fif_m_avg_processed" oid="534" syntax="2" />
+				<statistic name="fiv_s_avg_processed" oid="535" syntax="2" />
+				<statistic name="thir_s_avg_processed" oid="536" syntax="2" />
+				<statistic name="fiv_m_avg_processed" oid="537" syntax="2" />
+				<statistic name="num_connections" oid="538" syntax="2" />
+			    </statistics>
+	                </subsystem>
+			<!-- FIN COMMUNICATION -->
+
+
+			<!-- TRAZAS -->
+	                <subsystem type="traces" oid="7">
+	                    <properties>
+	                        <property name="stringid" oid="1" />
+	                        <property name="type" oid="2" />
+	                    </properties>
+	                    <subsystems>
+				<!-- LOG -->
+	                        <subsystem type="log" oid="1001">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                            </properties>
+	                        </subsystem>
+				<!-- FIN LOG -->
+	                        
+				<!-- VMLOG -->
+	                        <subsystem type="vmlog" oid="1002">
+	                            <properties>
+	                                <property name="stringid" oid="1" />
+	                                <property name="type" oid="2" />
+	                                <property name="ldb_debug_level" oid="3" syntax="4" access="2" cmdid="2" paramid="0" />
+	                                <property name="ldb_debug_detail_level" oid="4" syntax="4" access="2" cmdid="3" paramid="1" />
+	                                <property name="vm_debug_level" oid="5" syntax="4" access="2" cmdid="4" paramid="0" />
+	                                <property name="vm_max_debug_period" oid="6" syntax="4" access="2" cmdid="5" paramid="0" />
+	                                <property name="java_trace" oid="7" syntax="4" access="2" cmdid="8" paramid="0" />
+					<!-- Lo que hacemos es asociar el estado al comando disable -->
+	                                <property name="transport_dump_status" oid="8" syntax="4" access="2" cmdid="10" paramid="0" />
+	                                <property name="transport_dump_directory" oid="9" />
+	                                <property name="transport_dump_prefix" oid="10" />
+	                                <property name="transport_dump_max_file_size" oid="11" syntax="2"/>
+	                                <property name="transport_dump_max_files" oid="12" syntax="2"/>
+	                            </properties>
+	                        </subsystem>
+				<!-- FIN VMLOG -->
+
+	                    </subsystems>
+	                </subsystem>
+			<!-- FIN TRAZAS -->
+
+        	    </subsystems>
+                </subsystem>
+		<!-- FIN SERVER -->
+
+            </subsystems>
+
+	</product>
+	<!-- FIN PRODUCT APPLICATION SERVER -->
+
+	<!-- PRODUCT DISPATCHER -->
+        <product name="dispatcher" oid="1.3.6.1.4.1.19883.3.1.1.2">
+
+            <subsystems>
+		<!-- TABLA DE NODOS -->
+                <subsystem type="appserverconf" oid="1001.1" mibtype="1">
+                    <properties>
+                        <property name="node_id" oid="2"/>
+                        <property name="node_host" oid="3"/>
+                        <property name="base_port" oid="4"/>
+                        <property name="node_state" oid="5" syntax="2" access="2" cmdid="0" paramid="0" />
+                        <property name="oltp_load_factor" oid="6"/>
+						<property name="xml_load_factor" oid="7"/>
+                        <property name="server_memory" oid="8"/>
+                        <property name="num_sessions" oid="9"/>
+                        <property name="system_memory" oid="10"/>
+                        <property name="cpu_usage" oid="11"/>
+						<property name="oltp_time" oid="12"/>
+						<property name="xml_time" oid="13"/>
+                   </properties>
+                </subsystem>
+		<!-- TABLA DE NODOS -->
+            </subsystems>
+		
+	</product>
+	<!-- FIN PRODUCT DISPATCHER -->
+
+    </products>
+</snmp>

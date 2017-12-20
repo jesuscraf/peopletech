@@ -1,0 +1,77 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4ldb.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/apisql.cpp
+SRC = ../src/clchkjoins.cpp
+SRC = ../src/cldictio.cpp
+SRC = ../src/cldinarr.cpp
+SRC = ../src/clglbvar.cpp
+SRC = ../src/cllconn.cpp
+SRC = ../src/clldb.cpp
+SRC = ../src/clldb_wrapper.cpp
+SRC = ../src/clload.cpp
+SRC = ../src/clload2.cpp
+SRC = ../src/clmtsent.cpp
+SRC = ../src/clnametrans.cpp
+SRC = ../src/clpersb2.cpp
+SRC = ../src/clpersbs.cpp
+SRC = ../src/clpersi2.cpp
+SRC = ../src/clpersis.cpp
+SRC = ../src/clptload.cpp
+SRC = ../src/clsecrty.cpp
+SRC = ../src/clsentcc.cpp
+SRC = ../src/clstatem.cpp
+SRC = ../src/cltblmem.cpp
+SRC = ../src/connectioninfo.cpp
+SRC = ../src/connmanager.cpp
+SRC = ../src/ldb_log.cpp
+SRC = ../src/ldbcontext.cpp
+SRC = ../src/ldbdebug.cpp
+SRC = ../src/ldbglobals.cpp
+SRC = ../src/metainfo.cpp
+SRC = ../src/sqlojtrans.cpp
+SRC = ../src/sqltrans.cpp
+SRC = ../src/sqltrans_db.cpp
+SRC = ../src/traductor.cpp
+
+# fuentes que no se optimizan.
+[aix] NO_OPTIMIZE_FILE = cllconn.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+CCFLAGS = -D_M4LDB_DEBUG
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4cryptc
+LIB = m4date
+LIB = m4dbwrap
+LIB = m4dm
+LIB = m4eventhandler
+LIB = m4filemanager
+LIB = m4ipcs
+LIB = m4log
+LIB = m4logsys
+LIB = m4mdrt
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4serial
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4variant
+LIB = m4win2ux
+
+

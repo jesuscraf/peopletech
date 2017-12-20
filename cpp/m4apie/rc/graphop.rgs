@@ -1,0 +1,24 @@
+HKCR
+{
+	GraphOp.GraphOp.1 = s 'GraphOp Class'
+	{
+		CLSID = s '{17E449B0-71A3-11D1-8D15-444553540000}'
+	}
+	GraphOp.GraphOp = s 'GraphOp Class'
+	{
+		CurVer = s 'GraphOp.GraphOp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {17E449B0-71A3-11D1-8D15-444553540000} = s 'GraphOp Class'
+		{
+			ProgID = s 'GraphOp.GraphOp.1'
+			VersionIndependentProgID = s 'GraphOp.GraphOp'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

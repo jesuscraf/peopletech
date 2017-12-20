@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2007 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+<!--
+This XML defines table dependencies for repository object BUSINESS PROCESS
+@version 1.6
+-->
+<object name="BUSINESS PROCESS">
+	<param name="ID_BP"/>
+	<call-table name="SBP__DEFINITION">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+	<call-table name="SBP__CODE_ALIAS">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+	<call-table name="SBP__EXE_CODE">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+		<update-funtions>
+			<call-template name="normalizeReturns">
+				<with-arg name="field" select="@CODE"/>
+				<with-arg name="output" insert="@CODE"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SBP__PAR_DEF">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+	<call-table name="SBP__PARAM_DEFAULTS">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+	<call-table name="SBP__PARAM_FLOW">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+	<call-table name="SBP__STRUCT">
+		<with-pk name="ID_BP" select="$ID_BP"/>
+	</call-table>
+</object>
+

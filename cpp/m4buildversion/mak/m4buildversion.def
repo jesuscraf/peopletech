@@ -1,0 +1,3 @@
+LIBRARY	"m4buildversion"
+EXPORTS
+	GetBuildVersionVB

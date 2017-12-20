@@ -1,0 +1,384 @@
+META4-METADATA-EXECUTOR-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4MetadataSubsystemModule, metadataSubsystem, metadataSubsystemGroup
+		FROM META4-METADATA-SUBSYSTEM-MIB;
+
+
+meta4MetadataExecutorModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Metadata Executor Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4MetadataSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+metadataExecutorGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		cacheName,
+		userName,
+		sessionId,
+		executionBeginDate,
+		executionEndDate,
+		executionState,
+		avgExecutionTime15Min,
+		executionCount,
+		errorExecutionCount,
+		timeoutExecutionCount,
+		userAbortedExecutionCount,
+		adminAbortedExecutionCount,
+		successfulExecutionCount,
+		tps5Sec,
+		tps30Sec,
+		tps5Min,
+		avgExecutionTime5Sec,
+		avgExecutionTime30Sec,
+		avgExecutionTime5Min,
+		avgSSUse5Sec,
+		avgSSUse30Sec,
+		avgSSUse5Min,
+		avgWaitTime5Sec,
+		avgWaitTime30Sec,
+		avgWaitTime5Min
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { metadataSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+metadataExecutorTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF MetadataExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { metadataSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+metadataExecutorEntry OBJECT-TYPE 
+	SYNTAX MetadataExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { metadataExecutorIndex }
+	::= { metadataExecutorTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+MetadataExecutorEntry ::= SEQUENCE {
+		metadataExecutorIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		cacheName DisplayString,
+		userName DisplayString,
+		sessionId DisplayString,
+		executionBeginDate DisplayString,
+		executionEndDate DisplayString,
+		executionState Integer32,
+		avgExecutionTime15Min Integer32,
+		executionCount Integer32,
+		errorExecutionCount Integer32,
+		timeoutExecutionCount Integer32,
+		userAbortedExecutionCount Integer32,
+		adminAbortedExecutionCount Integer32,
+		successfulExecutionCount Integer32,
+		tps5Sec Integer32,
+		tps30Sec Integer32,
+		tps5Min Integer32,
+		avgExecutionTime5Sec Integer32,
+		avgExecutionTime30Sec Integer32,
+		avgExecutionTime5Min Integer32,
+		avgSSUse5Sec Integer32,
+		avgSSUse30Sec Integer32,
+		avgSSUse5Min Integer32,
+		avgWaitTime5Sec Integer32,
+		avgWaitTime30Sec Integer32,
+		avgWaitTime5Min Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+metadataExecutorIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { metadataExecutorEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { metadataExecutorEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { metadataExecutorEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { metadataExecutorEntry 4 }
+
+cacheName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Cache Name"
+	::= { metadataExecutorEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { metadataExecutorEntry 6 }
+
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { metadataExecutorEntry 7 }
+
+executionBeginDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Begin Date"
+	::= { metadataExecutorEntry 8 }
+
+executionEndDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution End Date"
+	::= { metadataExecutorEntry 9 }
+
+executionState  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution State"
+	::= { metadataExecutorEntry 10 }
+
+avgExecutionTime15Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 15 Minutes"
+	::= { metadataExecutorEntry 501 }
+
+executionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Count"
+	::= { metadataExecutorEntry 502 }
+
+errorExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Error Execution Count"
+	::= { metadataExecutorEntry 503 }
+
+timeoutExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Timed Out Execution Count"
+	::= { metadataExecutorEntry 504 }
+
+userAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Aborted Execution Count"
+	::= { metadataExecutorEntry 505 }
+
+adminAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Admin. Aborted Execution Count"
+	::= { metadataExecutorEntry 506 }
+
+successfulExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Successful Execution Count"
+	::= { metadataExecutorEntry 507 }
+
+tps5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Seconds"
+	::= { metadataExecutorEntry 508 }
+
+tps30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 30 Seconds"
+	::= { metadataExecutorEntry 509 }
+
+tps5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Minutes"
+	::= { metadataExecutorEntry 510 }
+
+avgExecutionTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Seconds"
+	::= { metadataExecutorEntry 511 }
+
+avgExecutionTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 30 Seconds"
+	::= { metadataExecutorEntry 512 }
+
+avgExecutionTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Minutes"
+	::= { metadataExecutorEntry 513 }
+
+avgSSUse5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Seconds"
+	::= { metadataExecutorEntry 514 }
+
+avgSSUse30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 30 Seconds"
+	::= { metadataExecutorEntry 515 }
+
+avgSSUse5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Minutes"
+	::= { metadataExecutorEntry 516 }
+
+avgWaitTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Seconds"
+	::= { metadataExecutorEntry 517 }
+
+avgWaitTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 30 Seconds"
+	::= { metadataExecutorEntry 518 }
+
+avgWaitTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Minutes"
+	::= { metadataExecutorEntry 519 }
+
+
+END

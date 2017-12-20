@@ -1,0 +1,1578 @@
+VERSION 02.00
+
+BEGIN SERVER TABLES
+
+rem --------------------------------------------------------------------------------------
+rem @(#) FileVersion: [M4_FILE_VERSION]
+rem @(#) FileDescription: Identifiers list for application server subsystems.
+rem @(#) CompanyName: Meta4 Spain, S.A.
+rem @(#) LegalCopyright: (c) [M4_YEAR]
+rem @(#) ProductName:  PeopleNet
+rem ---------------------------------------------------------------------------------------
+
+
+rem =======================================================
+
+rem ATTRIBUTES IDS
+
+	BEGIN ATTRIBUTES IDS
+
+		TYPE = 0
+
+		NUM_ACCEPTORS = 1
+
+		NUM_ADMIN_ACCEPTORS = 2
+
+		NUM_SCHEDULERS = 3
+
+		NUM_DISTRIBUTORS = 4
+
+		NUM_SENDERS = 5
+
+		NUM_RECEIVERS = 6
+
+		NUM_SERVICES = 7
+
+		NUM_SESSMANAGERS = 8
+
+		ACCEPTOR_PORT = 9
+
+		ADMIN_ACCEPTOR_PORT = 10
+
+		RECEIVER_CONTROL_PORT = 11
+
+		SENDER_CONTROL_PORT = 12
+		
+		SERVICE_ID = 13
+
+		NUM_LAUNCHERS = 14
+
+		MAX_QUEUE_ITEMS = 15
+
+		NUM_INSTANCES = 16
+
+		SENDER_TYPE = 17
+
+		TEST_FILE_PATH = 19
+
+		MAX_INSTANCES = 20
+
+		MIN_INSTANCES = 21
+
+		CRITICAL_SERVICE = 22
+
+		SESSIONID = 23
+
+		EXITED_EXECUTORS = 24
+		
+		JS_TIMEOUT = 25
+
+
+rem -------------------------------------------------------
+
+rem SUBSYSTEMS IDS
+
+		EXECUTOR_TEST = 1
+
+		EXECUTOR_CHANNEL = 2
+
+		EXECUTOR_ECHO = 3
+
+		EXECUTOR_JOB = 4
+
+		EXECUTOR_METHOD = 5
+
+		EXECUTOR_PERSIST = 6
+
+		EXECUTOR_LOAD = 7
+
+		EXECUTOR_UUSS = 8
+
+		EXECUTOR_SESSION = 9
+
+		EXECUTOR_JOB_GET = 10
+
+		EXECUTOR_JOB_EXECUTE = 11
+
+		EXECUTOR_PROXY = 12
+
+		EXECUTOR_NODB = 13
+
+		EXECUTOR_MD = 14
+
+		EXECUTOR_ENV = 15
+
+		EXECUTOR_JOB_CANCEL = 16
+
+		EXECUTOR_XML = 17
+
+
+		SERVER = 30
+
+		COMMUNICATION_SERVER = 31
+
+		RECEIVERS = 32
+
+		RECEIVER = 33
+
+		SENDERS = 34
+
+		SENDER = 35
+
+		ACCEPTORS = 36
+
+		ACCEPTOR = 37
+
+		SESSMANAGER = 38
+
+		SESSMANAGERS = 39
+
+		SCHEDULER = 40
+
+		SCHEDULERS =41
+
+		DISTRIBUTORS = 42
+
+		DISTRIBUTOR = 43
+
+		SERVICES =44
+
+		SERVICE = 45
+
+		JOB_SCHEDULER_EXECUTOR_SERVICE = 69
+
+		JOB_SCHEDULER_LISTENER_SERVICE = 45
+
+		JOB_SCHEDULER_CANCEL_SERVICE = 70
+
+		ECHO_SERVICE  = 80
+
+		CONVERSATIONAL_SERVICE = 45
+
+		METADATA_SERVICE = 45
+
+		OLTP_SERVICE = 45
+
+		ENVIROMENT_SERVICE = 45
+
+		XML_SERVICE = 45
+
+		LDB = 46
+
+		CACHE = 47
+
+		ADMIN_ACCEPTORS = 48
+
+		ADMIN_ACCEPTOR = 49
+
+		EXECUTORS = 50
+
+		EXECUTOR = 51
+
+		USERS = 52
+
+		USER = 53
+
+		SESION = 54
+
+		ROLE = 55
+
+		OLTP_SUBSYSTEM = 56
+
+		JOB_SCHEDULER_SUBSYSTEM = 58
+
+		CACHES	= 59
+
+		SESSION_CHANNEL_SERVICE = 60
+
+		USERS_SUBSYSTEM_SERVICE = 61
+
+		REQUEST = 63
+
+		PROXY_SUBSYSTEM = 64
+
+		METADATA_SUBSYSTEM = 65
+
+		SUPERVISOR = 66
+
+		SUPERVISORS = 67
+
+		SUPERVISOR_COMMAND = 68
+
+		SERVICE_JOB_EXECUTE = 69
+	
+		SERVICE_JOB_CANCEL = 70
+
+		LOAD_ESTIMATOR = 71
+
+		MEMORY_CONTROLER = 72
+
+		MEMORY_LEVEL = 73
+
+		PROXY_SPACES = 74
+
+		XML_SUBSYSTEM = 76
+
+		DMSLN = 77
+
+		DMS_MANAGER = 78
+		
+		EXECUTOR_JOB_EXECUTE28 = 79
+
+		DISPATCHER_SUBSYSTEM = 81
+
+		SERVICES_TABLE = 82
+
+		LOAD_ESTIMATOR_RULES = 83
+
+		DMSFS = 84
+
+		TRACE =	85
+
+		LOG = 86
+
+		VMLOG = 87
+
+		SNMP = 89
+
+rem -------------------------------------------------------
+
+rem PHYSICAL SERVICES
+
+		M4_INTERNAL_SERVICE = 0
+
+		OLTP = 1
+
+		METADATA = 2
+
+		SESSION = 3
+
+		PROXY = 4
+
+		ECHO = 5
+
+		FRONTON = 6
+
+		XML = 11
+
+rem -------------------------------------------------------
+
+rem RECEIVERS		
+
+		M4_RECEIVER_TSAP = 1
+
+		M4_RECEIVER_TEST = 2
+
+
+
+rem -------------------------------------------------------
+
+rem SENDERS
+
+		M4_SENDER_TSAP = 1
+
+		M4_SENDER_TEST = 2
+
+
+
+rem -------------------------------------------------------
+
+rem ACCEPTORS		
+
+		TSAP = 0
+
+		TSAP_SSL = 2
+
+
+
+rem -------------------------------------------------------
+
+rem CACHES
+
+		M4_CACHE_TREE = 0
+
+
+rem ------------------------------------------------------
+
+rem MEMORY LEVELS
+
+		GREEN_MEMORY = 0
+
+		YELLOW_MEMORY = 1
+
+		RED_MEMORY = 2
+
+	END
+
+
+
+
+
+
+rem =======================================================
+
+rem ATTRIBUTES TYPE
+
+	BEGIN ATTRIBUTES TYPE
+
+		TYPE = 100
+
+		STRINGID = 4
+
+		NUM_ACCEPTORS = 2
+
+		NUM_ADMIN_ACCEPTORS = 2
+
+		NUM_SCHEDULERS = 2
+
+		NUM_DISTRIBUTORS = 2
+
+		NUM_SENDERS = 2
+
+		NUM_RECEIVERS = 2
+
+		NUM_SERVICES = 2
+
+		NUM_CONNMANAGERS = 2
+
+		NUM_COMM_WORKERS = 2
+
+		ACCEPTOR_PORT = 2
+
+		ADMIN_ACCEPTOR_PORT = 2
+
+		RECEIVER_CONTROL_PORT = 2
+
+		SENDER_CONTROL_PORT = 2
+
+		CONTROL_PORT = 2
+
+		BASE_PORT = 2
+
+		SERVICE_ID = 4
+
+		NUM_LAUNCHERS =2
+
+		MAX_QUEUE_ITEMS = 1
+
+		NUM_IO_OPERATIONS = 1
+
+		NUM_PAGE_FAULTS = 1
+
+		RUN_PRIORITY = 2
+
+		REAL_TIME_PROCESS = 2
+
+		TYPE_PROCESED_ITEMS = 2
+
+		PROCESSED_ITEMS_AVERAGE = 3
+
+		NUM_INCORRECT_PDUS = 1
+
+		NUM_UNKNOWN_HOSTS = 1
+
+		NUM_UNKNOWN_USERS = 1
+
+		NUM_INVALID_TIME_MARKS = 1
+
+		NUM_INVALID_PROTOCOL_VERSION = 1
+
+		NUM_INVALID_USER_AUTENTIFICATIONS = 1
+
+		NUM_FORGED_SIGN = 1
+
+		NUM_DENIED_CONNECTS = 1
+
+		NUM_TIMEOUTS = 1
+
+		NUM_REJECTED_REQUEST = 1
+
+		NUM_DISCARDED_REQUEST = 1
+
+		VIRTUAL_MACHINE_COUNT = 2
+
+		EXECUTOR_TYPE = 4
+
+		RECEIVER_TYPE = 4
+
+		SENDER_TYPE = 4
+
+		TEST_FILE_PATH = 4
+
+		M4_INPUT_BYTES = 2
+
+		M4_OUTPUT_BYTES = 2
+
+		AVG_OUTPUT_BYTES = 2
+
+		DISCARDED_PDUS = 2
+
+		AVG_INPUT_BYTES = 3
+
+		DROPPED_CONNECTIONS = 2
+
+		INCORRECT_PDUS = 2
+
+		FIF_M_AVG_PROCESSED = 3
+
+		FIV_S_AVG_PROCESSED = 3
+
+		THIR_S_AVG_PROCESSED = 3
+
+		FIV_M_AVG_PROCESSED = 3
+
+		FIF_M_AVG_INPUT_BYTES = 3
+
+		FIV_S_AVG_INPUT_BYTES = 3
+
+		THIR_S_AVG_INPUT_BYTES = 3
+
+		FIV_M_AVG_INPUT_BYTES = 3
+
+		FIF_M_AVG_OUTPUT_BYTES = 3
+
+		FIV_S_AVG_OUTPUT_BYTES = 3
+
+		THIR_S_AVG_OUTPUT_BYTES = 3
+
+		FIV_M_AVG_OUTPUT_BYTES = 3
+
+		QUEUED_PDUS = 2
+
+		QUEUED_ITEMS_PERCENT = 101
+
+		HOSTNAME = 4
+
+		DATABASE = 4
+
+		CONNECTION_STRING =	4
+
+		MAX_NUM_CONN =	2
+	
+		MAX_NUM_CURSOR =	2
+
+		CON_EXEC =	4
+
+		MAX_NUM_STATMNT_CACHE =	2
+
+		MAX_NUM_LOGIC_OBJECT =	2
+
+		ISOLATION_LEVEL =	4
+
+		DATABASE_TYPE =	4
+
+		NUM_CONN_IN_USE =	2
+
+		NUM_LOGIC_OBJECT_IN_USE =	2
+
+		NUM_STATMNT_IN_USE =	2
+
+		LDB_DEBUG_LEVEL = 4
+
+		LDB_DEBUG_DETAIL_LEVEL = 4
+
+		ACTION_FLUSH_DICTIONARY_CACHE = 4
+
+		LAST_FLUSH_DICTIONARY_CACHE = 4
+
+		DEBUG_DETAIL_LEVEL = 4
+
+		TRANSPORT_DUMP_STATUS = 4
+
+		TRANSPORT_DUMP_DIRECTORY = 4
+
+		TRANSPORT_DUMP_PREFIX = 4
+
+		TRANSPORT_DUMP_MAX_FILE_SIZE = 2
+
+		TRANSPORT_DUMP_MAX_FILES = 2
+
+		ATTEMPTS_NUMBER = 2
+
+		MAX_USERS = 2
+
+		USER_CONNECTION = 4
+
+		ACTIVE_ROLE = 4
+
+		SESSION_CONNECTION = 4
+
+		ACTIVE_SESSIONS = 1
+
+		DEBUG_LEVEL = 4
+
+		SECURIRY_LEVEL = 4
+
+		DATABASE = 4
+
+		DATABASE_USER = 4
+
+		START_DATE = 4
+
+		STATUS = 4
+
+		PROCESSED_REQUEST = 2
+
+		LOGON_TIME = 4
+
+		LAST_TRANSACTION_TIME = 4
+		NUM_PROCESED_PDUS = 2
+
+		PENDING_PDUS = 2
+
+		SUBROGATED_CONNECTIONS = 2
+
+		USERS_LOGED = 2
+
+		USER_TIMEOUT_MN = 2
+
+		USER_TIMEOUT = 4
+
+		TOTAL_SESSIONS = 2
+
+		CURRENT_SESSIONS = 2
+		FIF_M_AVG_REC_TIME = 3
+
+		FIV_S_AVG_REC_TIME = 3
+
+		THIR_S_AVG_REC_TIME = 3
+
+		FIV_M_AVG_REC_TIME = 3
+
+		FIF_M_AVG_REG_TIME = 3
+		
+		FIV_S_AVG_REG_TIME = 3
+
+		THIR_S_AVG_REG_TIME = 3
+	
+		FIV_M_AVG_REG_TIME = 3
+	
+		FIF_M_AVG_DEREG_TIME = 3
+	
+		FIV_S_AVG_DEREG_TIME = 3
+
+		THIR_S_AVG_DEREG_TIME  = 3
+	
+		FIV_M_AVG_DEREG_TIME  = 3
+
+		FIF_M_AVG_GETSESS_TIME = 3
+	
+		FIV_S_AVG_GETSESS_TIME = 3
+	
+		THIR_S_AVG_GETSESS_TIME = 3
+
+		FIV_M_AVG_GETSESS_TIME = 3
+
+		FIF_M_AVG_SEND_TIME = 3
+
+		FIV_S_AVG_SEND_TIME = 3
+
+		THIR_S_AVG_SEND_TIME = 3
+
+		FIV_M_AVG_SEND_TIME = 3
+
+		FIF_M_AVG_EXE_TIME = 3
+
+		FIV_S_AVG_EXE_TIME = 3
+
+		THIR_S_AVG_EXE_TIME = 3
+
+		FIV_M_AVG_EXE_TIME = 3
+
+		FIF_M_AVG_TOTAL_TIME = 3
+
+		FIV_S_AVG_TOTAL_TIME = 3
+
+		THIR_S_AVG_TOTAL_TIME = 3
+
+		FIV_M_AVG_TOTAL_TIME = 3
+
+		LAUNCHER_USER_ID = 4
+		LAUNCHER_SESSION_ID = 4
+		LAUNCHER_START = 4
+		LAUNCHER_STATE = 4
+		LAUNCHER_END = 4
+
+		MIN_INSTANCES = 1
+
+		MAX_INSTANCES = 1
+
+		CRITICAL_SERVICE = 4
+
+		SESSIONID = 4
+
+		EXITED_EXECUTORS = 1
+
+		ABS_HIGH_MEMORY = 1
+
+		ABS_LOW_MEMORY = 1
+
+		PERCENT_HIGH_MEMORY = 1
+
+		PERCENT_LOW_MEMORY = 1
+
+		STATE = 4
+
+		EXCEPTIONS = 2
+	
+		EXCEPTION_HANDLING = 4
+		
+		JS_TIMEOUT = 1
+
+		MAX_MEMORY = 1
+
+		REFR_RATIO = 1
+
+		STATE_CACHE_DIR = 4
+
+		CONNECTION_PROTOCOL = 4
+
+		NUM_CONNECTIONS = 2
+
+rem -------------------------------------------------------
+
+rem server attributes type
+
+		USERNAME = 4
+
+		PASSWORD = 4
+
+		METADATA_MOD_DATE = 5
+
+		ARCHITECTURE = 4
+
+		VERSION = 4
+
+		CURRENT_TIME = 5
+
+		DESCRIPTION = 4
+
+		SERVER_HOST_NAME = 4
+
+		SERVER_MEMORY_LEVEL = 4
+
+		COLOR = 4
+
+		M4SERVER_MEMORY_COUNTABILITY = 1
+
+		CONSUMED_SYSTEM_MEMORY = 1
+	
+		CPU_USAGE = 3
+
+rem -------------------------------------------------------
+
+rem DMSLN ATTRIBUTES TYPE
+
+		DMS_CUR_OPEN_SES = 1
+		DMS_LN_CUR_OPEN_REP = 1
+		DMS_LN_MAX_NUMBER_OPEN_REPOSITORIES = 1
+		DMS_MAX_NUMBER_OPEN_SESSIONS = 1
+		DMS_LN_MAX_NUM_CACHE_REPOSITORIES = 1
+		DMS_LN_MAX_TIME_OPEN_REPOSITORIES = 1
+
+rem -------------------------------------------------------
+
+rem OLTP STATISTICS type
+
+rem CRG NEW
+		PROC_ITEMS_ID = 2
+		AVG_PROC_ITEMS_ID = 2
+		ERROR_REQUEST_COUNT = 2
+		TIMED_OUT_REQUEST_COUNT = 2
+		USER_ABORTED_REQUEST_COUNT = 2
+		ADMIN_ABORTED_REQUEST_COUNT = 2
+		SUCCESS_REQUEST_COUNT = 2
+		CURRENT_EXEC_STATE = 4
+		FIV_SEC_TPS = 2
+		THIR_SEC_TPS = 2
+		FIV_MIN_TPS = 2
+		FIV_SEC_AVG_EXEC = 2
+		THIR_SEC_AVG_EXEC = 2
+		FIV_MIN_AVG_EXEC = 2
+		FIV_SEC_SSUSE = 3
+		THIR_SEC_SSUSE = 3
+		FIV_MIN_SSUSE = 3
+		FIV_SEC_WAIT_TIME = 2
+		THIR_SEC_WAIT_TIME = 2
+		FIV_MIN_WAIT_TIME = 2
+		QUEUED_ITEMS = 2
+		FIV_SEC_QUEUED_ITEMS = 2
+		THIR_SEC_QUEUED_ITEMS = 2
+		FIV_MIN_QUEUED_ITEMS = 2
+rem CRG NEW
+
+		FIV_S_TRANSACTION_TIME_AVG = 3
+
+		THIR_S_TRANSACTION_TIME_AVG = 3
+
+		FIV_M_TRANSACTION_TIME_AVG = 3
+
+		FIF_M_TRANSACTION_TIME_AVG = 3
+
+		FIV_S_USAGE_RATIOS = 3
+
+		THIR_S_USAGE_RATIOS = 3
+
+		FIV_M_USAGE_RATIOS = 3
+
+		FIF_M_USAGE_RATIOS = 3
+
+		TRANSACTION_COUNT = 2
+
+		FIV_S_TRANSACTIONS_AVG = 1
+
+		THIR_S_TRANSACTIONS_AVG = 1
+
+		FIV_M_TRANSACTIONS_AVG = 1
+
+		FIF_M_TRANSACTIONS_AVG = 1
+
+rem --------------------------------------------------------
+
+rem JOB SCHEDULER attributes and statistics type
+
+		END_DATE = 0
+		
+		NUM_JOBS_TOTAL=1
+		
+		NUM_JOBS_ERROR=1
+		
+		NUM_JOBS_SUCCESS=1
+		
+		M4_DATE_START_EXECUTOR=4
+		
+		M4_DATE_END_EXECUTOR=4
+		
+		M4_DATE_START_EXECUTION=4
+		
+		M4_DATE_END_EXECUTION=4
+		
+		M4_USER_JOB=4
+		
+		M4_JS_ID_EXECUTION=4
+		
+		M4_LAST_TIME_JOB=4
+		
+		NUM_JOB_GROUPS_COMPLETE=1
+		
+		NUM_BOX_INTERRUPTED= 1
+		
+		M4_TOTAL_DELAY_IN_JOBS=4
+		
+		M4_TOTAL_TIME_IN_EXECUTION=4
+
+rem del servico de ejecutores de JS
+
+		NUM_JOBS=1
+		
+		NUM_JOBS_CANCEL=1
+		
+		NUM_TASK_OK=1
+		
+		NUM_TASK_ERROR=1
+		
+		AVERAGE_TIME=4
+		
+		AVERAGE_DELAY=4
+		
+		USE_PERCENT=3
+		
+		NUM_EXECUTORS_USED=4
+
+rem del subsistema del JS
+		JS_CANCEL_FREQUENCY = 4
+		
+		JS_EXPIRED_FREQUENCY = 4
+
+		JS_EXPIRED_RES_FREQUENCY = 4
+		
+		JS_RECOVER_FREQUENCY = 4
+		
+		JS_NEXT_START_DATE = 4
+		
+		JS_NEXT_STOP_DATE = 4
+		JS_NJOBS_EXPIRED = 1
+		JS_NRESOURCES_EXPIRED = 1
+		
+		
+
+rem -------------------------------------------------------
+
+rem cache attributes and staticstic type
+
+		CACHE_TYPE = 4
+
+		CACHE_NAME = 4
+
+		MAX_CACHE_SIZE_MEMORY = 3
+
+		MAX_CACHE_NUM_ITEMS = 1
+
+		DEFAULT_MAX_PERIOD = 4
+
+		DEFAULT_MAX_UNUSED_PERIOD = 4
+
+		NUMBER_OF_CACHE_SUBSYSTEM = 1
+
+		ACTION_CLEAN_ALL_CACHES = 4
+
+		LAST_CLEAN_ALL_CACHES = 4
+
+		NUM_OF_OBJS_IN_CACHE = 1
+
+		OBJS_IN_QUEUE = 1
+
+		OBJS_IN_LRU = 1
+
+		NUM_OF_REF_TO_CACHE = 3
+
+		HIT_RATIO = 3
+
+		SIZE_CACHE = 1
+
+		RECYCLE_INT = 1
+
+		REFRESH_RATIO = 1
+
+rem -------------------------------------------------------
+
+rem	acceptor attributes type
+
+		CONNECTION_TYPE = 4
+
+
+
+rem -------------------------------------------------------
+
+rem	distributor attributes
+
+	OUTPUT_QUEUE_SIZE = 1
+
+
+
+rem -------------------------------------------------------
+
+rem	receiver attributes 
+
+	RECEIVER_QUEUE_SIZE = 1
+
+	RECEIVER_NUM_CONNECTIONS = 1
+
+	SENDER_NUM_CONNECTIONS = 1
+
+
+
+
+rem -------------------------------------------------------
+
+rem	session manager attributes
+
+	CONTROL_QUEUE_SIZE = 1
+
+
+
+
+
+rem -------------------------------------------------------
+
+rem	metadata subsystem  attributes
+
+	CMCR_CACHE = 4
+
+	CSCR_CACHE = 4
+
+	PRES_CACHE = 4
+
+	REPOSITORY_KEY = 4
+
+
+
+rem -------------------------------------------------------
+
+rem	metadata services attributes
+
+	data_cache = 4
+
+
+
+rem -------------------------------------------------------
+
+rem	user subsystem service attributes
+
+	CACHE = 4
+
+
+
+
+
+rem -------------------------------------------------------
+
+rem PROXY ATTRIBUTES
+
+		PROXY_SS_ATTRIB_INFO = 4
+
+		MAX_N_SPACES = 2
+
+		EXECUTION_DESCRIPTION = 4
+
+		OBJECT_LIST = 4
+
+rem -------------------------------------------------------
+
+rem LOG ATTRIBUTES
+
+		LOG_TYPE = 2
+	
+		VM_DEBUG_LEVEL = 2
+		
+		VM_MAX_DEBUG_PERIOD = 2
+		
+		JAVA_TRACE = 4
+	END
+
+
+
+rem =======================================================
+
+rem ATTRIBUTES SCALE
+
+	BEGIN ATTRIBUTES SCALE
+
+		TYPE = 0
+
+		STRINGID = 0
+
+		NUM_ACCEPTORS = 4
+
+		NUM_ADMIN_ACCEPTORS = 4
+
+		NUM_SCHEDULERS = 4
+
+		NUM_DISTRIBUTORS = 4
+
+		NUM_SENDERS = 4
+
+		NUM_RECEIVERS = 4
+
+		NUM_SERVICES = 4
+
+		NUM_CONNMANAGERS = 4
+
+		NUM_COMM_WORKERS = 0
+
+		ACCEPTOR_PORT = 3
+
+		ADMIN_ACCEPTOR_PORT = 3
+
+		RECEIVER_CONTROL_PORT = 3
+
+		SENDER_CONTROL_PORT = 3
+
+		CONTROL_PORT = 0
+
+		BASE_PORT = 0
+
+		SERVICE_ID = 0
+
+		NUM_LAUNCHERS =1
+
+		MAX_QUEUE_ITEMS = 2
+
+		NUM_IO_OPERATIONS = 0
+
+		NUM_PAGE_FAULTS = 1
+
+		RUN_PRIORITY = 0
+
+		REAL_TIME_PROCESS = 0
+
+		TYPE_PROCESED_ITEMS = 2
+
+		PROCESSED_ITEMS_AVERAGE = 2
+
+		NUM_INCORRECT_PDUS = 2
+
+		NUM_UNKNOWN_HOSTS = 2
+
+		NUM_UNKNOWN_USERS = 2
+
+		NUM_INVALID_TIME_MARKS = 2
+
+		NUM_INVALID_PROTOCOL_VERSION = 2
+
+		NUM_INVALID_USER_AUTENTIFICATIONS = 2
+
+		NUM_FORGED_SIGN = 2
+
+		NUM_DENIED_CONNECTS = 2
+
+		NUM_TIMEOUTS = 2
+
+		NUM_REJECTED_REQUEST = 2
+
+		NUM_DISCARDED_REQUEST = 2
+
+		VIRTUAL_MACHINE_COUNT = 0
+
+		EXECUTOR_TYPE = 0
+
+		RECEIVER_TYPE = 4
+
+		SENDER_TYPE = 4
+
+		TEST_FILE_PATH = 4
+
+		M4_INPUT_BYTES = 2
+
+		M4_OUTPUT_BYTES = 2
+
+		AVG_OUTPUT_BYTES = 2
+
+		DISCARDED_PDUS = 2
+
+		AVG_INPUT_BYTES = 2
+
+		DROPPED_CONNECTIONS = 2
+
+		INCORRECT_PDUS = 2
+
+		5_SECONDS_PROCESSED_ITEMS_AVERAGE = 3
+
+		30_SECONDS_PROCESSED_ITEMS_AVERAGE = 3
+
+		5_MINUTES_PROCESSED_ITEMS_AVERAGE = 3
+
+		5_SECONDS_AVG_INPUT_BYTES = 3
+
+		30_SECONDS_AVG_INPUT_BYTES = 3
+
+		5_MINUTES_AVG_INPUT_BYTES = 3
+
+		5_SECONDS_AVG_OUTPUT_BYTES = 3
+
+		30_SECONDS_AVG_OUTPUT_BYTES = 3
+
+		5_MINUTES_AVG_OUTPUT_BYTES = 3
+
+		QUEUED_PDUS = 2
+
+		QUEUED_ITEMS_PERCENT = 0
+
+		HOSTNAME = 0
+
+		DATABASE = 0
+
+		MAX_USERS = 0
+
+		USER_CONNECTION = 0
+
+		ACTIVE_SESSIONS = 0
+
+		ACTIVE_ROLE = 0
+
+		SESSION_CONNECTION = 0
+
+		DEBUG_LEVEL = 1
+
+		SECURIRY_LEVEL = 0
+
+		CONNECTION_STRING = 0
+		
+		MAX_NUM_CONN = 0
+		
+		MAX_NUM_CURSOR = 0
+		
+		CON_EXEC = 0
+		
+		MAX_NUM_STATMNT_CACHE =	0
+		
+		MAX_NUM_LOGIC_OBJECT =	0
+		
+		ISOLATION_LEVEL = 0
+		
+		DATABASE_TYPE =	0
+		
+		NUM_CONN_IN_USE = 0
+		
+		NUM_LOGIC_OBJECT_IN_USE = 0
+		
+		NUM_STATMNT_IN_USE = 0
+
+		LDB_DEBUG_LEVEL	= 0
+
+		DEBUG_DETAIL_LEVEL = 0
+
+		LDB_DEBUG_DETAIL_LEVEL = 0
+
+		ACTION_FLUSH_DICTIONARY_CACHE = 0
+
+		LAST_FLUSH_DICTIONARY_CACHE = 0
+
+		TRANSPORT_DUMP_STATUS = 0
+
+		TRANSPORT_DUMP_DIRECTORY = 0
+
+		TRANSPORT_DUMP_PREFIX = 0
+
+		TRANSPORT_DUMP_MAX_FILE_SIZE = 0
+
+		TRANSPORT_DUMP_MAX_FILES = 0
+
+		ATTEMPTS_NUMBER = 0
+
+		START_DATE = 0
+		
+		STATUS = 0
+
+		FIF_M_AVG_REC_Q_TIME = 3
+
+		FIV_S_AVG_REC_Q_TIME = 2
+
+		THIR_S_AVG_REC_Q_TIME = 3
+
+		FIV_M_AVG_REC_Q_TIME = 3
+
+		FIF_M_AVG_SERV_Q_TIME = 3
+
+		FIV_S_AVG_SERV_Q_TIME = 2
+
+		THIR_S_AVG_SERV_Q_TIME = 3
+
+		FIV_M_AVG_SERV_Q_TIME = 3
+
+		FIF_M_AVG_OUT_Q_TIME = 3
+
+		FIV_S_AVG_OUT_Q_TIME = 2
+
+		THIR_S_AVG_OUT_Q_TIME = 3
+
+		FIV_M_AVG_OUT_Q_TIME = 3
+
+		FIF_M_AVG_SEND_Q_TIME = 3
+
+		FIV_S_AVG_SEND_Q_TIME = 2
+
+		THIR_S_AVG_SEND_Q_TIME = 3
+
+		FIV_M_AVG_SEND_Q_TIME = 3
+
+		PROCESSED_REQUEST = 4
+
+		LOGON_TIME = 2
+
+		LAST_TRANSACTION_TIME = 1
+		NUM_PROCESED_PDUS = 2
+
+		PENDING_PDUS = 0
+
+		SUBROGATED_CONNECTIONS = 0
+
+		USERS_LOGED = 0
+
+		USER_TIMEOUT_MN = 0
+
+		USER_TIMEOUT = 0
+		TOTAL_SESSIONS = 0
+
+		CURRENT_SESSIONS = 0
+
+		FIF_M_AVG_REC_TIME = 3
+
+		FIV_S_AVG_REC_TIME = 2
+
+		THIR_S_AVG_REC_TIME = 3
+
+		FIV_M_AVG_REC_TIME = 3
+
+		FIF_M_AVG_SCH_TIME = 3
+
+		FIV_S_AVG_SCH_TIME = 2
+
+		THIR_S_AVG_SCH_TIME = 3
+
+		FIV_M_AVG_SCH_TIME = 3
+
+		FIF_M_AVG_DIST_TIME = 3
+
+		FIV_S_AVG_DIST_TIME = 2
+
+		THIR_S_AVG_DIST_TIME = 3
+
+		FIV_M_AVG_DIST_TIME = 3
+
+		FIF_M_AVG_SEND_TIME = 3
+
+		FIV_S_AVG_SEND_TIME = 2
+
+		THIR_S_AVG_SEND_TIME = 3
+
+		FIV_M_AVG_SEND_TIME = 3
+
+		FIF_M_AVG_EXE_TIME = 3
+
+		FIV_S_AVG_EXE_TIME = 2
+
+		THIR_S_AVG_EXE_TIME = 3
+
+		FIV_M_AVG_EXE_TIME = 3
+
+		FIF_M_AVG_TOTAL_TIME = 3
+
+		FIV_S_AVG_TOTAL_TIME = 2
+
+		THIR_S_AVG_TOTAL_TIME = 3
+
+		FIV_M_AVG_TOTAL_TIME = 3
+
+		LAUNCHER_USER_ID = 0
+		LAUNCHER_SESSION_ID = 0
+		LAUNCHER_START = 0
+		LAUNCHER_STATE = 0
+		LAUNCHER_END = 0
+
+		STATE = 0
+
+		SERVER_MEMORY_LEVEL = 0
+
+		EXCEPTIONS = 0
+
+		EXCEPTION_HANDLING = 0
+	
+		MAX_MEMORY = 0
+
+		REFR_RATIO = 0
+
+		STATE_CACHE_DIR = 0
+
+
+rem -------------------------------------------------------
+
+rem memory controler attributes scale
+
+
+		ABS_HIGH_MEMORY = 0
+
+		ABS_LOW_MEMORY = 0
+
+		PERCENT_HIGH_MEMORY = 0
+
+		PERCENT_LOW_MEMORY = 0
+
+rem -------------------------------------------------------
+
+rem server attributes scale
+
+		USERNAME = 0
+
+		PASSWORD = 1
+
+		METADATA_MOD_DATE = 0
+
+		ARCHITECTURE = 0
+
+		VERSION = 0
+
+		CURRENT_TIME = 0
+
+		DESCRIPTION = 0
+
+		SERVER_HOST_NAME = 0
+
+		COLOR = 0
+
+		M4SERVER_MEMORY_COUNTABILITY = 0
+
+		CONSUMED_SYSTEM_MEMORY = 0
+
+		CPU_USAGE = 2
+
+rem -------------------------------------------------------
+
+rem OLTP STATISTICS scale
+
+rem CRG NEW
+		PROC_ITEMS_ID = 0
+		AVG_PROC_ITEMS_ID = 0
+		ERROR_REQUEST_COUNT = 0
+		TIMED_OUT_REQUEST_COUNT = 0
+		USER_ABORTED_REQUEST_COUNT = 0
+		ADMIN_ABORTED_REQUEST_COUNT = 0
+		SUCCESS_REQUEST_COUNT = 0
+		CURRENT_EXEC_STATE = 0
+		FIV_SEC_TPS = 0
+		THIR_SEC_TPS = 0
+		FIV_MIN_TPS = 0
+		FIV_SEC_AVG_EXEC = 0
+		THIR_SEC_AVG_EXEC = 0
+		FIV_MIN_AVG_EXEC = 0
+		FIV_SEC_SSUSE = 0
+		THIR_SEC_SSUSE = 0
+		FIV_MIN_SSUSE = 0
+		FIV_SEC_WAIT_TIME = 0
+		THIR_SEC_WAIT_TIME = 0
+		FIV_MIN_WAIT_TIME = 0
+		QUEUED_ITEMS = 0
+		FIV_SEC_QUEUED_ITEMS = 0
+		THIR_SEC_QUEUED_ITEMS = 0
+		FIV_MIN_QUEUED_ITEMS = 0
+rem CRG NEW
+
+		FIV_S_TRANSACTION_TIME_AVG = 0
+
+		THIR_S_TRANSACTION_TIME_AVG = 3
+
+		FIV_M_TRANSACTION_TIME_AVG = 3
+
+		FIF_M_TRANSACTION_TIME_AVG = 3
+
+		FIV_S_USAGE_RATIOS = 0
+
+		THIR_S_USAGE_RATIOS = 3
+
+		FIV_M_USAGE_RATIOS = 3
+
+		FIF_M_USAGE_RATIOS = 3
+
+		TRANSACTION_COUNT = 0
+
+		FIV_S_TRANSACTIONS_AVG = 0
+
+		THIR_S_TRANSACTIONS_AVG = 1
+
+		FIV_M_TRANSACTIONS_AVG = 1
+
+		FIF_M_TRANSACTIONS_AVG = 1
+
+
+
+
+rem --------------------------------------------------------
+rem job scheduler atributes and statistics scale
+
+		END_DATE = 2
+		
+		NUM_JOBS_TOTAL=2
+		
+		NUM_JOBS_ERROR=2
+		
+		NUM_JOBS_SUCCESS=2
+		
+		M4_DATE_START_EXECUTOR=2
+		
+		M4_DATE_END_EXECUTOR=2
+		
+		M4_DATE_START_EXECUTION=2
+		
+		M4_DATE_END_EXECUTION=2
+		
+		M4_USER_JOB=2
+		
+		M4_JS_ID_EXECUTION=2
+		
+		M4_LAST_TIME_JOB=2
+	
+rem del servicio de ejecutores de JS
+
+		NUM_JOBS=2
+		
+		NUM_JOBS_CANCEL=2
+		
+		NUM_TASK_OK=2
+		
+		NUM_TASK_ERROR=2
+		
+		AVERAGE_TIME=2
+		
+		AVERAGE_DELAY=2
+		
+		USE_PERCENT=2
+
+		NUM_JOB_GROUPS_COMPLETE=2
+		
+		NUM_BOX_INTERRUPTED= 2
+		
+		M4_TOTAL_DELAY_IN_JOBS=2
+		
+		M4_TOTAL_TIME_IN_EXECUTION=2
+		
+		NUM_EXECUTORS_USED=2
+		
+rem del subsistema del JS		
+		JS_CANCEL_FREQUENCY = 2
+				
+		JS_EXPIRED_FREQUENCY = 2
+		
+		JS_EXPIRED_RES_FREQUENCY = 2
+
+		JS_RECOVER_FREQUENCY = 2
+	
+		JS_NEXT_START_DATE = 2
+		
+		JS_NEXT_STOP_DATE = 2
+		
+		JS_NJOBS_EXPIRED = 2
+
+		JS_NRESOURCES_EXPIRED = 2
+		
+		JS_TIMEOUT = 2
+rem -------------------------------------------------------
+
+rem	acceptor attributes scale
+
+		CONNECTION_TYPE = 1
+
+
+
+
+
+rem -------------------------------------------------------
+
+rem	session manager attributes scale
+
+	CONTROL_QUEUE_SIZE = 1
+
+
+
+rem -------------------------------------------------------
+
+rem	user subsystem service attributes scale
+
+	CACHE = 1
+
+	MIN_INSTANCES = 0
+
+	MAX_INSTANCES = 0
+
+	CRITICAL_SERVICE = 0
+
+rem -------------------------------------------------------
+
+rem	user subsystem session attributes scale
+
+	SESSIONID = 0
+
+	EXITED_EXECUTORS = 0
+
+rem -------------------------------------------------------
+
+rem	metadata subsystem attributes scale
+
+	CMCR_CACHE = 1
+
+	CSCR_CACHE = 1
+
+	PRES_CACHE = 1
+
+	REPOSITORY_KEY = 1
+
+
+
+rem -------------------------------------------------------
+
+rem	metadata services attributes scale
+
+	data_cache = 1
+
+
+
+rem -------------------------------------------------------
+
+rem	distributor attributes scale
+
+	OUTPUT_QUEUE_SIZE = 1
+
+
+
+rem -------------------------------------------------------
+
+rem	receiver attributes scale
+
+	RECEIVER_QUEUE_SIZE = 1
+
+	RECEIVER_NUM_CONNECTIONS = 1
+
+	SENDER_NUM_CONNECTIONS = 1
+
+
+
+rem -------------------------------------------------------
+
+rem cache attributes and staticstic scale
+
+		NUMBER_OF_CACHE_SUBSYSTEM = 1
+
+		ACTION_CLEAN_ALL_CACHES = 0
+
+		LAST_CLEAN_ALL_CACHES = 0
+
+		CACHE_TYPE = 1
+
+		CACHE_NAME = 1
+
+		MAX_CACHE_SIZE_MEMORY = 1
+
+		MAX_CACHE_NUM_ITEMS = 1
+
+		RECYCLE_INT = 1
+		
+		REFRESH_RATIO = 1
+
+		DEFAULT_MAX_PERIOD = 1
+
+		DEFAULT_MAX_UNUSED_PERIOD = 1
+
+		SIZE_CACHE = 0
+
+		NUM_OF_OBJS_IN_CACHE = 1
+
+		OBJS_IN_QUEUE = 1
+
+		OBJS_IN_LRU = 1
+
+		NUM_OF_REF_TO_CACHE = 1
+
+		HIT_RATIO = 1
+
+
+
+rem -------------------------------------------------------
+
+rem DMSLN ATTRIBUTES SCALE
+
+		DMS_CUR_OPEN_SES = 0
+		DMS_LN_CUR_OPEN_REP = 0
+		DMS_LN_MAX_NUMBER_OPEN_REPOSITORIES = 0
+		DMS_MAX_NUMBER_OPEN_SESSIONS = 0
+		DMS_LN_MAX_NUM_CACHE_REPOSITORIES = 0
+		DMS_LN_MAX_TIME_OPEN_REPOSITORIES = 0
+
+rem -------------------------------------------------------
+
+rem PROXY IDS
+
+		MAX_N_SPACES = 1
+
+		PROXY_SS_ATTRIB_INFO = 1
+
+		EXECUTION_DESCRIPTION = 1
+
+		OBJECT_LIST = 1
+
+rem -------------------------------------------------------
+
+rem LOG ATTRIBUTES
+
+		LOG_TYPE = 0
+	
+		VM_DEBUG_LEVEL = 0
+		
+		VM_MAX_DEBUG_PERIOD = 0
+		
+		JAVA_TRACE = 0
+
+	END
+
+
+
+END
+

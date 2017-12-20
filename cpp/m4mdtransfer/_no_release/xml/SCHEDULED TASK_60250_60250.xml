@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SCHEDULED TASK
+
+@version 1.7
+
+-->
+
+<object name="SCHEDULED TASK">
+
+	<param name="ID_SCHED_TASK"/>
+
+	<call-table name="SJS__SCHED_TASKS">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+		<read-table name="SBP__DEFINITION">
+
+			<with-pk name="ID_BP" select="@ID_TASK"/>
+
+			<call-object name="BUSINESS PROCESS">
+
+				<with-param name="ID_BP" select="@ID_BP"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SJS__TASK_EXE">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+	</call-table>
+
+	<call-table name="SJS__SUBTASK_EXE">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+	</call-table>
+
+	<call-table name="SJS__EXE_RES">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+	</call-table>
+
+	<call-table name="SJS__EXE_PARAMS">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+	</call-table>
+
+	<call-table name="SJS__DEF_PARAMS">
+
+		<with-pk name="ID_SCHED_TASK" select="$ID_SCHED_TASK"/>
+
+	</call-table>
+
+</object>
+
+

@@ -1,0 +1,29 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4uuid.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4uuid.cpp
+SRC = ../src/md5.cpp
+SRC = ../src/sysdep.cpp
+SRC = ../src/uuid.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4ini
+LIB = m4sysall
+LIB = m4unicode
+

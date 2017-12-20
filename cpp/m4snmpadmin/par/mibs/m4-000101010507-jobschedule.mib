@@ -1,0 +1,195 @@
+META4-JOBSCHEDULE-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ServicesSubsystemModule, servicesSubsystem, servicesSubsystemGroup
+		FROM META4-SERVICES-SUBSYSTEM-MIB;
+
+meta4JobScheduleSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the JobSchedule subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ServicesSubsystemModule 7 }
+
+
+--
+-- 
+
+jobScheduleSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"JobSchedule Subsystem"
+	::= { servicesSubsystem 1007 }
+
+jobScheduleSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		criticalService,
+		exceptionHandling,
+		nextScheduleStartDate,
+		nextScheduleStopDate,
+		jobGroupCancellationSearchFreq,
+		jobGroupRecoveringSearchFreq,
+		jobGroupExpirationSearchFreq,
+		attachmentExpirationSearchFreq,
+		numExpiredJobGroups,
+		numExpiredAttachments
+	}
+	STATUS current
+	DESCRIPTION
+		"JobSchedule Group properties"
+	::= { servicesSubsystemGroup 7 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { jobScheduleSubsystem 3 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { jobScheduleSubsystem 4 }
+
+
+criticalService OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Critical Service"
+	::= { jobScheduleSubsystem 5 }
+
+exceptionHandling OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Exception Handling"
+	::= { jobScheduleSubsystem 6 }
+
+nextScheduleStartDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Next Scheduled Start Date"
+	::= { jobScheduleSubsystem 501 }
+
+nextScheduleStopDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Next Scheduled Stop Date"
+	::= { jobScheduleSubsystem 502 }
+
+jobGroupCancellationSearchFreq OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "min"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Job Group Cancellation Search Frequency"
+	::= { jobScheduleSubsystem 503 }
+
+jobGroupRecoveringSearchFreq OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "min"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Job Group Recovering Search Frequency"
+	::= { jobScheduleSubsystem 504 }
+
+jobGroupExpirationSearchFreq OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "min"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Job Group Expiration Search Frequency"
+	::= { jobScheduleSubsystem 505 }
+
+attachmentExpirationSearchFreq OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "day"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Attachment Expiration Search Frequency"
+	::= { jobScheduleSubsystem 506 }
+
+numExpiredJobGroups OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Expired Job Groups"
+	::= { jobScheduleSubsystem 507 }
+
+numExpiredAttachments OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Expired Attachments"
+	::= { jobScheduleSubsystem 508 }
+
+END

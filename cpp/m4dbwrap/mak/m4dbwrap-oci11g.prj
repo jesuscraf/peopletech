@@ -1,0 +1,48 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4dbwrap.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/conex.cpp
+SRC = ../src/conoci.cpp
+SRC = ../src/conodbc.cpp
+SRC = ../src/curoci.cpp
+SRC = ../src/curodbc.cpp
+SRC = ../src/cursor.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -DDRIVER_OCI
+
+#-------------------
+# override DIRECTORIES.
+OBJDIR = ../../obj/$PLATFORM/$LINKTYPE/$NPRJNAME
+BINDIR = ./$PLATFORM/$LINKTYPE/oci11g
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+[aix] INC = ../../public/dbclients/odbc/inc/aix
+[solaris] INC = ../../public/dbclients/odbc/inc/solaris
+INC = ../../public/dbclients/oci-11.2.0.4.0/inc
+
+[aix] LIBDIR = ../../public/dbclients/oci-11.2.0.4.0/lib/aix
+[solaris] LIBDIR = ../../public/dbclients/oci-11.2.0.4.0/lib/solaris
+
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4ipcs
+LIB = m4unicode
+
+LIB = clntsh
+

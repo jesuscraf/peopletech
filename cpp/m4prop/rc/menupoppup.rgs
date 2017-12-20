@@ -1,0 +1,24 @@
+HKCR
+{
+	MenuPopPup.MenuPopPup.1 = s 'MenuPopPup Class'
+	{
+		CLSID = s '{B069FA19-40D9-11D3-BCFB-00C04F71652D}'
+	}
+	MenuPopPup.MenuPopPup = s 'MenuPopPup Class'
+	{
+		CurVer = s 'MenuPopPup.MenuPopPup.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B069FA19-40D9-11D3-BCFB-00C04F71652D} = s 'MenuPopPup Class'
+		{
+			ProgID = s 'MenuPopPup.MenuPopPup.1'
+			VersionIndependentProgID = s 'MenuPopPup.MenuPopPup'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

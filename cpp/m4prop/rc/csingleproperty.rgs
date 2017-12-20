@@ -1,0 +1,24 @@
+HKCR
+{
+	CSingleProperty.CSingleProperty.1 = s 'CSingleProperty Class'
+	{
+		CLSID = s '{13313652-2584-11D2-969E-00C04FC2444B}'
+	}
+	CSingleProperty.CSingleProperty = s 'CSingleProperty Class'
+	{
+		CurVer = s 'CSingleProperty.CSingleProperty.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {13313652-2584-11D2-969E-00C04FC2444B} = s 'CSingleProperty Class'
+		{
+			ProgID = s 'CSingleProperty.CSingleProperty.1'
+			VersionIndependentProgID = s 'CSingleProperty.CSingleProperty'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

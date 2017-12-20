@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object APP_USER
+
+@version 1.4
+
+-->
+
+<object name="APP_USER">
+
+	<param name="ID_APP_USER"/>
+
+	<call-table name="M4RSC_APPUSER">
+
+		<with-pk name="ID_APP_USER" select="$ID_APP_USER"/>
+
+	</call-table>
+
+	<call-table name="M4RSC_APP_USR_ROLE">
+
+		<with-pk name="ID_APP_USR" select="$ID_APP_USER"/>
+
+	</call-table>
+
+</object>
+
+

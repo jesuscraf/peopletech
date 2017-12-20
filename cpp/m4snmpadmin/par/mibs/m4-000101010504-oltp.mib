@@ -1,0 +1,264 @@
+META4-OLTP-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ServicesSubsystemModule, servicesSubsystem, servicesSubsystemGroup
+		FROM META4-SERVICES-SUBSYSTEM-MIB;
+
+meta4OltpSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Oltp subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ServicesSubsystemModule 4 }
+
+
+--
+-- 
+
+oltpSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"OLTP Subsystem"
+	::= { servicesSubsystem 1004 }
+
+oltpSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		executionCount,
+		errorExecutionCount,
+		timeoutExecutionCount,
+		userAbortedExecutionCount,
+		adminAbortedExecutionCount,
+		successfulExecutionCount,
+		tps5Sec,
+		tps30Sec,
+		tps5Min,
+		avgExecutionTime5Sec,
+		avgExecutionTime30Sec,
+		avgExecutionTime5Min,
+		avgSSUse5Sec,
+		avgSSUse30Sec,
+		avgSSUse5Min,
+		avgWaitTime5Sec,
+		avgWaitTime30Sec,
+		avgWaitTime5Min
+	}
+	STATUS current
+	DESCRIPTION
+		"Oltp Group properties"
+	::= { servicesSubsystemGroup 4 }
+
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { oltpSubsystem 3 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { oltpSubsystem 4 }
+
+executionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Count"
+	::= { oltpSubsystem 501 }
+
+errorExecutionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Error Execution Count"
+	::= { oltpSubsystem 502 }
+
+timeoutExecutionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Timed Out Execution Count"
+	::= { oltpSubsystem 503 }
+
+userAbortedExecutionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Aborted Execution Count"
+	::= { oltpSubsystem 504 }
+
+adminAbortedExecutionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Admin. Aborted Execution Count"
+	::= { oltpSubsystem 505 }
+
+successfulExecutionCount OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Successful Execution Count"
+	::= { oltpSubsystem 506 }
+
+tps5Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Seconds"
+	::= { oltpSubsystem 507 }
+
+tps30Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 30 Seconds"
+	::= { oltpSubsystem 508 }
+
+tps5Min OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Minutes"
+	::= { oltpSubsystem 509 }
+
+avgExecutionTime5Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Seconds"
+	::= { oltpSubsystem 510 }
+
+avgExecutionTime30Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 30 Seconds"
+	::= { oltpSubsystem 511 }
+
+avgExecutionTime5Min OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Minutes"
+	::= { oltpSubsystem 512 }
+
+avgSSUse5Sec OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Seconds"
+	::= { oltpSubsystem 513 }
+
+avgSSUse30Sec OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 30 Seconds"
+	::= { oltpSubsystem 514 }
+
+avgSSUse5Min OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Minutes"
+	::= { oltpSubsystem 515 }
+
+avgWaitTime5Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Seconds"
+	::= { oltpSubsystem 516 }
+
+avgWaitTime30Sec OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 30 Seconds"
+	::= { oltpSubsystem 517 }
+
+avgWaitTime5Min OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Minutes"
+	::= { oltpSubsystem 518 }
+   
+END

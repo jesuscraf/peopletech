@@ -1,0 +1,26 @@
+<!ELEMENT dispatcher (config)+>
+<!ELEMENT config (params)+>
+<!ATTLIST config
+    name CDATA #REQUIRED
+>
+<!ELEMENT params (#PCDATA)>
+<!ATTLIST params
+    host CDATA #IMPLIED
+    port CDATA #IMPLIED
+    baseport CDATA #IMPLIED
+    CypherMethod CDATA #IMPLIED
+    MaxStartRetries CDATA #IMPLIED
+    NumWorkers CDATA #IMPLIED
+    ServerStartTimeout CDATA #IMPLIED
+    snmp_active CDATA #IMPLIED
+    snmp_port CDATA #IMPLIED
+    snmp_admintype CDATA #IMPLIED
+    snmp_configfile CDATA #IMPLIED
+    snmp_productname CDATA #IMPLIED
+    snmp_v1v2c_state CDATA #IMPLIED
+    snmp_read_community CDATA #IMPLIED
+    snmp_write_community CDATA #IMPLIED
+    snmp_v3_public_usr CDATA #IMPLIED
+    snmp_v3_public_usr_name CDATA #IMPLIED
+    snmp_v3_boots_file CDATA #IMPLIED
+>

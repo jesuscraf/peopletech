@@ -1,0 +1,24 @@
+HKCR
+{
+	PersistObject.PersistObject.1 = s 'PersistObject Class'
+	{
+		CLSID = s '{DD7D4842-0DFF-11D3-BCAB-00C04F71652D}'
+	}
+	PersistObject.PersistObject = s 'PersistObject Class'
+	{
+		CurVer = s 'PersistObject.PersistObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DD7D4842-0DFF-11D3-BCAB-00C04F71652D} = s 'PersistObject Class'
+		{
+			ProgID = s 'PersistObject.PersistObject.1'
+			VersionIndependentProgID = s 'PersistObject.PersistObject'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

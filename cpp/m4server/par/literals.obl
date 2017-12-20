@@ -1,0 +1,544 @@
+VERSION 02.00
+
+BEGIN SERVER LITERALS
+
+rem --------------------------------------------------------------------------------------
+rem @(#) FileVersion: [M4_FILE_VERSION]
+rem @(#) FileDescription: Lierals of commands, statistics and attributes of subsystems in server.
+rem @(#) CompanyName: Meta4 Spain, S.A.
+rem @(#) LegalCopyright: (c) [M4_YEAR]
+rem @(#) ProductName:  PeopleNet
+rem ---------------------------------------------------------------------------------------
+	
+rem -------------------------------------------------------
+rem file: literals\server.obl
+TYPE = "Type"
+STRINGID = "Subsystem Literal ID"
+RESET_STATISTICS = "Reset Statistics"
+NUM_SERVICES = "Number of Services"
+NUM_CONNMANAGERS = "Number of Connection Managers"
+SERVICE_ID = "Service ID"
+NUM_LAUNCHERS = "Number of Launchers"
+MAX_QUEUE_ITEMS = "Upper Queue Boundary"
+NUM_INSTANCES = "Number of Instances"
+TEST_FILE_PATH = "Test File Path"
+SERVER = "Server"
+LOCAL_MONITOR = "Local Monitor"
+COMMUNICATION_SERVER = "Communication Server"
+NUM_COMM_WORKERS = "Number of Communication Workers"
+CONNMANAGERS = "List of Connection Managers"
+CONNMANAGER = "Connection Manager"
+SERVICES = "List of Services"
+SERVICE = "Service"
+LDB = "LDB"
+OLTP = "On Line Transaction Process Service"
+JOB_SCHEDULER = "Job Scheduler Service"
+CACHE = "Cache"
+EXECUTORS = "List of Executors"
+EXECUTOR = "Executor"
+USERS  = "List of Users"
+USER = "User"
+SESSION = "Session"
+VMLOG = "Virtual Machine Logs"
+ROLE = "Role"
+HOSTNAME = "Host Name"
+SHUT_DOWN = "Shutdown"
+VM_DEBUG_ENABLED = "Set Virtual Machine Debug Level"
+VM_DEBUG_LEVEL = "Virtual Machine Debug Level (SystemDebugLevel)"
+SET_VM_MAX_DEBUG_PERIOD = "Set Max Debug Period"
+VM_MAX_DEBUG_PERIOD = "Max Debug Period"
+DISABLE_JAVA_TRACE = "Disable Java Trace"
+ENABLE_JAVA_TRACE = "Enable Java Trace"
+JAVA_TRACE = "Java Trace"
+LAUNCHER_USER_ID = "User Name"
+LAUNCHER_SESSION_ID = "Session ID"
+LAUNCHER_START = "Execution Begin Date (GMT)"
+LAUNCHER_END = "Execution End Date (GMT)"
+LAUNCHER_STATE = "Current State"
+EXECUTION_DESCRIPTION = "Method Description"
+OBJECT_LIST = "Objects in VM"
+
+M4SERVER_MEMORY_COUNTABILITY = "Server Memory Usage (MB)"
+DESCRIPTION = "Configuration Description"
+EXCEPTIONS = "Exception Handling"
+EXCEPTION_HANDLING = "Exception Handling"
+CONTROL_PORT = "Internal Control Port"
+BASE_PORT="Base Port"
+CPU_USAGE = "System CPU Usage (%)"
+
+rem -------------------------------------------------------
+rem server attributes
+USERNAME = "User Name"
+PASSWORD = "Password"
+ARCHITECTURE = "Architecture"
+VERSION = "Build Version"
+CURRENT_TIME = "Time Zone at Application Server"
+M4_EXECUTOR_TEST = "Executor Test"
+M4_EXECUTOR_CHANNEL = "Executor Channel"
+M4_EXECUTOR_ECHO = "Executor Echo"
+M4_EXECUTOR_JOB = "Executor Job"
+M4_EXECUTOR_METHOD = "Executor Method"  
+M4_EXECUTOR_PERSIST = "Executor Persist"
+SERVER_MEMORY_LEVEL = "Current Memory Level"
+SERVER_HOST_NAME = "Server Machine Host Name"
+CONNECTION_PROTOCOL = "Connection Protocol"	
+
+rem -------------------------------------------------------
+
+rem memory attributes literals
+
+COLOR = "Memory Level Description"
+
+ABS_HIGH_MEMORY = "Absolute Memory Limit (MB)"
+
+ABS_LOW_MEMORY = "Absolute Memory Threshold (MB)"
+
+PERCENT_HIGH_MEMORY = "Percent Memory Limit (%)"
+
+PERCENT_LOW_MEMORY = "Percent Memory Threshold (%)"
+
+AVAILABLE_SYSTEM_MEMORY = "Available System Memory (%)"
+
+CONSUMED_SYSTEM_MEMORY = "System Memory in Use (%)"
+rem -------------------------------------------------------
+rem file: literals\serverstat.obl
+
+START_DATE = "Start Date (GMT)"
+END_DATE = "Subsystem Disable Date (GMT)"
+STATE = "Current Status"
+NUM_IO_OPERATIONS = "Number of I/O Operations"
+NUM_PAGE_FAULTS = "Number of Page Faults"
+RUN_PRIORITY = "Run Priority"
+REAL_TIME_PROCESS = "Real Time Proccess"
+TYPE_PROCESED_ITEMS = "Transactions Processed"
+PROCESSED_ITEMS_AVERAGE = "Transactions/sec in Last 15 min"
+NUM_INCORRECT_PDUS = "Number of Incorrect PDUs"
+NUM_UNKNOWN_HOSTS = "Number of Unknown Hosts"
+NUM_UNKNOWN_USERS = "Number of Unknown Users"
+NUM_INVALID_TIME_MARKS = "Number of Invalid Time Marks"
+NUM_INVALID_PROTOCOL_VERSION = "Number of Invalid Protocol Versions"
+NUM_INVALID_USER_AUTENTIFICATIONS = "Invalid User Autentifications"
+NUM_FORGED_SIGN = "Number of Forged Signs"
+NUM_DENIED_CONNECTS = "Number of Denied Connections"
+NUM_TIMEOUTS = "Number of TimeOuts"
+NUM_REJECTED_REQUEST = "Number of Rejected Requests"
+NUM_DISCARDED_REQUEST = "Number of Discarded Requests"
+VIRTUAL_MACHINE_COUNT = "Virtual Machine Count"
+EXECUTOR_TYPE = "Executor Type"
+M4_INPUT_BYTES = "Input Bytes"
+AVG_INPUT_BYTES = "Input Bytes/sec in Last 15 min"
+M4_OUTPUT_BYTES = "Output Bytes"
+AVG_OUTPUT_BYTES = "Output Bytes/sec in Last 15 min"
+DISCARDED_PDUS = "Discarded PDUs"
+DROPPED_CONNECTIONS = "Number of Dropped Connections"
+INCORRECT_PDUS = "Number of Incorrect PDUs"
+QUEUED_PDUS = "PDUs in Queue"
+5_SECONDS_PROCESSED_ITEMS_AVERAGE = "Transactions/sec in Last 5 sec"
+30_SECONDS_PROCESSED_ITEMS_AVERAGE = "Transactions/sec in Last 30 sec"
+5_MINUTES_PROCESSED_ITEMS_AVERAGE = "Transactions/sec in Last 5 min"
+QUEUED_ITEMS_PERCENT = "Queue Occupancy"
+CONTROL_QUEUE_SIZE = "Control Queue Size"
+MAX_USERS = "Maximum Number of Users Connected"
+NUM_USERS = "Number of users connected"
+NUM_SESSIONS = "Number of current sessions"
+USER_CONNECTION = "User Connection Type"
+ACTIVE_ROLE = "Active role"
+ACTIVE_SESSIONS = "Active Sessions"
+SESSION_CONNECTION = "Session Connection Type"
+DEBUG_LEVEL = "Debug Level"
+rem DATABASE = "Database Name"
+rem DATABASE_USER = "Database User"
+SECURIRY_LEVEL = "Security Level"
+LOGON_TIME = "Time since Logon"
+NUM_PROCESED_PDUS = "Processed Requests"
+PENDING_PDUS = "Pending Requests"
+SUBROGATED_CONNECTIONS = "Subrogated Connections"
+USERS_LOGED = "Currently Logged Users"
+TOTAL_SESSIONS = "Sessions Established since Startup"
+CURRENT_SESSIONS = "Number of current sessions"
+FIF_M_AVG_REG_TIME = "Average Time Registering Request in Last 15 m"
+FIV_S_AVG_REG_TIME = "Average Time Registering Request in Last 5 s"
+THIR_S_AVG_REG_TIME = "Average Time Registering Request in Last 30 s"
+FIV_M_AVG_REG_TIME = "Average Time Registering Request in Last 5 m"
+FIF_M_AVG_DEREG_TIME = "Average Time DesRegistering Request in Last 15 m"
+FIV_S_AVG_DEREG_TIME = "Average Time DesRegistering Request in Last 5 s"
+THIR_S_AVG_DEREG_TIME  = "Average Time DesRegistering Request in Last 30 s"
+FIV_M_AVG_DEREG_TIME  = "Average Time DesRegistering Request in Last 5 m"
+FIF_M_AVG_GETSESS_TIME = "Average Time Getting Request Session in Last 15 m"
+FIV_S_AVG_GETSESS_TIME = "Average Time Getting Request Session in Last 5 s"
+THIR_S_AVG_GETSESS_TIME = "Average Time Getting Request Session in Last 30 s"
+FIV_M_AVG_GETSESS_TIME = "Average Time Getting Request Session in Last 5 m"
+FIF_M_AVG_REC_TIME = "Average Time Reading/Req in Last 15 m"
+FIV_S_AVG_REC_TIME = "Average Time Reading/Req in Last 5 s"
+THIR_S_AVG_REC_TIME = "Average Time Reading/Req in Last 30 s"
+FIV_M_AVG_REC_TIME = "Average Time Reading/Req in Last 5 m"
+FIF_M_AVG_PROCESSED = "Average Processed Request/sec in Last 15 m"
+FIV_S_AVG_PROCESSED = "Average Processed Request/sec in Last 5 s"
+THIR_S_AVG_PROCESSED = "Average Processed Request/sec in Last 30 s"
+FIV_M_AVG_PROCESSED = "Average Processed Request/sec in Last 5 m"
+FIF_M_AVG_INPUT_BYTES = "Average Input Bytes/sec in Last 15 m"
+FIV_S_AVG_INPUT_BYTES = "Average Input Bytes/sec in Last 5 s"
+THIR_S_AVG_INPUT_BYTES = "Average Input Bytes/sec in Last 30 s"
+FIV_M_AVG_INPUT_BYTES = "Average Input Bytes/sec in Last 5 m"
+FIF_M_AVG_OUTPUT_BYTES = "Average Output Bytes/sec in Last 15 m"
+FIV_S_AVG_OUTPUT_BYTES = "Average Output Bytes/sec in Last 5 s"
+THIR_S_AVG_OUTPUT_BYTES = "Average Output Bytes/sec in Last 30 s"
+FIV_M_AVG_OUTPUT_BYTES = "Average Output Bytes/sec in Last 5 m"
+FIF_M_AVG_SEND_TIME = "Average Time Writing/Req in Last 15 m"
+FIV_S_AVG_SEND_TIME = "Average Time Writing/Req in Last 5 s"
+THIR_S_AVG_SEND_TIME = "Average Time Writing/Req in Last 30 s"
+FIV_M_AVG_SEND_TIME = "Average Time Writing/Req in Last 5 m"
+rem FIF_M_AVG_EXE_TIME = "Average Time in Executor in Last 15 m"
+rem FIV_S_AVG_EXE_TIME = "Average Time in Executor in Last 5 s"
+rem THIR_S_AVG_EXE_TIME = "Average Time in Executor in Last 30 s"
+rem FIV_M_AVG_EXE_TIME = "Average Time in Executor in Last 5 m"
+FIF_M_AVG_TOTAL_TIME = "Average Time in Server/Req in Last 15 m"
+FIV_S_AVG_TOTAL_TIME = "Average Time in Server/Req in Last 5 s"
+THIR_S_AVG_TOTAL_TIME = "Average Time in Server/Req in Last 30 s"
+FIV_M_AVG_TOTAL_TIME = "Average Time in Server/Req in Last 5 m"
+PROCESSED_REQUEST = "Number of Processed Requests"
+AVG_OF_TRANSACTIONS = "Average of Transactions"
+USAGE_RATIO = "Usage Ratio"
+NUM_TRANSACTIONS = "Number of Transsactions"
+AVG_TRANSACTION_TIME = "Average Transaction Time"
+NUMBER_OF_TRANSACTIONS_PROCESSED = "Processed transactions"
+LAST_TRANSACTION_TIME = "Last Transaction Time (GMT)"
+NUM_CONNECTIONS = "Number of active connections"
+rem -------------------------------------------------------
+rem file: literals\LDB.obl
+
+CONNECTION_STRING =	"Connection String"
+MAX_NUM_CONN =		"Maximum Number of Logical Connections"
+MAX_NUM_CURSOR =	"Maximum Number of Cursors"
+CON_EXEC =		"SQL Statement Executed after Connection"
+MAX_NUM_STATMNT_CACHE =	"Maximum Number of Cached Statements"
+MAX_NUM_LOGIC_OBJECT =	"Maximum Number of Logical Objects"
+ISOLATION_LEVEL =	"Isolation Level"
+DATABASE_TYPE =		"Database Type"
+NUM_CONN_IN_USE =	"Number of Logical Connections in Use"
+NUM_LOGIC_OBJECT_IN_USE ="Number of Logical Objects in Use"
+NUM_STATMNT_IN_USE =	"Number of Statements in Use"
+LDB_DEBUG_LEVEL = 	"LDB Debug Level (SystemDebugEnable)"
+RETRY_CONNECTION = 	"Retry Connection Event"
+ATTEMPTS_NUMBER =	"Number of Attempts to Establish the Connection with DDBB"
+SET_DEBUG_DETAIL_LEVEL= "Set Debug Detail Level"		
+DEBUG_DETAIL_LEVEL =    "Debug Detail Level"
+DISPATCHER_SS_DEBUG_DETAIL_LEVEL = "Set Debug Detail Level"
+LDB_DEBUG_DETAIL_LEVEL = "LDB Debug Detail Level (SystemDebugDetailLevel)"
+ACTION_FLUSH_DICTIONARY_CACHE = "Action Flush Dictionary Cache"
+LAST_FLUSH_DICTIONARY_CACHE = "Last Flush Dictionary Cache"
+
+rem -------------------------------------------------------
+rem file: literals\oltpstat.obl
+
+rem NEW CRG
+PROC_ITEMS_ID = "Execution Count"
+AVG_PROC_ITEMS_ID = "Average Execution Time - Last 15 Minutes"
+ERROR_REQUEST_COUNT = "Error Execution Count"
+TIMED_OUT_REQUEST_COUNT = "Timed Out Execution Count"
+USER_ABORTED_REQUEST_COUNT = "User Aborted Execution Count"
+ADMIN_ABORTED_REQUEST_COUNT = "Admin. Aborted Execution Count"
+SUCCESS_REQUEST_COUNT = "Successful Execution Count"
+CURRENT_EXEC_STATE = "Execution State"
+FIV_SEC_TPS = "TPS - Last 5 Seconds"
+THIR_SEC_TPS = "TPS - Last 30 Seconds"
+FIV_MIN_TPS = "TPS - Last 5 Minutes"
+FIV_SEC_AVG_EXEC = "Average Execution Time - Last 5 Seconds"
+THIR_SEC_AVG_EXEC = "Average Execution Time - Last 30 Seconds"
+FIV_MIN_AVG_EXEC = "Average Execution Time - Last 5 Minutes"
+FIV_SEC_SSUSE = "Average SS Use - Last 5 Seconds (%)"
+THIR_SEC_SSUSE = "Average SS Use - Last 30 Seconds (%)"
+FIV_MIN_SSUSE = "Average SS Use - Last 5 Minutes (%)"
+FIV_SEC_WAIT_TIME = "Average Wait Time - Last 5 Seconds"
+THIR_SEC_WAIT_TIME = "Average Wait Time - Last 30 Seconds"
+FIV_MIN_WAIT_TIME = "Average Wait Time - Last 5 Minutes"
+rem END OF NEW CRG
+
+FIV_S_TRANSACTION_TIME_AVG = "Average Time in each Operation in Last 5 s"
+THIR_S_TRANSACTION_TIME_AVG = "Average Time in each Operation in Last 30 s"
+FIV_M_TRANSACTION_TIME_AVG = "Average Time in each Operation in Last 5 m"
+FIF_M_TRANSACTION_TIME_AVG = "Average Time in each Operation in Last 15 m"
+FIV_S_USAGE_RATIOS = "Usage Ratio in Last 5 s"
+THIR_S_USAGE_RATIOS = "Usage Ratio in Last 30 s"
+FIV_M_USAGE_RATIOS = "Usage Ratio in Last 5 m"
+FIF_M_USAGE_RATIOS = "Usage Ratio in Last 15 m"
+TRANSACTION_COUNT = "Total Transaction"
+FIV_S_TRANSACTIONS_AVG = "Average Number of Operations in Last 5 Seconds"
+THIR_S_TRANSACTIONS_AVG = "Average Number of Operations in Last 30 s"
+FIV_M_TRANSACTIONS_AVG = "Average Number of Operations in Last 5 m"
+FIF_M_TRANSACTIONS_AVG = "Average Number of Operations in Last 15 m"
+
+	
+rem -------------------------------------------------------
+rem file: literals\commands.obl
+
+REMOVE = "Remove Subsystem"
+ADD_NEW_EXECUTOR = "Add New Executor"
+REMOVE_EXECUTOR = "Remove Executor"
+ADD_NEW_CONNMANAGER = "Add New Connection Manager"
+REMOVE_CONNMANAGER = "Remove Connection Manager"
+ADD_NEW_USER = "Add New User"
+ALLOW_NEW_USER = "Allow New User"
+LOCK_ALL_SESSIONS = "Lock All Sessions"
+LOGOFF_ALL_SESSIONS = "Logoff All Sessions"
+SET_DEBUG_LEVEL = "Set LDB Debug Level"
+VIEW_TRACES = "View Traces"
+TRANSPORT_DUMP_DIRECTORY = "Transport Dump Directory"
+TRANSPORT_DUMP_PREFIX = "Prefix for Transport Dump Files"
+TRANSPORT_DUMP_MAX_FILE_SIZE = "Max Transport Dump File Size"
+TRANSPORT_DUMP_MAX_FILES = "Max Number of Transport Dump Files"
+TRANSPORT_DUMP_STATUS = "Transport Dump Status"
+ENABLE_TRANSPORT_DUMP = "Enable Transport Dump"
+DISABLE_TRANSPORT_DUMP = "Disable Transport Dump"
+SUSPEND_RESUME = "Suspend/Resume"
+LOGOFF = "Log Off Session"
+SET_QUEUE_SIZE = "Set Queue Size"
+EMPTY_QUEUE = "Empty Queue"
+BALANCE_CONNECTIONS ="Balance Connections"
+ADMINISTRATOR_ID = "Administrator Identifier"
+CLOSE_SESSION = "Close Session" 
+CLOSE_ALL_SESSIONS = "Close All Sessions"
+FLUSH_SENTENCE_CACHE = "Flush Sentence Cache"
+FLUSH_DICTIONARY_CACHE = "Flush Dictionary Cache"
+
+TURN_ON_EXCEPTIONS = "Turn On Exception Handling"
+TURN_OFF_EXCEPTIONS = "Turn Off Exception Handling"
+PAUSE_EXECUTION = "Pause Execution"	
+RESUME_EXECUTION = "Resume Execution"	
+GET_LOG_OF_LAST_EXECUTION = "Get Log of Last Execution"
+GET_USED_MEMORY = "Get Memory Used"
+USED_MEMORY = "Memory Used (KB)"
+GARBAGE_COLLECTION = "Garbage Collection"
+CANCEL_REQUEST = "Cancel Request"
+CHECK_MEMORY = "Check Server Memory Usage"
+CHECK_MEMORY_LEVEL = "Check Server Memory Usage"
+CHECK_USER_TIMEOUTS = "Check User Timeouts"
+DUMP_REPORT = "Dump Report"	
+USER_TIMEOUT_MN = "Inactivity Timeout (mn)"
+USER_TIMEOUT = "Timeout Status"
+TURN_ON_USER_TIMEOUT = "Activate inactivity user timeout"
+TURN_OFF_USER_TIMEOUT = "Deactivate inactivity user timeout"
+CHANGE_USER_TIMEOUT = "Change Inactivity User Timeout"
+
+SEND_MESSAGE_TO_ALL_USERS_SESSIONS = "Send a Message to All User Sites"
+SEND_MESSAGE_TO_ALL_SESSIONS = "Send a Message to All Session Sites"
+SEND_MESSAGE_TO_SESSION = "Send a Message to the Session Site"
+MESSAGE = "Message"
+ACTIVATE_CONTROL_MEMORY = "Activate Memory Control"
+DESACTIVATE_CONTROL_MEMORY = "Deactivate Memory Control"
+
+ADD_COMMUNICATION_WORKER = "Add New Communication Worker"
+REMOVE_COMMUNICATION_WORKER = "Remove one Communication Worker"
+
+ENABLE_ERRORS = "Enable Error Messages"
+DISABLE_ERRORS = "Disable Error Messages"
+ENABLE_WARNINGS = "Enable Warning Messages"
+DISABLE_WARNINGS = "Disable Warning Messages"
+ENABLE_DEBUG_LOG = "Enable Debug Info Messages "
+DISABLE_DEBUG_LOG = "Disable Debug Info Messages "
+SET_NUM_DUMP_FILES = "Set Number of Dump Files"
+ENABLE_BENCH_DUMP = "Enable Dump"
+DISABLE_BENCH_DUMP = "Disable Dump"
+CLEAN_ALL_CACHES = "Clean all Caches"
+CHANGE_PERCENT_MEMORY_LEVELS = "Change Percent Memory Levels"
+CHANGE_ABS_MEMORY_LEVELS = "Change Absolute Memory Levels"
+
+rem -------------------------------------------------------
+rem file: literals\cache.obl
+
+rem -- cache attributes
+
+NUMBER_OF_CACHE_SUBSYSTEM = "Number of Caches"
+ACTION_CLEAN_ALL_CACHES = "Action Clean all Caches"
+LAST_CLEAN_ALL_CACHES = "Last Clean all Caches"
+CACHE_TYPE = "Cache Type"
+CACHE_NAME = "Cache Name"
+MAX_CACHE_SIZE_MEMORY = "Max. Allowed Memory (MB)"
+MAX_CACHE_NUM_ITEMS = "Max. Number of Objects Allowed"
+RECYCLE_INT="Refresh Interval"
+REFRESH_RATIO="Synchronization to Disk Interval (Insertions)"
+DEFAULT_MAX_PERIOD = "Max. Period objects can stay in cache (Days)"
+DEFAULT_MAX_UNUSED_PERIOD = "Max. Period objects can stay if not used (Days)"
+
+rem -- cache statistics
+SIZE_CACHE="Memory Used (MB)"
+NUM_OF_OBJS_IN_CACHE="Number of Valid Objects in Cache"
+OBJS_IN_QUEUE="Objects in Deletion Queue"
+OBJS_IN_LRU="Unreferenced Objects"
+NUM_OF_REF_TO_CACHE="Number of References"
+HIT_RATIO="Hits Ratio (%)"
+
+rem -- cache commands params
+
+MAX_SIZE_CACHE="Max. Allowed Memory (MB)"
+MAX_ELEM_IN_CACHE= "Max. Number of Objects Allowed"
+CACHE_REFRESH_RATIO="Synchronization to Disk Interval (Insertions)"
+
+rem -- cache commands
+
+CLEAN_CACHE="Empty Out"
+REFRESH_CACHE="Refresh Cache"
+PERSIST_CACHE="Synchronize to Disk"
+CHANGE_REFRESH_RATIO="Set New Synchronization Interval"
+CHANGE_MAX_SIZE_CACHE="Set New Max. Allowed Memory"
+CHANGE_MAX_ELEM_IN_CACHE="Set New Max. Number of Objects Allowed"
+CHANGE_DEFAULT_MAX_PERIOD="Set New Max. Period objects can stay in cache (Days)"
+CHANGE_DEFAULT_MAX_UNUSED_PERIOD="Max. Period objects can stay in cache if not used (Days)"
+
+
+
+rem -- statistics JOB_SCHEDULER_SUBSYSTEM
+rem -----------------
+JS_NEXT_START_DATE = "Next Scheduled Start Date (GMT)"
+JS_NEXT_STOP_DATE = "Next Scheduled Stop Date (GMT)"
+JS_CANCEL_FREQUENCY = "Job Group Cancellation Search Frequency"
+JS_RECOVER_FREQUENCY = "Job Group Recovering Search Frequency"
+JS_EXPIRED_FREQUENCY = "Job Group Expiration Search Frequency"
+JS_EXPIRED_RES_FREQUENCY = "Attachment Expiration Search Frequency"
+JS_NJOBS_EXPIRED = "Number of Expired Job Groups"
+JS_NRESOURCES_EXPIRED = "Number of Expired Attachments"
+
+rem -- statistics EXECUTOR_JOB_EXECUTE
+rem -----------------
+M4_DATE_START_EXECUTION="Execution Begin Date (GMT)"
+M4_DATE_END_EXECUTION="Execution End Date (GMT)"
+NUM_JOBS_TOTAL="Number of Launched Jobs"
+NUM_JOBS_ERROR="Number of Jobs Completed with Errors"
+NUM_JOBS_SUCCESS="Number of Jobs Completed Successfully"
+NUM_JOB_GROUPS_COMPLETE="Number of Job Groups Launched"
+NUM_BOX_INTERRUPTED="Number of Job Groups Cancelled"
+M4_TOTAL_DELAY_IN_JOBS="Average Delay for Job Groups"
+M4_TOTAL_TIME_IN_EXECUTION="Average Execution Time for Jobs"
+M4_USER_JOB="User"
+M4_JS_ID_EXECUTION="Job Execution ID"
+M4_LAST_TIME_JOB="Execution Elapsed Time"
+
+rem -- attributes M4_SERVICE_JOB_EXECUTE
+rem -----------------
+JS_TIMEOUT="Max. Execution Time"
+
+rem -- statistics M4_SERVICE_JOB_EXECUTE
+rem -----------------
+NUM_JOBS="Number of Job Groups Launched"
+NUM_JOBS_CANCEL="Number of Job Groups Canceled"
+NUM_TASK_OK="Number of Jobs Completed Successfully"
+NUM_TASK_ERROR="Number of Jobs Completed with Errors"
+AVERAGE_TIME="Average Execution Time for Jobs"
+AVERAGE_DELAY="Average Delay for Job Groups"
+USE_PERCENT="Service Usage Ratio (%)"
+NUM_EXECUTORS_USED="Number of Executors in Use"
+
+rem --- command JSSubsystem
+rem -----------------
+JS_CHANGE_CANCELLATION_FREQUENCY = "Change Job Group Cancellation Frequency"
+JS_CHANGE_RECOVER_FREQUENCY = "Change Job Group Recovering Frequency"
+JS_CHANGE_EXPIRATION_FREQUENCY = "Change Job Group Expiration Frequency"
+JS_CHANGE_RES_EXPIRATION_FREQUENCY = "Change Attachment Expiration Frequency"
+JS_BEGIN_JS = "Start Job Scheduler Service"
+JS_END_JS = "Stop Job Scheduler Service"
+JS_BEGIN_JS_AT = "Start Job Scheduler Service at..."
+JS_END_JS_AT = "Stop Job Scheduler Service at..."
+JS_DELETE_START_DATE = "Delete Next Start Date"
+JS_DELETE_STOP_DATE = "Delete Next Stop Date"
+
+rem ----- command params JSSubsystem
+rem -----------------
+JS_PARAM_CANCELLATION_FREQUENCY = "Job Group Cancellation Frequency"
+JS_PARAM_RECOVER_FREQUENCY = "Job Group Recovering Frequency"
+JS_PARAM_EXPIRATION_FREQUENCY = "Job Group Expiration Frequency"
+JS_PARAM_RES_EXPIRATION_FREQUENCY = "Attachment Expiration Frequency"
+JS_PARAM_NEXT_START_DATE = "Next Scheduled Start Date (GMT)"
+JS_PARAM_NEXT_STOP_DATE = "Next Scheduled Stop Date (GMT)"
+
+rem ----- command JSServiceExecute
+rem -----------------
+JS_CHANGE_TIMEOUT = "Change Max. Execution Time"
+JS_DELETE_TIMEOUT = "Disable Max. Execution Time"
+
+rem ----- command JSSExecute
+rem -----------------
+JS_CANCEL_JOB = "Stop Execution"
+
+
+rem -------------------------------------------------------
+rem file: literals\exchann.obl
+
+PROXY_SS_RELEASE_SPACE="Release Space"
+PROXY_SS_SESSION_ID="Session ID"
+PROXY_SS_ATTRIB_INFO="Proxy Spaces"
+MAX_N_SPACES="Max. Proxy Spaces" 
+DESTROY_PX_SPACE_BY_SESSION_ID="Destroy Proxy Space by Session ID"
+COMMAND_ADD_NEW_PROXY_SPACE="Add Proxy Spaces"
+PARAMETER_NUMBER_TO_ADD="Number to Add"
+
+rem -------------------------------------------------------
+rem metadata subsystem
+CMCR_CACHE = "Metadata Cache"
+CSCR_CACHE = "Security Cache"
+PRES_CACHE = "Presentation Cache"
+REPOSITORY_KEY = "Repository Key"
+
+rem -------------------------------------------------------
+rem metadata subsystem commands
+M4_MDSUBSYSTEM_CLEAN_CACHE = "Clean Metadata Subsystem Caches"
+M4_MDSUBSYSTEM_REFRESH_UPDATE_LIST = "Refresh Metadata Subsystem Update List"
+METADATA_SS_SESSION_ID = "Session ID"
+
+rem -------------------------------------------------------
+rem metadata service
+DATA_CACHE = "Cache Name"
+
+rem -------------------------------------------------------
+rem	commands
+
+M4_MDSUBSYSTEM_QUIT = "Stop Execution"
+OLTP_SS_QUIT = "Stop Execution"
+EXECUTIVE_SS_QUIT = "Stop Execution"
+
+rem -------------------------------------------------------
+rem	Attribs for services
+
+MAX_INSTANCES = "Max. Number of Executors for the Service"
+MIN_INSTANCES = "Min. Number of Executors for the Service"
+CRITICAL_SERVICE = "Critical Service"
+
+rem -------------------------------------------------------
+rem	Attribs for users session
+SESSIONID = "Session ID"
+EXITED_EXECUTORS = "Out of Service Executors"
+
+rem -------------------------------------------------------
+rem	XML sub system commands
+XML_STATE_GET_RAM_CURRENT_SIZE = "Get Current Cache Size"
+XML_STATE_FLUSH = "Flush Cache"
+XML_STATE_GET_N_OBJECTS = "Get Number of Objects in Cache"
+XML_STATE_DEL_BY_SESSION_ID = "Remove State by Session ID"
+CAPTURE_EXCEPTIONS = "Capture Exceptions"
+DONT_CAPTURE_EXCEPTIONS = "Do not Capture Exceptions"
+ 
+rem -------------------------------------------------------
+rem	XML sub system literals
+XML_SS_STATE_RAM_CURRENT_SIZE = "Current Cache Size"
+XML_SS_STATE_N_OBJECTS = "Number of Objects in Cache"
+XML_SS_SESSION_ID = "Session ID"
+MAX_MEMORY = "Max. Memory Size"
+REFR_RATIO = "Refresh Ratio"
+STATE_CACHE_DIR = "State Cache Dir."
+
+rem -------------------------------------------------------
+rem	DMSSUBSYSTEM
+
+DMS_CHANGE_NUM_MAX_SESSIONS = "Change Max. Number of Sessions"
+DMS_CUR_OPEN_SES = "Current Open Sessions"
+DMS_MAX_NUMBER_OPEN_SESSIONS = "Max. Number of Sessions"
+DMS_LN_CHANGE_NUM_MAX_REPOSITORIES = "Change Max. Number of Repositories"
+DMS_LN_STARTUP = "Startup DMS Lotus Notes"
+DMS_LN_SHUTDOWN = "Shutdown DMS Lotus Notes"
+DMS_LN_CUR_OPEN_REP = "Current Open Repositories"
+DMS_LN_MAX_NUMBER_OPEN_REPOSITORIES = "Max. Number of Repositories"
+DMS_LN_MAX_NUM_CACHE_REPOSITORIES = "Max. Number of Cache Repositories"
+DMS_LN_MAX_TIME_OPEN_REPOSITORIES = "Max. Time Open Repositories (min)"
+DMS_FS_STARTUP = "Startup DMS File System"
+DMS_FS_SHUTDOWN = "Shutdown DMS File System"
+
+END

@@ -1,0 +1,24 @@
+HKCR
+{
+	DGenericObject.DGenericObject.1 = s 'DGenericObject Class'
+	{
+		CLSID = s '{F9E7497B-3A8F-11D3-BCF3-00C04F71652D}'
+	}
+	DGenericObject.DGenericObject = s 'DGenericObject Class'
+	{
+		CurVer = s 'DGenericObject.DGenericObject.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F9E7497B-3A8F-11D3-BCF3-00C04F71652D} = s 'DGenericObject Class'
+		{
+			ProgID = s 'DGenericObject.DGenericObject.1'
+			VersionIndependentProgID = s 'DGenericObject.DGenericObject'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

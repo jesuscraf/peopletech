@@ -1,0 +1,83 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4exeforchannel.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/channelutil.cpp
+SRC = ../src/clexecutorcache.cpp
+SRC = ../src/clexecutorstate.cpp
+SRC = ../src/clexecutorstatemanager.cpp
+SRC = ../src/executiveforoe.cpp
+SRC = ../src/executiveforoess.cpp
+SRC = ../src/exeforchannel.cpp
+SRC = ../src/exeform4xml.cpp
+SRC = ../src/exeformd.cpp
+SRC = ../src/exeforproxy.cpp
+SRC = ../src/exeforsessionch.cpp
+SRC = ../src/exeforuuss.cpp
+SRC = ../src/exem4xmlsax.cpp
+SRC = ../src/itemaccess.cpp
+SRC = ../src/m4xmlsubsys.cpp
+SRC = ../src/m4xmlutil.cpp
+SRC = ../src/metadatasubsys.cpp
+SRC = ../src/oltpsubsys.cpp
+SRC = ../src/proxspacsss.cpp
+SRC = ../src/proxysubsys.cpp
+SRC = ../src/sergenproxy.cpp
+SRC = ../src/serverm4xml.cpp
+SRC = ../src/srvm4xmlsax.cpp
+
+# fuentes que no se optimizan.
+[aix] NO_OPTIMIZE_FILE = serverm4xml.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+EH = yes
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cacertmngr
+LIB = m4cache
+LIB = m4configtreedll
+LIB = m4credentials
+LIB = m4cryptc
+LIB = m4date
+LIB = m4dm
+LIB = m4eventhandler
+LIB = m4executivedll
+LIB = m4filemanager
+LIB = m4ipcs
+LIB = m4log
+LIB = m4logsys
+LIB = m4mdrt
+LIB = m4memdbg
+LIB = m4objcachedirectory
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4oeinit
+LIB = m4pdus
+LIB = m4serial
+LIB = m4servenvdll
+LIB = m4serverbasedll
+LIB = m4servereventdll
+LIB = m4subsystemsdll
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4userinterfacedll
+LIB = m4uuid
+LIB = m4variant
+LIB = m4vm
+LIB = xerces-c
+
+

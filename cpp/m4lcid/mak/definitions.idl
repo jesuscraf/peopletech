@@ -1,0 +1,1386 @@
+#include <olectl.h>
+// definitions.idl
+//
+
+// Archivo con las definiciones de los diferentes tipos que el resto de componentes utilizan
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+// Forward declarations
+interface ICPropBagDef;
+interface ICPropBag;
+interface IMenuPopPup;
+interface IPersistObject;
+
+
+	typedef [uuid(ECBA5511-1A61-11D2-9697-00C04FC2444B), helpstring("Property Type")]
+    enum M4PropertyType {
+		FE_NOTDEFINED = 0,
+		FE_NUMBER = 1,
+		FE_STRING = 2,
+		FE_BOOLEAN = 3,
+		FE_DATE = 4,
+		FE_COLOR = 5,
+		FE_TRADUCTPROP = 6,
+		FE_FONT = 7,
+		FE_DATAPROP = 8,
+		FE_IMAGE = 9,
+		FE_ALIGNTYPE = 10,
+		FE_LN4_CODEARGS = 11,
+		FE_CONSTRUCTIF = 12,
+		FE_GRANTSTYPE = 13,
+		FE_STRING_NOTDEFINED = 14,
+		FE_NUMBER_NOTDEFINED = 15,
+		FE_BOOLEAN_NOTDEFINED = 16
+    } M4PropertyType;
+
+	typedef [uuid(1BB14540-EAB9-11d3-BDBD-00C04F71652D), helpstring("Presentation Type")]
+    enum M4PresentType {
+		PT_PRESENTATION = 0,
+		PT_RECEIPT = 1,
+		PT_TEMPLATE = 2,
+		PT_QBF = 3,
+		PT_INCLUDE = 4,
+		PT_ALL = 255
+    } M4PresentType;
+
+	typedef [uuid(609093B4-998E-11D2-BCCB-00C04F71652D), helpstring("RegKeyOpenMode")]
+	enum M4RegKeyMode {
+		READ_ACCESS = 0,
+		WRITE_ACCESS = 1,
+		ALL_ACCESS = 2
+	} M4RegKeyMode;
+	
+	typedef [uuid(31F5BD00-2CB9-11d4-BDF9-00C04F71652D), helpstring("Property Presentation State (Bit Map)")]
+    enum M4PresentationState {
+		PR_STATE_NEW = 1,
+		PR_STATE_CLEAN = 2,
+		PR_STATE_MODIFIED = 4
+    } M4PresentationState;
+
+	typedef [uuid(3A347CB0-0014-11d4-BDD3-00C04F71652D), helpstring("Presentations Styles")]
+    enum M4PresentStyles {
+		M4PS_EMPTY = -1,
+		M4PS_STANDARD = 0,
+		M4PS_FILTER = 7,
+		M4PS_LIST = 1,
+		M4PS_TABLE = 2,
+		M4PS_MONONODE = 5,
+		M4PS_QUERY = 6,
+		M4PS_RECEIPT = 3,
+		M4PS_REUSABLE_BLOCK = 4,
+		M4PS_MASTER_TEMPLATE = 8,
+		M4PS_TEMPLATE = 9,
+		M4PS_NEW_INFORMATION = 10,
+		M4PS_NEW_MONONODE = 11,
+		M4PS_NEW_MULTINODE = 12,
+		M4PS_INCLUDEPANEL = 101,
+		M4PS_INCLUDESCROLLPANEL = 102,
+		M4PS_INCLUDEEVENT = 103,
+		M4PS_INCLUDEMENUBAR = 104
+    } M4PresentStyles;
+
+	//##ModelId=3973077D019A
+	[
+		object,
+		uuid(F8088412-C268-11D1-9633-00C04FC2444B),
+		dual,
+		helpstring("IM4RegKey Interface"),
+		pointer_default(unique)
+	]
+	interface IM4RegKey : IDispatch
+	{
+		//##ModelId=3973077D01F3
+		[id(1), helpstring("Close the current Key")] HRESULT CloseKey();
+		//##ModelId=3973077D01FC
+		[propget, id(2), helpstring("Number of Keys")] HRESULT GetNumberOfKeys([out, retval] long *pVal);
+		//##ModelId=3973077D01FF
+		[propget, id(3), helpstring("Get the Number Of Values")] HRESULT GetNumberOfValues([out, retval] long *pVal);
+		//##ModelId=3973077D0208
+		[propget, id(4), helpstring("Key Names by Index")] HRESULT KeyName(long nIndex, [out, retval] BSTR *pVal);
+		//##ModelId=3973077D0212
+		[propget, id(5), helpstring("property MainKey")] HRESULT MainKey([out, retval] BSTR *pVal);
+		//##ModelId=3973077D021A
+		[propput, id(5), helpstring("property MainKey")] HRESULT MainKey([in] BSTR newVal);
+		//##ModelId=3973077D0224
+		[propget, id(6), helpstring("property SubKey")] HRESULT SubKey([out, retval] BSTR *pVal);
+		//##ModelId=3973077D0227
+		[propput, id(6), helpstring("property SubKey")] HRESULT SubKey([in] BSTR newVal);
+		//##ModelId=3973077D0230
+		[propget, id(7), helpstring("property ValidPosition")] HRESULT ValidPosition([out, retval] BOOL *pVal);
+		//##ModelId=3973077D0239
+		[propget, id(8), helpstring("property Value")] HRESULT Value(BSTR bstrValueName, [out, retval] VARIANT *pVal);
+		//##ModelId=3973077D0243
+		[propput, id(8), helpstring("property Value")] HRESULT Value(BSTR bstrValueName, [in] VARIANT newVal);
+		//##ModelId=3973077D024D
+		[propget, id(9), helpstring("property ValueName")] HRESULT ValueName(long nIndex, [out, retval] BSTR *pVal);
+		//##ModelId=3973077D0257
+		[id(10), helpstring("method OpenKey")] HRESULT OpenKey();
+		//##ModelId=3973077D0258
+		[id(11), helpstring("method DeleteKey")] HRESULT DeleteKey(BSTR KeyName);
+		//##ModelId=3973077D0261
+		[id(12), helpstring("method OpenKeyEx")] HRESULT OpenKeyEx([in] M4RegKeyMode openMode);
+		//##ModelId=3973077D0263
+		[id(13), helpstring("method DeleteValue")] HRESULT DeleteValue(BSTR ValueName);
+		//##ModelId=3973077D026B
+		[id(14), helpstring("method CreateKey")] HRESULT CreateKey();
+	};
+	//##ModelId=3973077D0120
+	[
+		object,
+		uuid(06854C11-088F-11D3-BC9D-00C04F71652D),
+		helpstring("IM4FontHolder Interface"),
+		pointer_default(unique)
+	]
+	interface IM4FontHolder : IDispatch
+	{
+		//##ModelId=3973077D0198
+		[propput, helpstring("property FontName"), hidden] HRESULT FontName([in] BSTR newVal);
+ 		[propput, helpstring("property FontText"), hidden] HRESULT FontText([in] BSTR newVal);
+
+		[id(1), helpstring("method Clone")] HRESULT Clone([out, retval] IM4FontHolder ** pFontHolder);
+		[propget, helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		[propput, helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		[propget, helpstring("property FontBold")] HRESULT FontBold([out, retval] BSTR *pVal);
+		[propput, helpstring("property FontBold")] HRESULT FontBold([in] BSTR newVal);		
+		[propget, helpstring("property FontItalic")] HRESULT FontItalic([out, retval] BSTR *pVal);
+		[propput, helpstring("property FontItalic")] HRESULT FontItalic([in] BSTR newVal);
+		[propget, helpstring("property FontUnderline")] HRESULT FontUnderline([out, retval] BSTR *pVal);
+		[propput, helpstring("property FontUnderline")] HRESULT FontUnderline([in] BSTR newVal);
+		[propget, helpstring("property FontSize")] HRESULT FontSize([out, retval] BSTR *pVal);
+		[propput, helpstring("property FontSize")] HRESULT FontSize([in] BSTR newVal);
+	};
+
+	//##ModelId=3973077D0089
+	[
+		object,
+		uuid(2D3708EA-64D8-11D2-BC7F-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("ICChildColDef Interface"),
+		pointer_default(unique)
+	]
+	interface ICChildColDef : IDispatch
+	{
+		//##ModelId=3973077D00DB
+		[id(1), helpstring("Add")] HRESULT Add([in]ICPropBagDef *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077D00E4
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077D00E7
+		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICPropBagDef **pvar);
+		//##ModelId=3973077D00F1
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077D00FA
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077D0103
+		[propget, id(7), helpstring("Property ExecOrder")] HRESULT Exec([in]VARIANT index, [out, retval]long *pVal);
+		//##ModelId=3973077D010C
+		[propput, id(7), helpstring("property ExecOrder")] HRESULT Exec([in]VARIANT index, [in] long pVal);
+		//##ModelId=3973077D0116
+		[id(8), helpstring("Remove All Elements")] HRESULT RemoveAll();
+
+	};
+	
+	//##ModelId=3973077C03DB
+	[
+		object,
+		uuid(2D3708E4-64D8-11D2-BC7F-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("ICDefProp Interface"),
+		pointer_default(unique)
+	]
+	interface ICDefProp : IDispatch
+	{
+		//##ModelId=3973077D0044
+		[propget, id(1), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		//##ModelId=3973077D004D
+		[propput, id(1), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		//##ModelId=3973077D0050
+		[propget, id(0), helpstring("property Value")] HRESULT Value([out, retval] VARIANT *pVal);
+		//##ModelId=3973077D0059
+		[propput, id(0), helpstring("property Value")] HRESULT Value([in] VARIANT newVal);
+		//##ModelId=3973077D0063
+		[propget, id(2), helpstring("property DefValue")] HRESULT DefValue([out, retval] VARIANT *pVal);
+		//##ModelId=3973077D006D
+		[propput, id(2), helpstring("property DefValue")] HRESULT DefValue([in] VARIANT newVal);
+		//##ModelId=3973077D0075
+		[propget, id(4), helpstring("property Type")] HRESULT Type([out, retval] M4PropertyType *pVal);
+		//##ModelId=3973077D007F
+		[propput, id(4), helpstring("property Type")] HRESULT Type([in] M4PropertyType newVal);
+	};
+
+	//##ModelId=3973077C0363
+	[
+		object,
+		uuid(2D3708E6-64D8-11D2-BC7F-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("ICPropColDef Interface"),
+		pointer_default(unique)
+	]
+	interface ICPropColDef : IDispatch
+	{
+		//##ModelId=3973077C03AA
+		[id(1), helpstring("Add")] HRESULT Add([in]ICDefProp *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077C03B5
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077C03BF
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICDefProp **pvar);
+		//##ModelId=3973077C03C9
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077C03D2
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077C03D4
+		[id(6), helpstring("RemoveAll Elements")] HRESULT RemoveAll();
+	};
+	
+	//##ModelId=3973077C0291
+	[
+		object,
+		uuid(2D3708E8-64D8-11D2-BC7F-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("ICPropBagDef Interface"),
+		pointer_default(unique)
+	]
+	interface ICPropBagDef : IDispatch
+	{
+		//##ModelId=3973077C02E2
+		[propget, id(1), helpstring("property Alias")] HRESULT Alias([out, retval] BSTR *pVal);
+		//##ModelId=3973077C02EB
+		[propput, id(1), helpstring("property Alias")] HRESULT Alias([in] BSTR newVal);
+		//##ModelId=3973077C02EE
+		[propget, id(2), helpstring("property ClassName")] HRESULT ClassName([out, retval] BSTR *pVal);
+		//##ModelId=3973077C02F7
+		[propput, id(2), helpstring("property ClassName")] HRESULT ClassName([in] BSTR newVal);
+		//##ModelId=3973077C0300
+		[id(3), helpstring("method AddChild")] HRESULT AddChild([in] ICPropBagDef ** pbdChild, [in, optional] VARIANT vIndex);
+		//##ModelId=3973077C0309
+		[id(4), helpstring("method AddProperty")] HRESULT AddProperty([in] BSTR bstrName, [in] VARIANT vValue, [in, optional] VARIANT vDefValue, [in, optional, defaultvalue(FE_NOTDEFINED)] M4PropertyType sValue);
+		//##ModelId=3973077C0314
+		[propget, id(0), helpstring("property PropColDef")] HRESULT PropColDef([out, retval] ICPropColDef **pVal);
+		//##ModelId=3973077C031D
+		[propget, id(6), helpstring("property ChildColDef")] HRESULT ChildColDef([out, retval] ICChildColDef **pVal);
+		//##ModelId=3973077C0327
+		[id(7), helpstring("method Property")] HRESULT Property([in, out] BSTR PropertyName, [out, retval] VARIANT * vReturn);
+		//##ModelId=3973077C0333
+		[propget, id(10), helpstring("property ChildPBDefCountRec")] HRESULT ChildPBDefCountRec([out, retval] long *pVal);
+		//##ModelId=3973077C033D
+		[propget, id(11), helpstring("property Key")] HRESULT Key([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0345
+		[id(12), helpstring("method Reset")] HRESULT Reset();
+		//##ModelId=3973077C0346
+		[id(13), helpstring("method ReplaceChild")] HRESULT ReplaceChild([in] ICPropBagDef * pOld, [in] ICPropBagDef * pNew);
+		[id(14), helpstring("method SolveTranslation")] HRESULT SolveTranslation();
+		//##ModelId=3973077C0350
+		[propput, id(6), helpstring("property ChildColDef")] HRESULT ChildColDef([in] ICChildColDef *pVal);
+		//##ModelId=3973077C0359
+		[propputref, id(6), helpstring("property ChildColDef")] HRESULT ChildColDef([in] ICChildColDef *pVal);
+	};
+
+	//##ModelId=3973077C01D4
+	[
+		object,
+		uuid(ECBA5500-1A61-11D2-9697-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("ICProperty Interface"),
+		pointer_default(unique)
+	]
+	interface ICProperty : IDispatch
+	{
+		//##ModelId=3973077C0224
+		[propget, id(1), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		//##ModelId=3973077C022F
+		[propput, id(1), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		//##ModelId=3973077C0239
+		[propget, id(0), helpstring("property Value")] HRESULT Value([out, retval] VARIANT *pVal);
+		//##ModelId=3973077C0241
+		[propput, id(0), helpstring("property Value")] HRESULT Value([in] VARIANT newVal);
+		//##ModelId=3973077C024B
+		[propget, id(3), helpstring("property Type")] HRESULT Type([out, retval] M4PropertyType *pVal);
+		//##ModelId=3973077C024E
+		[propput, id(3), helpstring("property Type")] HRESULT Type([in] M4PropertyType newVal);
+		//##ModelId=3973077C0257
+		[propget, id(4), helpstring("property Editable")] HRESULT Editable([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077C025F
+		[propput, id(4), helpstring("property Editable")] HRESULT Editable([in] VARIANT_BOOL newVal);
+		//##ModelId=3973077C0269
+		[propget, id(5), helpstring("property Group")] HRESULT Group([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0275
+		[propput, id(5), helpstring("property Group")] HRESULT Group([in] BSTR newVal);
+		//##ModelId=3973077C027F
+		[propget, id(6), helpstring("property DefValue")] HRESULT DefValue([out, retval] VARIANT *pVal);
+		//##ModelId=3973077C0288
+		[propput, id(6), helpstring("property DefValue")] HRESULT DefValue([in] VARIANT newVal);
+	};
+
+	//##ModelId=3973077C0146
+	[
+		object,
+		uuid(ECBA5503-1A61-11D2-9697-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("IPropCol Interface"),
+		pointer_default(unique)
+	]
+	interface IPropCol : IDispatch
+	{
+		//##ModelId=3973077C018D
+		[id(1), helpstring("Add")] HRESULT Add([in]ICProperty *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077C0198
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077C01A1
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICProperty **pvar);
+		//##ModelId=3973077C01AB
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077C01B4
+		[id(3), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077C01B6
+		[id(4), helpstring("method AddProperty")] HRESULT AddProperty([in]  BSTR strName, [in] VARIANT vValue, [in] VARIANT_BOOL bEditable, [in] M4PropertyType nType, [in, optional] VARIANT vDefValue);
+		//##ModelId=3973077C01C9
+		[propget, id(5), helpstring("property Property")] HRESULT Property([in] VARIANT nIndex, [in] VARIANT vDefValue, [out, retval] ICProperty **pVal);
+	};
+
+	//##ModelId=3973077C00B1
+	[
+		object,
+		uuid(DF5B3E84-583B-11D2-BC6A-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("IContainedObjects Interface"),
+		pointer_default(unique)
+	]
+	interface IContainedObjects : IDispatch
+	{
+		//##ModelId=3973077C0101
+		[id(1), helpstring("Add")] HRESULT Add([in]IDispatch *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077C010A
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077C010D
+ 		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IDispatch **pvar);
+		//##ModelId=3973077C0117
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077C0120
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077C0129
+		[propget, id(5), helpstring("Property ExecOrder")] HRESULT Exec([in]VARIANT index, [out, retval]long *pVal);
+		//##ModelId=3973077C0133
+		[propput, id(5), helpstring("property ExecOrder")] HRESULT Exec([in]VARIANT index, [in] long pVal);
+	};
+
+
+	//##ModelId=3973077B03BC
+	[
+		object,
+		uuid(B4981953-0D0C-11D3-BCAA-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("IDataProperties Interface"),
+		pointer_default(unique)
+	]
+	interface IDataProperties : IDispatch
+	{
+		//##ModelId=3973077C001B
+		[propget, id(1), helpstring("property IdChannel")] HRESULT IdChannel([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0024
+		[propput, id(1), helpstring("property IdChannel")] HRESULT IdChannel([in] BSTR newVal);
+		//##ModelId=3973077C0027
+		[propget, id(2), helpstring("property IdChannelAlias")] HRESULT IdChannelAlias([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0030
+		[propput, id(2), helpstring("property IdChannelAlias")] HRESULT IdChannelAlias([in] BSTR newVal);
+		//##ModelId=3973077C0039
+		[propget, id(3), helpstring("property IdChannelKey")] HRESULT IdChannelKey([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0042
+		[propput, id(3), helpstring("property IdChannelKey")] HRESULT IdChannelKey([in] BSTR newVal);
+		//##ModelId=3973077C0045
+		[propget, id(4), helpstring("property IdNode")] HRESULT IdNode([out, retval] BSTR *pVal);
+		//##ModelId=3973077C004E
+		[propput, id(4), helpstring("property IdNode")] HRESULT IdNode([in] BSTR newVal);
+		//##ModelId=3973077C0057
+		[propget, id(5), helpstring("property IdItem")] HRESULT IdItem([out, retval] BSTR *pVal);
+		//##ModelId=3973077C0061
+		[propput, id(5), helpstring("property IdItem")] HRESULT IdItem([in] BSTR newVal);
+		//##ModelId=3973077C006A
+		[propget, id(6), helpstring("property IdAccessAlias")] HRESULT IdAccessAlias([out, retval] BSTR *pVal);
+		//##ModelId=3973077C006D
+		[propput, id(6), helpstring("property IdAccessAlias")] HRESULT IdAccessAlias([in] BSTR newVal);
+		//##ModelId=3973077C0076
+		[propget, id(7), helpstring("property IdPresentation")] HRESULT IdPresentation([out, retval] long *pVal);
+		//##ModelId=3973077C0080
+		[propput, id(7), helpstring("property IdPresentation")] HRESULT IdPresentation([in] long newVal);
+		//##ModelId=3973077C0088
+		[propget, id(8), helpstring("property Grants")] HRESULT Grants([out, retval] short *pVal);
+		//##ModelId=3973077C008B
+		[propput, id(8), helpstring("property Grants")] HRESULT Grants([in] short newVal);
+		//##ModelId=3973077C0094
+		[id(9), helpstring("method Clone")] HRESULT Clone([out, retval] IDataProperties ** ppDataProps);
+		//##ModelId=3973077C009D
+		[propget, id(10), helpstring("property StartPos")] HRESULT StartPos([out, retval] long *pVal);
+		//##ModelId=3973077C00A6
+		[propput, id(10), helpstring("property StartPos")] HRESULT StartPos([in] long newVal);
+		//##ModelId=3973077C00B0
+		[id(11), helpstring("method Reset")] HRESULT Reset();
+	};
+
+	//##ModelId=3973077B0253
+	[
+		object,
+		uuid(17745F0B-3948-11D3-89A3-00C04F82C14F),
+		dual,
+		helpstring("IDesignObject Interface"),
+		pointer_default(unique)
+	]
+	interface IDesignObject : IUnknown {
+		//##ModelId=3973077B0299
+		[id(0), propget] HRESULT Key([out, retval] BSTR* bstrKey);
+		//##ModelId=3973077B029C
+		[id(0), propput] HRESULT Key([in, out] BSTR* bstrKey);
+		//##ModelId=3973077B02A5
+		[id(1)] HRESULT Construct([in, out] IDispatch ** oFact, [in, out] IDispatch** DesControl, [in, out, optional] BSTR* strItemAlias);
+		//##ModelId=3973077B02B0
+		[id(2)] HRESULT Destruct([in, out] IDispatch ** oFact);
+		//##ModelId=3973077B02B8
+		[id(4)] HRESULT Persist2([in, out] ICPropBagDef** pbd, [in, out] VARIANT_BOOL* bPersist);
+		//##ModelId=3973077B02C1
+		[id(5), propget] HRESULT Alias([out, retval] BSTR* bstrAlias);
+		//##ModelId=3973077B02C4
+		[id(5), propput] HRESULT Alias([in, out] BSTR* bstrAlias);
+		//##ModelId=3973077B02CD
+		[id(6), propget] HRESULT Path([out, retval] BSTR* bstrPath);
+		//##ModelId=3973077B02D6
+		[id(7), propget] HRESULT ClassName([out, retval] BSTR* bstrClassName);
+		//##ModelId=3973077B02DF
+		[id(7), propput] HRESULT ClassName([in, out] BSTR* bstrClassName);
+		//##ModelId=3973077B02E9
+		[id(9), propget] HRESULT Container([out, retval] BSTR* );
+		//##ModelId=3973077B02EC
+		[id(9), propput] HRESULT Container([in, out] BSTR* );
+		//##ModelId=3973077B02F6
+		[id(10), propget] HRESULT ProgId([out, retval] BSTR* );
+		//##ModelId=3973077B02FF
+		[id(11), propget] HRESULT ExecOrder([out, retval] short* );
+		//##ModelId=3973077B0308
+		[id(11), propput] HRESULT ExecOrder([in, out] short* );
+		//##ModelId=3973077B030B
+		[id(12), propget] HRESULT PropertyCol([out, retval] IPropCol** );
+		//##ModelId=3973077B0314
+		[id(12), propput] HRESULT PropertyCol([in, out] IPropCol** );
+		//##ModelId=3973077B0326
+		[id(14), propget] HRESULT Toolstring([out, retval] BSTR* );
+		//##ModelId=3973077B0330
+		[id(15)] HRESULT ShowProp();
+		//##ModelId=3973077B0331
+		[id(16), propget] HRESULT InToolbar([out, retval] VARIANT_BOOL* );
+		//##ModelId=3973077B033B
+		[id(17), propget] HRESULT ContainedObjects([out, retval] IContainedObjects** );
+		//##ModelId=3973077B0344
+		[id(19), propget] HRESULT Count([out, retval] short* );
+		//##ModelId=3973077B0347
+		[id(20)] HRESULT AddControl([in, out] IDispatch** newValue, [in, out] BSTR* strKey);
+		//##ModelId=3973077B0350
+		[id(21)] HRESULT RemoveControl([in, out] BSTR* strKey);
+		//##ModelId=3973077B0358
+		[id(22)] HRESULT GetNextExecOrder([out, retval] short* );
+		//##ModelId=3973077B035A
+		[id(25)] HRESULT DestructChild();
+		//##ModelId=3973077B0362
+		[id(26)] HRESULT PostConstruct();
+		//##ModelId=3973077B0363
+		[id(27)] HRESULT ValidateInsertion([in, out] BSTR* strClassName, [out, retval] VARIANT_BOOL* );
+		//##ModelId=3973077B036E
+		[id(28), propget] HRESULT VisualName([out, retval] BSTR* );
+		//##ModelId=3973077B0377
+		[id(29), propget] HRESULT CanRemoveNow([out, retval] VARIANT_BOOL* );
+		//##ModelId=3973077B0380
+		[id(30)] HRESULT RefreshView();
+		//##ModelId=3973077B0381
+		[id(32)] HRESULT Activate([in, out] IDispatch** pFactor, [in, out] IDispatch** theDesign);
+		//##ModelId=3973077B038B
+		[id(33)] HRESULT Deactivate();
+		//##ModelId=3973077B038C
+		[id(34)] HRESULT Constructed([out, retval] VARIANT_BOOL* );
+		//##ModelId=3973077B0395
+		[id(35)] HRESULT CheckState([in, out] IDesignObject** ADesignObject);
+		//##ModelId=3973077B0397
+		[id(36), propget] HRESULT ReferencedObjects([out, retval] IContainedObjects** );
+		//##ModelId=3973077B03A0
+		[id(37), propget] HRESULT PropBagDef([out, retval] ICPropBagDef** );
+		//##ModelId=3973077B03AA
+		[id(38), propget] HRESULT DataProps([out, retval] IDataProperties** );
+		//##ModelId=3973077B03B3
+		[id(39)] HRESULT SetInitialPBDef([in] ICPropBagDef * pPBDef);
+	};
+
+	//##ModelId=3973077B01E5
+    [
+	  object,
+      uuid(A4C46780-499F-101B-BB78-00AA00383CBB),
+	  hidden,
+      dual,
+      oleautomation
+    ]
+    interface _Collection : IDispatch {
+		//##ModelId=3973077B0222
+        [id(00000000), helpcontext(0x000f7903)]
+        HRESULT  Item(
+                        [in] VARIANT* Index, 
+                        [out, retval] VARIANT* pvarRet);
+		//##ModelId=3973077B022D
+        [id(0x00000001), helpcontext(0x000f7901)]
+        HRESULT  Add(
+                        [in] VARIANT* Item, 
+                        [in, optional] VARIANT* Key, 
+                        [in, optional] VARIANT* Before, 
+                        [in, optional] VARIANT* After);
+		//##ModelId=3973077B023F
+        [id(0x00000002), helpcontext(0x000f7902)]
+        HRESULT  Count([out, retval] long* pi4);
+		//##ModelId=3973077B0241
+        [id(0x00000003), helpcontext(0x000f7904)]
+        HRESULT  Remove([in] VARIANT* Index);
+		//##ModelId=3973077B024A
+        [id(0xfffffffc)]
+        HRESULT  _NewEnum([out, retval] IUnknown** ppunk);
+    };
+
+	//##ModelId=3973077B0131
+	[
+		object,
+		uuid(D3A42353-0DC6-11D3-BCAB-00C04F71652D),
+		dual,
+		hidden,
+		helpstring("ITraductProp Interface"),
+		pointer_default(unique)
+	]
+	interface ITraductProp : IDispatch
+	{
+		//##ModelId=3973077B0177
+		[id(1), helpstring("method Init")] HRESULT Init([in] long PropertyNumber, [in] _Collection * pCollection);
+		//##ModelId=3973077B017A
+		[id(2), helpstring("method AllValues")] HRESULT AllValues([in] BSTR newVal);
+		//##ModelId=3973077B0182
+		[propget, id(3), helpstring("property Property")] HRESULT Property([out, retval] BSTR *pVal);
+		//##ModelId=3973077B018C
+		[propput, id(3), helpstring("property Property")] HRESULT Property([in] BSTR newVal);
+		//##ModelId=3973077B0195
+		[propget, id(4), helpstring("property PropertyNumber")] HRESULT PropertyNumber([out, retval] short *pVal);
+		//##ModelId=3973077B0198
+		[id(5), helpstring("method TestEqual")] HRESULT TestEqual([out, retval] VARIANT_BOOL * bRet);
+		//##ModelId=3973077B01A0
+		[id(6), helpstring("method Clone")] HRESULT Clone([out, retval] ITraductProp * * pRetProp);
+		//##ModelId=3973077B01A9
+		[propget, id(7), helpstring("property ValueByLng")] HRESULT ValueByLng([in] VARIANT vLangID, [out, retval] BSTR *pVal);
+		//##ModelId=3973077B01B3
+		[propput, id(7), helpstring("property ValueByLng")] HRESULT ValueByLng([in] VARIANT vLangID, [in] BSTR newVal);
+		//##ModelId=3973077B01BD
+		[propget, id(8), helpstring("property ID")] HRESULT ID([in] long nIndex, [out, retval] BSTR *pVal);
+		//##ModelId=3973077B01C7
+		[id(9), helpstring("method InitFromBSTRArray")] HRESULT InitFromBSTRArray([in] VARIANT newValue);
+		//##ModelId=3973077B01C9
+		[propget, id(10), helpstring("property Identifier")] HRESULT Identifier([out, retval] BSTR *pVal);
+		//##ModelId=3973077B01D2
+		[propput, id(10), helpstring("property Identifier")] HRESULT Identifier([in] BSTR newVal);
+		//##ModelId=3973077B01DB
+		[id(11), helpstring("method CloneClean")] HRESULT CloneClean([out, retval] ITraductProp ** pRet);
+		//##ModelId=3973077B01DD
+		[id(12), helpstring("method ResetIdentifier")] HRESULT ResetIdentifier();
+	};
+
+	//##ModelId=3973077B00B9
+	[
+		object,
+		uuid(13313654-2584-11D2-969E-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("ICSingleProp Interface"),
+		pointer_default(unique)
+	]
+	interface ICSingleProp : IDispatch
+	{
+		//##ModelId=3973077B0100
+		[propget, id(1), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		//##ModelId=3973077B010A
+		[propput, id(1), helpstring("property Name")] HRESULT Name([in] BSTR newVal);
+		//##ModelId=3973077B0113
+		[propget, id(2), helpstring("property Value")] HRESULT Value([out, retval] VARIANT *pVal);
+		//##ModelId=3973077B0116
+		[propput, id(2), helpstring("property Value")] HRESULT Value([in] VARIANT newVal);
+		//##ModelId=3973077B011F
+		[propget, id(3), hidden, helpstring("property Length")] HRESULT Length([out, retval] long *pVal);
+	};
+
+	//##ModelId=3973077B0041
+	[
+		object,
+		uuid(1331365A-2584-11D2-969E-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("ICChildCol Interface"),
+		pointer_default(unique)
+	]
+	interface ICChildCol : IDispatch
+	{
+		//##ModelId=3973077B007E
+		[id(1), helpstring("Add")] HRESULT Add([in]ICPropBag *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077B0088
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077B0091
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICPropBag **pvar);
+		//##ModelId=3973077B009B
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077B00A5
+		[id(3), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077B00A7
+		[id(4), hidden, helpstring("method InvalidateLength")] HRESULT InvalidateLength();
+		//##ModelId=3973077B00AF
+		[propget, hidden, id(5), helpstring("property Length")] HRESULT Length([out, retval] long *pVal);
+	};
+
+	//##ModelId=3973077A03BA
+	[
+		object,
+		uuid(13313656-2584-11D2-969E-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("ICPropCol Interface"),
+		pointer_default(unique)
+	]
+	interface ICPropCol : IDispatch
+	{
+		//##ModelId=3973077B000F
+		[id(1), helpstring("Add")] HRESULT Add([in]ICSingleProp *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077B0018
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077B001B
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICSingleProp **pvar);
+		//##ModelId=3973077B0025
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077B002E
+		[id(3), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077B0036
+		[propget, id(4), hidden, helpstring("property Length")] HRESULT Length([out, retval] long *pVal);
+	};
+
+
+	//##ModelId=3973077A031A
+	[
+		object,
+		uuid(13313658-2584-11D2-969E-00C04FC2444B),
+		dual,
+		hidden,
+		helpstring("ICPropBag Interface"),
+		pointer_default(unique)
+	]
+	interface ICPropBag : IDispatch
+	{
+		//##ModelId=3973077A0357
+		[propget, id(1), helpstring("property PropCol")] HRESULT PropCol([out, retval] ICPropCol * *pVal);
+		//##ModelId=3973077A0360
+		[propget, id(2), helpstring("property ChildCol")] HRESULT ChildCol([out, retval] ICChildCol * *pVal);
+		//##ModelId=3973077A036A
+		[propget, id(3), helpstring("property Alias")] HRESULT Alias([out, retval] BSTR *pVal);
+		//##ModelId=3973077A036D
+		[propput, id(3), helpstring("property Alias")] HRESULT Alias([in] BSTR newVal);
+		//##ModelId=3973077A0376
+		[propget, id(4), helpstring("property ClassName")] HRESULT ClassName([out, retval] BSTR *pVal);
+		//##ModelId=3973077A037F
+		[propput, id(4), helpstring("property ClassName")] HRESULT ClassName([in] BSTR newVal);
+		//##ModelId=3973077A0388
+		[id(5), helpstring("method ConditionalAddProperty")] HRESULT ConditionalAddProperty(BSTR Name, VARIANT vValue, VARIANT vDefault);
+		//##ModelId=3973077A038C
+		[id(6), helpstring("method AddProperty")] HRESULT AddProperty(BSTR strName, VARIANT vValue);
+		//##ModelId=3973077A0394
+		[id(7), helpstring("method AddChild")] HRESULT AddChild([in, out] ICPropBag * * newValue);
+		//##ModelId=3973077A039D
+		[id(8), helpstring("method Property")] HRESULT Property([in, out] BSTR PropertyName, [in, out] VARIANT * defValue, [out, retval] VARIANT * vReturn);
+		//##ModelId=3973077A03A8
+		[id(9), hidden, helpstring("method Invalidatelength")] HRESULT Invalidatelength();
+		//##ModelId=3973077A03B0
+		[propget, id(10), hidden, helpstring("property Length")] HRESULT Length([out, retval] long *pVal);
+	};
+
+	//##ModelId=3973077A02D4
+	[
+		object,
+		uuid(50F390C3-B214-11D3-BD77-00C04F71652D),
+		dual,
+		helpstring("IRefresh Interface"),
+		pointer_default(unique)
+	]
+	interface IRefresh : IDispatch {
+		//##ModelId=3973077A0311
+		[id(1)] HRESULT Refresh();
+	};
+
+	//##ModelId=3973077A0157
+	[
+		object,
+		uuid(AA9A176E-CB03-11D2-BC56-00C04FA92178),
+		dual,
+		helpstring("Iveranle Interface"),
+		pointer_default(unique)
+	]
+	interface Iveranle : IDispatch
+	{
+		//##ModelId=3973077A018B
+		[propget, id(3), helpstring("property Maxerror")] HRESULT Maxerror([out, retval] long *pVal);
+		//##ModelId=3973077A018E
+		[propput, id(3), helpstring("property Maxerror")] HRESULT Maxerror([in] long newVal);
+		//##ModelId=3973077A0196
+		[id(6), helpstring("method Geterror")] HRESULT Geterror(long error, VARIANT * estruct);
+		//##ModelId=3973077A01A0
+		[propget, id(7), helpstring("property Filename")] HRESULT Filename([out, retval] BSTR *pVal);
+		//##ModelId=3973077A01A8
+		[propput, id(7), helpstring("property Filename")] HRESULT Filename([in] BSTR newVal);
+		//##ModelId=3973077A01AB
+		[propget, id(8), helpstring("property GenerateFile")] HRESULT GenerateFile([out, retval] BOOL *pVal);
+		//##ModelId=3973077A01B4
+		[propput, id(8), helpstring("property GenerateFile")] HRESULT GenerateFile([in] BOOL newVal);
+		//##ModelId=3973077A01BE
+		[id(9), helpstring("method Analyze")] HRESULT Analyze(BSTR fichero);
+		//##ModelId=3973077A01C6
+		[id(10), helpstring("method Clear")] HRESULT Clear();
+		//##ModelId=3973077A01C7
+		[propget, id(11), helpstring("property ErrorCount")] HRESULT ErrorCount([out, retval] long *pVal);
+		//##ModelId=3973077A01D0
+		[propput, id(11), helpstring("property ErrorCount")] HRESULT ErrorCount([in] long newVal);
+		//##ModelId=3973077A01D3
+		[propget, id(12), helpstring("property AnalyzeProperty")] HRESULT AnalyzeProperty(BSTR Object, BSTR Property, BSTR Value, [out, retval] short *pVal);
+		//##ModelId=3973077A01E4
+		[propput, id(13), helpstring("property Errorlevel")] HRESULT Errorlevel([in] short newVal);
+		//##ModelId=3973077A01EE
+		[propget, id(14), helpstring("property CompileMode")] HRESULT CompileMode([out, retval] BSTR *pVal);
+		//##ModelId=3973077A01F1
+		[propput, id(14), helpstring("property CompileMode")] HRESULT CompileMode([in] BSTR newVal);
+		//##ModelId=3973077A01FA
+		[propget, id(15), helpstring("property ResultPB")] HRESULT ResultPB(ICPropBag * * PB, [out, retval] short *pVal);
+		//##ModelId=3973077A0204
+		[propget, id(16), helpstring("property PropBagDefFromClassname")] HRESULT PropBagDefFromClassname([in] BSTR classname, [out, retval] ICPropBagDef ** PBDef);
+		//##ModelId=3973077A020E
+		[propget, id(17), helpstring("property ListEventsFromClassname")] HRESULT ListEventsFromClassname([in] BSTR classname, [out, retval] ICPropBag * * PB);
+		//##ModelId=3973077A0218
+		[id(18), helpstring("method InitLang")] HRESULT InitLang([in] long nLang, [in] _Collection * colLang);
+		//##ModelId=3973077A0221
+		[propget, id(19), helpstring("property IsControl")] HRESULT IsControl([in] BSTR bstrClassName, [out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A022B
+		[propget, id(20), helpstring("property IconString")] HRESULT IconString([in] BSTR bstrClassName, [out, retval] BSTR *pVal);
+		//##ModelId=3973077A0235
+		[propget, id(21), helpstring("property HideFromInsert")] HRESULT HideFromInsert([in] BSTR bstrClassName, [out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A023F
+		[propget, id(22), helpstring("property InToolbar")] HRESULT InToolbar([in] BSTR bstrClassName, [out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A0249
+		[id(23), helpstring("method IsContained")] HRESULT IsContained([in] BSTR bstrDestClassName, [in] BSTR bstrContainedClassname, [out,retval] VARIANT_BOOL * pReturn);
+		//##ModelId=3973077A0253
+		[id(24), helpstring("method GetContainedObjectsList")] HRESULT GetContainedObjectsList([in] BSTR bstrClassName, [out,retval] ICPropBag ** ppRetVal);
+		//##ModelId=3973077A025E
+		[id(25), helpstring("method IsEvent")] HRESULT IsEvent([in] BSTR ClassName, [out, retval] VARIANT_BOOL * pResult);
+		//##ModelId=3973077A0267
+		[propget, id(26), helpstring("property ObjectPB")] HRESULT ObjectPB([out, retval] ICPropBag * * pVal);
+		//##ModelId=3973077A0270
+		[id(27), helpstring("method get_Msg")] HRESULT get_Msg([out, retval] ICPropBag ** pVal);
+		//##ModelId=3973077A0272
+		[id(28), helpstring("method MaxMinNumberOfObjects")] HRESULT MaxMinNumberOfObjects([in] BSTR bstrClassName, [in] BSTR ClassNameChild, [out] long *pValMax, [out] long *pValMin);
+		//##ModelId=3973077A0284
+		[propget, id(29), helpstring("property UniqueUID")] HRESULT UniqueUID([in] BSTR bstrClassName, [out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A028E
+		[id(30), helpstring("method InitLangFromArray")] HRESULT InitLangFromArray([in] VARIANT vArray);
+		//##ModelId=3973077A0290
+		[id(31), helpstring("method InitFromResource")] HRESULT InitFromResource([in] long idResource);
+		//##ModelId=3973077A0299
+		[propget, id(32), helpstring("property MetalengResourceID")] HRESULT MetalengResourceID([out, retval] long *pVal);
+		//##ModelId=3973077A02A2
+		[propput, id(32), helpstring("property MetalengResourceID")] HRESULT MetalengResourceID([in] long newVal);
+		//##ModelId=3973077A02A5
+		[id(33), helpstring("method GetStringFromResource")] HRESULT GetStringFromResource([in] long nResId, [out, retval] BSTR * bsRet);
+		//##ModelId=3973077A02AE
+		[id(34), helpstring("method GetPropertyGroups")] HRESULT GetPropertyGroups([out, retval] ICPropBag ** pRet);
+		//##ModelId=3973077A02B7
+		[id(35), helpstring("method GetObjectGroups")] HRESULT GetObjectGroups([out, retval] ICPropBag ** pRet);
+		//##ModelId=3973077A02C0
+		[id(36), helpstring("method GetTypesGroups")] HRESULT GetTypesGroups([out, retval] ICPropBag ** pRet);
+		//##ModelId=3973077A02C2
+		[propget, id(37), helpstring("property TemplateOnly")] HRESULT TemplateOnly([in] BSTR bstrClassName, [out, retval] VARIANT_BOOL *pVal);
+
+		[propget, id(38), helpstring("property ErrorLanguage")] HRESULT ErrorLanguage([out, retval] long *pVal);
+		[propput, id(38), helpstring("property ErrorLanguage")] HRESULT ErrorLanguage([in] long newVal);
+	};
+
+	//##ModelId=3973077A0021
+	[
+		object,
+		uuid(135B2E01-E60B-11D3-BDB5-00C04F71652D),
+		dual,
+		helpstring("IPresentationItem Interface"),
+		pointer_default(unique)
+	]
+	interface IPresentationItem : IDispatch
+	{
+		//##ModelId=3973077A005E
+		[propget, id(1), helpstring("property PresentationID")] HRESULT PresentationID([out, retval] BSTR *pVal);
+		//##ModelId=3973077A0069
+		[propput, id(1), helpstring("property PresentationID")] HRESULT PresentationID([in] BSTR newVal);
+		//##ModelId=3973077A0071
+		[propget, id(2), helpstring("property OwnerFlag")] HRESULT OwnerFlag([out, retval] long *pVal);
+		//##ModelId=3973077A007B
+		[propput, id(2), helpstring("property OwnerFlag")] HRESULT OwnerFlag([in] long newVal);
+		//##ModelId=3973077A007E
+		[propget, id(3), helpstring("property ModifiedFlag")] HRESULT ModifiedFlag([out, retval] short *pVal);
+		//##ModelId=3973077A0087
+		[propget, id(14), helpstring("property State")] HRESULT State([out, retval] M4PresentationState *pVal);
+		//##ModelId=3973077A0090
+		[propput, id(14), helpstring("property State")] HRESULT State([in] M4PresentationState newVal);
+		//##ModelId=3973077A0099
+		[propput, id(3), helpstring("property ModifiedFlag")] HRESULT ModifiedFlag([in] short newVal);
+		//##ModelId=3973077A00A3
+		[propget, id(4), helpstring("property DateCreate")] HRESULT DateCreate([out, retval] DATE *pVal);
+		//##ModelId=3973077A00AF
+		[propput, id(4), helpstring("property DateCreate")] HRESULT DateCreate([in] DATE newVal);
+		//##ModelId=3973077A00B8
+		[propget, id(5), helpstring("property DateUpdate")] HRESULT DateUpdate([out, retval] DATE *pVal);
+		//##ModelId=3973077A00C1
+		[propput, id(5), helpstring("property DateUpdate")] HRESULT DateUpdate([in] DATE newVal);
+		//##ModelId=3973077A00C4
+		[propget, id(6), helpstring("property MainObject")] HRESULT MainObject([out, retval] IDesignObject ** pVal);
+		//##ModelId=3973077A00CD
+		[propputref, id(6), helpstring("property MainObject")] HRESULT MainObject([in] IDesignObject * newVal);
+		//##ModelId=3973077A00D7
+		[propget, id(7), helpstring("property MultiCompany")] HRESULT MultiCompany([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A00DF
+		[propput, id(7), helpstring("property MultiCompany")] HRESULT MultiCompany([in] VARIANT_BOOL newVal);
+		//##ModelId=3973077A00E9
+		[propget, id(8), helpstring("property Description")] HRESULT Description([out, retval] ITraductProp ** pVal);
+		//##ModelId=3973077A00EC
+		[propputref, id(8), helpstring("property Description")] HRESULT Description([in] ITraductProp * newVal);
+		//##ModelId=3973077A00F5
+		[propget, id(9), helpstring("property BlockRobot")] HRESULT BlockRobot([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077A00FE
+		[propput, id(9), helpstring("property BlockRobot")] HRESULT BlockRobot([in] VARIANT_BOOL newVal);
+		//##ModelId=3973077A0107
+		[propget, id(10), helpstring("property PresentType")] HRESULT PresentType([out, retval] M4PresentType *pVal);
+		//##ModelId=3973077A010A
+		[propput, id(10), helpstring("property PresentType")] HRESULT PresentType([in] M4PresentType newVal);
+		//##ModelId=3973077A0113
+		[propget, id(11), helpstring("property PropBagDef")] HRESULT PropBagDef([out, retval] ICPropBagDef * * pVal);
+		//##ModelId=3973077A011C
+		[propputref, id(11), helpstring("property PropBagDef")] HRESULT PropBagDef([in] ICPropBagDef * newVal);
+		//##ModelId=3973077A0125
+		[propget, id(12), helpstring("property PropBag")] HRESULT PropBag([out, retval] ICPropBag * * pVal);
+		//##ModelId=3973077A013A
+		[propputref, id(12), helpstring("property PropBag")] HRESULT PropBag([in] ICPropBag * newVal);
+		//##ModelId=3973077A0143
+		[propget, id(13), helpstring("property IDMetaleng")] HRESULT IDMetaleng([out, retval] long *pVal);
+		//##ModelId=3973077A0146
+		[propput, id(13), helpstring("property IDMetaleng")] HRESULT IDMetaleng([in] long newVal);
+		[propget, id(15), helpstring("property IsInherited")] HRESULT IsInherited([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(15), helpstring("property IsInherited")] HRESULT IsInherited([in] VARIANT_BOOL newVal);
+		[propget, id(16), helpstring("property ParentPropBagDef")] HRESULT ParentPropBagDef([out, retval] ICPropBagDef * *pVal);
+		[propputref, id(16), helpstring("property ParentPropBagDef")] HRESULT ParentPropBagDef([in] ICPropBagDef * newVal);
+		[propget, id(17), helpstring("property ParentPresentationID")] HRESULT ParentPresentationID([out, retval] BSTR *pVal);
+		[propput, id(17), helpstring("property ParentPresentationID")] HRESULT ParentPresentationID([in] BSTR newVal);
+		[propget, id(18), helpstring("property PresentationStyle")] HRESULT PresentationStyle([out, retval] M4PresentStyles *pVal);
+		[propput, id(18), helpstring("property PresentationStyle")] HRESULT PresentationStyle([in] M4PresentStyles newVal);
+		[propget, id(19), helpstring("property IDChannel")] HRESULT IDChannel([out, retval] BSTR *pVal);
+		[propput, id(19), helpstring("property IDChannel")] HRESULT IDChannel([in] BSTR newVal);
+		[propget, id(20), helpstring("property Readonly")] HRESULT Readonly([out, retval] VARIANT_BOOL *pVal);
+		[propput, id(20), helpstring("property Readonly")] HRESULT Readonly([in] VARIANT_BOOL newVal);
+	};
+
+	//##ModelId=3973077903A5
+	[
+		object,
+		uuid(135B2E03-E60B-11D3-BDB5-00C04F71652D),
+		helpstring("IPresentationCol Interface"),
+		dual,
+		pointer_default(unique)
+	]
+	interface IPresentationCol : IDispatch
+	{
+		//##ModelId=3973077903CE
+		[id(1), helpstring("Add")] HRESULT Add([in]IPresentationItem *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077903D9
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077903E3
+		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IPresentationItem **pvar);
+		//##ModelId=3973077A0004
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077A000E
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077A0010
+		[id(5), helpstring("method Order")] HRESULT OrderBy([in] BSTR bstrOrderKey);
+	};
+
+	//##ModelId=397307790337
+	[
+		object,
+		uuid(135B2E05-E60B-11D3-BDB5-00C04F71652D),
+		dual,
+		helpstring("IOFCollection Interface"),
+		pointer_default(unique)
+	]
+	interface IOFCollection : IDispatch
+	{
+		//##ModelId=397307790374
+		[id(1), helpstring("Add")] HRESULT Add([in]ICSingleProp *pI, [in,optional]VARIANT index);
+		//##ModelId=39730779037D
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=397307790380
+		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]ICSingleProp **pvar);
+		//##ModelId=39730779038A
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=397307790393
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=39730779039B
+		[id(5), helpstring("method Order")] HRESULT OrderBy([in] BSTR bstrOrderKey);
+	};
+
+	//##ModelId=39730779026E
+	[
+		object,
+		uuid(40279B40-E624-11d3-BDB5-00C04F71652D),
+		helpstring("IDataAccess Interface"),
+		pointer_default(unique)
+	]
+	interface IDataAccess : IUnknown
+	{
+		//##ModelId=397307790297
+		[helpstring("method IsPresentationModified")] HRESULT IsPresentationModified([in] BSTR sPresentId, [out, retval] VARIANT_BOOL * pVal);
+		//##ModelId=3973077902A2
+		[helpstring("method GetValuesOfOwnerFlag")] HRESULT GetValuesOfOwnerFlag([out, retval] IOFCollection * * pVal);
+		//##ModelId=3973077902AB
+		[helpstring("method GetPresentationsList")] HRESULT GetPresentationsList([in] IRefresh * pRefresh, [out, retval] IPresentationCol ** pVal);
+		//##ModelId=3973077902AE
+		[helpstring("method GetPresentation")] HRESULT GetPresentation([in] BSTR sPresentId, [in, out] Iveranle * * pAnle, [in] VARIANT_BOOL bPBDef, [out, retval] IPresentationItem ** pVal);
+		//##ModelId=3973077902BF
+		[helpstring("method PersistPresentation")] HRESULT PersistPresentation([in] IPresentationItem * pPresentation, [in] VARIANT_BOOL bPersistDocumentation, [in, optional, defaultvalue(-1)] VARIANT_BOOL bExist, [in, optional, defaultvalue(0)] VARIANT_BOOL bRemoveIdHelpTopic, [out, retval] VARIANT_BOOL * pRet);
+		//##ModelId=3973077902CB
+		[helpstring("method DeletePresentation")] HRESULT DeletePresentation([in] BSTR sPresentId, [out, retval] VARIANT_BOOL * pVal);
+		//##ModelId=3973077902D4
+		[helpstring("method ExistPresentation")] HRESULT ExistPresentation([in] BSTR bsPresentationID, [out, retval] VARIANT_BOOL * pVal);
+		//##ModelId=3973077902DD
+		[helpstring("method DeleteTmpPresentations")] HRESULT DeleteTmpPresentations([out, retval] VARIANT_BOOL * pVal);
+		//##ModelId=3973077902DF
+		[helpstring("method GetLanguageArray")] HRESULT GetLanguageArray([out, retval] SAFEARRAY(BSTR)* pVal);
+		//##ModelId=3973077902F2
+		[helpstring("method GetDescLangArray")] HRESULT GetDescLangArray([out, retval] SAFEARRAY(BSTR)* pVal);
+		//##ModelId=3973077902F4
+		[helpstring("method LogonSufix")] HRESULT LogonSufix([out, retval] BSTR * pRet);
+		//##ModelId=3973077902FC
+		[helpstring("method Initialize")] HRESULT Initialize([out, retval] VARIANT_BOOL * pRet);
+		//##ModelId=397307790305
+		[helpstring("method LogonSufix")] HRESULT LogonId([out, retval] long * pRet);
+		//##ModelId=397307790307
+		[helpstring("method GetPresentationsListByType")] HRESULT GetPresentationsListByType([in] IRefresh * pRefresh, [in, out] M4PresentType * pPresentType, [out, retval] IPresentationCol ** pVal);
+		//##ModelId=397307790312
+		[helpstring("method GetPresentationsListByTypeStatic")] HRESULT GetPresentationsListByTypeStatic([in] IRefresh * pRefresh, [in, out] M4PresentType * pPresentType, [out, retval] IPresentationCol ** pVal);
+		[helpstring("method GetPresentListDirectByType")] HRESULT GetPresentListDirectByType([in] IRefresh * pRefresh, [in, out] M4PresentType * pPresentType, [out, retval] IPresentationCol ** pVal);
+	};
+
+	//##ModelId=397307790228
+	[
+		object,
+		uuid(BCAB39B0-7B2A-11d3-BD35-00C04F71652D),
+		dual,
+		helpstring("ITranslate Interface"),
+		pointer_default(unique)
+	]
+	interface ITranslate : IDispatch {
+		//##ModelId=39730779025B
+		[id(1)] HRESULT TranslateString([in] BSTR strString, [in] BSTR strChannel, [in] BSTR strNode, [out, retval] BSTR* bstrRetVal);
+	};
+
+
+	//##ModelId=3973077901DA
+	[
+		object,
+		uuid(AB5FA230-75B3-11d3-BD30-00C04F71652D),
+		dual,
+		helpstring("IVirtualActivation Interface"),
+		pointer_default(unique)
+	]
+	interface IVirtualActivation : IDispatch 
+	{
+		//##ModelId=39730779020B
+		[id(0), propget] HRESULT Key([out, retval] BSTR * strKey);
+		//##ModelId=39730779020E
+		[id(0), propput] HRESULT Key([in, out] BSTR * strKey);
+		//##ModelId=397307790216
+		[propget, id(1), helpstring("property VirtualObject")] HRESULT VirtualObject([out, retval] IDispatch **pVal);
+		//##ModelId=39730779021F
+		[propputref, id(1), helpstring("property VirtualObject")] HRESULT VirtualObject([in] IDispatch *newVal);
+	};
+
+	//##ModelId=39730779014C
+	[
+		object,
+		uuid(F9E74975-3A8F-11D3-BCF3-00C04F71652D),
+		dual,
+		helpstring("IFEDesControl Interface"),
+		pointer_default(unique)
+	]
+	interface IFEDesControl : IDispatch 
+	{
+		//##ModelId=397307790175
+		[id(1)] HRESULT GetObjectByKey([in, out] BSTR* strKey, [out, retval] IDispatch** );
+		//##ModelId=39730779017F
+		[id(2)] HRESULT GetPathByDesignObject([in, out] IDesignObject** ADesignObject, [out, retval] BSTR* );
+		//##ModelId=397307790188
+		[id(3)] HRESULT UpdateTree([in, out] BSTR* strKey);
+		//##ModelId=39730779018A
+		[id(4)] HRESULT RemoveControl([in, out] BSTR* strControlID);
+		//##ModelId=397307790193
+		[id(5), propget] HRESULT Modified([out, retval] VARIANT_BOOL* );
+		//##ModelId=39730779019C
+		[id(5), propput] HRESULT Modified([in, out] VARIANT_BOOL* );
+		//##ModelId=39730779019F
+		[id(6)] HRESULT AddControlByClassName([in, out] BSTR* strClass, [in, out] long* Left, [in, out] long* Top, [in, out] long* Width, [in, out] long* Height, [in, out] BSTR* strContainer, [in, out, optional, defaultvalue("")] BSTR* strItemAlias, [in, out, optional, defaultvalue("")] BSTR* strItemKey, [out, retval] BSTR* );
+		//##ModelId=3973077901BB
+		[id(7)] HRESULT GetANLE([out, retval] Iveranle ** pAnle);
+		//##ModelId=3973077901BD
+		[id(8)] HRESULT ShowGenericProperties([in, out] BSTR * bstrKey);
+		//##ModelId=3973077901C5
+		[id(9), helpstring("Method OrderExecOrder")] HRESULT OrderExecOrder([in, out] IDesignObject ** theObject,[in,out] BSTR * strChildKey,[in, out] short * nExecOrder);
+		//##ModelId=3973077901D1
+		[id(10), helpstring("method ApplyInheritance")] HRESULT ApplyInheritance([in, out] IDesignObject ** pDesignObject, [in, out] IDataProperties ** pDataProps);
+	};
+
+	//##ModelId=397307790085
+	[
+		object,
+		uuid(78DD2593-4593-11D3-BD00-00C04F71652D),
+		dual,
+		helpstring("IDataProps Interface"),
+		pointer_default(unique)
+	]
+	interface IDataProps : IUnknown
+	{
+		//##ModelId=3973077900AD
+		[propget, id(1), helpstring("IdChannel")] HRESULT IdChannel([out, retval] BSTR *pVal);
+		//##ModelId=3973077900B7
+		[propput, id(1), helpstring("IdChannel")] HRESULT IdChannel([in, out] BSTR * newVal);
+		//##ModelId=3973077900C0
+		[propget, id(2), helpstring("IdChannelAlias")] HRESULT IdChannelAlias([out, retval] BSTR *pVal);
+		//##ModelId=3973077900C3
+		[propput, id(2), helpstring("IdChannelAlias")] HRESULT IdChannelAlias([in, out] BSTR *newVal);
+		//##ModelId=3973077900CC
+		[propget, id(3), helpstring("IdChannelKey")] HRESULT IdChannelKey([out, retval] BSTR *pVal);
+		//##ModelId=3973077900D5
+		[propput, id(3), helpstring("IdChannelKey")] HRESULT IdChannelKey([in, out] BSTR *newVal);
+		//##ModelId=3973077900DE
+		[propget, id(4), helpstring("IdNode")] HRESULT IdNode([out, retval] BSTR *pVal);
+		//##ModelId=3973077900E1
+		[propput, id(4), helpstring("IdNode")] HRESULT IdNode([in, out] BSTR *newVal);
+		//##ModelId=3973077900EA
+		[propget, id(5), helpstring("IdItem")] HRESULT IdItem([out, retval] BSTR *pVal);
+		//##ModelId=3973077900FE
+		[propput, id(5), helpstring("IdItem")] HRESULT IdItem([in, out] BSTR *newVal);
+		//##ModelId=397307790106
+		[propget, id(6), helpstring("IdAccessAlias")] HRESULT IdAccessAlias([out, retval] BSTR *pVal);
+		//##ModelId=397307790109
+		[propput, id(6), helpstring("IdAccessAlias")] HRESULT IdAccessAlias([in, out] BSTR *newVal);
+		//##ModelId=397307790112
+		[propget, id(7), helpstring("IdPresentation")] HRESULT IdPresentation([out, retval] long *pVal);
+		//##ModelId=39730779011C
+		[propput, id(7), helpstring("IdPresentation")] HRESULT IdPresentation([in, out] long *newVal);
+		//##ModelId=397307790124
+		[propget, id(8), helpstring("Grants")] HRESULT Grants([out, retval] short *pVal);
+		//##ModelId=39730779012E
+		[propput, id(8), helpstring("Grants")] HRESULT Grants([in, out] short *newVal);
+		//##ModelId=397307790131
+		[propget, id(9), helpstring("StartPos")] HRESULT StartPos([out, retval] long *pVal);
+		//##ModelId=39730779013A
+		[propput, id(9), helpstring("StartPos")] HRESULT StartPos([in] long newVal);
+	};
+
+	//##ModelId=397307790052
+	[
+		object,
+		uuid(78DD2594-4593-11D3-BD00-00C04F71652D),
+		dual,
+		helpstring("IMenu Interface"),
+		pointer_default(unique)
+	]
+	interface IMenu : IUnknown
+	{
+		//##ModelId=39730779007B
+		[id(1)] HRESULT InitializePopPup([in] IMenuPopPup * tpp);
+		//##ModelId=39730779007D
+		[id(2)] HRESULT ExecuteMenu([in, out] BSTR * Tag);
+	};
+
+	//##ModelId=39730779002A
+	[
+		object,
+		uuid(B069FA15-40D9-11D3-BCFB-00C04F71652D),
+		dual,
+		helpstring("IPropertiesEx Interface"),
+		pointer_default(unique)
+	]
+	interface IPropertiesEx : IUnknown 
+	{
+		//##ModelId=397307790049
+		[id(1)] HRESULT AssignInheritedProps([in, out] ICPropBag ** pb);
+		//##ModelId=39730779004B
+		[id(2)] HRESULT ResetProps();
+	};
+
+	//##ModelId=3973077802EF
+	[
+		object,
+		uuid(1331365C-2584-11D2-969E-00C04FC2444B),
+		dual,
+		helpstring("IConvertPropBag Interface"),
+		pointer_default(unique)
+	]
+	interface IConvertPropBag : IDispatch
+	{
+		//##ModelId=39730778030E
+		[id(1), helpstring("method Array2PB")] HRESULT Array2PB([in, out] SAFEARRAY(BYTE) * aArray, [out, retval] ICPropBag ** pPB);
+		//##ModelId=397307780317
+		[id(2), helpstring("method PB2ASN")] HRESULT PB2ASN([in] ICPropBag * pb, [out, retval] BSTR * bstrOut);
+		//##ModelId=397307780321
+		[id(3), hidden, helpstring("method Testeo")] HRESULT Testeo([in] BSTR strName);
+		//##ModelId=397307780323
+		[id(4), helpstring("method PrePersistProcess")] HRESULT PrePersistProcess([in,out] ICPropBag ** pb);
+		//##ModelId=39730778032C
+		[id(5), helpstring("method PBFromStr")] HRESULT PBFromStr([in] BSTR strIn, [out,retval] ICPropBag ** pb);
+		//##ModelId=397307780335
+		[id(6), helpstring("method PB2StringOBL")] HRESULT PB2StringOBL([in] ICPropBag * pb, [out, retval] BSTR * strOBL);
+		//##ModelId=39730778033F
+		[id(7), helpstring("method PB2FileOBL")] HRESULT PB2FileOBL([in] ICPropBag * pb, [in] BSTR nomFile);
+		//##ModelId=397307780342
+		[id(9), helpstring("method PBDef2StringOBL")] HRESULT PBDef2StringOBL([in] ICPropBagDef * pbDef, [out, retval] BSTR * strOBL);
+		//##ModelId=39730778034B
+		[id(10), helpstring("method PBDef2FileOBL")] HRESULT PBDef2FileOBL([in] ICPropBagDef * pPBDef,[in] BSTR nomFile);
+		//##ModelId=397307780355
+		[id(12), helpstring("method PersistPBDProccess")] HRESULT PersistPBDProccess([in] ICPropBagDef * pPersistPBD, [in] IPersistObject * pPersistObject);
+		//##ModelId=39730778035E
+		[propget, id(8), helpstring("property NumEspTab")] HRESULT NumEspTab([out, retval] int *num);
+		//##ModelId=397307780367
+		[propput, id(8), helpstring("property NumEspTab")] HRESULT NumEspTab([in] int num);
+		//##ModelId=39730778036A
+		[id(13), helpstring("method Array2PBDef")] HRESULT Array2PBDef([in, out] SAFEARRAY(BYTE) * aArray, [out, retval] ICPropBagDef ** pPBDef);
+		//##ModelId=397307780373
+		[propget, id(14), helpstring("property UsePersistLog")] HRESULT UsePersistLog([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=39730778037D
+		[propput, id(14), helpstring("property UsePersistLog")] HRESULT UsePersistLog([in] VARIANT_BOOL newVal);
+		//##ModelId=397307780386
+		[propget, id(15), helpstring("property LogData")] HRESULT LogData([out, retval] BSTR *pVal);
+		//##ModelId=39730778038F
+		[id(16), helpstring("method AccessViolation")] HRESULT AccessViolation();
+		//##ModelId=397307780390
+		[id(17), helpstring("method ConstructPresentation")] HRESULT ConstructPresentation([in] IPersistObject * pPO, [in] Iveranle * pAnle, [out, retval] ICPropBagDef * * pPBDef);
+		//##ModelId=39730778039C
+		[id(18), helpstring("method PBFromASNString")] HRESULT PBFromASNString([in] BSTR bstrIn, [out, retval] ICPropBag * * ppPBRet);
+		//##ModelId=3973077803A5
+		[id(19), helpstring("method PBDef2PB")] HRESULT PBDef2PB([in] ICPropBagDef * pPBDSource, [in] VARIANT_BOOL bTranslate, [in] VARIANT vIndex, [in, optional, defaultvalue(0)] ITranslate * oTranslate, [out, retval] ICPropBag * * pPBRet);
+		//##ModelId=3973077803B7
+		[propget, id(20), helpstring("property PropStat")] HRESULT PropStat([out, retval] ICPropCol * *pVal);
+		//##ModelId=3973077803BA
+		[id(21), helpstring("method ClonePBDefRec")] HRESULT ClonePBDefRec([in]ICPropBagDef * pPBDSource, [in] Iveranle * pAnle, [out,retval] ICPropBagDef ** pPBDDest);
+		//##ModelId=3973077803CC
+		[id(22), helpstring("method CopyPBDef2PBDefProp")] HRESULT CopyPBDef2PBDefProp([in] ICPropBagDef * pPBDDest, [in] ICPropBagDef * pPBDSource);
+		//##ModelId=3973077803CF
+		[propget, id(23), helpstring("property PersistIdHelpTopic")] HRESULT PersistIdHelpTopic([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=3973077803D8
+		[propput, id(23), helpstring("property PersistIdHelpTopic")] HRESULT PersistIdHelpTopic([in] VARIANT_BOOL newVal);
+		//##ModelId=3973077803E2
+		[id(24), helpstring("method PBDef2XMLFile")] HRESULT PBDef2XMLFile([in] ICPropBagDef *pPbDef, [in] BSTR sFileName);
+		//##ModelId=397307790002
+		[id(25), helpstring("method PBDef2XMLString")] HRESULT PBDef2XMLString([in] ICPropBagDef *pPBDef,[out, retval] BSTR *bsRet);
+		//##ModelId=39730779000C
+		[id(26), helpstring("method ConstructPresentationFromArray")] HRESULT ConstructPresentationFromArray([in] VARIANT vArray, [in] Iveranle *pAnle, [out, retval] ICPropBagDef **pPBDef);
+		//##ModelId=397307790016
+		[id(27), helpstring("method ConstructPresentationFromArrayVar")] HRESULT ConstructPresentationFromArrayVar([in] VARIANT vArray,[in] Iveranle *pAnle, [out, retval] VARIANT * pVal);
+		//##ModelId=397307790020
+		[id(28), helpstring("method ResetTradIdentifiers")] HRESULT ResetTradIdentifiers(ICPropBagDef * pPBD);
+		[id(29), helpstring("method PBDef2StringOBLHide")] HRESULT PBDef2StringOBLHide([in] ICPropBagDef * pPBDef, [out, retval] BSTR * strOBL);
+		[id(30), helpstring("method PB2XML")] HRESULT PB2XML([in] ICPropBag *poPropBag, [out, retval] SAFEARRAY (BYTE) *abXML);
+	};
+
+	//##ModelId=39730778028B
+	[
+		object,
+		uuid(DF5B3E86-583B-11D2-BC6A-00C04FC2444B),
+		dual,
+		helpstring("IEOCollection Interface"),
+		pointer_default(unique)
+	]
+	interface IEOCollection : IDispatch
+	{
+		//##ModelId=3973077802AA
+		[id(1), helpstring("Add")] HRESULT Add([in]IDispatch *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077802B3
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077802B6
+ 		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IDispatch **pvar);
+		//##ModelId=3973077802C0
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077802C9
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077802D1
+		[propget, id(5), helpstring("Property ExecOrder")] HRESULT Exec([in]VARIANT index, [out, retval]long *pVal);
+		//##ModelId=3973077802DB
+		[propput, id(5), helpstring("property ExecOrder")] HRESULT Exec([in]VARIANT index, [in] long pVal);
+	};
+
+	//##ModelId=39730778023C
+	[
+		object,
+		uuid(0F7ED164-5CF7-11D2-BC6E-00C04FC2444B),
+		dual,
+		helpstring("IMDObject Interface"),
+		pointer_default(unique)
+	]
+	interface IMDObject : IDispatch
+	{
+		//##ModelId=39730778025A
+		[propget, id(1), helpstring("property Obj")] HRESULT Obj([out, retval] IDispatch * *pVal);
+		//##ModelId=397307780263
+		[propputref, id(1), helpstring("property Obj")] HRESULT Obj([in] IDispatch * *newVal);
+		//##ModelId=397307780266
+		[propget, id(2), helpstring("property Key")] HRESULT Key([out, retval] BSTR *pVal);
+		//##ModelId=39730778026F
+		[propput, id(2), helpstring("property Key")] HRESULT Key([in] BSTR newVal);
+		//##ModelId=397307780279
+		[propget, id(3), helpstring("property PropBag")] HRESULT PropBag([out, retval] ICPropBag * *pVal);
+		//##ModelId=397307780281
+		[propputref, id(3), helpstring("property PropBag")] HRESULT PropBag([in] ICPropBag * *newVal);
+	};
+
+	//##ModelId=3973077801ED
+	[
+		object,
+		uuid(0F7ED166-5CF7-11D2-BC6E-00C04FC2444B),
+		dual,
+		helpstring("IMDCollection Interface"),
+		pointer_default(unique)
+	]
+	interface IMDCollection : IDispatch
+	{
+		//##ModelId=39730778020A
+		[id(1), helpstring("Add")] HRESULT Add([in]IMDObject *pI, [in,optional]VARIANT index);
+		//##ModelId=397307780214
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=39730778021D
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IMDObject **pvar);
+		//##ModelId=397307780227
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=39730778022A
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=397307780232
+		[id(5), helpstring("method IsPresent")] HRESULT IsPresent([in] VARIANT vIndex, [out, retval] VARIANT_BOOL *pretVal);
+	};
+
+	//##ModelId=3973077801B9
+	[
+		object,
+		uuid(DD7D4841-0DFF-11D3-BCAB-00C04F71652D),
+		dual,
+		helpstring("IPersistObject Interface"),
+		pointer_default(unique)
+	]
+	interface IPersistObject : IDispatch
+	{
+		//##ModelId=3973077801CE
+		[propget, id(1), helpstring("property PersistTraductProp")] HRESULT PersistTraductProp([out, retval] ITraductProp * *pVal);
+		//##ModelId=3973077801D8
+		[propputref, id(1), helpstring("property PersistTraductProp")] HRESULT PersistTraductProp([in] ITraductProp* newVal);
+		//##ModelId=3973077801E1
+		[propget, id(2), helpstring("property PersistMain")] HRESULT PersistMain([out, retval] BSTR *pVal);
+		//##ModelId=3973077801E4
+		[propput, id(2), helpstring("property PersistMain")] HRESULT PersistMain([in] BSTR newVal);
+	};
+
+	//##ModelId=39730778019B
+	[
+		object,
+		uuid(F9E7497A-3A8F-11D3-BCF3-00C04F71652D),
+		dual,
+		helpstring("IDGenericObject Interface"),
+		pointer_default(unique)
+	]
+	interface IDGenericObject : IDispatch
+	{
+	};
+
+	//##ModelId=397307780123
+	[
+		object,
+		uuid(B069FA16-40D9-11D3-BCFB-00C04F71652D),
+		dual,
+		helpstring("IMenuItem Interface"),
+		pointer_default(unique)
+	]
+	interface IMenuItem : IDispatch
+	{
+		//##ModelId=397307780138
+		[propget, id(1), helpstring("property Key")] HRESULT Key([out, retval] BSTR *pVal);
+		//##ModelId=397307780143
+		[propput, id(1), helpstring("property Key")] HRESULT Key([in] BSTR newVal);
+		//##ModelId=39730778014D
+		[propget, id(2), helpstring("property Caption")] HRESULT Caption([out, retval] BSTR *pVal);
+		//##ModelId=397307780155
+		[propput, id(2), helpstring("property Caption")] HRESULT Caption([in] BSTR newVal);
+		//##ModelId=397307780158
+		[propget, id(3), helpstring("property Checked")] HRESULT Checked([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=397307780161
+		[propput, id(3), helpstring("property Checked")] HRESULT Checked([in] VARIANT_BOOL newVal);
+		//##ModelId=39730778016B
+		[propget, id(4), helpstring("property Enabled")] HRESULT Enabled([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=397307780173
+		[propput, id(4), helpstring("property Enabled")] HRESULT Enabled([in] VARIANT_BOOL newVal);
+		//##ModelId=397307780176
+		[propget, id(5), helpstring("property Bold")] HRESULT Bold([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=39730778017F
+		[propput, id(5), helpstring("property Bold")] HRESULT Bold([in] VARIANT_BOOL newVal);
+		//##ModelId=397307780189
+		[propget, id(6), helpstring("property Visible")] HRESULT Visible([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=397307780191
+		[propput, id(6), helpstring("property Visible")] HRESULT Visible([in] VARIANT_BOOL newVal);
+	};
+
+	//##ModelId=3973077800BF
+	[
+		object,
+		uuid(B069FA18-40D9-11D3-BCFB-00C04F71652D),
+		dual,
+		helpstring("IMenuPopPup Interface"),
+		pointer_default(unique)
+	]
+	interface IMenuPopPup : IDispatch
+	{
+		//##ModelId=3973077800D3
+		[id(1), helpstring("Add")] HRESULT Add([in]IMenuItem *pI, [in,optional]VARIANT index);
+		//##ModelId=3973077800DE
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=3973077800E7
+		[propget, id(0), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IMenuItem **pvar);
+		//##ModelId=3973077800F1
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=3973077800FA
+		[id(3), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		//##ModelId=3973077800FC
+		[id(4), helpstring("AddNewMenuItem")] HRESULT AddNewMenuItem([in, out] BSTR* strCaption, [in, out] BSTR* strKey, [in, out] VARIANT_BOOL * bEnabled, [in, out] VARIANT_BOOL * bChecked, [in, out] VARIANT_BOOL * bVisible, [in, out] VARIANT_BOOL * bBold, [out, retval] VARIANT_BOOL * bRet);
+		//##ModelId=397307780110
+		[id(5), helpstring("method MenuEventClick")] HRESULT MenuEventClick([in, out] BSTR * strKey);
+		//##ModelId=397307780119
+		[id(6), helpstring("method Reset")] HRESULT Reset();
+	};
+
+	//##ModelId=3973077800A2
+	[
+		object,
+		uuid(122B2623-5EBA-11D3-BD11-00C04F71652D),
+		dual,
+		helpstring("IOBLParser Interface"),
+		pointer_default(unique)
+	]
+	interface IOBLParser : IDispatch
+	{
+		//##ModelId=3973077800B5
+		[id(1), helpstring("method PropBagDefFromOBL")] HRESULT PropBagDefFromOBL([in] Iveranle * pAnle, [in] BSTR bstrText, [out, retval] ICPropBagDef * * pRetPropBag);
+	};
+// Fin del Definitions.IDL

@@ -1,0 +1,10 @@
+LIBRARY	"m4ctlhelper"
+EXPORTS
+	M4GetUserEventsCounter
+	M4HookMsg
+	M4NotifyUserEvent
+	M4ResetColors
+	M4SetFlag
+	M4SubClassControlBorder
+	M4UnHookMsg
+	M4UpdateColor

@@ -1,0 +1,46 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4modkey.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/encrypt.cpp
+SRC = ../src/error.cpp
+SRC = ../src/fileutil.cpp
+SRC = ../src/license.cpp
+SRC = ../src/licenseproperties.cpp
+SRC = ../src/version.cpp
+SRC = ../src/xmlanalyzer.cpp
+SRC = ../src/xmlanalyzerfactory.cpp
+SRC = ../src/xmlcontainers.cpp
+SRC = ../src/xmlutil.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cryptc
+LIB = m4date
+LIB = m4tsap
+LIB = m4unicode
+LIB = m4uuid
+LIB = m4win2ux
+LIB = m4xmlutil
+LIB = xerces-c
+
+
+
+
+
+
+

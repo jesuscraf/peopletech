@@ -1,0 +1,102 @@
+META4-MEMORY-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ApplicationServerModule
+		FROM META4-APPLICATION-SERVER-MIB
+
+	applicationServer, applicationServerGroups
+		FROM META4-PRODUCTS-REG;
+
+
+meta4MemorySubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Memory Subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ApplicationServerModule 2 }
+
+--
+--
+
+memorySubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Memory Meter"
+	::= { applicationServer 2 }
+
+
+memorySubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		status
+	}
+	STATUS current
+	DESCRIPTION
+		"Memory Group properties"
+	::= { applicationServerGroups 2 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memorySubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memorySubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { memorySubsystem 3 }
+
+status OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { memorySubsystem 4 }
+
+END

@@ -1,0 +1,109 @@
+META4-PRODUCTS-REG DEFINITIONS ::= BEGIN
+
+IMPORTS
+	MODULE-IDENTITY, OBJECT-IDENTITY
+		FROM SNMPv2-SMI
+        
+	meta4Modules, meta4Products, meta4Groups
+		FROM META4-GLOBAL-REG;
+
+meta4ProductsModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Meta4 Products."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4Modules 2 }
+
+
+--
+--
+
+meta4ProductsGroups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"TechPlatform Groups definitions."
+	::= { meta4Groups 1 }
+
+
+--
+--
+
+techPlatform OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Meta4 Technological Platform"
+	::= { meta4Products 1 }
+
+techPlatformGroups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"TechPlatform Groups definitions."
+	::= { meta4ProductsGroups 1 }
+
+
+--
+--
+
+serverSite OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"The Meta4 ServerSite"
+	::= { techPlatform 1 }
+
+serverSiteGroups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Serversite Groups definitions."
+	::= { techPlatformGroups 1 }
+
+
+--
+--
+
+applicationServer OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"The Meta4 Application Server"
+	::= { serverSite 1 }
+
+applicationServerGroups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Serversite Groups definitions."
+	::= { serverSiteGroups 1 }
+
+
+--
+--
+
+dispatcher OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"The Meta4 Dispatcher"
+	::= { serverSite 2 }
+
+
+dispatcherGroups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Serversite Groups definitions."
+	::= { serverSiteGroups 2 }
+
+
+END

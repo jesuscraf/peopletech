@@ -1,0 +1,32 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4date.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/cldates.cpp
+SRC = ../src/cvdate.cpp
+SRC = ../src/fechas.cpp
+SRC = ../src/m4clock.cpp
+SRC = ../src/m4crono.cpp
+SRC = ../src/m4date.cpp
+SRC = ../src/timeinterval.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+[solaris] CCFLAGS = -D_POSIX_PTHREAD_SEMANTICS
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4ipcs
+
+
+

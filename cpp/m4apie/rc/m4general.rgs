@@ -1,0 +1,24 @@
+HKCR
+{
+	M4General.M4General.1 = s 'M4General Class'
+	{
+		CLSID = s '{4B7B4572-D798-11D2-BC67-00C04F71652D}'
+	}
+	M4General.M4General = s 'M4General Class'
+	{
+		CurVer = s 'M4General.M4General.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {4B7B4572-D798-11D2-BC67-00C04F71652D} = s 'M4General Class'
+		{
+			ProgID = s 'M4General.M4General.1'
+			VersionIndependentProgID = s 'M4General.M4General'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

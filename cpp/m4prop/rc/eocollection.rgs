@@ -1,0 +1,24 @@
+HKCR
+{
+	EOCollection.EOCollection.1 = s 'EOCollection Class'
+	{
+		CLSID = s '{DF5B3E87-583B-11D2-BC6A-00C04FC2444B}'
+	}
+	EOCollection.EOCollection = s 'EOCollection Class'
+	{
+		CurVer = s 'EOCollection.EOCollection.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DF5B3E87-583B-11D2-BC6A-00C04FC2444B} = s 'EOCollection Class'
+		{
+			ProgID = s 'EOCollection.EOCollection.1'
+			VersionIndependentProgID = s 'EOCollection.EOCollection'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

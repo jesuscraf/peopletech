@@ -1,0 +1,47 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4xlapi.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4csvparser.cpp
+SRC = ../src/m4csvvalue.cpp
+SRC = ../src/m4xlapi.cpp 
+SRC = ../src/m4xlformatsmngr.cpp 
+SRC = ../src/m4xlhelper.cpp 
+SRC = ../src/m4xlsheetaccessor.cpp 
+SRC = ../src/m4xlutapi.cpp 
+SRC = ../src/m4xlapichannel.cpp 
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -D_UNICODE
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+INC= ../../public/libxl/inc
+LIBDIR = ../../public/libxl/mak/$PLATFORM/$LINKTYPE
+
+[solaris] LINKFLAGS = -library=Cstd
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4dm
+LIB = m4ipcs
+LIB = m4log
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4variant
+LIB = m4mdrt
+LIB = m4filemanager
+LIB = xl

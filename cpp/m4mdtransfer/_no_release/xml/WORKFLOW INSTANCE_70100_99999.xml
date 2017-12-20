@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object WORKFLOW INSTANCE
+
+@version 1.0
+
+-->
+
+<object name="WORKFLOW INSTANCE">
+
+	<param name="ID_BPO"/>
+
+	<call-table name="SWF_BPO">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+	<call-table name="SWF_EV_EXPECTED">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+	<call-table name="SWF_INST_DATA">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+	<call-table name="SWF_INST_TASK">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+	<call-table name="SWF_SUBBPO">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+	<call-table name="SWF_WORKITEM">
+
+		<with-pk name="ID_BPO" select="$ID_BPO"/>
+
+	</call-table>
+
+</object>
+
+

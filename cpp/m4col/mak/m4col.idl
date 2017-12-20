@@ -1,0 +1,47 @@
+// M4Col.idl : IDL source for M4Col.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4Col.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	[
+		object,
+		uuid(8BF31736-7AE2-11D2-BD0C-00C04FA49636),
+		dual,
+		helpstring("IM4Collection Interface"),
+		pointer_default(unique)
+	]
+	interface IM4Collection : IDispatch
+	{
+		[id(1), helpstring("Add")] HRESULT Add([in]IDispatch *pI, [in,optional]VARIANT index);
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IDispatch **pvar);
+		[propget, id(DISPID_NEWENUM), hidden, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+		[id(5), helpstring("method Order")] HRESULT OrderBy([in] BSTR bstrOrderKey);
+
+	
+	};
+[
+	uuid(C1221E51-7AE1-11D2-BD0C-00C04FA49636),
+	version(1.0),
+	helpstring("M4Col 1.0 Type Library")
+]
+library M4COLLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	[
+		uuid(8BF31737-7AE2-11D2-BD0C-00C04FA49636),
+		helpstring("M4Collection Class")
+	]
+	coclass M4Collection
+	{
+		[default] interface IM4Collection;
+	};
+};
+

@@ -1,0 +1,18 @@
+######################################################################
+#	LINKFLAGS
+######################################################################
+
+
+# librería objectspace.
+LIB = ospace  
+
+[aix] LIB = pthreads  
+# [aix] LINKFLAGS = -bnoquiet
+[aix] LINKFLAGS = -qnolm 
+
+
+[solaris] LINKFLAGS = -mt -KPIC 
+[solaris] LINKFLAGS = -library=%none,iostream,Crun
+[solaris] LINKFLAGS = -i
+[solaris] LINKFLAGS = -lm
+

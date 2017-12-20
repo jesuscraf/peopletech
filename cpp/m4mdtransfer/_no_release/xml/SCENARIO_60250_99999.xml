@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object SCENARIO
+
+@version 1.4
+
+-->
+
+<object name="SCENARIO">
+
+	<param name="ID_GROUP_OBJECTS"/>
+
+	<call-table name="SDC_GROUP_OBJS">
+
+		<with-pk name="ID_GROUP_OBJECTS" select="$ID_GROUP_OBJECTS"/>
+
+	</call-table>
+
+	<call-table name="SDC_GR_OB_PA_REL">
+
+		<with-pk name="ID_GROUP_OBJECTS" select="$ID_GROUP_OBJECTS"/>
+
+	</call-table>
+
+	<call-table name="SDC_GR_PA_RL_FLD">
+
+		<with-pk name="ID_GROUP_OBJECTS" select="$ID_GROUP_OBJECTS"/>
+
+	</call-table>
+
+	<call-table name="SDC_GRP_OBJ_PATH">
+
+		<with-pk name="ID_GROUP_OBJECTS" select="$ID_GROUP_OBJECTS"/>
+
+	</call-table>
+
+</object>
+
+

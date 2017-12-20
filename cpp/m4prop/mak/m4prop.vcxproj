@@ -1,0 +1,522 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="14.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <SccProjectName>"$/3_x/Product_Integration/evolutivo", MNNPAAAA</SccProjectName>
+    <SccLocalPath>..\..</SccLocalPath>
+    <ProjectGuid>{68E3028B-8E35-45FC-8FAD-131EDCEAC708}</ProjectGuid>
+    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
+    <SccProvider>MSSCCI:Microsoft Visual SourceSafe</SccProvider>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <PlatformToolset>v140</PlatformToolset>
+    <UseOfMfc>false</UseOfMfc>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+    <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>.\win32\release\</OutDir>
+    <IntDir>.\..\..\obj\win32\release\m4prop\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>.\win64\release\</OutDir>
+    <IntDir>.\..\..\obj\win64\release\m4prop\</IntDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <OutDir>.\win32\debug\</OutDir>
+    <IntDir>.\..\..\obj\win32\debug\m4prop\</IntDir>
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LinkIncremental>false</LinkIncremental>
+    <OutDir>.\win64\debug\</OutDir>
+    <IntDir>.\..\..\obj\win64\debug\m4prop\</IntDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\inc;..\..\obj\win32\release\m4prop;..\..\m4common\sinc;..\rc;..\..\m4cache\inc;..\..\m4date\inc;..\..\m4dm\inc;..\..\m4ipcs\inc;..\..\m4log\inc;..\..\m4objglb\inc;..\..\m4objlog\inc;..\..\m4serial\inc;..\..\m4unicode\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WINDOWS;_WINDOWS;WIN32;_WIN32;_WIN32_WINNT=_WIN32_WINNT_WIN7;_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;M4_USING_DLL;M4_O_M4PROP;_AFXDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\..\..\obj\win32\release\m4prop\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\..\..\obj\win32\release\m4prop\m4prop.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\..\..\obj\win32\release\m4prop\</ObjectFileName>
+      <ProgramDataBaseFileName>.\win32\release\m4prop.pdb</ProgramDataBaseFileName>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\win32\release\m4prop.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>..\..\obj\win32\release\m4prop;..\..\m4common\sinc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\win32\release\m4prop.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\win32\release\m4prop.dll</OutputFile>
+      <ImportLibrary>.\win32\release\m4prop.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\m4prop.def</ModuleDefinitionFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <StringPooling>true</StringPooling>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>MaxSpeed</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\inc;..\..\obj\win64\release\m4prop;..\..\m4common\sinc;..\rc;..\..\m4cache\inc;..\..\m4date\inc;..\..\m4dm\inc;..\..\m4ipcs\inc;..\..\m4log\inc;..\..\m4objglb\inc;..\..\m4objlog\inc;..\..\m4serial\inc;..\..\m4unicode\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;WINDOWS;_WINDOWS;WIN32;_WIN32;WIN64;_WIN64;_WIN32_WINNT=_WIN32_WINNT_WIN7;_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;M4_USING_DLL;M4_O_M4PROP;_AFXDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\..\..\obj\win64\release\m4prop\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\..\..\obj\win64\release\m4prop\m4prop.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\..\..\obj\win64\release\m4prop\</ObjectFileName>
+      <ProgramDataBaseFileName>.\win64\release\m4prop.pdb</ProgramDataBaseFileName>
+      <ExceptionHandling>Sync</ExceptionHandling>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>NDEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\win32\release\m4prop.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>..\..\obj\win64\release\m4prop;..\..\m4common\sinc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>NDEBUG;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\win64\release\m4prop.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\win64\release\m4prop.dll</OutputFile>
+      <ImportLibrary>.\win64\release\m4prop.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\m4prop.def</ModuleDefinitionFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\inc;..\..\obj\win32\debug\m4prop;..\..\m4common\sinc;..\rc;..\..\m4cache\inc;..\..\m4date\inc;..\..\m4dm\inc;..\..\m4ipcs\inc;..\..\m4log\inc;..\..\m4objglb\inc;..\..\m4objlog\inc;..\..\m4serial\inc;..\..\m4unicode\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WINDOWS;_WINDOWS;WIN32;_WIN32;_WIN32_WINNT=_WIN32_WINNT_WIN7;_HAS_ITERATOR_DEBUGGING=0;_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;M4_USING_DLL;M4_O_M4PROP;_AFXDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\..\..\obj\win32\debug\m4prop\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\..\..\obj\win32\debug\m4prop\m4prop.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\..\..\obj\win32\debug\m4prop\</ObjectFileName>
+      <ProgramDataBaseFileName>.\win32\debug\m4prop.pdb</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <StringPooling>false</StringPooling>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\win32\debug\m4prop.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+      <TargetEnvironment>Win32</TargetEnvironment>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>..\..\obj\win32\debug\m4prop;..\..\m4common\sinc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_WIN32;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\win32\debug\m4prop.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\win32\debug\m4prop.dll</OutputFile>
+      <ImportLibrary>.\win32\debug\m4prop.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\m4prop.def</ModuleDefinitionFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <InlineFunctionExpansion>Default</InlineFunctionExpansion>
+      <FunctionLevelLinking>false</FunctionLevelLinking>
+      <Optimization>Disabled</Optimization>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <WarningLevel>Level3</WarningLevel>
+      <AdditionalIncludeDirectories>..\inc;..\..\obj\win64\debug\m4prop;..\..\m4common\sinc;..\rc;..\..\m4cache\inc;..\..\m4date\inc;..\..\m4dm\inc;..\..\m4ipcs\inc;..\..\m4log\inc;..\..\m4objglb\inc;..\..\m4objlog\inc;..\..\m4serial\inc;..\..\m4unicode\inc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;WINDOWS;_WINDOWS;WIN32;_WIN32;WIN64;_WIN64;_WIN32_WINNT=_WIN32_WINNT_WIN7;_HAS_ITERATOR_DEBUGGING=0;_CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES=1;_CRT_SECURE_NO_WARNINGS;_CRT_NONSTDC_NO_DEPRECATE;M4_USING_DLL;M4_O_M4PROP;_AFXDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AssemblerListingLocation>.\..\..\obj\win64\debug\m4prop\</AssemblerListingLocation>
+      <BrowseInformation>true</BrowseInformation>
+      <PrecompiledHeaderOutputFile>.\..\..\obj\win64\debug\m4prop\m4prop.pch</PrecompiledHeaderOutputFile>
+      <ObjectFileName>.\..\..\obj\win64\debug\m4prop\</ObjectFileName>
+      <ProgramDataBaseFileName>.\win64\debug\m4prop.pdb</ProgramDataBaseFileName>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <TreatWarningAsError>false</TreatWarningAsError>
+      <ExceptionHandling>Sync</ExceptionHandling>
+      <StringPooling>false</StringPooling>
+    </ClCompile>
+    <Midl>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <PreprocessorDefinitions>_DEBUG;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <TypeLibraryName>.\win32\debug\m4prop.tlb</TypeLibraryName>
+      <MkTypLibCompatible>true</MkTypLibCompatible>
+    </Midl>
+    <ResourceCompile>
+      <Culture>0x0409</Culture>
+      <AdditionalIncludeDirectories>..\..\obj\win64\debug\m4prop;..\..\m4common\sinc;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_DEBUG;_WIN64;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ResourceCompile>
+    <Bscmake>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <OutputFile>.\win64\debug\m4prop.bsc</OutputFile>
+    </Bscmake>
+    <Link>
+      <SuppressStartupBanner>true</SuppressStartupBanner>
+      <LinkDLL>true</LinkDLL>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Console</SubSystem>
+      <OutputFile>.\win64\debug\m4prop.dll</OutputFile>
+      <ImportLibrary>.\win64\debug\m4prop.lib</ImportLibrary>
+      <ModuleDefinitionFile>.\m4prop.def</ModuleDefinitionFile>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+      <ImageHasSafeExceptionHandlers>
+      </ImageHasSafeExceptionHandlers>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4dm\mak\win32\debug\m4dm.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win32\release\m4dm.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\debug\m4dm.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4dm\mak\win64\release\m4dm.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\debug\m4objglb.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win32\release\m4objglb.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\debug\m4objglb.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4objglb\mak\win64\release\m4objglb.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\rc\cchildcol.rgs" />
+    <None Include="..\rc\cchildcoldef.rgs" />
+    <None Include="..\rc\cdefprop.rgs" />
+    <None Include="..\rc\containedobjects.rgs" />
+    <None Include="..\rc\convertpropbag.rgs" />
+    <None Include="..\rc\cpropbag.rgs" />
+    <None Include="..\rc\cpropbagdef.rgs" />
+    <None Include="..\rc\cpropcol.rgs" />
+    <None Include="..\rc\cpropcoldef.rgs" />
+    <None Include="..\rc\cproperty.rgs" />
+    <None Include="..\rc\csingleprop.rgs" />
+    <None Include="..\rc\csingleproperty.rgs" />
+    <None Include="..\rc\dataproperties.rgs" />
+    <None Include="..\rc\dgenericobject.rgs" />
+    <None Include="..\rc\eocollection.rgs" />
+    <None Include="..\rc\mdcollection.rgs" />
+    <None Include="..\rc\mdobject.rgs" />
+    <None Include="..\rc\menuitem.rgs" />
+    <None Include="..\rc\menupoppup.rgs" />
+    <None Include="..\rc\oblparser.rgs" />
+    <None Include="..\rc\persistobject.rgs" />
+    <None Include="..\rc\propcol.rgs" />
+    <None Include="..\rc\testcol.rgs" />
+    <None Include="..\rc\traductprop.rgs" />
+    <None Include="m4prop.def" />
+    <None Include="m4prop.touch" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="definitions.idl">
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions_i.c</InterfaceIdentifierFileName>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</MkTypLibCompatible>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions.tlb</TypeLibraryName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions_d.c</DllDataFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions_p.c</ProxyFileName>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions_c.c</ClientStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\definitions_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\definitions_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\definitions_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\definitions_s.c</ServerStubFile>
+    </Midl>
+    <Midl Include="m4prop.idl">
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop_i.c</InterfaceIdentifierFileName>
+      <HeaderFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop.h</HeaderFileName>
+      <InterfaceIdentifierFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop_i.c</InterfaceIdentifierFileName>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</MkTypLibCompatible>
+      <MkTypLibCompatible Condition="'$(Configuration)|$(Platform)'=='Release|x64'">false</MkTypLibCompatible>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop.tlb</TypeLibraryName>
+      <TypeLibraryName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop.tlb</TypeLibraryName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop_d.c</DllDataFileName>
+      <DllDataFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop_d.c</DllDataFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop_p.c</ProxyFileName>
+      <ProxyFileName Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop_p.c</ProxyFileName>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop_c.c</ClientStubFile>
+      <ClientStubFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop_c.c</ClientStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">.\..\..\obj\win32\debug\m4prop\m4prop_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\..\..\obj\win32\release\m4prop\m4prop_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\..\..\obj\win64\debug\m4prop\m4prop_s.c</ServerStubFile>
+      <ServerStubFile Condition="'$(Configuration)|$(Platform)'=='Release|x64'">.\..\..\obj\win64\release\m4prop\m4prop_s.c</ServerStubFile>
+    </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4prop.rc" />
+    <ResourceCompile Include="..\rc\prop.rc">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\asnpersistpbd.h" />
+    <ClInclude Include="..\inc\cchildcol.h" />
+    <ClInclude Include="..\inc\cchildcoldef.h" />
+    <ClInclude Include="..\inc\cdefprop.h" />
+    <ClInclude Include="..\inc\cexeccollection.h" />
+    <ClInclude Include="..\inc\cmycollection.h" />
+    <ClInclude Include="..\inc\cmycollectionbycode.h" />
+    <ClInclude Include="..\inc\coltemplate.h" />
+    <ClInclude Include="..\inc\containedobjects.h" />
+    <ClInclude Include="..\inc\convertpropbag.h" />
+    <ClInclude Include="..\inc\cpm4prop.h" />
+    <ClInclude Include="..\inc\cpropbag.h" />
+    <ClInclude Include="..\inc\cpropbagdef.h" />
+    <ClInclude Include="..\inc\cpropcol.h" />
+    <ClInclude Include="..\inc\cpropcoldef.h" />
+    <ClInclude Include="..\inc\cproperty.h" />
+    <ClInclude Include="..\inc\csingleprop.h" />
+    <ClInclude Include="..\inc\dataproperties.h" />
+    <ClInclude Include="..\inc\dgenericobject.h" />
+    <ClInclude Include="..\inc\eocollection.h" />
+    <ClInclude Include="..\inc\logmanager.h" />
+    <ClInclude Include="..\inc\m4prop_dll.hpp" />
+    <ClInclude Include="..\inc\mdcollection.h" />
+    <ClInclude Include="..\inc\mdobject.h" />
+    <ClInclude Include="..\inc\menuitem.h" />
+    <ClInclude Include="..\inc\menupoppup.h" />
+    <ClInclude Include="..\inc\mybstr.h" />
+    <ClInclude Include="..\inc\myvariant.h" />
+    <ClInclude Include="..\inc\namepropmap.h" />
+    <ClInclude Include="..\inc\oblparser.h" />
+    <ClInclude Include="..\inc\pbddecode.h" />
+    <ClInclude Include="..\inc\persistobject.h" />
+    <ClInclude Include="..\inc\propcol.h" />
+    <ClInclude Include="..\inc\propdata.h" />
+    <ClInclude Include="..\inc\propmap.h" />
+    <ClInclude Include="..\inc\stdafx.h" />
+    <ClInclude Include="..\inc\traductprop.h" />
+    <ClInclude Include="..\inc\traducttools.h" />
+    <ClInclude Include="..\inc\xmlpersist.h" />
+    <ClInclude Include="..\rc\resource.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\asnpersistpbd.cpp" />
+    <ClCompile Include="..\src\cchildcol.cpp" />
+    <ClCompile Include="..\src\cchildcoldef.cpp" />
+    <ClCompile Include="..\src\cdefprop.cpp" />
+    <ClCompile Include="..\src\containedobjects.cpp" />
+    <ClCompile Include="..\src\convertpropbag.cpp" />
+    <ClCompile Include="..\src\cpropbag.cpp" />
+    <ClCompile Include="..\src\cpropbagdef.cpp" />
+    <ClCompile Include="..\src\cpropcol.cpp" />
+    <ClCompile Include="..\src\cpropcoldef.cpp" />
+    <ClCompile Include="..\src\cproperty.cpp" />
+    <ClCompile Include="..\src\csingleprop.cpp" />
+    <ClCompile Include="..\src\dataproperties.cpp" />
+    <ClCompile Include="..\src\dgenericobject.cpp" />
+    <ClCompile Include="..\src\eocollection.cpp" />
+    <ClCompile Include="..\src\logmanager.cpp" />
+    <ClCompile Include="..\src\m4prop.cpp" />
+    <ClCompile Include="..\src\mdcollection.cpp" />
+    <ClCompile Include="..\src\mdobject.cpp" />
+    <ClCompile Include="..\src\menuitem.cpp" />
+    <ClCompile Include="..\src\menupoppup.cpp" />
+    <ClCompile Include="..\src\mybstr.cpp" />
+    <ClCompile Include="..\src\myvariant.cpp" />
+    <ClCompile Include="..\src\namepropmap.cpp" />
+    <ClCompile Include="..\src\oblparser.cpp" />
+    <ClCompile Include="..\src\pbddecode.cpp" />
+    <ClCompile Include="..\src\persistobject.cpp" />
+    <ClCompile Include="..\src\propcol.cpp" />
+    <ClCompile Include="..\src\propdata.cpp" />
+    <ClCompile Include="..\src\traductprop.cpp" />
+    <ClCompile Include="..\src\traducttools.cpp" />
+    <ClCompile Include="..\src\xmlpersist.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

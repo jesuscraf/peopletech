@@ -1,0 +1,61 @@
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> m4_main.html  -->
+
+<!-- The root navigation file is <m4{rootnavigation}={m4_main.html}m4> -->
+
+<html>
+     <META HTTP-EQUIV="Content-Type" content="text/html; charset=<m4{charset}m4>">
+<head>
+	<META NAME="GENERATOR" CONTENT="META4 Report Engine">
+	<title><m4{title}m4></title>
+</head>
+
+
+<script type="text/javascript" language="Javascript1.5">
+
+	
+	if (<m4{navigation}m4>) {
+
+		if (<m4{top_navigation}m4>) {
+
+			document.write(
+			
+			"<frameset rows='35,*'>\r\n"+
+			"<frame name='menu' scrolling='no' noresize target='main' src='<m4{brkfile}={m4_menu.html}m4>'>\r\n"+
+			"<frame name='overdrive' src='<m4{brkfile}={m4_frameoff.html}m4>'>\r\n"+
+			"<frameset>\r\n"
+			
+			);
+
+		} else if (<m4{bottom_navigation}m4>) {
+
+			document.write(
+			
+			"<frameset rows='*,35'>\r\n"+
+			"<frame name='overdrive' src='<m4{brkfile}={m4_frameoff.html}m4>'>\r\n"+
+			"<frame name='menu' scrolling='no' noresize target='main' src='<m4{brkfile}={m4_menu.html}m4>'>\r\n"+
+			"<frameset>\r\n"
+			
+			) ;
+
+		} ;
+
+	} else if (<m4{toc}m4>) {
+
+		document.write(
+		
+		"<frameset cols='170,*'>\r\n"+
+		"<frame name='index' scrolling='yes' src='<m4{brkfile}={m4_index.html}m4>'>\r\n"+
+		"<frame name='main' scrolling='yes' target='main' src='<m4{firstfile}m4>'>\r\n"+
+		"<frameset>\r\n"
+		
+		) ;
+
+	} ;
+
+</script>
+
+</html>
+
+<!-- m4_main.html <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  -->
+
+

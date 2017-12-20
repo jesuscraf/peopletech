@@ -1,0 +1,64 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = m4dispatcher
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/adminactions.cpp
+SRC = ../src/adminagent.cpp
+SRC = ../src/appctlnodeinfo.cpp
+SRC = ../src/clientagent.cpp
+SRC = ../src/cltimer.cpp
+SRC = ../src/commadapter.cpp
+SRC = ../src/dspactions.cpp
+SRC = ../src/dspagent.cpp
+SRC = ../src/dspappctlreq.cpp
+SRC = ../src/dspclientreqpdu.cpp
+SRC = ../src/dspinvoker.cpp
+SRC = ../src/dspreq.cpp
+SRC = ../src/dspreqcontainer.cpp
+SRC = ../src/dspservice.cpp
+SRC = ../src/dspxmlreq.cpp
+SRC = ../src/executiveagent.cpp
+SRC = ../src/m4dispatchermain.cpp
+SRC = ../src/m4dspapi4snmp.cpp
+SRC = ../src/m4xmlstreamgen.cpp
+SRC = ../src/serveragent.cpp
+SRC = ../src/sitenodeinfo.cpp
+SRC = ../src/sitenodemonitor.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+[aix] LINKFLAGS = -bmaxdata:0x80000000 -brtl
+EH = yes
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4appclient
+LIB = m4communication
+LIB = m4cryptc
+LIB = m4date
+LIB = m4idgeneratordll
+LIB = m4ipcs
+LIB = m4log
+LIB = m4memdbg
+LIB = m4objlog
+LIB = m4pdus
+LIB = m4serverbasedll
+LIB = m4snmpadmin
+LIB = m4unicode
+LIB = m4xmlutil
+LIB = xerces-c
+LIB = rt
+LIB = agent_pp
+LIB = snmp_pp
+

@@ -1,0 +1,48 @@
+# Fichero .prj que contiene los path de todas las librerias mvc. 
+#---------------------------------------------------------------
+
+INC = ../../m4uuid/inc
+LIBDIR = ../../m4uuid/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4dbwrap/inc
+LIBDIR = ../../m4dbwrap/mak/$PLATFORM/$LINKTYPE/oci11g
+
+INC = ../../m4cache/inc
+LIBDIR = ../../m4cache/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4oeinit/inc
+LIBDIR = ../../m4oeinit/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4vm/inc
+LIBDIR = ../../m4vm/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4objcachedirectory/inc
+LIBDIR = ../../m4objcachedirectory/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4mdrt/inc
+LIBDIR = ../../m4mdrt/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4logsys/inc
+LIBDIR = ../../m4logsys/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4hsparser/inc
+LIBDIR = ../../m4hsparser/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4serial/inc
+LIBDIR = ../../m4serial/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4dm/inc
+LIBDIR = ../../m4dm/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4mdfac/inc
+LIBDIR = ../../m4mdfac/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4ldb/inc
+LIBDIR = ../../m4ldb/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4presentation/inc
+LIBDIR = ../../m4presentation/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4modkey/inc
+LIBDIR = ../../m4modkey/mak/$PLATFORM/$LINKTYPE  
+

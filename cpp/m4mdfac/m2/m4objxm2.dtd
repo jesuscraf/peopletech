@@ -1,0 +1,412 @@
+<!--
+//=============================================================================
+//
+// (c) Copyright  1991-200 Meta Software M.S., S.A
+// All rights reserved.
+//
+// Module:				m4mdfac.dll
+// File:				m4objxm2.dtd
+// Project:				mind3.x
+// Author:				Meta Software M.S. , S.A
+// Date:				18-09-2007
+// Language:			dtd
+// Version:             730.002.000
+//
+// Definition:
+//
+//    Fichero dtd de definicion del xml de metadatos de un meta4object
+//
+//=============================================================================
+-->
+<?dtd version="1.0" encoding = "UTF-8"?>
+<!--
+===============================================================================
+ELEMENT: m4obj
+COMMENT: definicion de un meta4object
+ELEMENTS: nodos raiz, relaciones y metodos de negocio
+ATTLIST:
+	mk	: 	Mascara que se aplica
+	id	: 	Identificador del meta4object
+	n	: 	Nombre
+	lg	: 	Lenguaje
+	b	: 	Version de m2
+	cs	: 	Tipo cliente servidor
+	tu	: 	Unidad de tiempo
+	v	: 	Version
+	cd	: 	Fecha de creacion
+	sd	: 	Fecha de inicio
+	ed	: 	Fecha de fin
+	csd	: 	Fecha de inicio de correccion
+	ced	: 	Fecha de fin de correccion
+	tp	: 	Tipo de meta4object
+	hs	: 	Tiene seguridad
+	sp	: 	Es separable
+	ex	: 	Es externo
+	ch	: 	Cacheable de datos
+	mch	: 	Cacheable de metadatos
+	chp	: 	Maximo periodo en cache
+	cc	: 	Chequeo de concurrencia
+	ot	: 	Tipo de organizacion
+	il	: 	Nivel de herencia
+	dl	: 	Lenguaje de datos
+	ml	: 	Lenguaje de metadatos
+	cet	: 	Tipo de ejecucion cliente servidor
+	mcp	: 	Capacidad de maquina virtual
+	oci	: 	Class id de OLE
+	si	: 	Identificador de servicio
+	sai	: 	Identificador de servicio alternativo
+	ev	: 	Variables de entorno
+	of	: 	Owner flag
+	stl	: 	Identificador de Estilo/Uso del servicio SOAP
+	wss		Identificador de Tipo de Seguridad del servicio SOAP
+===============================================================================
+-->
+<!ELEMENT m4obj ((node)+,(relation)*,(bmethod)*, (list)*, (filter)*)>
+<!ATTLIST m4obj mk CDATA #REQUIRED id CDATA #REQUIRED n CDATA #IMPLIED lg CDATA #IMPLIED b CDATA #IMPLIED cs CDATA #IMPLIED tu CDATA #IMPLIED v CDATA #IMPLIED cd CDATA #IMPLIED sd CDATA #IMPLIED ed CDATA #IMPLIED cds CDATA #IMPLIED ced CDATA #IMPLIED tp CDATA #IMPLIED hs CDATA #IMPLIED sp CDATA #IMPLIED ex CDATA #IMPLIED ch CDATA #IMPLIED mch CDATA #IMPLIED chp CDATA #IMPLIED cc CDATA #IMPLIED ot CDATA #IMPLIED il CDATA #IMPLIED dl CDATA #IMPLIED ml CDATA #IMPLIED cet CDATA #IMPLIED mcp CDATA #IMPLIED oci CDATA #IMPLIED si CDATA #IMPLIED sai CDATA #IMPLIED ev CDATA #IMPLIED of CDATA #IMPLIED stl CDATA #IMPLIED wss CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: node
+COMMENT: definicion de un nodo
+ELEMENTS: items, indices y nodos hijos
+ATTLIST:
+	id	:	Identificador del nodo
+	pn	:	Nodo padre
+	n	:	Nombre
+	ns	:	Estructura de nodo
+	mid	:	Identificador del meta4object
+	tp	:	Tipo
+	in	:	Indice
+	or	:	Orden
+	rs	:	Sentencia de lectura
+	rsi	:	Identificador de sentencia de lectura
+	wsi	:	Identificador de sentencia de escritura
+	ro	:	Objeto de lectura
+	wo	:	Objeto de escritura
+	tm	:	Temporalidad
+	cm	:	Competitud
+	pc	:	Corregible
+	os	:	Sentendcia dinamica
+	di	:	Indice por defecto
+	nr	:	Numero de filas
+	nrd	:	Numero de filas en base de datos
+	nkr	:	Numero de filas a guaradar
+	mnb	:	Maximo numero de bloques
+	mnr	:	Maximo numero de registros
+	cs	:	Tipo cliente servidor
+	st	:	Tipo de sincronizacion
+	odi	:	Ole Disp  Id
+	oni	:	Ole Node Inter Id
+	cp	:	Capacidad
+	rt	:	Es raiz
+	rr	:	Es raiz realmente
+	at	:	Autoload
+	io	:	Esta ordenado
+	vi	:	Es visible
+	df	:	Filtro dinamico
+	af	:	Filtro automatico
+	ex	:	Es externo
+	qbf	:	Es filtro QBF
+	ab	:	Afecta a base de datos
+	dr	:	Recarga de base de datos
+	il	:	Nivel de herencia de TI
+	go	:	Objetos de grupo
+	sdi	:	Item fecha de inicio
+	edi	:	Item fecha de fin
+	scdi:	Item fecha de inicio de correccion
+	ecdi:	Item fecha de fin de correccion
+	vfi	:	Item flag virtual
+	fsdi:	Item filtro de fecha de inicio
+	fedi:	Item filtro de fecha de fin
+	fscdi:	Item filtro de fecha de inicio de correccion
+	fecdi:	Item filtro de fecha de fin de correccion
+	cti	:	Item tipo de moneda
+	cedi:	Item fecha de cambio de moneda
+	cri	:	Item razon de cambio
+	dci	:	Item componente de DMD
+	dvi	:	Item valor de DMD
+	lsi	:	Item de carga de base de datos
+	pi	:	Item proridad
+	idi	:	Item fecha de imputacion
+	pdi	:	Item fecha de paga
+	pti	:	Item tipo de paga
+	pfi	:	Item frecuencia de paga
+	ipti:	Item tipo de paga de imputacion
+	ipfi:	Item frecuencia de paga de imputacion
+	cdi	:	Item fecha de cierre
+	spi	:	Item SysParam
+	bci	:	Item chequeo de BDL
+	roi	:	Item orden en RAM
+	oii	:	Item organizacion
+	lbi	:	Item LOAD_BLK
+	dbi	:	Item DELETE_BLK
+	ubi	:	Item UPDATE_BLK
+	ibi	:	Item INSSERT_BLK
+===============================================================================
+-->
+<!ELEMENT node ((item)*,(index)*,(node)*)>
+<!ATTLIST node id CDATA #REQUIRED pn CDATA #IMPLIED n CDATA #IMPLIED ns CDATA #IMPLIED mid CDATA #IMPLIED tp CDATA #IMPLIED in CDATA #IMPLIED or CDATA #IMPLIED rs CDATA #IMPLIED rsi CDATA #IMPLIED wsi CDATA #IMPLIED ro CDATA #IMPLIED wo CDATA #IMPLIED tm CDATA #IMPLIED cm CDATA #IMPLIED pc CDATA #IMPLIED os CDATA #IMPLIED di CDATA #IMPLIED nr CDATA #IMPLIED nrd CDATA #IMPLIED nkr CDATA #IMPLIED mnb CDATA #IMPLIED mnr CDATA #IMPLIED cs CDATA #IMPLIED st CDATA #IMPLIED odi CDATA #IMPLIED oni CDATA #IMPLIED cp CDATA #IMPLIED rt CDATA #IMPLIED rr CDATA #IMPLIED at CDATA #IMPLIED io CDATA #IMPLIED vi CDATA #IMPLIED df CDATA #IMPLIED af CDATA #IMPLIED ex CDATA #IMPLIED qbf CDATA #IMPLIED ab CDATA #IMPLIED dr CDATA #IMPLIED il CDATA #IMPLIED go CDATA #IMPLIED sdi CDATA #IMPLIED edi CDATA #IMPLIED scdi CDATA #IMPLIED ecdi CDATA #IMPLIED vfi CDATA #IMPLIED fsdi CDATA #IMPLIED fedi CDATA #IMPLIED fscdi CDATA #IMPLIED fecdi CDATA #IMPLIED cti CDATA #IMPLIED cedi CDATA #IMPLIED cri CDATA #IMPLIED dci CDATA #IMPLIED dvi CDATA #IMPLIED lsi CDATA #IMPLIED pi CDATA #IMPLIED idi CDATA #IMPLIED pdi CDATA #IMPLIED pti CDATA #IMPLIED pfi CDATA #IMPLIED ipti CDATA #IMPLIED ipfi CDATA #IMPLIED cdi CDATA #IMPLIED spi CDATA #IMPLIED bci CDATA #IMPLIED roi CDATA #IMPLIED oii CDATA #IMPLIED lbi CDATA #IMPLIED dbi CDATA #IMPLIED ubi CDATA #IMPLIED ibi CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: item
+COMMENT: definicion de un item
+ELEMENTS: argumentos, reglas, conectores before, conectores after y conectores de valor
+ATTLIST:
+	id	:	Identificador del item
+	pi	:	Item padre
+	n	:	Nombre
+	s	:	Sinonimo
+	ti	:	Estructura de nodo
+	tsc	:	Ambito teorico. Nodo, bloque, registro.
+	sp	:	Ambito. Nodo, bloque, registro.
+	tp	:	Tipo. Metodo, propiedad, campo, concepto.
+	ie	:	Es ejecutable.
+	ctp	:	Tipo C++ Cadena, numero, fecha.
+	mtp	:	Tipo meta4
+	dpr	:	Precision de base de datos
+	pr	:	Precision
+	sc	:	Escala
+	in	:	Indice
+	or	:	Orden
+	dv	:	Valor por defecto
+	dmd	:	Dmd
+	dc	:	Componente de Dmd
+	dct	:	Crosstab Dmd
+	df	:	Campo de Dmd
+	ms	:	Tamano maximo
+	roa	:	Alias del objeto de lectura
+	woa	:	Alias del objeto de escritura
+	rf	:	Campo de lectura
+	wf	:	Campo de escritura
+	ro	:	Objeto de lectura
+	wo	:	Objeto de escritura
+	cs	:	Tipo cliente servidor
+	st	:	Tipo de sincronizacion
+	sb	:	Comportamiento de tramos
+	ss	:	Particion de tramos
+	to	:	Totalizacion
+	tm	:	Modo de transaccion
+	ml	:	Nivel del metodo
+	vl	:	Longitud variable
+	stt	:	Totalizacion de esentancia
+	va	:	Argumentos variables
+	vi	:	Es visible
+	md	:	Modifica datos
+	dvf	:	Tipo del valor por defecto
+	it	:	Tipo interno
+	cf	:	Funcion de conversion
+	ih	:	Es heredado
+	pb	:	Es publico
+	pm	:	Es parametro
+	cln	:	Chequear nulos
+	ckn	:	Nulo en cliente
+	nn	:	No nulo
+	ab	:	Afecta a base de datos
+	gs	:	Genera tramos
+	pk	:	Es PK
+	nd	:	Es nodal
+	ev	:	Es evento
+	lv	:	Nivel
+	si	:	Item de tramos
+	ai	:	Item auxiliar
+
+Argumentos a rellenar por el generador de codigo.
+	jad	:	Definicion de los argumentos en Java.
+	jac	:	Llamada a los argumentos en Java.
+===============================================================================
+-->
+<!ELEMENT item ((arg)*,(bconn)*,(aconn)*,(vconn)*)>
+<!ATTLIST item id CDATA #REQUIRED pi CDATA #IMPLIED n CDATA #IMPLIED s CDATA #IMPLIED ti CDATA #IMPLIED tsc CDATA #IMPLIED sp CDATA #IMPLIED tp CDATA #IMPLIED ie CDATA #IMPLIED ctp CDATA #IMPLIED mtp CDATA #IMPLIED dpr CDATA #IMPLIED pr CDATA #IMPLIED sc CDATA #IMPLIED in CDATA #IMPLIED or CDATA #IMPLIED dv CDATA #IMPLIED dmd CDATA #IMPLIED dc CDATA #IMPLIED dct CDATA #IMPLIED df CDATA #IMPLIED ms CDATA #IMPLIED roa CDATA #IMPLIED woa CDATA #IMPLIED rf CDATA #IMPLIED wf CDATA #IMPLIED ro CDATA #IMPLIED wo CDATA #IMPLIED cs CDATA #IMPLIED st CDATA #IMPLIED sb CDATA #IMPLIED ss CDATA #IMPLIED to CDATA #IMPLIED tm CDATA #IMPLIED ml CDATA #IMPLIED vl CDATA #IMPLIED stt CDATA #IMPLIED va CDATA #IMPLIED vi CDATA #IMPLIED md CDATA #IMPLIED dvf CDATA #IMPLIED it CDATA #IMPLIED cf CDATA #IMPLIED ih CDATA #IMPLIED pb CDATA #IMPLIED pr CDATA #IMPLIED cln CDATA #IMPLIED ckn CDATA #IMPLIED nn CDATA #IMPLIED ab CDATA #IMPLIED gs CDATA #IMPLIED pk CDATA #IMPLIED nd CDATA #IMPLIED ev CDATA #IMPLIED lv CDATA si CDATA #IMPLIED ai CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: arg
+COMMENT: definicion de un argumento
+ELEMENTS:
+ATTLIST:
+	id	:	Identificador del argumento
+	n	:	Nombre
+	tp	:	Tipo. Entrada o salida.
+	mtp	:	Tipo meta4
+	ctp	:	Tipo C++
+	pr	:	Precision
+===============================================================================
+-->
+<!ELEMENT arg EMPTY>
+<!ATTLIST item id CDATA #REQUIRED n CDATA #IMPLIED tp CDATA #IMPLIED mtp CDATA #IMPLIED ctp CDATA #IMPLIED pr CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: bconn
+COMMENT: definicion de un conector de ejecucion before
+ELEMENTS:
+ATTLIST:
+	nid	:	Identificador del nodo hijo
+	id	:	Identificador del item hijo
+	pc	:	Precedencia
+	sp	:	Spin
+	rt	:	Relacion
+	ct	:	Contexto
+	cs	:	Tipo cliente servidor
+===============================================================================
+-->
+<!ELEMENT bconn EMPTY>
+<!ATTLIST bconn nid CDATA #REQUIRED id CDATA #REQUIRED pr CDATA #IMPLIED sp CDATA #IMPLIED rt CDATA #IMPLIED ct CDATA #IMPLIED cs CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: aconn
+COMMENT: definicion de un conector de ejecucion after
+ELEMENTS:
+ATTLIST:
+	nid	:	Identificador del nodo hijo
+	id	:	Identificador del item hijo
+	pr	:	Precedencia
+	sp	:	Spin
+	rt	:	Relacion
+	ct	:	Contexto
+	cs	:	Tipo cliente servidor
+===============================================================================
+-->
+<!ELEMENT aconn EMPTY>
+<!ATTLIST aconn nid CDATA #REQUIRED id CDATA #REQUIRED  pr CDATA #IMPLIED sp CDATA #IMPLIED rt CDATA #IMPLIED ct CDATA #IMPLIED cs CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: vconn
+COMMENT: definicion de un conector de valor
+ELEMENTS:
+ATTLIST:
+	nid	:	Identificador del nodo hijo
+	id	:	Identificador del item hijo
+	pr	:	Precedencia
+	sp	:	Spin
+	rt	:	Relacion
+	ct	:	Contexto
+	cs	:	Tipo cliente servidor
+===============================================================================
+-->
+<!ELEMENT vconn EMPTY>
+<!ATTLIST vconn nid CDATA #REQUIRED id CDATA #REQUIRED  pr CDATA #IMPLIED sp CDATA #IMPLIED rt CDATA #IMPLIED ct CDATA #IMPLIED cs CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: index
+COMMENT: definicion de un indice
+ELEMENTS: items
+ATTLIST:
+	id	:	Identificador del indice
+===============================================================================
+-->
+<!ELEMENT index ((indexitem)+)>
+<!ATTLIST index id CDATA #REQUIRED>
+
+<!--
+===============================================================================
+ELEMENT: indexitem
+COMMENT: definicion de un item de indice
+ELEMENTS:
+ATTLIST:
+	id	:	Identificador del item
+	f	:	Funcion
+	w	:	Sentido
+===============================================================================
+-->
+<!ELEMENT indexitem EMPTY>
+<!ATTLIST indexitem id CDATA #REQUIRED f CDATA #IMPLIED w CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: relation
+COMMENT: definicion de un conector de datos
+ELEMENTS: columnas
+ATTLIST:
+	id	:	Identificador de la relacion
+	pn	:	Nodo padre
+===============================================================================
+-->
+<!ELEMENT relation ((col)+)>
+<!ATTLIST relation id CDATA #REQUIRED pn CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: col
+COMMENT: definicion de una columna
+ELEMENTS:
+ATTLIST:
+	pc	:	Columna padre
+	cc	:	Columna hija
+===============================================================================
+-->
+<!ELEMENT col EMPTY>
+<!ATTLIST relation pc CDATA #REQUIRED cc CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: bmethod
+COMMENT: definicion de un metodo de negocio
+ELEMENTS:
+ATTLIST:
+	id	:	Identificador del metodo
+	nm	:	Nombre traducido
+	n	:	Nodo al que hace referencia
+	i	:	Item al que hace referencia
+	ctp	:	Tipo C++ del item a ejecutar
+	d	:	Descripcion traducida
+	stl	: 	Identificador de Estilo/Uso del servicio SOAP 
+===============================================================================
+-->
+<!ELEMENT bmethod ((barg)*)>
+<!ATTLIST bmethod id CDATA #REQUIRED nm CDATA #REQUIRED n CDATA #IMPLIED i CDATA #IMPLIED ctp CDATA #IMPLIED d CDATA #IMPLIED stl CDATA #IMPLIED>
+
+<!--
+===============================================================================
+ELEMENT: barg
+COMMENT: definicion de un argumento de un metodo de negocio
+ELEMENTS:
+ATTLIST:
+	id	:	Identificador del argumento (o nombre de nodo en argumentos complejos)
+	pn	:	Nodo padre. Solo sirve con argumentos de tipo objeto
+	gr	:	Grupo al que pertenecen. Basico u objeto
+	tp	:	Tipo de argumento. Entrada o salida
+	ctp	:	Tipo C++
+===============================================================================
+-->
+<!ELEMENT barg EMPTY>
+<!ATTLIST barg id CDATA #REQUIRED gr CDATA #REQUIRED tp CDATA #REQUIRED ctp CDATA #REQUIRED rt CDATA #REQUIRED>
+
+<!--
+===============================================================================
+ELEMENT: list
+COMMENT: lista de meta4object
+ELEMENTS:
+ATTLIST:
+	id	:	Identificador del meta4object padre
+	n	:	Nombre del meta4object padre
+	p	:	Identificador del nodo padre de la relación
+	c	:	Identificador del nodo hijo de la relación
+	tp	:	Tipo de relación
+	m	:	Si es multiselección o no 
+===============================================================================
+-->
+<!ELEMENT list EMPTY>
+<!ATTLIST list id CDATA #REQUIRED n CDATA #REQUIRED p CDATA #REQUIRED c CDATA #REQUIRED tp CDATA #REQUIRED m CDATA #REQUIRED>
+
+<!--
+===============================================================================
+ELEMENT: filter
+COMMENT: filtro QBF de un Meta4object
+ELEMENTS:
+ATTLIST:
+	m4o	:	Identificador del meta4object de filtro
+	p	:	Identificador del nodo de filtro
+	c	:	Identificador del nodo de datos
+	ss	:	Identificador del item syssentence
+	sp	:	Identificador del item sysparam
+	b	:	Tipo de comportamiento 
+===============================================================================
+-->
+<!ELEMENT list EMPTY>
+<!ATTLIST list m4obj CDATA #REQUIRED p CDATA #REQUIRED c CDATA #REQUIRED ss CDATA #REQUIRED sp CDATA #REQUIRED b CDATA #REQUIRED>
+

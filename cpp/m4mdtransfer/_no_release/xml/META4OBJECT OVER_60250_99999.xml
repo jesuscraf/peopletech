@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2004 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+
+<!--
+This XML defines table dependencies for repository object META4OBJECT OVER
+@version 1.10
+-->
+
+<object name="META4OBJECT OVER">
+	<options>
+		<option name="dump-parameters" value="false"/>
+	</options>
+	<param name="ID_T3"/>
+	<read-table name="SCH_T3S" db="client">
+		<with-pk name="ID_T3" select="$ID_T3_INHERIT"/>
+		<call-table name="SCH_T3S">
+			<with-pk name="ID_T3" select="$ID_T3"/>
+			<fields>
+				<field name="ID_T3" value="@ID_T3"/>
+				<field name="N_T3ENG" value="@N_T3ENG"/>
+				<field name="N_T3ESP" value="@N_T3ESP"/>
+				<field name="N_T3FRA" value="@N_T3FRA"/>
+				<field name="N_T3GEN" value="@N_T3GEN"/>
+				<field name="N_T3GER" value="@N_T3GER"/>
+				<field name="N_T3ITA" value="@N_T3ITA"/>
+				<field name="N_T3BRA" value="@N_T3BRA"/>
+				<field name="OLE_CLASS_ID" value="@OLE_CLASS_ID"/>
+				<field name="DT_CREATE" visible="false"/>
+			</fields>
+			<update-funtions>
+				<call-template name="today">
+					<with-arg name="date" insert="@DT_CREATE"/>
+				</call-template>
+			</update-funtions>
+		</call-table>
+	</read-table>
+	<call-table name="SCH_T3_INHERIT" db="client">
+		<with-pk name="ID_T3" select="$ID_T3_INHERIT"/>
+	</call-table>   
+	<read-table name="SCH_MD_VERSION" db="client">
+		<with-pk name="ID_T3" select="$ID_T3_INHERIT"/>
+		<with-pk name="ID_MD_TYPE" select="1"/>
+		<call-table name="SCH_MD_VERSION">
+			<with-pk name="ID_T3" select="$ID_T3"/>
+			<with-pk name="ID_MD_TYPE" select="1"/>
+			<fields>
+				<field name="ID_T3" value="@ID_T3"/>
+				<field name="DT_MD_VERSION" visible="false"/>
+				<field name="DT_SYNC" visible="false"/>
+			</fields>
+			<update-funtions>
+				<call-template name="today">
+					<with-arg name="date" insert="@DT_MD_VERSION"/>
+				</call-template>
+				<call-template name="today">
+					<with-arg name="date" insert="@DT_SYNC"/>
+				</call-template>
+			</update-funtions>
+		</call-table>
+	</read-table>
+	<read-table name="SCH_OVERWRITE_NODES" db="client">
+		<with-pk name="ID_NODE_T3" select="$ID_T3_INHERIT"/>
+		<call-table name="SCH_OVERWRITE_NODES">
+			<with-pk name="ID_NODE_T3" select="$ID_T3"/>
+			<with-pk name="ID_T3" select="@ID_T3"/>
+			<with-pk name="ID_NODE" select="@ID_NODE"/>
+			<fields>
+				<field name="ID_NODE_T3" value="@ID_NODE_T3" />
+  			</fields>
+		</call-table>
+	</read-table>
+</object>
+

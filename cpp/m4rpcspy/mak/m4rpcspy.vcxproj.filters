@@ -1,0 +1,139 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32">
+      <UniqueIdentifier>{bd9b7a67-e7a6-4f02-8f70-573b55cc0a59}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64">
+      <UniqueIdentifier>{e592bc43-aca3-4216-8db1-667507c8b78b}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4rpcspy.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+    <ResourceCompile Include="..\rc\rpcspy.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4ini\mak\win32\debug\m4inidll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win32\release\m4inidll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win64\debug\m4inidll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ini\mak\win64\release\m4inidll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\spread\lib\win32\Spr32d70.lib">
+      <Filter>lib\win32</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="..\rc\rpcspymsgs.mc">
+      <Filter>rc</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4rpcspy.touch">
+      <Filter>mak</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\skin.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\winmain.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\rc\resource.h">
+      <Filter>rc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\src\skin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\winmain.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\obj\win32\debug\m4rpcspy\m4rpcspy_s.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\obj\win32\release\m4rpcspy\m4rpcspy_s.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\obj\win64\debug\m4rpcspy\m4rpcspy_s.c">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\obj\win64\release\m4rpcspy\m4rpcspy_s.c">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="..\rc\bmp288.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\bmp289.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\bmp290.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\bmp291.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\bmp292.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\bmp293.bmp">
+      <Filter>rc</Filter>
+    </Image>
+    <Image Include="..\rc\ico256.ico">
+      <Filter>rc</Filter>
+    </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="m4rpcspy.idl">
+      <Filter>mak</Filter>
+    </Midl>
+  </ItemGroup>
+</Project>

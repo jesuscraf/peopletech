@@ -1,0 +1,152 @@
+﻿<componentlist>
+	<component id='m4logmsg'/> <!-- configonly-->
+	<component id='m4server-setup'/> <!-- configonly-->
+	<component id='m4common'/> <!-- configonly-->
+	<component id='m4fmtpor'/>
+	<component id='m4ldbparse' artifact='m4ldbparse.exe'/> <!-- windowsonly-->
+	<component id='m4hodll'/> <!-- windowsonly-->
+	<component id='m4systray' artifact='m4systray.exe'/> <!-- windowsonly--> <!-- exe-->
+	<component id='m4loadll'/>
+	<component id='m4col'/> <!-- windowsonly-->
+	<component id='m4tree32' artifact='m4tree32.obl'/> <!-- windowsonly-->
+
+	<component id='m4dho'/> <!-- windowsonly-->
+	<component id='m4lcid'/> <!-- windowsonly-->
+	<component id='m4design'/> <!-- windowsonly-->
+	<component id='m4anim'/> <!-- windowsonly-->
+	<component id='m4ptrtf'/> <!-- windowsonly-->
+	<component id='m4csdll'/> <!-- windowsonly-->
+	<component id='m4ipcs' artifact='m4ipcsdll.dll'/>
+	<component id='m4compress' artifact='m4compressdll.dll'/> <!-- lib: zlib-->
+	<component id='m4cryptc'/> <!-- lib: openssl-->
+	<component id='m4cryptwrap'/> <!-- lib: m4cryptc--> <!-- windowsonly-->
+
+	<component id='m4xml'/> <!-- lib: xerces--> <!-- windowsonly-->
+	<component id='m4unicode'/> <!-- lib: xerces-->
+	<component id='m4sysall'/> <!-- lib: m4unicode-->
+	<component id='m4anle'/> <!-- lib: m4unicode--> <!-- windowsonly-->
+	<component id='m4engprn'/> <!-- lib: m4unicode-->
+	<component id='m4cryptstore' artifact='m4cryptstoredll.dll'/> <!-- lib: m4cryptc, m4unicode-->
+	<component id='m4cryptfile' artifact='m4cryptfile.exe'/> <!-- lib: m4cryptstore--> <!-- exe-->
+	<component id='m4win2ux'/> <!-- lib: m4ipcs-->
+	<component id='m4date' artifact='m4datedll.dll'/> <!-- lib: m4ipcs-->
+	<component id='m4ctlhelper'/> <!-- lib: m4date--> <!-- windowsonly-->
+
+	<component id='m4obl' artifact='m4obl32.dll'/> <!-- lib: m4date-->
+	<component id='m4meminfo'/> <!-- lib: m4date-->
+	<component id='m4idgenerator' artifact='m4idgeneratordll.dll'/> <!-- lib: m4ipcs-->
+	<component id='m4serverevent'/> <!-- lib: m4ipcs-->
+	<component id='m4filemanager'/> <!-- lib: m4date, m4ipcs, m4unicode, zlib--> <!-- inc: m4doc, m4objglb-->
+	<component id='m4pdus' artifact='m4pdusdll.dll'/> <!-- lib: m4compress, m4filemanager, m4unicode-->
+	<component id='m4cataloguer' artifact='m4cataloguer.exe'/> <!-- lib: m4date, m4filemanager, m4unicode, xerces, zlib--> <!-- exe-->
+	<component id='m4credentials'/> <!-- lib: m4cryptc, m4date, m4idgenerator, m4ipcs-->
+	<component id='m4buildversion'/> <!-- inc: m4objglb, m4objreg, m4variant-->
+	<component id='m4ini' artifact='m4inidll.dll'/> <!-- lib: m4buildversion, m4ipcs, m4unicode, xerces--> <!-- inc: m4objglb, m4objreg-->
+
+	<component id='m4apie'/> <!-- lib: m4ini--> <!-- windowsonly-->
+	<component id='m4rpcspy' artifact='rpcspy.exe'/> <!-- lib: m4ini, spread--> <!-- windowsonly-->
+	<component id='m4rpcspyt' artifact='rpcspyt.dll'/> <!-- inc: rpcspy--> <!-- windowsonly-->
+	<component id='m4log' artifact='m4logdll.dll'/> <!-- lib: m4buildversion, m4date, m4ini, m4ipcs, m4loadll, m4unicode--> <!-- inc: m4objglb, m4objreg-->
+	<component id='m4hsparser'/> <!-- lib: m4log-->
+	<component id='m4memdbg'/> <!-- lib: m4ipcs, m4unicode -->
+	<component id='m4tsap' artifact='m4tsapdll.dll'/> <!-- lib: m4ipcs, m4log, openssl-->
+	<component id='m4objlog'/> <!-- lib: m4log--> <!-- inc: m4objglb, m4variant-->
+	<component id='m4serial'/> <!-- lib: m4filemanager, m4log, m4pdus, m4unicode--> <!-- inc: m4objglb-->
+	<component id='m4objglb'/> <!-- lib: m4cryptc, m4ipcs, m4loadll, m4log, m4objlog, m4unicode-->
+
+	<component id='m4variant'/> <!-- lib: m4date, m4log, m4objlog, m4sysall, m4unicode-->
+	<component id='m4emind'/> <!-- lib: m4cryptc, m4log, m4variant-->
+	<component id='m4iputils'/> <!-- lib: m4log, m4sysall, m4variant, gmp-->
+	<component id='m4uuid'/> <!-- lib: m4buildversion, m4ini, m4sysall, m4unicode-->
+	<component id='m4cacert'/> <!-- lib: m4cryptc, m4date, m4ipcs, m4log, m4sysall, m4unicode, openssl-->
+	<component id='m4objreg'/> <!-- lib: m4buildversion, m4date, m4ini, m4ipcs, m4log, m4objlog, m4objglb, m4unicode-->
+	<component id='m4cryptpwd' artifact='cryptpwd.exe'/> <!-- lib: m4cryptc-->  <!-- exe-->
+	<component id='m4logsys'/> <!-- lib: m4ini, m4ipcs, m4unicode, m4variant-->
+	<component id='m4cache' artifact='m4cachedll.dll'/> <!-- lib: m4date, m4ipcs, m4log, m4objlog, m4objreg, m4serial, m4unicode-->
+	<component id='m4mdrt'/> <!-- lib: m4buildversion, m4cache, m4date, m4log, m4logsys, m4objglb, m4objlog, m4serial, m4unicode, m4variant-->
+
+	<component id='m4serverbase' artifact='m4serverbasedll.dll'/> <!-- lib: m4buildversion, m4date, m4filemanager, m4idgenerator, m4ini, m4ipcs, m4log, m4memdbg, m4pdus, m4tsap, m4unicode-->
+	<component id='m4xmlutil'/> <!-- lib: m4serverbase, m4unicode, xerces-->
+	<component id='m4launcher' artifact='m4launcher.exe'/> <!-- lib: m4cryptc, m4date, m4ini, m4log, m4memdbg, m4unicode, m4xmlutil, xerces--> <!-- exe-->
+	<component id='m4servenv' artifact='m4servenvdll.dll'/> <!-- lib: m4log-->
+	<component id='m4eventhandler' artifact='m4eventhandlerdll.dll'/> <!-- lib: m4ipcs, m4log-->
+	<component id='m4configtree' artifact='m4configtreedll.dll'/> <!-- lib: m4ipcs, m4log, m4memdbg-->
+	<component id='m4configuration' artifact='m4configurationdll.dll'/> <!-- lib: m4configtree, m4cryptstore, m4ipcs, m4log, m4obl-->
+	<component id='m4transport'/> <!-- lib: m4date, m4ipcs, m4log, m4pdus, m4serverbase, m4tsap, m4unicode-->
+	<component id='m4modkey'/> <!-- lib: m4cryptc, m4date, m4tsap, m4unicode, m4uuid, m4win2ux, m4xmlutil, xerces-->
+	<component id='m4modkeywrap'/> <!-- lib: m4modkey--> <!-- windowsonly-->
+
+	<component id='m4modkeyutil' artifact='m4modkeyutil.exe'/> <!-- lib:  m4date, m4modkey, m4unicode--> <!-- windowsonly--> <!-- exe-->
+	<component id='m4communication'/> <!-- lib: m4date, m4idgenerator, m4ipcs, m4log, m4logsys, m4memdbg, m4objreg, m4pdus, m4serverbase, m4transport, m4tsap, m4unicode-->
+	<component id='m4appctl' artifact='m4appctl.exe'/> <!-- lib: m4communication, m4date, m4idgenerator, m4ini, m4ipcs, m4log, m4memdbg, m4serverbase, m4unicode, m4xmlutil, xerces--> <!-- exe-->
+	<component id='m4xmladminclient'/> <!-- lib: m4communication, m4cryptc, m4idgenerator, m4ipcs, m4log, m4serverbase, m4unicode, m4xmlutil, xerces--> <!-- windowsonly-->
+	<component id='m4appclient' artifact='m4appclientdll.dll'/> <!-- lib: m4buildversion, m4communication, m4credentials, m4cryptc, m4ctlhelper, m4date, m4eventhandler, m4idgenerator, m4ini, m4ipcs, m4log, m4pdus, m4serverbase, m4tsap, m4unicode-->
+	<component id='m4srvping' artifact='m4srvping.exe'/> <!-- lib: m4appclient, m4buildversion, m4date, m4ini, m4log, m4obl, m4serverbase--> <!-- exe-->
+	<component id='m4java'/> <!-- lib: m4buildversion, m4date, m4filemanager, m4ini, m4ipcs, m4log, m4objglb, m4objlog, m4objreg, m4unicode, m4variant, zlib--> <!-- inc: m4vm-->
+	<component id='m4dm'/> <!-- lib: m4cache, m4compress, m4cryptc, m4date, m4filemanager, m4ipcs, m4java, m4log, m4logsys, m4mdrt, m4objglb, m4objlog, m4objreg, m4pdus, m4serial, m4serverbase, m4sysall, m4unicode, m4variant--> <!-- inc: m4mdfac, m4objcachedirectory, m4oeinit, m4vm-->
+	<component id='m4prop'/> <!-- lib: m4dm, m4objglb, m4unicode--> <!-- windowsonly-->
+	<component id='m4cacertmngr'/> <!-- lib: m4cacert, m4cryptc, m4date, m4dm, m4log, m4sysall, m4uuid, m4variant--> <!-- inc: m4oeinit, m4vm-->
+
+	<component id='m4objcachedirectory'/> <!-- lib: m4cryptc, m4dm, m4ipcs, m4log, m4objlog, m4objreg, m4serial, m4variant--> <!-- inc: m4oeinit, m4vm-->
+	<component id='m4dbwrap'> <!-- lib: m4date, m4ipcs, m4unicode--> <!-- inc: m4ldb-->
+		<project id='m4dbwrap-oci'/>
+		<project id='m4dbwrap-odbc'/>
+		<project id='m4dbwrap-mdt'/>
+		<project id='m4dbwrap-oci11g'/>
+		<project id='m4dbwrap-oci12c'/>
+	</component>
+	<component id='m4ldb'/> <!-- lib: m4buildversion, m4cryptc, m4date, m4dbwrap, m4dm, m4eventhandler, m4filemanager, m4ipcs, m4log, m4logsys, m4mdrt, m4objglb, m4objlog, m4objreg, m4serial, m4sysall, m4unicode, m4variant, m4win2ux--> <!-- inc: m4oeinit, m4vm-->
+	<component id='m4mdtransfer'/> <!-- lib: m4date, m4dbwrap, m4log, m4logsys, m4sysall, m4unicode, m4xmlutil, xerces--> <!-- windowsonly-->
+	<component id='m4mdtwrapper'/> <!-- lib: m4mdtransfer, m4unicode--> <!-- windowsonly-->
+	<component id='m4mdfac'/> <!-- lib: m4buildversion, m4cache, m4date, m4dm, m4hsparser, m4log, m4logsys, m4mdrt, m4objglb, m4objlog, m4objreg, m4serial, m4unicode, m4variant--> <!-- inc: m4oeinit, m4vm-->
+	<component id='m4presentation'/> <!-- lib: m4cache, m4date, m4dm, m4log, m4mdrt, m4objglb, m4objlog, m4objreg, m4serial, m4sysall, m4unicode, m4variant--> <!-- inc: m4oeinit-->
+	<component id='m4vm'/> <!-- lib: m4buildversion, m4cryptc, m4date, m4dm, m4filemanager, m4hsparser, m4ini, m4ipcs, m4log, m4logsys, m4mdfac, m4mdrt, m4objglb, m4objlog, m4objreg, m4servenv, m4serverbase, m4sysall, m4unicode, m4uuid, m4variant, m4win2ux--> <!-- inc: m4oeinit-->
+	<component id='m4xlapi'/> <!-- lib: m4date, m4dm, m4ipcs, m4log, m4sysall, m4unicode, m4variant, libxl-->
+	<component id='m4ln4unit'/> <!-- lib: m4log, m4sysall, m4unicode, m4variant, m4xlapi--> <!-- windowsonly-->
+
+	<component id='m4ldap'/> <!-- lib: m4cryptc, m4dm, m4log, m4unicode, m4variant, ldap-->
+	<component id='m4dmsxml'/> <!-- lib: m4date, m4dm, m4filemanager, m4log, m4mdrt, m4objglb, m4objlog, m4objreg, m4sysall, m4unicode, m4variant, xalan, xerces-->
+	<component id='m4javaapi'/> <!-- lib: m4dm, m4filemanager, m4ipcs, m4java, m4log, m4objglb, m4objlog, m4objreg, m4sysall, m4unicode, m4variant, m4vm-->
+	<component id='m4jnisoapclient'/> <!-- lib: m4dm, m4java, m4log, m4objglb, m4objlog-->
+	<component id='m4oeinit'> <!-- lib: m4appclient, m4cacertmngr, m4cache, m4cryptc, m4csdll, m4ctlhelper, m4date, m4dm, m4filemanager, m4ipcs, m4java, m4ldb, m4log, m4logsys, m4mdfac, m4mdrt, m4modkey, m4objcachedirectory, m4objglb, m4objlog, m4objreg, m4pdus, m4presentation, m4serial, m4serverbase, m4servenv, m4serverevent, m4sysall, m4tsap, m4variant, m4vm, m4win2ux-->
+		<project id='m4oeinit-dic'/>
+		<project id='m4oeinit-server'/>
+		<project id='m4oeinit-sm'/>
+	</component>
+	<component id='m4chwrap'/> <!-- lib: m4appclient, m4buildversion, m4ctlhelper, m4date, m4dm, m4filemanager, m4hsparser, m4ini,  m4loadll, m4log, m4mdfac, m4mdrt, m4objglb, m4objlog, m4objreg, m4oeinit, m4presentation, m4prop, m4serial, m4unicode, m4variant, m4vm--> <!-- windowsonly-->
+	<component id='m4logsysvb'/> <!-- lib: m4chwrap, m4log, m4logsys, m4sysall, m4unicode, m4variant--> <!-- windowsonly-->
+	<component id='m4doc'/> <!-- lib: m4cryptc, m4date, m4dm, m4filemanager, m4ipcs, m4loadll, m4log, m4mdrt, m4objglb, m4objlog, m4unicode, m4variant-->
+	<component id='m4mienv' artifact='mienv.dll'/> <!-- lib: m4buildversion, m4date, m4doc, m4ini, m4ipcs, m4log, m4oeinit, m4unicode-->
+	<component id='m4fmetrics' artifact='fmetrics.dll'/> <!-- lib: m4mienv, m4sysall, m4unicode, m4variant-->
+
+	<component id='m4rfnbuilder' artifact='rfnbuilder.exe'/> <!-- lib: m4fmetrics, m4mienv, m4unicode--> <!-- windowsonly--> <!-- exe-->
+	<component id='m4fmt32'/> <!-- lib: m4date, m4dm, m4loadll, m4mienv, m4variant-->
+	<component id='m4engine' artifact='engindll.dll'/> <!-- lib: m4date, m4dm, m4engprn, m4filemanager, m4fmetrics, m4fmt32, m4ipcs, m4java, m4mdrt, m4mienv, m4objglb, m4objreg, m4oeinit, m4unicode, m4variant-->
+	<component id='m4mailnet' artifact='m4mail.dll'/> <!-- lib: m4dm, m4ipcs, m4log, m4objreg, m4sysall, m4unicode, m4variant, nsmsgsdk-->
+	<component id='m4oleexec' artifact='oleexec.dll'/> <!-- lib: m4buildversion, m4date, m4dm, m4ipcs, m4log, m4mdrt, m4unicode, m4variant--> <!-- windowsonly-->
+	<component id='m4printpdf'/> <!-- lib: m4buildversion, m4doc, m4ini, m4log, m4objglb, m4obglog, m4sysall, m4unicode, m4variant-->
+	<component id='m4request' artifact='m4requestdll.dll'/> <!-- lib: m4credentials, m4date, m4idgenerator, m4ipcs, m4log, m4objreg, m4pdus, m4serverbase--> <!-- inc: m4comsrv, m4subsystems, m4userinterface-->
+	<component id='m4userinterface' artifact='m4userinterfacedll.dll'/> <!-- lib: m4communication, m4date, m4dm, m4idgenerator, m4log, m4request, m4serverbase--> <!-- inc: m4comsrv, m4subsystems-->
+	<component id='m4snmpadmin'/> <!-- lib: m4ipcs, m4log, m4objglb, m4unicode, m4xmlutil, agent_pp, snmp_pp, xerces-->
+	<component id='m4executive' artifact='m4executivedll.dll'/> <!-- lib: m4date, m4eventhandler, m4ipcs, m4log, m4pdus, m4request, m4serverbase, m4userinterface--> <!-- inc: m4comsrv, m4subsystems-->
+
+	<component id='m4subsystems' artifact='m4subsystemsdll.dll'/> <!-- lib: m4configtree, m4configuration, m4date, m4executive, m4idgenerator, m4ipcs, m4log, m4memdbg, m4objlog, m4pdus, m4request, m4serverbase, m4serverevent, m4snmpadmin--> <!-- inc: m4comsrv-->
+	<component id='m4snmpss'/> <!-- lib: m4ipcs, m4log, m4objlog, m4serverevent, m4snmpadmin, m4subsystems-->
+	<component id='m4ldbsubsy' artifact='m4ldbsubsydll.dll'/> <!-- lib: m4date, m4ipcs, m4log, m4oeinit, m4serverbase, m4serverevent, m4subsystems, m4sysall-->
+	<component id='m4echoservice'/> <!-- lib: m4configuration, m4date, m4executive, m4ipcs, m4log, m4pdus, m4serverbase, m4serverevent, m4subsystems--> <!-- inc: m4comsrv-->
+	<component id='m4cachesubsystem' artifact='m4cachesubsystemdll.dll'/> <!-- lib: m4cache, m4configuration, m4date, m4dm, m4eventhandler, m4ipcs, m4log, m4serverbase, m4serverevent, m4subsystems--> <!-- inc: m4comsrv-->
+	<component id='m4adminsrv' artifact='m4adminsrvdll.dll'/> <!-- lib: m4buildversion, m4date, m4eventhandler, m4ipcs, m4log, m4pdus, m4servenv, m4serverbase, m4subsystems, m4tsap, m4unicode, m4userinterface--> <!-- inc: m4comsrv-->
+	<component id='m4exeforchannel' artifact='m4exeforchanneldll.dll'/> <!-- lib: m4cacertmngr, m4cache, m4configtree, m4credentials, m4cryptc, m4date, m4dm, m4eventhandler, m4executive, m4filemanager, m4ipcs, m4log, m4logsys, m4mdrt, m4memdbg, m4objcachedirectory, m4objglb, m4objlog, m4objreg, m4oeinit, m4pdus, m4serial, m4servenv, m4serverbase, m4serverevent, m4subsystems, m4sysall, m4unicode, m4userinterface, m4uuid, m4variant, m4vm, xerces--> <!-- inc: m4comsrv-->
+	<component id='m4exefactory' artifact='m4exefactorydll.dll'/> <!-- lib: m4cacertmngr, m4credentials, m4executive, m4exeforchannel, m4ipcs, m4log, m4oeinit, m4request, m4serverbase, m4userinterfacedll, m4variant--> <!-- inc: m4comsrv-->
+	<component id='m4jsexejob' artifact='m4jsexejobdll.dll'/> <!-- lib: m4date, m4dm, m4eventhandler, m4executive, m4exeforchannel, m4filemanager, m4idgenerator, m4ipcs, m4log, m4objreg, m4oeinit, m4serverbase, m4subsystems, m4sysall, m4unicode, m4userinterface, m4variant--> <!-- inc: m4comsrv, m4jssubsystem-->
+	<component id='m4jsrecover' artifact='m4jsrecoverdll.dll'/> <!-- lib: m4date, m4dm, m4executive, m4exeforchannel, m4ipcs, m4jsexejob, m4log, m4oeinit, m4serverbase, m4subsystems, m4sysall, m4variant--> <!-- inc: m4comsrv, m4jssubsystem-->
+
+	<component id='m4jssubsystem' artifact='m4jssubsystemdll.dll'/> <!-- lib: m4configtree, m4configuration, m4date, m4eventhandler, m4executive, m4ipcs, m4jsexejob, m4jsrecover, m4log, m4pdus, m4servenv, m4serverbase, m4serverevent, m4subsystems--> <!-- inc: m4comsrv-->
+	<component id='m4jsutils'/> <!-- lib: m4buildversion, m4compress, m4dm, m4filemanager, m4ini, m4log, m4logsys, m4sysall, m4unicode, m4variant-->
+	<component id='m4comsrv' artifact='m4comsrvdll.dll'/> <!-- lib: m4adminsrv, m4buildversion, m4cachesubsystem, m4communication, m4configtree, m4configuration, m4credentials, m4cryptc, m4date, m4echoservice, m4eventhandler, m4executive, m4exefactory, m4exeforchannel, m4filemanager, m4idgenerator, m4ipcs, m4java, m4jssubsystem, m4ldbsubsy, m4log, m4memdbg, m4meminfo, m4objreg, m4obl, m4oeinit, m4pdus, m4request, m4servenv, m4serverbase, m4serverevent, m4snmpss, m4subsystems, m4sysall, m4transport, m4tsap, m4unicode, m4userinterface, m4xmlutil-->
+	<component id='m4sdown' artifact='m4sdown.exe'/> <!-- lib: m4appclient, m4cryptstore, m4date, m4ini, m4ipcs, m4obl, m4pdus, m4serverbase, m4tsap--> <!-- exe-->
+	<component id='m4parser' artifact='m4parserdll.dll'/> <!-- lib: m4unicode--> <!-- src: m4comsrv--> <!-- windowsonly-->
+	<component id='m4adminclient' artifact='m4adminclientdll.dll'/> <!-- lib: m4appclient, m4log, m4objreg, m4parser, m4pdus, m4serverbase, m4unicode--> <!-- windowsonly-->
+	<component id='m4dispatcher' artifact='m4dispatcher.exe'/> <!-- lib: m4appclient, m4communication, m4cryptc, m4date, m4idgenerator, m4ipcs, m4log, m4memdbg, m4objlog, m4pdus, m4serverbase, m4snmpadmin, m4unicode, m4xmlutil, xerces--> <!-- exe-->
+	<component id='m4server' artifact='m4server.exe'/> <!-- lib: m4comsrv, m4cryptc, m4cryptstore, m4date, m4ini, m4ipcs, m4java, m4memdbg, m4meminfo, m4objreg, m4oeinit, m4serverbase, m4snmpadmin, m4tsap--> <!-- exe-->
+</componentlist>

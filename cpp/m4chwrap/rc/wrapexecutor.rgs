@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapExecutor.WrapExecutor.1 = s 'WrapExecutor Class'
+	{
+		CLSID = s '{F670BF85-D483-11D1-BC54-00C04FA499B2}'
+	}
+	WrapExecutor.WrapExecutor = s 'WrapExecutor Class'
+	{
+		CurVer = s 'WrapExecutor.WrapExecutor.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {F670BF85-D483-11D1-BC54-00C04FA499B2} = s 'WrapExecutor Class'
+		{
+			ProgID = s 'WrapExecutor.WrapExecutor.1'
+			VersionIndependentProgID = s 'WrapExecutor.WrapExecutor'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

@@ -1,0 +1,199 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+#include "winmain.h"
+#include "rpcspymsgs.h"
+#include "rpcspymsgs.rc"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Neutral resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_NEU)
+#ifdef _WINDOWS
+LANGUAGE LANG_NEUTRAL, SUBLANG_NEUTRAL
+#pragma code_page(1252)
+#endif //_WINDOWS
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+256                     ICON    DISCARDABLE     "ico256.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+288                     BITMAP  DISCARDABLE     "bmp288.bmp"
+289                     BITMAP  DISCARDABLE     "bmp289.bmp"
+290                     BITMAP  DISCARDABLE     "bmp290.bmp"
+291                     BITMAP  DISCARDABLE     "bmp291.bmp"
+292                     BITMAP  DISCARDABLE     "bmp292.bmp"
+293                     BITMAP  DISCARDABLE     "bmp293.bmp"
+
+#endif    // Neutral resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Modern) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+#ifdef _WINDOWS
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+#pragma code_page(1252)
+#endif //_WINDOWS
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+101 DIALOG DISCARDABLE  0, 0, 210, 181
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Remote Procedure Call Spy Options"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Ok",IDC_OK,59,162,41,14
+    PUSHBUTTON      "&Cancel",IDC_CANCEL,109,162,41,14
+    DEFPUSHBUTTON   "&Apply",IDC_APPLY,159,162,41,14
+    GROUPBOX        "Connectivity options",IDC_OPTIONS,5,102,196,51
+    LTEXT           "Protocol sequence",IDC_SEQUENCE,12,116,82,13
+    LTEXT           "Endpoint",IDC_ENDPOINT,14,135,75,10
+    COMBOBOX        1001,114,113,80,44,CBS_DROPDOWN | WS_VSCROLL | 
+                    WS_TABSTOP
+    EDITTEXT        1002,114,132,80,13,ES_AUTOHSCROLL
+    GROUPBOX        "Log level",IDC_LOG_LEVEL,5,22,196,73,WS_GROUP
+    CONTROL         "Log Traces, Info, Warnings && Errors",IDI_TRACE,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,34,160,9
+    CONTROL         "Log Info, Warnings && Errors",IDI_INFO,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,11,45,151,9
+    CONTROL         "Log Warnings && Errors",IDI_EXCL,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,11,56,152,9
+    CONTROL         "Log Errors",IDI_CRIT,"Button",BS_AUTORADIOBUTTON | WS_GROUP | 
+                    WS_TABSTOP,11,68,152,9
+    CONTROL         "Log disabled",IDI_QUEST,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,11,79,153,9
+    LTEXT           "Maximun number of rows to display",IDC_MAX_ROWS,7,10,
+                    116,10
+    EDITTEXT        1003,165,9,36,12,ES_NUMBER
+END
+
+102 DIALOG DISCARDABLE  0, 0, 107, 60
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Printing..."
+FONT 8, "MS Sans Serif"
+BEGIN
+    PUSHBUTTON      "&Cancel",IDC_CANCEL,25,23,50,14
+END
+
+103 DIALOG DISCARDABLE  0, 0, 186, 141
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About Spy"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "&Ok",IDC_OK,63,111,50,14
+    ICON            256,IDI_ABOUT,18,17,20,20
+    LTEXT           "Warning: This program may only be used by Meta4 in accordance with the terms and conditions in the License Contract for Use of this software application. The uses that are made of this program must comply with the permitted uses under said license.",
+                    IDC_ABOUT_TEXT,49,19,116,78
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menu
+//
+
+101 MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Save",                       IDM_SAVE
+        MENUITEM "&Print",                      IDM_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "&Exit",                       IDM_EXIT
+    END
+    POPUP "&Edit"
+    BEGIN
+        MENUITEM "&Delete",                     IDM_DEL
+        MENUITEM SEPARATOR
+        MENUITEM "C&lear all",                  IDM_CLEARALL
+    END
+    MENUITEM "&Options",                    IDM_OPTIONS
+    POPUP "&Help"
+    BEGIN
+        MENUITEM "&About",                      IDM_ABOUT
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    101, DIALOG
+    BEGIN
+        RIGHTMARGIN, 206
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+#endif    // Spanish (Modern) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

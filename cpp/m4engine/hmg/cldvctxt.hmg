@@ -1,0 +1,59 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<cldvctxt.cpp>
+//	File:				cldvctxt.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_CLDVCTXT
+#define GROUP_BASE  ENG_TGB_CLDVCTXT
+#define TRACE_ARRAY g_stENG_DvcTxt_Msg
+
+enum CLDVCTXT_MSG 
+{
+	CLDVCTXT_MSG_10=0,	//Ojo, se usa como indice del array
+	CLDVCTXT_MSG_20,
+	CLDVCTXT_MSG_30,
+	CLDVCTXT_MSG_40,
+	CLDVCTXT_MSG_50,
+	CLDVCTXT_MSG_60,
+	DVCTXT_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, CLDVCTXT_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Number of page out of range" },
+
+	{ GROUP_ID, CLDVCTXT_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Ignoring string, column or row out of limits: Page %0:s X %1:s Y %2:s %3:s" },
+
+	{ GROUP_ID, CLDVCTXT_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Truncating string, column or row out of limits: Page %0:s X %1:s Y %2:s %3:s will be %4:s" },
+
+	{ GROUP_ID, CLDVCTXT_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "FontId %0:s not found but required for a text device" },
+
+	{ GROUP_ID, CLDVCTXT_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_WARNING, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Strings overlapped: Page %0:s X %1:s Y %2:s %3:s overlaps to %4:s" },
+	
+	{ GROUP_ID, CLDVCTXT_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Pre-printing value too long. It will be truncated: Page %0:s, Only %1:s Bytes Reserved for the string %2:s"},
+} ;

@@ -1,0 +1,99 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = engindll.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/analex.cpp
+SRC = ../src/apichnen.cpp
+SRC = ../src/barcode.cpp
+SRC = ../src/cldevice.cpp
+SRC = ../src/cldvcesc.cpp
+SRC = ../src/cldvcfi.cpp
+SRC = ../src/cldvchtml.cpp
+SRC = ../src/cldvcpcl.cpp
+SRC = ../src/cldvcpdf.cpp
+SRC = ../src/cldvcpdfuni.cpp
+SRC = ../src/cldvcpsc.cpp
+SRC = ../src/cldvcrvw.cpp
+SRC = ../src/cldvctxt.cpp
+SRC = ../src/clformat.cpp
+SRC = ../src/clreparg.cpp
+SRC = ../src/clreport.cpp
+SRC = ../src/clrepreq.cpp
+SRC = ../src/colour.cpp
+SRC = ../src/core.cpp
+SRC = ../src/corevr.cpp
+SRC = ../src/ct_templ.cpp
+SRC = ../src/ddlf_chn.cpp
+SRC = ../src/designdd.cpp
+SRC = ../src/designdt.cpp
+SRC = ../src/designin.cpp
+SRC = ../src/engindll.cpp
+SRC = ../src/field.cpp
+SRC = ../src/gif.cpp
+SRC = ../src/groupfrp.cpp
+SRC = ../src/itextcontext.cpp
+SRC = ../src/itextproxy.cpp
+SRC = ../src/jpeg.cpp
+SRC = ../src/m4clbuf.cpp
+SRC = ../src/metachn.cpp
+SRC = ../src/pageprn.cpp
+SRC = ../src/physfrp.cpp
+SRC = ../src/pi.cpp
+SRC = ../src/piuni.cpp
+SRC = ../src/rasterg.cpp
+SRC = ../src/region.cpp
+SRC = ../src/reportenv.cpp
+SRC = ../src/sess_rd.cpp
+SRC = ../src/sesschn.cpp
+SRC = ../src/strindex.cpp
+SRC = ../src/totalize.cpp
+SRC = ../src/vbserial.cpp
+SRC = ../src/xapichn.cpp
+SRC = ../src/xengval.cpp
+
+# fuentes que no se optimizan.
+[aix] NO_OPTIMIZE_FILE = clreport.cpp
+[aix] NO_OPTIMIZE_FILE = core.cpp
+[aix] NO_OPTIMIZE_FILE = corevr.cpp
+[aix] NO_OPTIMIZE_FILE = ct_templ.cpp
+[aix] NO_OPTIMIZE_FILE = designdt.cpp
+[aix] NO_OPTIMIZE_FILE = totalize.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -DRPT_ENGINE_TRACE
+{$DEBUG == 1} CCFLAGS = -DRPT_ENGINE_DEBUG
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../hmg
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = fmetrics
+LIB = m4date
+LIB = m4dm
+LIB = m4engprn
+LIB = m4filemanager
+LIB = m4fmt32
+LIB = m4ipcs
+LIB = m4java
+LIB = m4mdrt
+LIB = m4objglb
+LIB = m4objreg
+LIB = m4oeinit
+LIB = m4unicode
+LIB = m4variant
+LIB = mienv

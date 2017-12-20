@@ -1,0 +1,214 @@
+META4-SESSION-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4UsersTableModule, usersTable, usersTableGroup, usersTableEntry, usersTableIndex
+		FROM META4-USERS-TABLEDIN-MIB;
+
+
+meta4SessionTableModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Session Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4UsersTableModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+sessionTableGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		userName,
+		lastTransactionTime,
+		sessionId,
+		hostName,
+		connectionProtocol,
+		timeSinceLogon,
+		numProcessedRequest,
+		pendingRequest
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { usersTableGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+sessionTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF SessionEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { usersTableEntry 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+-- Importante:
+--	Una entrada de session esta compuesta por un indice suyo y otro indice del usuario.
+--	De esta forma tenemos N usuarios y M session para cada usuario.
+
+sessionTableEntry OBJECT-TYPE 
+	SYNTAX SessionEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { usersTableIndex, sessionTableIndex }
+	::= { sessionTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+SessionEntry ::= SEQUENCE {
+		sessionTableIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		userName DisplayString,
+		lastTransactionTime DisplayString,
+		sessionId DisplayString,
+		hostName DisplayString,
+		connectionProtocol DisplayString,
+		timeSinceLogon DisplayString,
+		numProcessedRequest Integer32,
+		pendingRequest Integer32
+	}
+
+-- El indice de la tabla de sesiones.
+
+sessionTableIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { sessionTableEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla.
+-- Empezamos a contar con 2 pq tenemos un indice con dos dígitos!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { sessionTableEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"		
+	::= { sessionTableEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { sessionTableEntry 4 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { sessionTableEntry 5 }
+
+lastTransactionTime OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Last Transaction Time"
+	::= { sessionTableEntry 6 }
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { sessionTableEntry 7 }
+
+hostName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Host Name"
+	::= { sessionTableEntry 8 }
+
+connectionProtocol OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Connection Protocol"
+	::= { sessionTableEntry 9 }
+
+timeSinceLogon OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Time since Logon"
+	::= { sessionTableEntry 501 }
+
+numProcessedRequest OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Processed Request"
+	::= { sessionTableEntry 502 }
+
+pendingRequest OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Pending Request"
+	::= { sessionTableEntry 503 }
+
+
+END

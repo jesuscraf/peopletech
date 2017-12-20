@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapProxyListIt.WrapProxyListIt.1 = s 'WrapProxyListIt Class'
+	{
+		CLSID = s '{0AF3D32B-E68F-11D1-8BF4-00C04FA95230}'
+	}
+	WrapProxyListIt.WrapProxyListIt = s 'WrapProxyListIt Class'
+	{
+		CurVer = s 'WrapProxyListIt.WrapProxyListIt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0AF3D32B-E68F-11D1-8BF4-00C04FA95230} = s 'WrapSlIt Class'
+		{
+			ProgID = s 'WrapProxyListIt.WrapProxyListIt.1'
+			VersionIndependentProgID = s 'WrapProxyListIt.WrapProxyListIt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

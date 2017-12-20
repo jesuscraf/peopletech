@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapAccess.WrapAccess.1 = s 'WrapAccess Class'
+	{
+		CLSID = s '{FFA83640-FB6B-11D0-A763-00C04FB75E70}'
+	}
+	WrapAccess.WrapAccess = s 'WrapAccess Class'
+	{
+		CurVer = s 'WrapAccess.WrapAccess.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FFA83640-FB6B-11D0-A763-00C04FB75E70} = s 'WrapAccess Class'
+		{
+			ProgID = s 'WrapAccess.WrapAccess.1'
+			VersionIndependentProgID = s 'WrapAccess.WrapAccess'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

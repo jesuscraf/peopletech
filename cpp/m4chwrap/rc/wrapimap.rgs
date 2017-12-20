@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapIMap.WrapIMap.1 = s 'WrapIMap Class'
+	{
+		CLSID = s '{DE2C9764-6C86-11D1-A7B1-00C04FB75E70}'
+	}
+	WrapIMap.WrapIMap = s 'WrapIMap Class'
+	{
+		CurVer = s 'WrapIMap.WrapIMap.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {DE2C9764-6C86-11D1-A7B1-00C04FB75E70} = s 'WrapIMap Class'
+		{
+			ProgID = s 'WrapIMap.WrapIMap.1'
+			VersionIndependentProgID = s 'WrapIMap.WrapIMap'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

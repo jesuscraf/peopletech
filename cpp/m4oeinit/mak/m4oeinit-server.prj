@@ -1,0 +1,70 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4oeinit.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/chaninfo.cpp
+SRC = ../src/clexadap.cpp
+SRC = ../src/clfactm4objservice.cpp
+SRC = ../src/clfactm4objserviceserver.cpp
+SRC = ../src/clm4objservicecontextimpl.cpp
+SRC = ../src/clm4objservicecontextserver.cpp
+SRC = ../src/clm4objserviceserver.cpp
+SRC = ../src/clseschnexport.cpp
+SRC = ../src/conn_provider_server.cpp
+SRC = ../src/cs_result.cpp
+SRC = ../src/exechannel.cpp
+SRC = ../src/execntxt.cpp
+SRC = ../src/exemd.cpp
+SRC = ../src/exeproxy.cpp
+SRC = ../src/genproxy.cpp
+SRC = ../src/licensemanager.cpp
+SRC = ../src/licensemanagerthread.cpp
+SRC = ../src/m4lgadapi.cpp
+SRC = ../src/m4lgadsrv.cpp
+SRC = ../src/mdprotocol.cpp
+SRC = ../src/objdir.cpp
+
+# fuentes que no se optimizan.
+[solaris] NO_OPTIMIZE_FILE = exeproxy.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cacertmngr
+LIB = m4cache
+LIB = m4date
+LIB = m4dm
+LIB = m4ipcs
+LIB = m4ldb
+LIB = m4log
+LIB = m4logsys
+LIB = m4mdfac
+LIB = m4mdrt
+LIB = m4modkey
+LIB = m4objcachedirectory
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4pdus
+LIB = m4presentation
+LIB = m4serial
+LIB = m4servenvdll
+LIB = m4serverbasedll
+LIB = m4sysall
+LIB = m4tsap
+LIB = m4variant
+LIB = m4vm
+LIB = m4win2ux
+

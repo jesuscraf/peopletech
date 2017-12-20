@@ -1,0 +1,29 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4xmlutil.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4xmlbase.cpp
+SRC = ../src/saxactioncaller.cpp
+SRC = ../src/xmlstreamgenerator.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+EH = yes
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4serverbasedll
+LIB = m4unicode
+LIB = xerces-c
+

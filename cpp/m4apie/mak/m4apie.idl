@@ -1,0 +1,359 @@
+#include <olectl.h>
+// M4APIE.idl : IDL source for M4APIE.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4APIE.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Definitions.idl";
+	
+	typedef [uuid(287B9116-6F1E-11D2-BC91-00C04F71652D), helpstring("Key")]
+    enum M4KeyEnum {
+		M4Key_Control = 0x11,
+		M4Key_Shift = 0x10,
+		M4Key_Alt = 0x12,
+		M4Key_LControl = 0xA2,
+		M4Key_LShift = 0xA0,
+		M4Key_LAlt = 0xA4,
+		M4Key_RControl = 0xA3,
+		M4Key_RShift = 0xA1,
+		M4Key_RAlt = 0xA5
+    } M4KeyEnum;
+	
+	typedef [uuid(6A424320-5742-11d4-BE13-00C04F71652D), helpstring("Property LineStyle")]
+    enum M4LineStyle {
+		M4DESIGN_STYLE_SOLID = 0,
+		M4DESIGN_STYLE_DASH = 1,
+		M4DESIGN_STYLE_DOT = 2,
+		M4DESIGN_STYLE_DASHDOT = 3,
+		M4DESIGN_STYLE_DASHDOTDOT = 4
+    } M4LineStyle;
+
+	//##ModelId=396B32DF03C7
+	[
+		object,
+		uuid(F8088411-C268-11D1-9633-00C04FC2444B),
+		//dual,
+		helpstring("IGraphOp Interface"),
+		pointer_default(unique)
+	]
+	interface IGraphOp : IDispatch
+	{
+		//##ModelId=396B32E0001C
+		[id(1), helpstring("method DrawGrid")] HRESULT DrawGrid(long hWnd, long nGridSize);
+		//##ModelId=396B32E00031
+		[id(2), helpstring("method CreateEMFFromWnd")] HRESULT CreateEMFFromWnd(long hWnd, BSTR strFileName, BOOL bClient);
+		//##ModelId=396B32E0003D
+		[id(3), helpstring("method DrawGrayBox")] HRESULT DrawGrayBox([in] long x1, [in] long y1, [in] long x2, [in] long y2);
+		//##ModelId=396B32E00047
+		[id(4), helpstring("method DrawDragBox")] HRESULT DrawDragBox([in] long hWnd, [in] long Left, [in] long Top, [in] long Right, [in] long Bottom);
+		//##ModelId=396B32E00059
+		[id(5), helpstring("method DrawBorder")] HRESULT DrawBorder([in] long hWnd);
+		//##ModelId=396B32E0005B
+		[id(6), helpstring("method DrawRectWithClipWnd")] HRESULT DrawRectWithClipWnd(long hWnd, long Left, long Top, long Right, long Bottom);
+		//##ModelId=396B32E0006C
+		[id(7), helpstring("method DrawItem")] HRESULT DrawItem([in] long hDC, [in] long Left, [in]long Top,[in] long Right, [in] long Bottom, [in] long Style);
+		//##ModelId=396B32E00079
+		[id(8), helpstring("method TransformHimetric")] HRESULT TransformHimetric([in] IPictureDisp *pDisp, [in,out]long *Width, [in, out]long *Height);
+		//##ModelId=396B32E00083
+		[id(9), helpstring("method GetDisabledPicture")] HRESULT GetDisabledPicture([in] IPictureDisp * pPictureIn, [in, optional, defaultvalue(0x8000000F)] OLE_COLOR * nColor, [out,retval] IPictureDisp * * pPictureRet);
+		//##ModelId=396B32E00094
+		[id(10), hidden, helpstring("method GiveMeNewPicture")] HRESULT GiveMeNewPicture([out,retval] IPictureDisp * * ppPicRet);
+		//##ModelId=396B32E00096
+		[id(11), helpstring("method GetPictureFromHandle")] HRESULT GetPictureFromHandle([in] long hIcon, [out,retval] IPictureDisp * * ppRetVal);
+		//[id(11), hidden, helpstring("method GiveMeNewPictureIcon")] HRESULT GiveMeNewPictureIcon([out, retval] IPictureDisp * * ppRetPicture);
+		//##ModelId=396B354A03E6
+		[helpstring("method DrawLine"), id(12)] HRESULT DrawLine([in] long hWnd, [in] long pAX, [in] long pAY, [in] long pBX, [in] long pBY, [in] long nWidth, [in] OLE_COLOR color, [in] M4LineStyle nStyle);
+	};
+	//##ModelId=396B32DF038B
+	[
+		object,
+		uuid(7369EA6A-D86C-11D1-964E-00C04FC2444B),
+		dual,
+		helpstring("IM4UID Interface"),
+		pointer_default(unique)
+	]
+	interface IM4UID : IDispatch
+	{
+		//##ModelId=396B32DF03AA
+		[id(1), helpstring("method GenerateNewUID")] HRESULT GenerateNewUID();
+		//##ModelId=396B32DF03AB
+		[propget, id(2), helpstring("property M4UID")] HRESULT M4UID([out, retval] BSTR *pVal);
+		//##ModelId=396B32DF03B4
+		[id(3), helpstring("method ReserveGUIDs")] HRESULT ReserveGUIDs([in] long nNumber);
+		//##ModelId=396B32DF03B6
+		[id(4), helpstring("method NumberOfRefs")] HRESULT NumberOfRefs([in, out] IDispatch ** oObject, [out, retval] long * pVal);
+	};
+	//##ModelId=396B32DF035A
+	[
+		object,
+		uuid(5B5C234E-FAAD-11D1-9672-00C04FC2444B),
+		dual,
+		helpstring("IM4Base64 Interface"),
+		pointer_default(unique)
+	]
+	interface IM4Base64 : IDispatch
+	{
+		//##ModelId=396B32DF0378
+		[id(1), helpstring("Code")] HRESULT Code([in] BSTR strIn, [out, retval] BSTR *strOut);
+		//##ModelId=396B32DF0381
+		[id(2), helpstring("Decode")] HRESULT Decode([in] BSTR strIn, [out, retval] BSTR *strOut);
+	};
+	
+	//##ModelId=396B32DF031F
+	[
+		object,
+		uuid(0C3408DA-3839-11D2-96B6-00C04FC2444B),
+		dual,
+		helpstring("IColorSelect Interface"),
+		pointer_default(unique)
+	] 
+	interface IColorSelect : IDispatch
+	{
+		//##ModelId=396B32DF0346
+		[propget, id(1), helpstring("property Color")] HRESULT Color([out, retval] long *pVal);
+		//##ModelId=396B32DF0351
+		[id(2), helpstring("method Show")] HRESULT Show([out, retval] VARIANT_BOOL * bResult);
+	};
+/*	[
+		object,
+		uuid(62BDDC41-4D7E-11D2-BCDA-00C04FA49636),
+		dual,
+		helpstring("ILocalID Interface"),
+		pointer_default(unique)
+	]
+	interface ILocalID : IDispatch
+	{
+		[id(1), helpstring("method Current_LCID")] HRESULT Current_LCID([out, retval] BSTR * the_LCID);
+		[id(2), helpstring("method Change_LCID")] HRESULT Change_LCID([in] BSTR language);
+		[id(3), helpstring("method initial_LCID")] HRESULT put_initial_LCID();
+		[id(4), helpstring("method get_register_LCID")] HRESULT get_register_LCID([out, retval] BSTR * language);
+		[id(5), helpstring("method get_initial_LCID")] HRESULT get_initial_LCID([out, retval] BSTR * language);
+		[id(6), helpstring("method CurrentLocalID")] HRESULT CurrentLocalID([out, retval] long * the_LCID);
+		[id(7), helpstring("method ChangeLocalID")] HRESULT ChangeLocalID([in] long language);
+		[id(8), helpstring("method initialLocalID")] HRESULT putInitialLocalID();
+		[id(9), helpstring("method getRegisterLocalID")] HRESULT getRegisterLocalID([out, retval] long * language);
+		[id(10), helpstring("method getInitialLocalID")] HRESULT getInitialLocalID([out, retval] long * language);
+		[id(11), helpstring("method getComboLocalID")] HRESULT getComboLocalID(BSTR language,[out, retval]long *LCID);	};*/
+	//##ModelId=396B32DF02FF
+	[
+		object,
+		uuid(287B9114-6F1E-11D2-BC91-00C04F71652D),
+		dual,
+		helpstring("IM4Keyboard Interface"),
+		pointer_default(unique)
+	]
+	interface IM4Keyboard : IDispatch
+	{
+		//##ModelId=396B32DF0314
+		[id(1), helpstring("method KeyStatus")] HRESULT KeyStatus([in] M4KeyEnum nKey, [out, retval] VARIANT_BOOL *pRet);
+	};
+	//##ModelId=396B32DF02CF
+	[
+		object,
+		uuid(4806B304-941D-11D2-BCC3-00C04F71652D),
+		//dual,
+		helpstring("IFontSelect Interface"),
+		pointer_default(unique)
+	]
+	interface IFontSelect : IDispatch
+	{
+		//##ModelId=396B32DF02EB
+		[id(2), helpstring("method Show")] HRESULT Show([out, retval] VARIANT_BOOL * bResult);
+		//##ModelId=396B32DF02ED
+		[propget, id(1), helpstring("property Font")] HRESULT Font([out, retval] IFontDisp * *pVal);
+		//##ModelId=396B32DF02F6
+		[propputref, id(1), helpstring("property Font")] HRESULT Font([in] IFontDisp ** newVal);
+	};
+	//##ModelId=396B32DF02AF
+	[
+		object,
+		uuid(B09D59D4-B047-11D2-BCEE-00C04F71652D),
+		dual,
+		helpstring("IDispatchConvert Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchConvert : IDispatch
+	{
+		//##ModelId=396B32DF02BA
+		[id(1), helpstring("method Object2Long")] HRESULT Object2Long([in]IDispatch *Object,[out,retval] long *Value);
+		//##ModelId=396B32DF02C5
+		[id(2), helpstring("method Long2Object")] HRESULT Long2Object([in] long *Value, [out,retval] IDispatch **Object);
+	};
+	//##ModelId=396B32DF0292
+	[
+		object,
+		uuid(4B7B4571-D798-11D2-BC67-00C04F71652D),
+		dual,
+		helpstring("IM4General Interface"),
+		pointer_default(unique)
+	]
+	interface IM4General : IDispatch
+	{
+		
+		//##ModelId=396B32DF029D
+		[id(2), helpstring("method GetIDsBitmapOfResource")] HRESULT GetIDsBitmapOfResource([in] BSTR nameLibrary,[out, retval]ICPropBag * * nameBitmap);
+	};
+
+	[
+		object,
+		uuid(A94F0356-E506-49B6-ADE6-FEB341B0E617),
+		dual,
+		helpstring("IM4XmlRegistry Interface"),
+		pointer_default(unique)
+	]
+	interface IM4XmlRegistry : IDispatch
+	{
+		[propget, id(1), helpstring("property Handle")] HRESULT Handle([out, retval] short * retVal);
+		[propput, id(1), helpstring("property Handle")] HRESULT Handle([in] short newVal);
+		[propget, id(2), helpstring("property UseGlobalInstance")] HRESULT UseGlobalInstance([out, retval] VARIANT_BOOL * retVal);
+		[propput, id(2), helpstring("property UseGlobalInstance")] HRESULT UseGlobalInstance([in] VARIANT_BOOL newVal);
+		[id(3), helpstring("method M4LoadMachineRegistry")] HRESULT LoadMachineRegistry([out, retval] VARIANT_BOOL * retVal);
+		[id(4), helpstring("method M4LoadRegistry")] HRESULT Load([in] BSTR ai_sFile, [in] VARIANT_BOOL ai_bIsXml, [out, retval] VARIANT_BOOL * retVal);
+		[id(5), helpstring("method M4GetRegistryValue")] HRESULT GetValue([in] BSTR ai_sKey, [in] BSTR ai_sValue, [out] BSTR *ao_sData, [out, retval] VARIANT_BOOL * retVal);
+		[id(6), helpstring("method M4SetRegistryValue")] HRESULT SetValue([in] BSTR ai_sKey, [in] BSTR ai_sValue, [in] BSTR ai_sData, [out, retval] VARIANT_BOOL * retVal);
+		[id(7), helpstring("method M4GetRegistryValueNames")] HRESULT GetValueNames([in] BSTR ai_sKey, [out] SAFEARRAY(BSTR) *ao_psaValues, [out, retval] VARIANT_BOOL * retVal);
+		[id(8), helpstring("method M4GetRegistrySubKeyNames")] HRESULT GetSubKeyNames([in] BSTR ai_sKey, [out] SAFEARRAY(BSTR) *ao_psaKeys, [out, retval] VARIANT_BOOL * retVal);
+		[id(9), helpstring("method M4DeleteRegistryValue")] HRESULT DeleteValue([in] BSTR ai_sKey, [in] BSTR ai_sValue, [out, retval] VARIANT_BOOL * retVal);
+		[id(10), helpstring("method M4DeleteRegistryKey")] HRESULT DeleteKey([in] BSTR ai_sKey, [out, retval] VARIANT_BOOL * retVal);
+		[id(11), helpstring("method M4MergeRegistry")] HRESULT Merge([in] short ai_iDestinationHandle, [out, retval] VARIANT_BOOL * retVal);
+		[id(12), helpstring("method M4SaveRegistry")] HRESULT Save([in] BSTR ai_sFile, [out, retval] VARIANT_BOOL * retVal);
+		[id(13), helpstring("method M4UnLoadRegistry")] HRESULT UnLoad([out, retval] VARIANT_BOOL * retVal);
+	};
+
+	/*[
+		object,
+		uuid(06854C11-088F-11D3-BC9D-00C04F71652D),
+		dual,
+		helpstring("IM4FontHolder Interface"),
+		pointer_default(unique)
+	]
+	interface IM4FontHolder : IDispatch
+	{
+		[propget, id(DISPID_FONT), helpstring("property Font")] HRESULT Font([out, retval] IFontDisp **pVal);
+		[propput, id(DISPID_FONT), helpstring("property Font")] HRESULT Font([in] IFontDisp *pVal);
+		[propputref, id(DISPID_FONT), helpstring("property Font")] HRESULT Font([in] IFontDisp* newVal);
+		[id(1), helpstring("method Clone")] HRESULT Clone([out, retval] IM4FontHolder ** pFontHolder);
+	};*/
+[
+	uuid(F8088404-C268-11D1-9633-00C04FC2444B),
+	version(1.0),
+	helpstring("M4APIE")
+]
+library M4APIELib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//##ModelId=396B32E001D6
+	[
+		uuid(17E449B0-71A3-11D1-8D15-444553540000),
+		helpstring("GraphOp Class")
+	]
+	coclass GraphOp
+	{
+		//##ModelId=396B32E00206
+		[default] interface IGraphOp;
+	};
+	//##ModelId=396B32E001A4
+	[
+		uuid(15CCB9C3-7C63-11D1-8D15-444553540000),
+		helpstring("M4RegKey Class")
+	]
+	coclass M4RegKey
+	{
+		//##ModelId=396B32E001D4
+		[default] interface IM4RegKey;
+	};
+	//##ModelId=396B32E00172
+	[
+		uuid(7369EA6B-D86C-11D1-964E-00C04FC2444B),
+		helpstring("M4UID Class")
+	]
+	coclass M4UID
+	{
+		//##ModelId=396B32E001A2
+		[default] interface IM4UID;
+	};
+	//##ModelId=396B32E00140
+	[
+		uuid(5B5C234F-FAAD-11D1-9672-00C04FC2444B),
+		helpstring("M4Base64 Class")
+	]
+	coclass M4Base64
+	{
+		//##ModelId=396B32E00170
+		[default] interface IM4Base64;
+	};
+	//##ModelId=396B32E0012A
+	[
+		uuid(0C3408DB-3839-11D2-96B6-00C04FC2444B),
+		helpstring("ColorSelect Class")
+	]
+	coclass ColorSelect
+	{
+		//##ModelId=396B32E0013E
+		[default] interface IColorSelect;
+	};
+	//##ModelId=396B32E00116
+	[
+		uuid(287B9115-6F1E-11D2-BC91-00C04F71652D),
+		helpstring("M4Keyboard Class")
+	]
+	coclass M4Keyboard
+	{
+		//##ModelId=396B32E00121
+		[default] interface IM4Keyboard;
+	};
+	//##ModelId=396B32E00103
+	[
+		uuid(4806B305-941D-11D2-BCC3-00C04F71652D),
+		helpstring("FontSelect Class")
+	]
+	coclass FontSelect
+	{
+		//##ModelId=396B32E0010D
+		[default] interface IFontSelect;
+	};
+	//##ModelId=396B32E000E4
+	[
+		uuid(B09D59D5-B047-11D2-BCEE-00C04F71652D),
+		helpstring("DispatchConvert Class")
+	]
+	coclass DispatchConvert
+	{
+		//##ModelId=396B32E000F8
+		[default] interface IDispatchConvert;
+	};
+	//##ModelId=396B32E000D0
+	[
+		uuid(4B7B4572-D798-11D2-BC67-00C04F71652D),
+		helpstring("M4General Class")
+	]
+	coclass M4General
+	{
+		//##ModelId=396B32E000DA
+		[default] interface IM4General;
+	};
+	[
+		uuid(A94F0357-E506-49B6-ADE6-FEB341B0E617),
+		helpstring("M4XmlRegistry Class")
+	]
+	coclass M4XmlRegistry
+	{
+		[default] interface IM4XmlRegistry;
+	};
+
+	//##ModelId=396B32E000A0
+	[
+		uuid(06854C14-088F-11D3-BC9D-00C04F71652D),
+		helpstring("M4FontHolder Class")
+	]
+	coclass M4FontHolder
+	{
+		//##ModelId=396B32E000C6
+		[default] interface IM4FontHolder;
+	};
+};

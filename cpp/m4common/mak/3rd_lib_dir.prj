@@ -1,0 +1,40 @@
+# Fichero .prj que contiene los path de todas las librerias de 3ros.
+#
+# Sólo se incluyen las librerías de 3ros genéricas.
+# Las demás librerías las incluye cada componente por si misma 
+#
+
+#----------------------------------------------------------------------
+# jni
+[solaris]INC = ../../public/jdk/include
+[solaris]INC = ../../public/jdk/include/solaris
+[aix]INC = ../../public/jdk/include/aix
+
+#----------------------------------------------------------------------
+# openssl
+INC = ../../public/openssl/include
+LIBDIR = ../../public/openssl/mak/$PLATFORM/$LINKTYPE 
+
+#----------------------------------------------------------------------
+# snmp++
+INC = ../../public/snmp/snmp_pp/include
+INC = ../../public/snmp/agent_pp/include
+LIBDIR = ../../public/snmp/snmp_pp/mak/$PLATFORM/$LINKTYPE 
+LIBDIR = ../../public/snmp/agent_pp/mak/$PLATFORM/$LINKTYPE 
+
+#----------------------------------------------------------------------
+# stl-toolkit
+INC = ../../public/stl-toolkit/$PLATFORM
+LIBDIR = ../../public/stl-toolkit/$PLATFORM/lib
+
+#----------------------------------------------------------------------
+# xerces
+INC = ../../public/xerces/src
+LIBDIR = ../../public/xerces/mak/$PLATFORM/$LINKTYPE
+
+#----------------------------------------------------------------------
+# zlib
+INC = ../../public/zlib/inc
+LIBDIR = ../../public/zlib/mak/$PLATFORM/$LINKTYPE  
+
+

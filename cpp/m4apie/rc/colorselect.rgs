@@ -1,0 +1,24 @@
+HKCR
+{
+	ColorSelect.ColorSelect.1 = s 'ColorSelect Class'
+	{
+		CLSID = s '{0C3408DB-3839-11D2-96B6-00C04FC2444B}'
+	}
+	ColorSelect.ColorSelect = s 'ColorSelect Class'
+	{
+		CurVer = s 'ColorSelect.ColorSelect.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0C3408DB-3839-11D2-96B6-00C04FC2444B} = s 'ColorSelect Class'
+		{
+			ProgID = s 'ColorSelect.ColorSelect.1'
+			VersionIndependentProgID = s 'ColorSelect.ColorSelect'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

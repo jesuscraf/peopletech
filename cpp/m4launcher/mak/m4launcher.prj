@@ -1,0 +1,38 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = m4launcher
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/clappinfo.cpp
+SRC = ../src/clm4applauncher.cpp
+SRC = ../src/cmdlnlauncher.cpp
+SRC = ../src/cmdlnparser.cpp
+SRC = ../src/m4launcher.cpp
+SRC = ../src/m4launchersaxhandler.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+EH = yes
+[aix] LINKFLAGS = -bmaxdata:0x80000000 -brtl
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cryptc
+LIB = m4date
+LIB = m4ini
+LIB = m4log
+LIB = m4memdbg
+LIB = m4unicode
+LIB = m4xmlutil
+LIB = xerces-c
+

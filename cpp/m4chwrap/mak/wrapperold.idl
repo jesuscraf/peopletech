@@ -1,0 +1,749 @@
+
+#include "..\..\m4prop\mak\definitions.idl"
+
+
+	[
+		object,
+		uuid(DE2C9763-6C86-11D1-A7B1-00C04FB75E70),
+		dual,
+		helpstring("IWrapIMap Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapIMap : IDispatch
+	{
+		[id(1), helpstring("method GetChannelName")] HRESULT GetChannelName([in] long ai_pos, [out, retval] BSTR* ao_pst);
+		[id(2), helpstring("method GetAccess")] HRESULT GetAccess([in] long ai_pos, [out, retval] IWrapAccess** ao_access);
+		[propget, id(3), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[id(4), helpstring("method InsertL2Channel")] HRESULT InsertL2Channel([in] BSTR ai_pstInstance, [in] IWrapChannel* ai_pChannel, [out, retval] short* ao_RetVal);
+		[id(5), helpstring("method EraseL2Instance")] HRESULT EraseL2Instance([in] BSTR ai_pstInstance, [in] VARIANT_BOOL ai_bDeleteChannel, [out, retval] short* ao_RetVal);	
+		[id(6), helpstring("method GetChannelByInstance")] HRESULT GetChannelByInstance([in] BSTR ai_pstInstance, [out]IWrapChannel** pVal, [out, retval] short* ao_RetVal);	
+		[id(7), helpstring("method GetInstance")] HRESULT GetInstance([in] long ai_pos, [out, retval] BSTR* ao_pst);	
+		[id(8), helpstring("method EraseAllL2Instances")] HRESULT EraseAllL2Instances([out, retval] short* ao_RetVal);	
+		[id(9), helpstring("method InsertL2Access")] HRESULT InsertL2Access([in] BSTR ai_pstInstance, [in] IWrapAccess* ai_pAccess, [in] VARIANT_BOOL ai_bIsOwner, [out, retval] short* ao_RetVal);
+	};
+
+	[
+		object,
+		uuid(0364B2D9-0438-11D1-A76A-00C04FB75E70),
+		dual,
+		helpstring("IWrapCVM Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapCVM : IDispatch
+	{
+		[propget, id(1), helpstring("property coProps")] HRESULT coProps([out, retval] IWrapColProp** pVal);
+		[id(2), helpstring("method Startup")] HRESULT Startup([out, retval] short* ao_RetVal);
+		[id(3), helpstring("method Shutdown")] HRESULT Shutdown([out, retval] short* ao_RetVal);
+		[id(4), helpstring("method CreateChannel")] HRESULT CreateChannel([out, retval] IWrapChannel** ao_channel);
+		[restricted, id(5), helpstring("method RegisterChannel")] HRESULT RegisterChannel([in] IWrapChannel* ai_Channel, [out, retval] short* ao_RetVal);
+		[id(6), helpstring("method AttachDocNodeToTrackNode")] HRESULT AttachDocNodeToTrackNode([in] IWrapNode* ai_poWrapDocNode,[in] IWrapNode* ai_poWrapTrackNode, [out, retval] short* ao_pRetVal);
+		[id(7), helpstring("method Logon")] HRESULT Logon([in] BSTR ai_stUsername, [in] BSTR ai_stPassword, [in] long ai_iLanguage, [in] BSTR ai_stLogonServer, [in] long ai_iPortNumber, [in, defaultvalue(VARIANT_TRUE)] VARIANT_BOOL ai_bUseDefaultRole, [out,retval] short* ao_RetVal);
+		[id(8), helpstring("method Logoff")] HRESULT Logoff([out, retval] short* ao_RetVal);
+		[id(9), helpstring("method ChangePassword"), hidden] HRESULT ChangePassword([in] BSTR ai_stOldPassword, [in] BSTR ai_stNewPassword, [out,retval] short* ao_RetVal);
+		[propget, id(10), helpstring("property RoleNameByPos")] HRESULT RoleNameByPos([in] long ai_iPos, [out, retval] BSTR *pVal);
+		[propget, id(11), helpstring("property RoleIDByPos")] HRESULT RoleIDByPos([in] long ai_iPos, [out, retval] BSTR *pVal);
+		[propget, id(12), helpstring("property NumRoles")] HRESULT NumRoles([out, retval] long *pVal);
+		[id(13), helpstring("method SetRoleByPos")] HRESULT SetRoleByPos([in] long ai_iPos, [in, defaultvalue(VARIANT_FALSE)] VARIANT_BOOL ai_bSetAsDefaultRole, [out,retval]short* ao_RetVal);
+		[propget, id(14), helpstring("property SessionChannel")] HRESULT SessionChannel([out, retval] IWrapChannel* *pVal);
+		[id(15), helpstring("method CleanAllCaches")] HRESULT CleanAllCaches([out, retval] short* ao_RetVal);
+		[id(16), helpstring("method BuildPresentationFromID")] HRESULT BuildPresentationFromID([in] BSTR ai_sPresentationId, [in] BSTR ai_sOrganization, [in] BSTR ai_sRoleId, [in] short ai_iLanguage, [in] VARIANT_BOOL ai_bDefinition, [out] SAFEARRAY ( BYTE) * ao_abPresentation, [out, retval] short* ao_iRetVal);
+		[id(17), helpstring("method CleanLDB")] HRESULT CleanLDB([out, retval] short* ao_RetVal);
+		[id(18), helpstring("method CleanCMCRCache")] HRESULT CleanCMCRCache(short * ao_RetVal);
+		[id(19), helpstring("method CleanCSCRCache")] HRESULT CleanCSCRCache(short * ao_RetVal);
+		[id(20), helpstring("method CleanPresentationCache")] HRESULT CleanPresentationCache(short * ao_RetVal);
+		[id(21), helpstring("method CleanDataCache")] HRESULT CleanDataCache(short * ao_RetVal);
+		[propget, id(22), helpstring("property DefaultCSType")] HRESULT DefaultCSType([out, retval] CSTYPE *pVal);
+		[propput, id(22), helpstring("property DefaultCSType")] HRESULT DefaultCSType([in] CSTYPE newVal);
+		[propget, id(23), helpstring("property VMSign")] HRESULT VMSign([out, retval] IWrapVMSign* *pVal);
+		[propget, id(24), helpstring("property ProxyListIt")] HRESULT ProxyListIt([out, retval] IWrapProxyListIt** pVal);
+		[id(25), helpstring("method GetProxyDebugView")] HRESULT GetProxyDebugView([in] BSTR ai_LocalId, [in] BSTR ai_RemoteId, [out,retval] IWrapChannel** pVal);
+		[propget, id(26), helpstring("property EmulationLevel")] HRESULT EmulationLevel([out, retval] EMULATE_TYPE *pVal);
+		[id(27), helpstring("method DebugMemLDB")] HRESULT DebugMemLDB([in] BSTR ai_Message);
+		[/*propget,*/ id(28), helpstring("Shows Channel object counters")] HRESULT DebugCounters([out, retval] short *pVal);
+		[id(29), helpstring("method EnableTimeOut")] HRESULT EnableTimeOut([in] short bEnable);
+		[id(30), helpstring("method SetDefaultCSTimeOut")] HRESULT SetDefaultCSTimeOut([in] long iTimeOut);
+		[id(31), helpstring("method SetNextCSTimeOut")] HRESULT SetNextCSTimeOut([in] long iTimeOut);
+		[id(32), helpstring("method SetGenCSTimeOut")] HRESULT SetGenCSTimeOut([in] long iTimeOut);
+		[id(33), helpstring("method GetDefaultCSTimeOut")] HRESULT GetDefaultCSTimeOut([out, retval] long *piTimeOut);
+		[id(34), helpstring("method GetNextCSTimeOut")] HRESULT GetNextCSTimeOut([out, retval] long *piTimeOut);
+		[id(35), helpstring("method GetGenCSTimeOut")] HRESULT GetGenCSTimeOut([out, retval] long *piTimeOut);
+		[id(36), helpstring("method ResetNextCSTimeOut")] HRESULT ResetNextCSTimeOut();
+		[id(37), helpstring("method SetCSTimeoutFunction")] HRESULT SetCSTimeoutFunction([in] BSTR sDLLName, [in] BSTR sFuncName);
+		[id(38), helpstring("method IsDCData")] HRESULT IsDCData([out, retval] VARIANT_BOOL *pVal);
+		[id(39), helpstring("method GetDCData")] HRESULT GetDCData([in] [out] IWrapBookMark *pBookMark, [out] long *pNodeHandle, [out] long *pItemHandle);
+		[id(40), helpstring("method SetDCEnabled")] HRESULT SetDCEnabled([in] VARIANT_BOOL ai_Flag);
+		[id(41), helpstring("method IsDCEnabled")] HRESULT IsDCEnabled([out, retval] VARIANT_BOOL *ao_pFlag);
+		[id(42), helpstring("method ConvertOneWay")] HRESULT ConvertOneWay([in] BSTR ai_pcInString, [out] BSTR *ao_pcOutString, [out, retval] short* ao_RetVal );
+		[id(43), helpstring("method Convert")] HRESULT Convert(BSTR ai_pcInString, BSTR *ao_pcOutString, short* ao_RetVal);
+		[id(44), helpstring("method NewLogon")] HRESULT NewLogon(BSTR ai_stUsername, [in] BSTR ai_stPassword, [in] long ai_iLanguage, [in] BSTR ai_stLogonServer, [in] long ai_iPortNumber, [in] VARIANT_BOOL ai_bUseDefaultRole, [in] BSTR ai_stSSL, [in] VARIANT_BOOL ai_bUseSSL, [out,retval] short* ao_RetVal);
+		[id(45), helpstring("method ClearFiles")] HRESULT ClearFiles();
+		[id(46), helpstring("method CacheClean")] HRESULT CacheClean([in] CACHETYPE CacheType, [out, retval] short * ao_RetVal);
+		[id(47), helpstring("method CacheRemoveByObjectId")] HRESULT CacheRemoveByObjectId([in] CACHETYPE CacheType, [in] BSTR ai_stObjectId, [out, retval] short * ao_RetVal);
+		[id(48), helpstring("method SetConnectionParam")] HRESULT SetConnectionParam([in] BSTR ai_stParamName, [in] BSTR ai_stParamValue, [out, retval] short * ao_iRetVal);
+		[id(49), helpstring("method DetachDocNodeToTrackNode")] HRESULT DetachDocNodeToTrackNode([in] IWrapNode* ai_poWrapDocNode,[in] IWrapNode* ai_poWrapTrackNode, [out, retval] short* ao_pRetVal);
+		[id(50), helpstring("method GetMultiValidationChannel")] HRESULT GetMultiValidationChannel([out, retval] IWrapChannel** ao_poChannel);
+		[id(51), helpstring("method CacheRefresh")] HRESULT CacheRefresh([out, retval] short * ao_RetVal);
+		[id(52), helpstring("method NewCacheRemoveByObjectId")] HRESULT NewCacheRemoveByObjectId([in] CACHETYPE CacheType, [in] BSTR ai_stObjectId, [in]VARIANT_BOOL ai_bLocalOnly, [out, retval] short * ao_RetVal);
+		[propget, id(53), helpstring("property Executor")] HRESULT Executor([out, retval] IWrapExecutor **pVal);
+		[id(54), helpstring("method CSTraceEnable")] HRESULT CSTraceEnable([in] short bEnableIt);
+		[id(55), helpstring("method CSTraceBeginTag")] HRESULT CSTraceBeginTag([in] BSTR ai_stNewTag);
+		[id(56), helpstring("method CSTraceResetTag")] HRESULT CSTraceResetTag();
+		[id(57), helpstring("method CSTraceSetOutputFileName")] HRESULT CSTraceSetOutputFileName([in] BSTR ai_stFileName);
+		[id(58), helpstring("method CSTraceGetOutputFileName")] HRESULT CSTraceGetOutputFileName([out] BSTR* ao_stFileName);
+		[id(59), helpstring("method CSTraceEnable")] HRESULT CSTraceShowCachedOperations([in] VARIANT_BOOL ai_ShowIt);
+		[propget, id(60), helpstring("property IsMultiOrganization")] HRESULT IsMultiOrganization([out, retval] short *pVal);
+		[propget, id(61), helpstring("property Credential")] HRESULT Credential([out, retval] BSTR *pVal);
+		[id(62), helpstring("method RestoreLogon")] HRESULT RestoreLogon(BSTR ai_stCredential, long ai_iLanguage, BSTR ai_stLogonServer, long ai_iPortNumber, BSTR ai_stSSL, VARIANT_BOOL ai_bUseSSL, short * ao_RetVal);
+		[id(63), helpstring("method GetChannelCount")] HRESULT GetChannelCount([out, retval] long *ao_iCount);
+		[id(64), helpstring("method GetChannelByPosition")] HRESULT GetChannelByPosition([in] long ai_iPosition, [out, retval] IWrapChannel** ao_channel);
+		[id(65), helpstring("method BuildPresFromIdByLang")] HRESULT BuildPresFromIdByLang([in] BSTR ai_PresentationId, [in] BSTR ai_Organization, [in] BSTR ai_UseId, [in] short ai_iLanguage, [out] SAFEARRAY(BYTE)* ao_Presentation, [out, retval] short* ao_RetVal);
+		[id(66), helpstring("method BuildPresFromIdByLangType")] HRESULT BuildPresFromIdByLangType([in] BSTR ai_PresentationId, [in] BSTR ai_Organization, [in] BSTR ai_UseId, [in] short ai_iLangType, [out] SAFEARRAY(BYTE)* ao_Presentation, [out, retval] short* ao_RetVal);
+		[id(67), helpstring("method SentenceMerge")] HRESULT SentenceMerge([in] BSTR ai_stChild, [in] BSTR ai_stParent, [out] BSTR* ao_stResult, [out, retval] short* ao_pReturn);
+		[id(68), helpstring("method SetCallBack")] HRESULT SetCallBack([in] long ai_fCallBack);
+		[propget, id(69), helpstring("property SessionContext")] HRESULT SessionContext(BSTR* ao_sX509Certificate, BSTR* ao_sSessionContext, [out, retval] short *pVal);
+		[id(70), helpstring("method GetpILicenseManager")] HRESULT GetpILicenseManager([out] long * ao_pILicenseManager, [out, retval] short *ao_RetVal);
+		[id(71), helpstring("method GetStateValidateExecutionNp")] HRESULT GetStateValidateExecutionNp([in] long ai_pILicenseManager, [out] short *ao_State, [out, retval] short *ao_RetVal);
+		[id(72), helpstring("method GetPropertyValueById")] HRESULT GetPropertyValueById([in] long ai_pILicenseManager, [in] BSTR ai_pPropertyId, [out] BSTR * ao_pPropertyValue, [out, retval] short *ao_RetVal);
+		[id(73), helpstring("method GetPropertyTransById")] HRESULT GetPropertyTransById([in] long ai_pILicenseManager, [in] BSTR ai_pPropertyId, [out] BSTR * ao_pPropertyTrans, [out, retval] short *ao_RetVal);
+		[id(74), helpstring("method IsAllowed")] HRESULT IsAllowed([in] long ai_pILicenseManager, [in] BSTR ai_sMeta4Object, [in] BSTR ai_sIdNodeStructure, [in] BSTR ai_sIdItem, [out] short *ao_bIsAllowed,  [out, retval] short *ao_RetVal);
+		[id(75), helpstring("method SetDownloadCallBack")] HRESULT SetDownloadCallBack(long ai_fCallBack);
+		[id(76), helpstring("method CleanMapCache")] HRESULT CleanMapCache(short * ao_RetVal);
+		[id(77), helpstring("method GetMappingById")] HRESULT GetMappingById([in] BSTR ai_pcMapId, [in] BSTR ai_pcOrganization, [in] BSTR ai_pcSource, [out] BSTR *ao_pcMappingshort, [out, retval] short *ao_RetVal);
+		[id(78), helpstring("method IsEqualOrg")] HRESULT IsEqualOrg([in] BSTR ai_pcMapId, [in] BSTR ai_pcOrganization1, [in] BSTR ai_pcOrganization2, [in] BSTR ai_pcDestination, [out] VARIANT_BOOL *ao_bIsEquivalent, [out, retval] short *ao_RetVal);
+		[id(79), helpstring("method PrintVBTrace")] HRESULT PrintVBTrace([in] SAFEARRAY(BSTR)* ai_saArguments, [out, retval] short *ao_RetVal);
+		[id(80), helpstring("method LogCount")] HRESULT LogCount([out] long *ao_plCount);
+		[id(81), helpstring("method LogGet")] HRESULT LogGet([in] long ai_lLanguage, [in] long ai_lPosition, [out] long *ao_plCode, [out] short *ao_piType, [out] DATE *ao_pdTime, [out] BSTR *ao_psTextById, [out] BSTR *ao_psTextByName, [out, retval] short *ao_iRetVal);
+		[id(82), helpstring("method LogClean")] HRESULT LogClean();
+		[propget, id(83), helpstring("property BuildVersion")] HRESULT BuildVersion([out, retval] BSTR* pVal);		
+		[id(84), helpstring("method BuildPresentationDefFromID")] HRESULT BuildPresentationDefFromID([in] BSTR ai_PresentationID, [in] BSTR ai_Organization, [in] BSTR ai_UseID, [out] SAFEARRAY(BYTE)* ao_Presentation, [out, retval] short* ao_RetVal);
+		[id(85), helpstring("method BuildXMLFromId")] HRESULT BuildXMLFromId([in] BSTR ai_sM4ObjId, [in] long ai_lMask, [in] short ai_CsType, [in] short ai_iLanguage, [out] SAFEARRAY(BYTE)* ao_psaXML, [out, retval] short *ao_iRetVal);
+		[id(86), helpstring("method GetRegistryValue")] HRESULT GetRegistryValue([in] BSTR ai_sKey, [in] BSTR ai_sValue, [out] BSTR *ai_psData, [out, retval] short *ao_piReturn);
+		[id(87), helpstring("method SetRegistryValue")] HRESULT SetRegistryValue([in] BSTR ai_sKey, [in] BSTR ai_sValue, [in] BSTR ai_sData, [out, retval] short *ao_piReturn);
+		[id(88), helpstring("method GetRegistryValueNames")] HRESULT GetRegistryValueNames([in] BSTR ai_sKey, [out] SAFEARRAY(BSTR) *ao_psaValues, [out, retval] short *ao_piReturn);
+		[id(89), helpstring("method GetRegistrySubKeyNames")] HRESULT GetRegistrySubKeyNames([in] BSTR ai_sKey, [out] SAFEARRAY(BSTR)* ao_psaKeys, [out, retval] short *ao_piReturn);
+		[id(90), helpstring("method SaveRegistry")] HRESULT SaveRegistry([out, retval] short *ao_piReturn);
+		[id(91), helpstring("method DeleteRegistryKey")] HRESULT DeleteRegistryKey([in] BSTR ai_sKey, [out, retval] short *ao_piReturn);
+		[id(92), helpstring("method ReplaceLiterals")] HRESULT ReplaceLiterals([in] BSTR ai_sInput, [out] BSTR *ai_psOutput, [out, retval] short *ao_piReturn);
+		[id(93), helpstring("method GetXMLFromPresentationId")] HRESULT GetXMLFromPresentationId([in] BSTR ai_PresentationID, [in] BSTR ai_Organization, [in] BSTR ai_UseID, [out] BSTR *ao_XML, [out, retval] short* ao_RetVal);
+		[propget, id(94), hidden, helpstring("property PtrFullInterface")] HRESULT PtrFullInterface([out, retval] long* retVal);
+		[propget, id(95), helpstring("property SessionTimeOut")] HRESULT SessionTimeOut([out, retval] double *pVal);
+		[id(96), helpstring("method AddUserAction")] HRESULT AddUserAction([in] BSTR ai_sEvent, [in] BSTR ai_sObjectId, [in] BSTR ai_sObjectName, [in] BSTR ai_sArguments, [in] BSTR ai_sOrganization, [in] BSTR ai_sRole, [out, retval] short *ao_piReturn);
+		[id(97), helpstring("method ReplaceOrgLiterals")] HRESULT ReplaceOrgLiterals([in] BSTR ai_sInput, [out] BSTR *ai_psOutput, [in] BSTR ai_sOrganization, [out, retval] short *ao_piReturn);
+		[id(98), helpstring("method ArrayToPropertyBag")] HRESULT ArrayToPropertyBag([in] BSTR ai_sOrganization, [in] SAFEARRAY(BYTE)* ai_abArray, [out, retval] ICPropBag ** ao_ppoPropertyBag);
+		[id(99), helpstring("method BuildTypedPresentationFromId")] HRESULT BuildTypedPresentationFromId([in] BSTR ai_sPresentationId, [in] BSTR ai_sOrganization, [in] BSTR ai_sRoleId, [in] short ai_iLanguage, [in, out] DATE* aio_dtDate, [out] SAFEARRAY(BYTE)* ao_abPresentation, [in, out] short* aio_iType, [out] short* ao_iStyle, [out, retval] short* ao_iRetVal);
+		[propget, id(100), helpstring("property CacheDirectory")] HRESULT CacheDirectory([out, retval] BSTR *ao_sDirectory);
+		[id(101), helpstring("method ReportViewerInit")] HRESULT ReportViewerInit([in] BSTR ai_pcCommand, [in] short ai_iLinkManager, [in] short ai_iLinkDesign, [in] short ai_iLinkData, [in] IWrapAccess* ai_poDesignAccess, [in] IWrapAccess* ai_poDataAccess, [out] unsigned long *ao_plTaskId, [out] BSTR *ao_pcOutput, [out] short *ao_plErrors, [out] short *ao_plWarnings, [out] unsigned long *ao_plBreaks, [out] short *ao_piMoreBreaks, [out, retval] short *ao_iRetVal);
+		[id(102), helpstring("method ReportViewerEnd")] HRESULT ReportViewerEnd([in] unsigned long ai_lTaskId, [out] BSTR *ao_pcTrace, [out] short *ao_plErrors, [out] short *ao_plWarnings, [out, retval] short *ao_iRetVal);
+		[id(103), helpstring("method GetAccessByHandle")] HRESULT GetAccessByHandle([in] long ai_lHandle, [out, retval] IWrapAccess** ao_poAccess);
+		[id(104), helpstring("method AddUserTimedAction")] HRESULT AddUserTimedAction([in] long ai_iEventNum, [in] DATE aio_dtEventTime, [in] BSTR ai_sOrganization, [in] BSTR ai_sEventSenderContainer, [in] BSTR ai_sEventSender, [in] BSTR ai_sParentEventSenderContainer, [in] BSTR ai_sParentEventSender, [in] long ai_iTimeElapsed, [in] BSTR ai_sBuffer, [in] VARIANT_BOOL ai_bIsValid, [out, retval] short *ao_piReturn);
+		[id(105), helpstring("method GetEventsCounter")] HRESULT GetEventsCounter([out, retval] long *ao_plCounter);
+		[id(106), helpstring("method ReplaceCache")] HRESULT ReplaceCache([in] BSTR ai_stInstallHash, [out, retval] short *ao_piReturn);
+		[id(107), helpstring("method RD_OpenSession")] HRESULT RD_OpenSession([in] short ai_iVersion, [in] BSTR ai_pcCommand, [in] short ai_iLinkManager, [in] IWrapAccess * ai_poAccess, [out] long *ao_plSessionHandler, [out, retval] short *ao_iRetVal);
+		
+	};
+
+	[
+		object,
+		uuid(DCFBCCC8-D471-11D1-8BEC-00C04FA95230),
+		dual,
+		helpstring("IWrapRgItFilter Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgItFilter : IDispatch
+	{
+		[id(10), helpstring("method BSearch within Filters")] HRESULT BFind([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [optional, in, out] VARIANT_BOOL* ao_pbFound, [out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(11), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the type of operation you want.")] HRESULT AddOperation([in]int ai_OperType, [in]int ai_type, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(12), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the LN4 source code that will be used.")] HRESULT Add([in]VARIANT ai_SourceOper, [in]int ai_type, [in, optional]VARIANT ai_saArguments, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(13), helpstring("method Add: Adds a new fast filter.")] HRESULT AddFast([in] BSTR ai_pItemName, [in] VARIANT ai_Value, [in] int ai_type, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(1), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the LN4 source code that will be used.")] HRESULT AddLN4([in]BSTR ai_stSourceCode, [in]int ai_type, [in, optional]VARIANT ai_saArguments, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(2), helpstring("method DeleteLast: Delete the last filter you added.")] HRESULT DeleteLast([out, retval] short* ao_RetVal);
+		[id(3), helpstring("method Copy: Copy the state from the WrapRgItFilter passed")] HRESULT Copy([in]IWrapRgItFilter **ai_RgItFilter, [out, retval] short* ao_RetVal);
+		[id(DISPID_EVALUATE), helpstring("method Item")] HRESULT Item([in] VARIANT ai_var, [out, retval] IWrapFilter **pVal);
+		[propget, id(5), helpstring("property Count")] HRESULT Count([out, retval] short *pVal);
+		[id(6), helpstring("method RefreshAll")] HRESULT RefreshAll([out, retval] short* ao_RetVal);
+		[id(7), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Id).")] HRESULT AddSortById([in]long ai_IndexId, [out, retval] short* ao_sRetVal);
+		[id(8), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Pos).")] HRESULT AddSortByPos([in]short ai_iPos, [out, retval] short* ao_sRetVal);
+		[id(9), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, Specify Items and Order (Asc = 1, Des = 2)")] HRESULT AddSort ([in]VARIANT ai_Items, [in]VARIANT ai_Orders,  [out, retval] short* ao_sRetVal);
+		[id(14), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Id).")] HRESULT NamedSortById([in]long ai_IndexId, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(15), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Pos).")] HRESULT NamedSortByPos([in]short ai_iPos, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(16), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, Specify Items and Order (Asc = 1, Des = 2)")] HRESULT NamedSort ([in]VARIANT ai_Items, [in]VARIANT ai_Orders, [in, optional, defaultvalue("")] BSTR ai_stName,  [out, retval] short* ao_sRetVal);
+		[id(17), helpstring("method Delete")] HRESULT Delete([in] BSTR ai_stName, [out, retval] short* ao_RetVal);
+		[id(18), helpstring("method Clear")] HRESULT Clear([out, retval] short* ao_RetVal);
+		[id(19), helpstring("method Exists")] HRESULT Exists([in] BSTR ai_stName, [out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(20), helpstring("method NameByPos")] HRESULT NameByPos([in] short ai_iPos, [out, retval] BSTR* ao_pstName);
+	};
+
+	[
+		object,
+		uuid(CC3E5763-33ED-11D1-A78F-00C04FB75E70),
+		dual,
+		helpstring("IWrapRgIt Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgIt : IDispatch
+	{
+		[propget, id(1), helpstring("property New: Insert a new register at the end of the recordset. After the call WrapRgIt points to the new register.")] HRESULT New([out, retval] IWrapRgIt** ao_poRegister);
+		[propget, id(2), helpstring("property Exist")] HRESULT Exist([out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(3), helpstring("method BSearch")] HRESULT BSearch([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [optional, in, out] VARIANT_BOOL* ao_pbFound, [out, retval] VARIANT_BOOL* ao_pbVal);		
+		[id(5), helpstring("method Remove: Mark the current register as deleted.")] HRESULT Remove([out, retval] short* ao_sRetVal);
+		[propget, id(6), helpstring("property IsEof")] HRESULT IsEof([out, retval] VARIANT_BOOL *pVal);
+		[propget, id(7), helpstring("property Operation")] HRESULT Operation([out, retval] IWrapOper* *pVal);
+		[propget, id(8), helpstring("property Index")] HRESULT Index([out, retval] long *pVal);
+		[restricted, id(9), helpstring("method Free")] HRESULT Free([out, retval] short* ao_RetVal);
+		[propget, id(10), helpstring("property ItemIterator")] HRESULT ItemIterator([out, retval] IWrapItIt* *pVal);
+		[propget, id(11), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[id(DISPID_EVALUATE), helpstring("method Item")] HRESULT Item([in] int ai_var, [out,retval] IWrapRgIt** ao_item);
+		[restricted, id(DISPID_NEWENUM), helpstring("method _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** ao_unk);
+		[propget, id(12), helpstring("property Copy")] HRESULT Copy([out, retval] IWrapRgIt** pVal);
+		[id(13), helpstring("method DeleteAll: Mark all the registers in the recordset as deleted.")] HRESULT DeleteAll([out, retval] short* ao_RetVal);
+		[id(14), helpstring("method DestroyAll: Free all the registers in the recorset.")] HRESULT DestroyAll([out, retval] short* ao_RetVal);
+		[id(15), helpstring("method Destroy: Free the current register.")] HRESULT Destroy([out, retval] short* ao_RetVal);
+		[propget, id(16), helpstring("property Insert: Insert a new register before the register currently pointed. After the call WrapRgIt points to the new register.")] HRESULT Insert([out, retval] IWrapRgIt** ao_poRegister);
+		[propget, id(17), helpstring("property coFilter")] HRESULT Filter([out, retval] IWrapRgItFilter** pVal);
+		[id(18), helpstring("method MoveTo: Moves the iterator to the desired position")] HRESULT MoveTo([in] int ai_var, [out, retval] short* ao_piReturn);
+		[id(19), helpstring("method MoveToEOF: Moves the iterator to EOF (end of file, an invalid position)")] HRESULT MoveToEOF([out, retval] short* ao_piReturn);
+//		[id(20), helpstring("Set the Iterator in the First Position")] HRESULT Begin([out,retval] IWrapRgIt** ao_item);
+		[id(21), helpstring("Set the Iterator in the Netx Position")] HRESULT Next([out,retval] IWrapRgIt** ao_item);
+		[id(22), helpstring("Set the Iterator in the Last Position")] HRESULT End([out,retval] IWrapRgIt** ao_item);
+		[id(23), helpstring("Set the Iterator in the Previous Position")] HRESULT Prev([out,retval] IWrapRgIt** ao_item);
+		[id(24), helpstring("method Find (Secuential)")] HRESULT Find([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [out, retval] long* ao_pbVal);
+		[id(25), helpstring("Undo set the register as in the last CheckPoint.")] HRESULT Undo([out, retval] short* ao_RetVal);
+		[id(26), helpstring("CheckPoint commits the current state.")] HRESULT CheckPoint([out, retval] short* ao_RetVal);
+		[id(27), helpstring("find not updated new registers.")] HRESULT ReviewNewRegisters([out, retval] long * ao_iIndex);
+		[id(28), helpstring("Copy a record and its branch.")] HRESULT CopyRecord([out] BSTR * ai_pFileName, [out, retval] short* ao_sRetVal);
+		[id(29), helpstring("Paste a record and its branch.")] HRESULT PasteRecord([in] VARIANT_BOOL* ai_pbNewRecord, [in] VARIANT_BOOL* ai_pbKeepMarks, [in] BSTR * ai_pFileName, [in] VARIANT_BOOL* ai_pbDeleteFile, [in, optional, defaultvalue(0)] VARIANT_BOOL* ai_pbDestroyRecords, [in, optional, defaultvalue("")] VARIANT ai_pExclusionNodeName, [in, optional, defaultvalue(1)] VARIANT_BOOL* ai_pbKeepAccesses, [out, retval] short * ao_sRetVal);
+		[propget, id(30), helpstring("property Copy Total")] HRESULT Copy_Total([out, retval] IWrapRgIt** pVal);
+		[propget, id(31), helpstring("property Block Is Loaded")] HRESULT IsLoaded([out, retval] VARIANT_BOOL *pVal);
+		[propget, id(32), helpstring("Get the state of the register state New Not Persist")] HRESULT NewNotPersist([out, retval] VARIANT_BOOL* pbNewNotPersist);
+		[propput, id(32), helpstring("Set the register as New Not Persist")] HRESULT NewNotPersist([in] VARIANT_BOOL* pbNewNotPersist);
+		[propget, id(33), helpstring("Get the register unique identifier")] HRESULT RecordID([out, retval] long* ao_plRecordId);
+		[id(34), helpstring("Get the index of a register")] HRESULT IndexOf([in] long ai_lRecordId, [out, retval] long* ao_piIndex);
+		[id(35), helpstring("Get all registers data")] HRESULT ReadRegisters([out] SAFEARRAY(VARIANT)* ao_avValues, [out] long* ao_iFirst, [out, retval] short* ao_piReturn);
+		[id(36), helpstring("Moves iterator to first available data")] HRESULT MoveToFirst([out, retval] short* ao_piReturn);
+
+	};
+
+	[
+		object,
+		uuid(D993A5D4-EF4C-11D1-8BF8-00C04FA95230),
+		dual,
+		helpstring("IWrapRgIt_BlockWalker Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgIt_BlockWalker : IDispatch
+	{
+		[id(1), helpstring("method Attach")] HRESULT Attach([in]IWrapNode *ai_Node, [out, retval] short* ao_RetVal);
+		[propget, id(DISPID_VALUE), helpstring("property RegisterIterator")] HRESULT RegisterIterator([out, retval] IWrapRgIt** pVal);
+	};
+
+/*
+	[
+		object,
+		uuid(DCFBCCC8-D471-11D1-8BEC-00C04FA95230),
+		dual,
+		helpstring("IWrapRgItFilter Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgItFilter : IDispatch
+	{
+		[id(7), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Id).")] HRESULT AddSortById([in]long ai_IndexId, [out, retval] short* ao_sRetVal);
+		[id(8), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Pos).")] HRESULT AddSortByPos([in]short ai_iPos, [out, retval] short* ao_sRetVal);
+		[id(9), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, Specify Items and Order (Asc = 1, Des = 2)")] HRESULT AddSort ([in]VARIANT ai_Items, [in]VARIANT ai_Orders, [out, retval] short* ao_sRetVal);
+		[id(10), helpstring("method BSearch within Filters")] HRESULT BFind([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [optional, in, out] VARIANT_BOOL* ao_pbFound, [out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(11), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the type of operation you want.")] HRESULT AddOperation([in]int ai_OperType, [in]int ai_type, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(12), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the LN4 source code that will be used.")] HRESULT Add([in]VARIANT ai_SourceOper, [in]int ai_type, [in, optional]VARIANT ai_saArguments, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(13), helpstring("method Add: Adds a new fast filter.")] HRESULT AddFast([in] BSTR ai_pItemName, [in] VARIANT ai_Value, [in] int ai_type, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(1), helpstring("method Add: Adds a new filter to the RegisterIterator, you specify the LN4 source code that will be used.")] HRESULT AddLN4([in]BSTR ai_stSourceCode, [in]int ai_type, [in, optional]VARIANT ai_saArguments, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(2), helpstring("method DeleteLast: Delete the last filter you added.")] HRESULT DeleteLast([out, retval] short* ao_RetVal);
+		[id(3), helpstring("method Copy: Copy the state from the WrapRgItFilter passed")] HRESULT Copy([in]IWrapRgItFilter **ai_RgItFilter, [out, retval] short* ao_RetVal);
+		[id(DISPID_EVALUATE), helpstring("method Item")] HRESULT Item([in] VARIANT ai_var, [out, retval] IWrapFilter **pVal);
+		[propget, id(5), helpstring("property Count")] HRESULT Count([out, retval] short *pVal);
+		[id(6), helpstring("method RefreshAll")] HRESULT RefreshAll([out, retval] short* ao_RetVal);
+
+		[id(14), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Id).")] HRESULT NamedSortById([in]long ai_IndexId, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(15), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, you specify a SearchIndex identifier (by Pos).")] HRESULT NamedSortByPos([in]short ai_iPos, [in, optional, defaultvalue("")] BSTR ai_stName, [out, retval] short* ao_sRetVal);
+		[id(16), helpstring("method AddSort: Adds a new Sort Filter to the RegisterIterator, Specify Items and Order (Asc = 1, Des = 2)")] HRESULT NamedSort ([in]VARIANT ai_Items, [in]VARIANT ai_Orders, [in, optional, defaultvalue("")] BSTR ai_stName,  [out, retval] short* ao_sRetVal);
+	};
+
+	[
+		object,
+		uuid(CC3E5763-33ED-11D1-A78F-00C04FB75E70),
+		dual,
+		helpstring("IWrapRgIt Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgIt : IDispatch
+	{
+		[propget, id(1), helpstring("property New: Insert a new register at the end of the recordset. After the call WrapRgIt points to the new register.")] HRESULT New([out, retval] IWrapRgIt** ao_poRegister);
+		[propget, id(2), helpstring("property Exist")] HRESULT Exist([out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(3), helpstring("method BSearch")] HRESULT BSearch([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [optional, in, out] VARIANT_BOOL* ao_pbFound, [out, retval] VARIANT_BOOL* ao_pbVal);		
+		[id(5), helpstring("method Remove: Mark the current register as deleted.")] HRESULT Remove([out, retval] short* ao_sRetVal);
+		[propget, id(6), helpstring("property IsEof")] HRESULT IsEof([out, retval] VARIANT_BOOL *pVal);
+		[propget, id(7), helpstring("property Operation")] HRESULT Operation([out, retval] IWrapOper* *pVal);
+		[propget, id(8), helpstring("property Index")] HRESULT Index([out, retval] long *pVal);
+		[restricted, id(9), helpstring("method Free")] HRESULT Free([out, retval] short* ao_RetVal);
+		[propget, id(10), helpstring("property ItemIterator")] HRESULT ItemIterator([out, retval] IWrapItIt* *pVal);
+		[propget, id(11), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[id(DISPID_EVALUATE), helpstring("method Item")] HRESULT Item([in] int ai_var, [out,retval] IWrapRgIt** ao_item);
+		[restricted, id(DISPID_NEWENUM), helpstring("method _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** ao_unk);
+		[propget, id(12), helpstring("property Copy")] HRESULT Copy([out, retval] IWrapRgIt** pVal);
+		[id(13), helpstring("method DeleteAll: Mark all the registers in the recordset as deleted.")] HRESULT DeleteAll([out, retval] short* ao_RetVal);
+		[id(14), helpstring("method DestroyAll: Free all the registers in the recorset.")] HRESULT DestroyAll([out, retval] short* ao_RetVal);
+		[id(15), helpstring("method Destroy: Free the current register.")] HRESULT Destroy([out, retval] short* ao_RetVal);
+		[propget, id(16), helpstring("property Insert: Insert a new register before the register currently pointed. After the call WrapRgIt points to the new register.")] HRESULT Insert([out, retval] IWrapRgIt** ao_poRegister);
+		[propget, id(17), helpstring("property coFilter")] HRESULT Filter([out, retval] IWrapRgItFilter** pVal);
+		[id(18), helpstring("method MoveTo: Moves the iterator to the desired position")] HRESULT MoveTo([in] int ai_var, [out, retval] short* ao_RetVal);
+		[id(19), helpstring("method MoveToEOF: Moves the iterator to EOF (end of file, an invalid position)")] HRESULT MoveToEOF([out, retval] short* ao_RetVal);
+//		[id(20), helpstring("Set the Iterator in the First Position")] HRESULT Begin([out,retval] IWrapRgIt** ao_item);
+		[id(21), helpstring("Set the Iterator in the Netx Position")] HRESULT Next([out,retval] IWrapRgIt** ao_item);
+		[id(22), helpstring("Set the Iterator in the Last Position")] HRESULT End([out,retval] IWrapRgIt** ao_item);
+		[id(23), helpstring("Set the Iterator in the Previous Position")] HRESULT Prev([out,retval] IWrapRgIt** ao_item);
+		[id(24), helpstring("method Find (Secuential)")] HRESULT Find([in, out] SAFEARRAY(VARIANT)* ai_saArguments, [out, retval] long* ao_pbVal);
+		[id(25), helpstring("Undo set the register as in the last CheckPoint.")] HRESULT Undo([out, retval] short* ao_RetVal);
+		[id(26), helpstring("CheckPoint commits the current state.")] HRESULT CheckPoint([out, retval] short* ao_RetVal);
+	};
+
+
+	[
+		object,
+		uuid(D993A5D4-EF4C-11D1-8BF8-00C04FA95230),
+		dual,
+		helpstring("IWrapRgIt_BlockWalker Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRgIt_BlockWalker : IDispatch
+	{
+		[id(1), helpstring("method Attach")] HRESULT Attach([in]IWrapNode *ai_Node, [out, retval] short* ao_RetVal);
+		[propget, id(DISPID_VALUE), helpstring("property RegisterIterator")] HRESULT RegisterIterator([out, retval] IWrapRgIt** pVal);
+	};
+*/
+
+	[
+		object,
+		uuid(03F57205-2D9D-11D1-A78A-00C04FB75E70),
+		dual,
+		helpstring("IWrapNodeDef Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapNodeDef : IDispatch
+	{
+		[propget, id(1), helpstring("property PeriodCorrected")] HRESULT PeriodCorrected([out, retval] BYTE *pVal);
+		[propget, id(2), helpstring("property Completeness")] HRESULT Completeness([out, retval] BYTE *pVal);
+		[propget, id(3), helpstring("property Temporality")] HRESULT Temporality([out, retval] BYTE *pVal);
+		[propget, id(4), helpstring("property UniqueRow")] HRESULT UniqueRow([out, retval] BYTE *pVal);
+		[propget, id(5), helpstring("property AutoLoad")] HRESULT AutoLoad([out, retval] BYTE *pVal);
+		[propget, id(6), helpstring("property IsRoot")] HRESULT IsRoot([out, retval] BYTE *pVal);
+		[propget, id(7), helpstring("property Capacity")] HRESULT Capacity([out, retval] BYTE *pVal);
+		[propget, id(8), helpstring("property Index")] HRESULT Index([out, retval] SHORT *pVal);
+		[propget, id(9), helpstring("property NumberOfRegisterItems")] HRESULT NumberOfRegisterItems([out, retval] SHORT *pVal);
+		[propget, id(10), helpstring("property NumberOfBlockItems")] HRESULT NumberOfBlockItems([out, retval] SHORT *pVal);
+		[propget, id(11), helpstring("property NumberOfNodeItems")] HRESULT NumberOfNodeItems([out, retval] SHORT *pVal);
+		[propget, id(12), helpstring("property NumberOfItems")] HRESULT NumberOfItems([out, retval] SHORT *pVal);
+		[propget, id(13), helpstring("property NumRows")] HRESULT NumRows([out, retval] LONG *pVal);
+		[propget, id(14), helpstring("property EndDateItem")] HRESULT EndDateItem([out, retval] BSTR* pVal);
+		[propget, id(15), helpstring("property StartDateItem")] HRESULT StartDateItem([out, retval] BSTR* pVal);
+		[propget, id(16), helpstring("property TiId")] HRESULT TiId([out, retval] BSTR *pVal);
+		[propget, id(17), helpstring("property Id")] HRESULT Id([out, retval] BSTR *pVal);
+		[propget, id(18), helpstring("property IsVisible")] HRESULT IsVisible([out, retval] BYTE *pVal);
+		[propget, id(19), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		[propget, id(20), helpstring("property NodeStartCorDateItem")] HRESULT NodeStartCorDateItem( [out, retval] BSTR* pVal);
+		[propget, id(21), helpstring("property NodeEndCorDateItem")] HRESULT NodeEndCorDateItem( [out, retval] BSTR* pVal);
+		[propget, id(22), helpstring("property GetNumberOfPlugs")] HRESULT GetNumberOfPlugs([out, retval] short *pVal);
+		[propget, id(23), helpstring("property GetPlugFatherChanneIdByPosition")] HRESULT GetPlugFatherChanneIdByPosition([in] short ai_iPlugPosition, [out, retval] BSTR *pVal);
+		[propget, id(24), helpstring("property GetPlugFatherNodeIdByPosition")] HRESULT GetPlugFatherNodeIdByPosition([in] short ai_iPlugPosition, [out, retval] BSTR *pVal);
+		[propget, id(25), helpstring("property GetNumberOfGroups")] HRESULT GetNumberOfGroups([out, retval] short *pVal);
+		[propget, id(26), helpstring("property GetGroupIdByPosition")] HRESULT GetGroupIdByPosition([in] short ai_iGroupPosition, [out, retval] BSTR *pVal);
+		[propget, id(27), helpstring("property GetGroupNumberOfItems")] HRESULT GetGroupNumberOfItems([in] short ai_iGroupPosition, [out, retval] short *pVal);
+		[propget, id(28), helpstring("property GetGroupItemIdByPosition")] HRESULT GetGroupItemIdByPosition([in] short ai_iGroupPosition, [in] short ai_iItemPosition, [out, retval] BSTR *pVal);
+		[propget, id(29), helpstring("property GetNodeVirtualFlagItem")] HRESULT GetNodeVirtualFlagItem([out, retval] BSTR *pVal);
+		[propget, id(30), helpstring("property FilterStartDateItem")] HRESULT FilterStartDateItem([out, retval] BSTR *pVal);
+		[propget, id(31), helpstring("property FilterEndDateItem")] HRESULT FilterEndDateItem([out, retval] BSTR *pVal);
+		[propget, id(32), helpstring("property FilterStartCorDateItem")] HRESULT FilterStartCorDateItem([out, retval] BSTR *pVal);
+		[propget, id(33), helpstring("property FilterEndCorDateItem")] HRESULT FilterEndCorDateItem([out, retval] BSTR *pVal);
+		[propget, id(34), helpstring("property CurrencyTypeItem")] HRESULT CurrencyTypeItem([out, retval] BSTR *pVal);
+		[propget, id(35), helpstring("property CurrencyExchDateItem")] HRESULT CurrencyExchDateItem([out, retval] BSTR *pVal);
+		[propget, id(36), helpstring("property ChangeReasonItem")] HRESULT ChangeReasonItem([out, retval] BSTR *pVal);
+		[propget, id(37), helpstring("property DmdComponentItem")] HRESULT DmdComponentItem([out, retval] BSTR *pVal);
+		[propget, id(38), helpstring("property DmdValueItem")] HRESULT DmdValueItem([out, retval] BSTR *pVal);
+		[propget, id(39), helpstring("property LoadSQLItem")] HRESULT LoadSQLItem([out, retval] BSTR *pVal);
+		[propget, id(40), helpstring("property DynFilter")] HRESULT DynFilter([out, retval] BYTE *pVal);
+		[propget, id(41), helpstring("property GetPlugTypeByPosition")] HRESULT GetPlugTypeByPosition([in] short ai_IPosition, [out, retval] BYTE *pVal);
+		[propget, id(42), helpstring("property GetPlugIsFilterByPosition")] HRESULT GetPlugIsFilterByPosition([in] short ai_iPosition, [out, retval] BYTE *pVal);
+		[propget, id(43), helpstring("property GetNodeReadObjectId")] HRESULT GetNodeReadObjectId([out, retval] BSTR* ao_stObjectId);
+		[propget, id(44), helpstring("property GetNodeWriteObjectId")] HRESULT GetNodeWriteObjectId([out, retval] BSTR* ao_stObjectId);
+		[propget, id(45), helpstring("property GetNodeReadSentenceId")] HRESULT GetNodeReadSentenceId([out, retval] long* ao_Sentence);
+		[propget, id(46), helpstring("property GetNodeWriteSentenceId")] HRESULT GetNodeWriteSentenceId([out, retval] long* ao_Sentence);
+		[propget, id(47), helpstring("property NumberOfConnectors")] HRESULT NumberOfConnectors([out, retval] short *pVal);
+		[propget, id(48), helpstring("property NumberOfRBConnectors")] HRESULT NumberOfRBConnectors([out, retval] short *pVal);
+		[propget, id(49), helpstring("property NumberOfBBConnectors")] HRESULT NumberOfBBConnectors([out, retval] short *pVal);
+		[propget, id(50), helpstring("property NumberOfNRConnectors")] HRESULT NumberOfNRConnectors([out, retval] short *pVal);
+		[propget, id(51), helpstring("property FirstRBConnector")] HRESULT FirstRBConnector([out, retval] short *pVal);
+		[propget, id(52), helpstring("property FirstBBConnector")] HRESULT FirstBBConnector([out, retval] short *pVal);
+		[propget, id(53), helpstring("property FirstNRConnector")] HRESULT FirstNRConnector([out, retval] short *pVal);
+		[propget, id(54), helpstring("property GetConnectorHandleByPosition")] HRESULT GetConnectorHandleByPosition([in] short ai_iPos, [out, retval] long *pVal);
+		[propget, id(55), helpstring("property GetNodeConnectorFatherNodeHandle")] HRESULT GetNodeConnectorFatherNodeHandle([in] long ai_NodeHandle, [out, retval] long *pVal);
+		[propget, id(56), helpstring("property GetNodeConnectorSonNodeHandle")] HRESULT GetNodeConnectorSonNodeHandle([in] long ai_ConnectorHandle, [out, retval] long *pVal);
+		[propget, id(57), helpstring("property PriorityItem")] HRESULT PriorityItem([out, retval] BSTR *pVal);
+		[propget, id(58), helpstring("property ImputeDateItem")] HRESULT ImputeDateItem([out, retval] BSTR *pVal);
+		[propget, id(59), helpstring("property PayDateItem")] HRESULT PayDateItem([out, retval] BSTR *pVal);
+		[propget, id(60), helpstring("property PayTypeItem")] HRESULT PayTypeItem([out, retval] BSTR *pVal);
+		[propget, id(61), helpstring("property PayFrequencyItem")] HRESULT PayFrequencyItem([out, retval] BSTR *pVal);
+		[propget, id(62), helpstring("property DefaultIndex")] HRESULT DefaultIndex([out, retval] long *pVal);
+		[propget, id(63), helpstring("property IdAutoFilter")] HRESULT IdAutoFilter([out, retval] short *pVal);
+		[propget, id(64), helpstring("property NumberOfIndexes")] HRESULT NumberOfIndexes([out, retval] short *pVal);
+		[propget, id(65), helpstring("property IndexId")] HRESULT IndexId(short ai_iIndexPosition, [out, retval] long *pVal);
+		[propget, id(66), helpstring("property IndexNumberOfItems")] HRESULT IndexNumberOfItems(short ai_iIndexPosition, [out, retval] short *pVal);
+		[propget, id(67), helpstring("property IndexItemId")] HRESULT IndexItemId(short ai_iIndexPosition, short ai_iItemPosition, [out, retval] BSTR *pVal);
+		[propget, id(68), helpstring("property IndexItemFunction")] HRESULT IndexItemFunction(short ai_iIndexPosition, short ai_iItemPosition, [out, retval] short *pVal);
+		[propget, id(69), helpstring("property IndexItemWay")] HRESULT IndexItemWay(short ai_iIndexPosition, short ai_iItemPosition, [out, retval] short *pVal);
+		[propget, id(70), helpstring("property NumberOfAlias")] HRESULT NumberOfAlias([out, retval] short *pVal);
+		[propget, id(71), helpstring("property AliasId")] HRESULT AliasId(short ai_iAliasPosition, [out, retval] BSTR *pVal);
+		[propget, id(72), helpstring("property AliasNodeId")] HRESULT AliasNodeId(short ai_iAliasPosition, [out, retval] BSTR *pVal);
+		[propget, id(73), helpstring("property NumberOfT3Alias")] HRESULT NumberOfT3Alias([out, retval] short *pVal);
+		[propget, id(74), helpstring("property T3AliasId")] HRESULT T3AliasId(short ai_iT3AliasPosition, [out, retval] BSTR *pVal);
+		[propget, id(75), helpstring("property T3AliasInstance")] HRESULT T3AliasInstance(short ai_iT3AliasPosition, [out, retval] BSTR *pVal);
+		[propget, id(76), helpstring("property GetNodeReadSentenceString")] HRESULT GetNodeReadSentenceString([out, retval] BSTR *pVal);
+		[propget, id(77), helpstring("property GetNodeWriteSentenceString")] HRESULT GetNodeWriteSentenceString([out, retval] BSTR *pVal);
+		[propget, id(78), helpstring("property NumberOfDmds")] HRESULT NumberOfDmds([out, retval] short *pVal);
+		[propget, id(79), helpstring("property DmdId")] HRESULT DmdId(short ai_iDmdPosition, [out, retval] BSTR *pVal);
+		[propget, id(80), helpstring("property DmdComponentId")] HRESULT DmdComponentId(short ai_iDmdPosition, [out, retval] BSTR *pVal);
+		[propget, id(81), helpstring("property DmdFieldId")] HRESULT DmdFieldId(short ai_iDmdPosition, [out, retval] BSTR *pVal);
+		[propget, id(82), helpstring("property CsType")] HRESULT CsType([out, retval] short *pVal);
+		[propget, id(83), helpstring("property NumKeepRows")] HRESULT NumKeepRows([out, retval] long *pVal);
+		[propget, id(84), helpstring("property NumberOfFilters")] HRESULT NumberOfFilters([out, retval] short *pVal);
+		[propget, id(85), helpstring("property FilterId")] HRESULT FilterId(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(86), helpstring("property FilterT3Id")] HRESULT FilterT3Id(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(87), helpstring("property FilterNodeId")] HRESULT FilterNodeId(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(88), helpstring("property SyncType")] HRESULT SyncType([out, retval] short *pVal);
+		[propget, id(89), helpstring("property SecRead")] HRESULT SecRead([out, retval] short *pVal);
+		[propget, id(90), helpstring("property SecWrite")] HRESULT SecWrite([out, retval] short *pVal);
+		[propget, id(91), helpstring("property SecDelete")] HRESULT SecDelete([out, retval] short *pVal);
+		[propget, id(92), helpstring("property SecUpdate")] HRESULT SecUpdate([out, retval] short *pVal);
+		[propget, id(93), helpstring("property SecExecute")] HRESULT SecExecute([out, retval] short *pVal);
+		[propget, id(94), helpstring("property FilterIsApplicable")] HRESULT FilterIsApplicable(short ai_iFilterPosition, [out, retval] short *pVal);
+		[propget, id(95), helpstring("property PlugIsApplicable")] HRESULT PlugIsApplicable(short ai_iPlugPosition, [out, retval] short *pVal);
+		[propget, id(96), helpstring("property ClosingDate")] HRESULT ClosingDate([out, retval] DATE *pVal);
+		[propget, id(97), helpstring("property IsExternal")] HRESULT IsExternal([out, retval] BYTE *pVal);
+		[propget, id(98), helpstring("property OleInterfaceGuid")] HRESULT OleInterfaceGuid([out, retval] BSTR *pVal);
+		[propget, id(99), helpstring("property OleDispId")] HRESULT OleDispId([out, retval] long *pVal);
+		[propget, id(100), helpstring("property ClosingDateItem")] HRESULT ClosingDateItem([out, retval] BSTR *pVal);
+		[propget, id(101), helpstring("property SysParamsItem")] HRESULT SysParamsItem([out, retval] BSTR *pVal);
+		[propget, id(102), helpstring("property ImputePayTypeItem")] HRESULT ImputePayTypeItem([out, retval] BSTR *pVal);
+		[propget, id(103), helpstring("property ImputePayFrequencyItem")] HRESULT ImputePayFrequencyItem([out, retval] BSTR *pVal);
+		[propget, id(104), helpstring("property NumRowsDB")] HRESULT NumRowsDB([out, retval] long *pVal);
+		[propget, id(105), helpstring("property NumberOfSysSentences")] HRESULT NumberOfSysSentences([out, retval] short *pVal);
+		[propget, id(106), helpstring("property SysSentenceNode")] HRESULT SysSentenceNode(short ai_iPosition, [out, retval] BSTR *pVal);
+		[propget, id(107), helpstring("property SysSentenceItem")] HRESULT SysSentenceItem(short ai_iPosition, [out, retval] BSTR *pVal);
+		[propget, id(108), helpstring("property PlugNumberOfItems")] HRESULT PlugNumberOfItems(short ai_iPlugPosition, [out, retval] short *pVal);
+		[propget, id(109), helpstring("property PlugFatherItem")] HRESULT PlugFatherItem(short ai_iPlugPosition, short ai_iItemPosition, [out, retval] BSTR *pVal);
+		[propget, id(110), helpstring("property PlugSonItem")] HRESULT PlugSonItem(short ai_iPlugPosition, short ai_iItemPosition, [out, retval] BSTR *pVal);
+		[propget, id(111), helpstring("property PlugItemRelation")] HRESULT PlugItemRelation(short ai_iPlugPosition, short ai_iItemPosition, [out, retval] short *pVal);
+		[propget, id(112), helpstring("property SecDynFilter")] HRESULT SecDynFilter([out, retval] short *pVal);
+		[propget, id(113), helpstring("property SecFilter")] HRESULT SecFilter([out, retval] BSTR *pVal);
+		[propget, id(114), helpstring("property PlugRelationTypeId")] HRESULT PlugRelationTypeId(short ai_iPosition, [out, retval] short *pVal);
+		[propget, id(115), helpstring("property ReadSentenceApiSql")] HRESULT ReadSentenceApiSql([out, retval] BSTR *pVal);
+		[propget, id(116), helpstring("property NodeType")] HRESULT NodeType([out, retval] short *pVal);
+		[propget, id(117), helpstring("property IsOrdered")] HRESULT IsOrdered([out, retval] short *pVal);
+		[propget, id(118), helpstring("property AffectsDB")] HRESULT AffectsDB([out, retval] short *pVal);
+		[propget, id(119), helpstring("property Order")] HRESULT Order([out, retval] short *pVal);
+		[propget, id(120), helpstring("property DBReload")] HRESULT DBReload([out, retval] short *pVal);
+		[propget, id(121), helpstring("property MaxNumBlocks")] HRESULT MaxNumBlocks([out, retval] long *pVal);
+		[propget, id(122), helpstring("property MaxNumRecords")] HRESULT MaxNumRecords([out, retval] long *pVal);
+		[propget, id(123), helpstring("property GroupObjects")] HRESULT GroupObjects([out, retval] BSTR *pVal);
+		[propget, id(124), helpstring("property SentenceGroupObjects")] HRESULT SentenceGroupObjects([out, retval] BSTR *pVal);
+		[propget, id(125), helpstring("property BDLChecksItem")] HRESULT BDLChecksItem([out, retval] BSTR *pVal);
+		[propget, id(126), helpstring("property RAMOrderByItem")] HRESULT RAMOrderByItem([out, retval] BSTR *pVal);
+		[propget, id(127), helpstring("property OrganizationIdItem")] HRESULT OrganizationIdItem([out, retval] BSTR *pVal);
+		[propget, id(128), helpstring("property M4ObjId")] HRESULT M4ObjId([out, retval] BSTR *pVal);
+		[propget, id(129), helpstring("property TiInheritLevel")] HRESULT TiInheritLevel([out, retval] short *pVal);
+		[propget, id(130), helpstring("property GetPlugIsMultiselectionByPosition")] HRESULT GetPlugIsMultiselectionByPosition(short ai_iPosition, [out, retval] BYTE *pVal);
+		[propget, id(131), helpstring("property FilterSysSentenceItem")] HRESULT FilterSysSentenceItem(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(132), helpstring("property FilterSysParamItem")] HRESULT FilterSysParamItem(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(133), helpstring("property FilterIsMultiselection")] HRESULT FilterIsMultiselection(short ai_iFilterPosition, [out, retval] BYTE *pVal);
+		[propget, id(134), helpstring("property NumberOfFindFilters")] HRESULT NumberOfFindFilters([out, retval] short *pVal);
+		[propget, id(135), helpstring("property FindFilterId")] HRESULT FindFilterId(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(136), helpstring("property FindFilterT3Id")] HRESULT FindFilterT3Id(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(137), helpstring("property FindFilterNodeId")] HRESULT FindFilterNodeId(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(138), helpstring("property FindFilterSysSentenceItem")] HRESULT FindFilterSysSentenceItem(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(139), helpstring("property FindFilterSysParamItem")] HRESULT FindFilterSysParamItem(short ai_iFilterPosition, [out, retval] BSTR *pVal);
+		[propget, id(140), helpstring("property FindFilterIsMultiselection")] HRESULT FindFilterIsMultiselection(short ai_iFilterPosition, [out, retval] BYTE *pVal);
+		[propget, id(141), helpstring("property FindFilterIsApplicable")] HRESULT FindFilterIsApplicable(short ai_iFilterPosition, [out, retval] BYTE *pVal);
+		[propget, id(142), helpstring("property FilterIsOwnNode")] HRESULT FilterIsOwnNode(short ai_iFilterPosition, [out, retval] BYTE *pVal);
+		[propget, id(143), helpstring("property FindFilterIsOwnNode")] HRESULT FindFilterIsOwnNode(short ai_iFilterPosition, [out, retval] BYTE *pVal);
+		[propget, id(144), helpstring("property IsOverWritten")] HRESULT IsOverWritten([out, retval] short *pVal);
+
+	};
+	[
+		object,
+		uuid(FFA83641-FB6B-11D0-A763-00C04FB75E70),
+		dual,
+		helpstring("IWrapRecordSet Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapRecordSet : IDispatch
+	{
+		[id(1), helpstring("method GetRegister")] HRESULT GetRegister([in] int ai_iIndex, [out, retval] IWrapRegister** ao_poRegister);
+		[id(2), helpstring("method GetCurrentRegister")] HRESULT GetCurrentRegister([out, retval] IWrapRegister** ao_poRegister);
+		[id(3), helpstring("method GetRecordCount")] HRESULT GetRecordCount([out, retval] int* ao_iCount);
+		[id(4), helpstring("method NewRegister")] HRESULT NewRegister([out, retval] IWrapRegister** ao_poRegister);
+		[id(5), helpstring("method SetCurrentRegister")] HRESULT SetCurrentRegister([in] IWrapRegister* ai_poRegister, [out, retval] short* ao_sRetVal);
+		[id(6), helpstring("method ExistRegister")] HRESULT ExistRegister([out, retval] VARIANT_BOOL* ao_pbVal);
+		[id(7), helpstring("method FindRegister")] HRESULT FindRegister([out, retval] IWrapRegister** ao_piRegister);
+		[id(8), helpstring("method MoveCurrent")] HRESULT MoveCurrent([in] BSTR ai_stBase, [in] long ai_iOffset, [out, retval] VARIANT_BOOL* ao_pb);
+		[propget, id(9), helpstring("property coItems")] HRESULT coItems([out, retval] IWrapColItems* *pVal);
+		[propget, id(10), helpstring("property Operation")] HRESULT Operation([out, retval] IWrapOper* *pVal);
+		[id(11), helpstring("method InsertRegister")] HRESULT InsertRegister([in] IWrapRegister* ai_iRegister);
+		[id(12), helpstring("method CheckPoint")] HRESULT CheckPoint([out, retval] short* ao_sRetVal);
+		[id(13), helpstring("method Load")] HRESULT Load([out, retval] short* ao_sRetVal);
+		[id(14), helpstring("method Persist")] HRESULT Persist([out, retval] short* ao_sRetVal);
+		[propget, id(15), helpstring("property RegisterIterator")] HRESULT RegisterIterator([out, retval] IWrapRgIt** pVal);
+		[propget, id(16), helpstring("property CurrentIterator")] HRESULT CurrentIterator([out, retval] IWrapRgIt** pVal);
+		[propget, id(17), helpstring("property ItemIterator")] HRESULT ItemIterator([out, retval] IWrapItIt** pVal);
+		[id(18), helpstring("method Destroy")] HRESULT Destroy([out, retval] short* ao_RetVal);
+		[id(19), helpstring("method SetCurrentSearchIndexByPos")] HRESULT SetCurrentSearchIndexByPos([in] short ai_iPos, [out, retval] short* ao_RetVal);
+		[id(20), helpstring("method SetCurrentSearchIndexById")] HRESULT SetCurrentSearchIndexById([in] long ai_IndexId, [out, retval] short* ao_RetVal);
+		[id(21), helpstring("method Arrange")] HRESULT Arrange([out, retval] short* ao_Retval);
+		[id(22), helpstring("method Undo")] HRESULT Undo([out, retval] short* ao_sRetVal);
+		[propget, id(23), helpstring("method Copy")] HRESULT Copy([out, retval] IWrapRecordSet* *pVal);
+		[id(24), helpstring("method Follow")] HRESULT Follow([out, retval] IWrapRecordSet** pVal);
+		[id(25), helpstring("method SendBlockMark")] HRESULT SendBlockMark([in]VARIANT_BOOL* pVal);
+		[id(26), helpstring("Gets all block items")] HRESULT ReadBlockItems([out] SAFEARRAY(VARIANT)* ao_avValues, [out] short* ao_piLastLoadStatus, [out] long* ao_piLastLoadRows, [out] long* ao_piLastLoadFetchs, [out, retval] short* ao_piReturn);
+		[id(27), helpstring("Gets children nodes timestamps")] HRESULT ReadChildrenTimeStamps([out] SAFEARRAY(ULONGLONG)* ao_alTimes, [out, retval] short* ao_piReturn);
+	};
+
+	[
+		object,
+		uuid(0364B2D1-0438-11D1-A76A-00C04FB75E70),
+		dual,
+		helpstring("IWrapSlice Interface"),
+		pointer_default(unique),
+		restricted
+	]
+	interface IWrapSlice : IDispatch
+	{
+		[id(1), helpstring("method Delete")] HRESULT Delete([out, retval] short* ao_sRetVal);
+		[propget, id(2), helpstring("property StartDate")] HRESULT StartDate([out, retval] DATE *pVal);
+		[propput, id(2), helpstring("property StartDate")] HRESULT StartDate([in] DATE pVal);
+		[propget, id(3), helpstring("property EndDate")] HRESULT EndDate([out, retval] DATE *pVal);
+		[propput, id(3), helpstring("property EndDate")] HRESULT EndDate([in] DATE pVal);
+		[propget, id(4), helpstring("property Value")] HRESULT Value([out, retval] VARIANT* pVal);
+		[propput, id(4), helpstring("property Value")] HRESULT Value([in] VARIANT newVal);
+		[id(5), restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_varRef);
+	};
+
+	[
+		object,
+		uuid(42F245B3-026F-11D1-A767-00C04FB75E70),
+		dual,
+		helpstring("IWrapColSlices Interface"),
+		pointer_default(unique),
+		restricted
+	]
+	interface IWrapColSlices : IDispatch
+	{
+		[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[id(2), helpstring("method DeleteAllSlices")] HRESULT DeleteAllSlices([out, retval] short* ao_sRetVal);
+		[id(3), helpstring("method AddSlice")] HRESULT AddSlice([in] DATE ai_dStartDate, [out, retval] short* ao_sRetVal);
+		[id(4), helpstring("method GetSliceByDate")] HRESULT GetSliceByDate([in] DATE ai_dDate, [out, retval] IWrapSlice** ao_poWrapSlice);
+		[id(5), helpstring("method HasSlices")] HRESULT HasSlices([out, retval] VARIANT_BOOL* ao_pb);
+		[id(8), helpstring("method GetSliceByPos")] HRESULT GetSliceByPos([in] int ai_iId, [out, retval] IWrapSlice** ao_poWrapSlice);
+	};
+
+		[
+		object,
+		uuid(FFA83637-FB6B-11D0-A763-00C04FB75E70),
+		dual,
+		helpstring("IWrapItem Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapItem : IDispatch
+	{
+		[propget, id(1), helpstring("property IdItem")] HRESULT IdItem([out, retval] long *pVal);
+		[id(2), helpstring("method Call")] HRESULT Call([out, retval] short* ao_sRetVal);
+		[propget, id(3), helpstring("property Name")] HRESULT Name([out, retval] BSTR *pVal);
+		[propget, id(4), helpstring("property Value")] HRESULT Value([out, retval] VARIANT* pVal);
+		[propput, id(4), helpstring("property Value")] HRESULT Value([in] VARIANT newVal);
+		[propget, id(5), helpstring("property OldValue")] HRESULT OldValue([out, retval] VARIANT* pVal);
+		[id(6), restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_varRef);
+		[propget, id(7), helpstring("property coSlices")] HRESULT coSlices([out, retval] IWrapColSlices** pVal);
+		[propget, id(8), helpstring("property ItemDef")] HRESULT ItemDef([out, retval] IWrapItemDef** pVal);
+		[propget, restricted, id(9), helpstring("property FooterValue")] HRESULT FooterValue([out, retval] VARIANT* pVal);
+		[id(10), helpstring("method CreateBlobFile")] HRESULT CreateBlobFile([out] VARIANT_BOOL *pRet, [in] BSTR DirName, [in] BSTR Extension);
+		[id(11), helpstring("method ChangedMask")] HRESULT ChangedMask([out, retval] long *pMask);
+		[id(12), helpstring("method SetDescr")] HRESULT SetDescr([in] BSTR Descr);
+		[id(13), helpstring("method GetDescr")] HRESULT GetDescr([out, retval] BSTR *Descr);
+	};
+
+		[
+		object,
+		uuid(FFA83635-FB6B-11D0-A763-00C04FB75E70),
+		dual,
+		helpstring("IWrapColItems Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapColItems : IDispatch
+	{
+		[id(1), helpstring("method Count")] HRESULT Count([out, retval] int* ao_count);
+		[id(2), helpstring("method GetItemByName")] HRESULT GetItemByName([in] BSTR ai_name, [out, retval] IWrapItem** ao_item);
+		[id(3), helpstring("method GetItemByPos")] HRESULT GetItemByPos([in] int ai_pos, [out, retval] IWrapItem** ao_item);
+		[id(4), restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_VarRef);
+	};
+	[
+		object,
+		uuid(79E975AC-22DD-11D1-A781-00C04FB75E70),
+		dual,
+		helpstring("IWrapItems Interface"),
+		pointer_default(unique),
+		restricted
+	]
+	interface IWrapItems : IDispatch
+	{
+		[propget, id(1), helpstring("property Count")] HRESULT Count([out, retval] long *pVal);
+		[id(2), helpstring("method Item")] HRESULT Item([in] VARIANT ai_var, [out,retval] IWrapItem** ao_item);
+		[restricted, id(DISPID_NEWENUM), helpstring("method _NewEnum")] HRESULT _NewEnum([out, retval] IUnknown** ao_unk);
+		[restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_varref);
+	};
+
+	[
+		object,
+		uuid(438DB1A4-28E9-11D1-A785-00C04FB75E70),
+		dual,
+		helpstring("Ienumitem Interface"),
+		pointer_default(unique),
+		restricted
+	]
+	interface Ienumitem : IDispatch
+	{
+		[id(1), restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_var);
+	};
+	[
+		object,
+		uuid(FFA83639-FB6B-11D0-A763-00C04FB75E70),
+		dual,
+		helpstring("IWrapRegister Interface"),
+		pointer_default(unique)
+		//, restricted
+	]
+	interface IWrapRegister : IDispatch
+	{
+		[id(1), restricted, helpstring("method Init")] HRESULT Init([in] VARIANT ai_VarRef);
+		[id(2), restricted, helpstring("method Unwrap")] HRESULT Unwrap([out, retval] VARIANT* ao_VarRef);
+		[propget, id(3), helpstring("property CoItems")] HRESULT CoItems([out, retval] IWrapColItems** pVal);
+		[id(4), helpstring("method Delete")] HRESULT Delete([out, retval] short* ao_sRetVal);
+		[propget, id(5), helpstring("property IsEof")] HRESULT IsEof([out, retval] VARIANT_BOOL* pVal);
+
+		[propget, id(6), helpstring("property Operation")] HRESULT Operation([out, retval] IWrapOper* *pVal);
+		[propget,id(7), helpstring("property Index")] HRESULT Index([out, retval] long *pVal);
+		[id(8),helpstring("method Free")] HRESULT Free([out, retval] short* ao_RetVal);
+		[propget, hidden, id(9), helpstring("property WrapItems")] HRESULT WrapItems([out, retval] IWrapItems* *pVal);
+		[propget, id(10), helpstring("property ItemIterator")] HRESULT ItemIterator([out, retval] IWrapItIt* *pVal);
+		[id(11), helpstring("method SendRegisterMark")] HRESULT SendRegisterMark([in]VARIANT_BOOL* pVal);
+	};
+
+	[
+		object,
+		uuid(0E2B35B7-DDC6-11D1-8BF1-00C04FA95230),
+		dual,
+		helpstring("IWrapBookMark Interface"),
+		pointer_default(unique)
+	]
+	interface IWrapBookMark : IDispatch
+	{
+		[id(1), helpstring("method GetFrom: Captures the states of an access.")] HRESULT GetFrom([in] IWrapAccess* ai_piAccess, [out, retval] short* ao_sRetVal);
+		[id(2), helpstring("method ApplyTo: Set the access in the state stored in the bookmark.")] HRESULT ApplyTo([in] IWrapAccess* ai_piAccess, [out, retval] short* ao_sRetVal);
+		[id(3), helpstring("method SerializeBranch: Converts the state in the bookmark into a path string.")] HRESULT SerializeBranch([in] IWrapChannel* ai_piChannel,  [in] IWrapAccess* ai_piAccess, [in] BSTR ai_sNodeId, [out] BSTR *ao_sSerialized, [out, retval] short* ao_sRetVal);
+		[id(4), helpstring("method DeserializeBranch: Converts a path string into a state in the bookmark.")] HRESULT DeserializeBranch([in] IWrapChannel* ai_piChannel, [in] BSTR ai_sSerialized, [out, retval] short* ao_sRetVal);
+		[id(5), helpstring("method GetFrom_PK: Captures the states of an access by PK.")] HRESULT GetFrom_PK([in] IWrapAccess* ai_piAccess, [out, retval] short* ao_sRetVal);
+		[id(6), helpstring("method ApplyToBraach: Set a branch's access in the state stored in the bookmark.")] HRESULT ApplyToBranch([in] IWrapAccess* ai_piAccess, [in] BSTR ai_sCutNode, [out] BSTR * ai_sLast, [out, retval] short* ao_sRetVal);
+	};
+
+	[
+		uuid(FFA83642-FB6B-11D0-A763-00C04FB75E70),
+		helpstring("WrapRecordSet Class")
+	]
+	coclass WrapRecordSet
+	{
+		[default] interface IWrapRecordSet;
+	};
+	[
+		uuid(FFA83636-FB6B-11D0-A763-00C04FB75E70),
+		helpstring("WrapColItems Class")
+	]
+	coclass WrapColItems
+	{
+		[default] interface IWrapColItems;
+	};
+	[
+		uuid(FFA83638-FB6B-11D0-A763-00C04FB75E70),
+		helpstring("WrapItem Class")
+	]
+	coclass WrapItem
+	{
+		[default] interface IWrapItem;
+		interface IWrapColSlices;
+	};
+	[
+		uuid(FFA8363A-FB6B-11D0-A763-00C04FB75E70),
+		helpstring("WrapRegister Class")
+	]
+	coclass WrapRegister
+	{
+		[default] interface IWrapRegister;
+	};
+		[
+		uuid(CDF75AE8-1D24-11D1-A77A-00C04FB75E70),
+		helpstring("WrapSlice Class"),
+		restricted
+	]
+	coclass WrapSlice
+	{
+		[default] interface IWrapSlice;
+	};
+
+	[
+		uuid(79E975AD-22DD-11D1-A781-00C04FB75E70),
+		helpstring("WrapItems Class"),
+		restricted
+	]
+	coclass WrapItems
+	{
+		[default] interface IWrapItems;
+	};
+
+	[
+		uuid(438DB1A5-28E9-11D1-A785-00C04FB75E70),
+		helpstring("enumitem Class"),restricted
+	]
+	coclass enumitem
+	{
+		[default] interface Ienumitem; 
+		interface IEnumVARIANT;
+	};
+	[
+		uuid(F670BF85-D483-11D1-BC54-00C04FA499B2),
+		helpstring("WrapExecutor Class")
+	]
+	coclass WrapExecutor
+	{
+		[default] interface IWrapExecutor;
+		interface IWrapStack;
+		interface IWrapStepper;
+	};	
+
+	[
+		uuid(51C12971-1C5D-11d4-BE67-00C04FA499B2),
+		helpstring("WrapBreakpoint Class")
+	]
+	coclass WrapBreakpoint
+	{
+		[default] interface IWrapBreakpoint;
+	};	
+
+	[
+		uuid(51C12973-1C5D-11d4-BE67-00C04FA499B2),
+		helpstring("WrapRunningFormInfo Class")
+	]
+	coclass WrapRunningFormInfo
+	{
+		[default] interface IWrapRunningFormInfo;
+	};	

@@ -1,0 +1,872 @@
+BEGIN Global Global
+    BEGIN Types Types
+        BEGIN Type Color
+            Basetype = "Long"
+            BEGIN Constraint Constraint1
+                Expression = "MyValue() = MyValue()"
+                Errorlevel = 0
+                Code = 0
+                Message = ""
+            END
+        END
+        BEGIN Type TraductString
+            Basetype = "String"
+            BEGIN Constraint ConstraintTraductString
+                Expression = "TraductString(MyValue(),"CHNNL","ND","TM")<>1"
+                Errorl el = 0
+                Code = 100
+                Message = "String contains a translatable sequence with an error"
+            END
+        END
+        BEGIN Type FooterType
+            Basetype = "String"
+            BEGIN Constraint ConstraintFooterType
+                Expression = "MyValue() In ["None", "Anyone", "Avg", "Count", "First", "Last", "Max", "Min", "Sum"]"
+                Errorl el = 0
+                Code = 100
+                Message = "String contains a translatable sequence with an error"
+            END
+        END
+        BEGIN Type TwoValueType
+            Basetype = "Integer"
+            BEGIN Constraint ConstraintTwoValueType
+                Expression = "MyValue() In [0, 1]"
+                Errorlevel = 0
+                Code = 0
+                Message = ""
+            END
+        END
+        BEGIN Type TreeValueType
+            Basetype = "Integer"
+            BEGIN Constraint ConstraintTreeValueType
+                Expression = "MyValue() In [0,1,2]"
+                Errorlevel = 0
+                Code = 0
+                Message = ""
+            END
+        END
+        BEGIN Type SixValueType
+            Basetype = "Integer"
+            BEGIN Constraint ConstraintTreeValueType
+                Expression = "MyValue() In [1,2,3,4,5,6]"
+                Errorlevel = 0
+                Code = 0
+                Message = ""
+            END
+        END
+    END
+    BEGIN Propertygroups Propertygroups
+        BEGIN Propertygroup Itemgroup
+            BEGIN Property Idnode
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1002
+            END
+            BEGIN Property Iditem
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1003
+            END
+            BEGIN Property IdPayrollitem
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1004
+            END
+            BEGIN Property Idnodedebug
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1412
+            END
+            BEGIN Property Iditemdebug
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1413
+            END
+            BEGIN Property Iditemdetail
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1414
+            END
+            BEGIN Property IdPayrollitemdebug
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1004
+            END
+            BEGIN Property Footer
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = "None"
+                DescriptionID = 1415
+            END
+        END
+        BEGIN Propertygroup Fontgroup
+            BEGIN Property Fontname
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "Ms Sans Serif"
+                DescriptionID = 1098
+            END
+            BEGIN Property Fontsize
+                Type = "Long"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 8
+                DescriptionID = 1099
+            END
+            BEGIN Property Fontbold
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1100
+            END
+            BEGIN Property Fontitalic
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1101
+            END
+            BEGIN Property Fontunderline
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1102
+            END
+        END
+        BEGIN Propertygroup Colorgroup
+            BEGIN Property Backcolor
+                Type = "Color"
+                Kind = "FREE"
+                Default = -2147483633
+                DescriptionID = 1103
+            END
+            BEGIN Property Forecolor
+                Type = "Color"
+                Kind = "FREE"
+                Default = -2147483630
+                DescriptionID = 1104
+            END
+        END
+        BEGIN Propertygroup Colorgrouptable
+            BEGIN Property Backcolor
+                Type = "Color"
+                Kind = "FREE"
+                Default = 16777215
+                DescriptionID = 1103
+            END
+            BEGIN Property Forecolor
+                Type = "Color"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1104
+            END
+        END
+        BEGIN Propertygroup Specialchargroup
+            BEGIN Property Specialcharacter
+                Type = "String"
+                Kind = "FREE"
+                Default = ""
+                DescriptionID = 1416
+            END
+            BEGIN Property Specialcharacterposition
+                Type = "Integer"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1417
+            END
+        END
+        BEGIN Propertygroup Positiongroup
+            BEGIN Property Left
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1085
+            END
+            BEGIN Property Top
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1086
+            END
+            BEGIN Property Width
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1107
+            END
+            BEGIN Property Height
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1108
+            END
+        END
+        BEGIN Propertygroup Coordenategroup
+            BEGIN Property X1
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1418
+            END
+            BEGIN Property Y1
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1419
+            END
+            BEGIN Property X2
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1420
+            END
+            BEGIN Property Y2
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                DescriptionID = 1421
+            END
+        END
+    END
+    BEGIN Objects Objects
+        BEGIN Object Receipt
+            Control = "True"
+            Intoolbar = "False"
+            ResourceString = 946
+            HideFromInsert = "True"
+            Icon = "ID_FORM_ICON"
+            ProgID = "FEDesign.CDGenericControl"
+            Uniqueuid = "True"
+            DescriptionID = 634
+            BEGIN Property Appearance
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1422
+            END
+            BEGIN Property Borderstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 1
+                DescriptionID = 1111
+            END
+            BEGIN Property Backcolor
+                Type = "Color"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = -2147483633
+                DescriptionID = 1103
+            END
+            BEGIN Aggregates Positionprops
+                Propertygroup = "Positiongroup"
+            END
+            BEGIN Contains Containsbox
+                Object = "Recbox"
+            END
+            BEGIN Contains Containsimage
+                Object = "Recimage"
+            END
+            BEGIN Contains Containsline
+                Object = "Recline"
+            END
+            BEGIN Contains Containstable
+                Object = "Rectable"
+            END
+            BEGIN Contains Containstoolbar
+                Object = "Rectoolbar"
+                Mininstances = 0
+                Maxinstances = 1
+            END
+        END
+        BEGIN Object Rectable
+            Control = "True"
+            Intoolbar = "True"
+            ResourceString = 947
+            Icon = "ID_REC_TABLE_ICON"
+            Uniqueuid = "True"
+            ProgID = "FEDesign.CDRecTable"
+            DescriptionID = 639
+            BEGIN Property Rowheader
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1116
+            END
+            BEGIN Property Colheader
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1423
+            END
+            BEGIN Property Backcolor
+                Type = "Color"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = -2147483633
+                DescriptionID = 1103
+            END
+            BEGIN Aggregates Positionprops
+                Propertygroup = "Positiongroup"
+            END
+            BEGIN Contains Containsreccolumn
+                Object = "Reccolumn"
+            END
+            BEGIN Contains Containsrecrow
+                Object = "Recrow"
+            END
+            BEGIN Contains Containsreccell
+                Object = "Reccell"
+            END
+            BEGIN Contains Containsrecrecord
+                Object = "Recrecord"
+            END
+        END
+        BEGIN Object Recrecord
+            Control = "False"
+            ResourceString = 948
+            Intoolbar = "False"
+            Uniqueuid = "True"
+            DescriptionID = 640
+            Icon = "ID_REC_RECORD_ICON"
+            BEGIN Property Row
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                Translated = "FALSE"
+                Helpstring = ""
+                DescriptionID = 1424
+            END
+            BEGIN Property Idnode
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1002
+            END
+            BEGIN Property Idnodedebug
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1412
+            END
+            BEGIN Contains Containsrecrecordcolumn
+                Object = "Recrecordcolumn"
+            END
+        END
+        BEGIN Object Recrecordcolumn
+            Control = "False"
+            ResourceString = 949
+            Intoolbar = "False"
+            Uniqueuid = "True"
+            DescriptionID = 641
+            Icon = "ID_REC_RECORDCOLUMN_ICON"
+            BEGIN Property Col
+                Type = "Long"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1425
+            END
+            BEGIN Property Iditem
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1003
+            END
+            BEGIN Property Iditemdebug
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1413
+            END
+            BEGIN Property Alignment
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1123
+            END
+            BEGIN Aggregates Fontprops
+                Propertygroup = "Fontgroup"
+            END
+            BEGIN Aggregates Colorpropstable
+                Propertygroup = "Colorgrouptable"
+            END
+            BEGIN Aggregates Specialcharprops
+                Propertygroup = "Specialchargroup"
+            END
+        END
+        BEGIN Object Reccolumn
+            Control = "False"
+            ResourceString = 950
+            Intoolbar = "False"
+            Uniqueuid = "True"
+            DescriptionID = 642
+            Icon = "ID_REC_COLHEADER_ICON"
+            BEGIN Property Col
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                Translated = "FALSE"
+                Helpstring = ""
+                DescriptionID = 1425
+            END
+            BEGIN Property Width
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                Translated = "FALSE"
+                Helpstring = ""
+                DescriptionID = 1107
+            END
+            BEGIN Property Text
+                Type = "TraductString"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1122
+            END
+            BEGIN Property Cancelrow
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1426
+            END
+            BEGIN Property Alignment
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1123
+            END
+             BEGIN Aggregates Fontprops
+                Propertygroup = "Fontgroup"
+            END
+            BEGIN Aggregates Colorpropstable
+                Propertygroup = "Colorgrouptable"
+            END
+        END
+        BEGIN Object Recrow
+            Control = "False"
+            ResourceString = 951
+            Intoolbar = "False"
+            Uniqueuid = "True"
+            DescriptionID = 643
+            Icon = "ID_REC_ROWHEADER_ICON"
+            BEGIN Property Row
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                Translated = "FALSE"
+                Helpstring = ""
+                DescriptionID = 1424
+            END
+            BEGIN Property Height
+                Type = "Long"
+                Kind = "FREE"
+                Default = 0
+                Translated = "FALSE"
+                Helpstring = ""
+                DescriptionID = 1108
+            END
+            BEGIN Property Text
+                Type = "TraductString"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1122
+            END
+        END
+        BEGIN Object Reccell
+            Control = "False"
+            ResourceString = 952
+            Intoolbar = "False"
+            Uniqueuid = "True"
+            DescriptionID = 644
+            Icon = "ID_REC_CELL_ICON"
+            BEGIN Property Col
+                Type = "Long"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1425
+            END
+            BEGIN Property Row
+                Type = "Long"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1424
+            END
+            BEGIN Property Cancelrow
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1426
+            END
+            BEGIN Property Alignment
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1123
+            END
+            BEGIN Property Text
+                Type = "TraductString"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1122
+            END
+            BEGIN Aggregates Itemprops
+                Propertygroup = "Itemgroup"
+            END
+            BEGIN Aggregates Fontprops
+                Propertygroup = "Fontgroup"
+            END
+            BEGIN Aggregates Colorpropstable
+                Propertygroup = "Colorgrouptable"
+            END
+            BEGIN Aggregates Specialcharprops
+                Propertygroup = "Specialchargroup"
+            END
+        END
+        BEGIN Object Recbox
+            ProgID = "FEDesign.CDRecBox"
+            Control = "True"
+            ResourceString = 953
+            Intoolbar = "True"
+            Icon = "ID_LABEL_ICON"
+            Uniqueuid = "True"
+            DescriptionID = 638
+            BEGIN Property Appearance
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1422
+            END
+            BEGIN Property Borderstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 1
+                DescriptionID = 1111
+            END
+            BEGIN Property Backstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 1
+                DescriptionID = 1124
+            END
+            BEGIN Property Alignment
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1123
+            END
+            BEGIN Property Text
+                Type = "TraductString"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1122
+            END
+            BEGIN Aggregates Itemprops
+                Propertygroup = "Itemgroup"
+            END
+            BEGIN Aggregates Fontprops
+                Propertygroup = "Fontgroup"
+            END
+            BEGIN Aggregates Positionprops
+                Propertygroup = "Positiongroup"
+            END
+            BEGIN Aggregates Colorprops
+                Propertygroup = "Colorgroup"
+            END
+            BEGIN Aggregates Specialcharprops
+                Propertygroup = "Specialchargroup"
+            END
+        END
+        BEGIN Object Recimage
+            Control = "True"
+            Intoolbar = "True"
+            ResourceString = 954
+            Uniqueuid = "True"
+            ProgID = "FEDesign.CDRecImage"
+            Icon = "ID_IMAGE_ICON"
+            DescriptionID = 636
+            BEGIN Property Borderstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1111
+            END
+            BEGIN Property Path
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1427
+            END
+            BEGIN Property Stretch
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1170
+            END
+            BEGIN Aggregates Positionprops
+                Propertygroup = "Positiongroup"
+            END
+        END
+        BEGIN Object Recline
+            Control = "True"
+            Intoolbar = "True"
+            ResourceString = 955
+            Uniqueuid = "True"
+            Icon = "ID_REC_LINE_ICON"
+            ProgID = "FEDesign.CDLine"
+            DescriptionID = 637
+            BEGIN Property Borderstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 1
+                DescriptionID = 1111
+            END
+            BEGIN Property Borderwidth
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 1
+                DescriptionID = 1428
+            END
+            BEGIN Property Forecolor
+                Type = "Color"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = -2147483630
+                DescriptionID = 1104
+            END
+            BEGIN Aggregates Coordenategroup
+                Propertygroup = "Coordenategroup"
+            END
+        END
+        BEGIN Object Rectoolbar
+            Control = "True"
+            ResourceString = 956
+            Intoolbar = "True"
+            Icon = "ID_TOOLBAR_ICON"
+            Uniqueuid = "True"
+            DescriptionID = 635
+            ProgID = "FEDesign.CDRecToolBar"
+            BEGIN Property Idnode
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1002
+            END
+            BEGIN Property Appearance
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1422
+            END
+            BEGIN Property Borderstyle
+                Type = "Integer"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = 0
+                DescriptionID = 1111
+            END
+            BEGIN Property Refreshbutton
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1429
+            END
+            BEGIN Property Printbutton
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1430
+            END
+            BEGIN Property Currencybutton
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "TRUE"
+                DescriptionID = 1431
+            END
+            BEGIN Property Presentationbutton
+                Type = "Bool"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = "FALSE"
+                DescriptionID = 1499
+            END
+            BEGIN Property IdPresentation
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1500
+            END
+            BEGIN Property IdMeta4ObjectPresent
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1501
+            END
+            BEGIN Property IdParamsPresent
+                Type = "String"
+                Kind = "FREE"
+                Translated = "FALSE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1502
+            END
+            BEGIN Aggregates Positionprops
+                Propertygroup = "Positiongroup"
+            END
+        END
+        BEGIN Object TraductProp
+            HideFromInsert = "True"
+            ResourceString = 443
+            DescriptionID = 610
+            BEGIN Property Name
+                Type = "String"
+                Kind = "COMPULSORY"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1337
+            END
+            BEGIN Property Value_ENG
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1338
+            END
+            BEGIN Property Value_ESP
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1339
+            END
+            BEGIN Property Value_GER
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1340
+            END
+            BEGIN Property Value_ITA
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1341
+            END
+            BEGIN Property Value_FRA
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1342
+            END
+            BEGIN Property Value_BRA
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1343
+            END
+            BEGIN Property Value_GEN
+                Type = "String"
+                Kind = "FREE"
+                Helpstring = ""
+                Default = ""
+                DescriptionID = 1344
+            END
+        END
+    END
+END

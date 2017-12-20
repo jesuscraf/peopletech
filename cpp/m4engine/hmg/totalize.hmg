@@ -1,0 +1,80 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<totalize.cpp>
+//	File:				totalize.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_TOTALIZE
+#define GROUP_BASE  ENG_TGB_TOTALIZE
+#define TRACE_ARRAY g_stENG_Totalize_Msg
+
+enum TOTALIZE_MSG 
+{
+	TOTALIZE_MSG_10=0,	//Ojo, se usa como indice del array
+	TOTALIZE_MSG_20,
+	TOTALIZE_MSG_30,
+	TOTALIZE_MSG_40,
+	TOTALIZE_MSG_50,
+	TOTALIZE_MSG_60,
+	TOTALIZE_MSG_70,
+	TOTALIZE_MSG_80,
+	TOTALIZE_MSG_90,
+	TOTALIZE_MSG_100,
+	TOTALIZE_MSG_110,
+
+	TOTALIZE_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, TOTALIZE_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Incorrect totalize method %0:s for this type" }, 
+
+	{ GROUP_ID, TOTALIZE_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Duplicated key" },
+
+	{ GROUP_ID, TOTALIZE_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Key required but not found" },
+
+	{ GROUP_ID, TOTALIZE_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Entry failed" },
+
+	{ GROUP_ID, TOTALIZE_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Tree count or subcount is less than one" },
+
+	{ GROUP_ID, TOTALIZE_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Tree count or subcount out of range" },
+
+	{ GROUP_ID, TOTALIZE_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Problems calculating composed crosstab value" },
+
+	{ GROUP_ID, TOTALIZE_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Index level out of range" },
+
+	{ GROUP_ID, TOTALIZE_MSG_90+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Level count less than 1" },
+
+	{ GROUP_ID, TOTALIZE_MSG_100+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error building derived object %0:s, level out of range" },
+
+	{ GROUP_ID, TOTALIZE_MSG_110+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error building derived object %0:s, level duplicated" }
+} ;

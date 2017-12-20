@@ -1,0 +1,24 @@
+HKCR
+{
+	M4FontHolder.M4FontHolder.1 = s 'M4FontHolder Class'
+	{
+		CLSID = s '{06854C14-088F-11D3-BC9D-00C04F71652D}'
+	}
+	M4FontHolder.M4FontHolder = s 'M4FontHolder Class'
+	{
+		CurVer = s 'M4FontHolder.M4FontHolder.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {06854C14-088F-11D3-BC9D-00C04F71652D} = s 'M4FontHolder Class'
+		{
+			ProgID = s 'M4FontHolder.M4FontHolder.1'
+			VersionIndependentProgID = s 'M4FontHolder.M4FontHolder'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

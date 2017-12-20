@@ -1,0 +1,24 @@
+HKCR
+{
+	MenuItem.MenuItem.1 = s 'MenuItem Class'
+	{
+		CLSID = s '{B069FA17-40D9-11D3-BCFB-00C04F71652D}'
+	}
+	MenuItem.MenuItem = s 'MenuItem Class'
+	{
+		CurVer = s 'MenuItem.MenuItem.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B069FA17-40D9-11D3-BCFB-00C04F71652D} = s 'MenuItem Class'
+		{
+			ProgID = s 'MenuItem.MenuItem.1'
+			VersionIndependentProgID = s 'MenuItem.MenuItem'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

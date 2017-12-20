@@ -1,0 +1,406 @@
+META4-OLTP-EXECUTOR-TABLEDIN-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4OltpSubsystemModule, oltpSubsystem, oltpSubsystemGroup
+		FROM META4-OLTP-SUBSYSTEM-MIB;
+
+
+meta4OltpExecutorModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Oltp Executor Table (Dynamic table)."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4OltpSubsystemModule 1 }
+
+
+-- Incluiremos los campos de la tabla.
+--
+--
+
+oltpExecutorGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		cacheName,
+		userName,
+		sessionId,
+		executionBeginDate,
+		executionEndDate,
+		methodDescription,
+		objectsInVm,
+		executionState,
+		actionCancelExec,
+		executionCount,
+		errorExecutionCount,
+		timeoutExecutionCount,
+		userAbortedExecutionCount,
+		adminAbortedExecutionCount,
+		successfulExecutionCount,
+		tps5Sec,
+		tps30Sec,
+		tps5Min,
+		avgExecutionTime5Sec,
+		avgExecutionTime30Sec,
+		avgExecutionTime5Min,
+		avgSSUse5Sec,
+		avgSSUse30Sec,
+		avgSSUse5Min,
+		avgWaitTime5Sec,
+		avgWaitTime30Sec,
+		avgWaitTime5Min
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { oltpSubsystemGroup 1 }
+
+
+-- Definimos la tabla como una secuencia de entradas (registros).
+-- La tabla consta de una serie de columnas (propiedades y estadisticas). Tiene una columna obligatoria que es el indice.
+
+oltpExecutorTable OBJECT-TYPE
+	SYNTAX SEQUENCE OF OltpExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpSubsystem 1001 }
+
+-- La definicion de cada registro: Importante la nomenclatura de mayúsculas de la inicial!.
+-- Un registro se identifica por la información propia del registro y por un indice!.
+
+oltpExecutorEntry OBJECT-TYPE 
+	SYNTAX OltpExecutorEntry
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	INDEX { oltpExecutorIndex }
+	::= { oltpExecutorTable 1 }
+
+-- Definimos las columnas del registro. Es la struct que define un registro de la tabla.
+
+OltpExecutorEntry ::= SEQUENCE {
+		oltpExecutorIndex Unsigned32,
+		name DisplayString,
+		type DisplayString,
+		startDate DisplayString,
+		cacheName DisplayString,
+		userName DisplayString,
+		sessionId DisplayString,
+		executionBeginDate DisplayString,
+		executionEndDate DisplayString,
+		methodDescription DisplayString,
+		objectsInVm DisplayString,
+		executionState Integer32,
+		actionCancelExec DisplayString,
+		executionCount Integer32,
+		errorExecutionCount Integer32,
+		timeoutExecutionCount Integer32,
+		userAbortedExecutionCount Integer32,
+		adminAbortedExecutionCount Integer32,
+		successfulExecutionCount Integer32,
+		tps5Sec Integer32,
+		tps30Sec Integer32,
+		tps5Min Integer32,
+		avgExecutionTime5Sec Integer32,
+		avgExecutionTime30Sec Integer32,
+		avgExecutionTime5Min Integer32,
+		avgSSUse5Sec Integer32,
+		avgSSUse30Sec Integer32,
+		avgSSUse5Min Integer32,
+		avgWaitTime5Sec Integer32,
+		avgWaitTime30Sec Integer32,
+		avgWaitTime5Min Integer32
+	}
+
+-- El indice el el primer hijo (la primera columna) de un registro (entry).
+oltpExecutorIndex OBJECT-TYPE 
+	SYNTAX Unsigned32
+	MAX-ACCESS not-accessible
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpExecutorEntry 1 }
+
+--
+-- Ahora definimos el resto de columnas de la tabla. Importante: se empieza por la segunda columna pq
+-- la primera es el índice!.
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpExecutorEntry 2 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { oltpExecutorEntry 3 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { oltpExecutorEntry 4 }
+
+cacheName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Cache Name"
+	::= { oltpExecutorEntry 5 }
+
+userName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Name"
+	::= { oltpExecutorEntry 6 }
+
+
+sessionId OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Session ID"
+	::= { oltpExecutorEntry 7 }
+
+executionBeginDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Begin Date"
+	::= { oltpExecutorEntry 8 }
+
+executionEndDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution End Date"
+	::= { oltpExecutorEntry 9 }
+
+methodDescription  OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Method Description"
+	::= { oltpExecutorEntry 10 }
+
+
+objectsInVm  OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Objects in VM"
+	::= { oltpExecutorEntry 11 }
+
+
+executionState  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution State"
+	::= { oltpExecutorEntry 12 }
+	
+actionCancelExec  OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-write
+	STATUS current
+	DESCRIPTION
+		"Action Cancel Execution"
+	::= { oltpExecutorEntry 13 }
+
+executionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Execution Count"
+	::= { oltpExecutorEntry 501 }
+
+errorExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Error Execution Count"
+	::= { oltpExecutorEntry 502 }
+
+timeoutExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Timed Out Execution Count"
+	::= { oltpExecutorEntry 503 }
+
+userAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"User Aborted Execution Count"
+	::= { oltpExecutorEntry 504 }
+
+adminAbortedExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Admin. Aborted Execution Count"
+	::= { oltpExecutorEntry 505 }
+
+successfulExecutionCount  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Successful Execution Count"
+	::= { oltpExecutorEntry 506 }
+
+tps5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Seconds"
+	::= { oltpExecutorEntry 507 }
+
+tps30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 30 Seconds"
+	::= { oltpExecutorEntry 508 }
+
+tps5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"TPS - Last 5 Minutes"
+	::= { oltpExecutorEntry 509 }
+
+avgExecutionTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Seconds"
+	::= { oltpExecutorEntry 510 }
+
+avgExecutionTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 30 Seconds"
+	::= { oltpExecutorEntry 511 }
+
+avgExecutionTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time - Last 5 Minutes"
+	::= { oltpExecutorEntry 512 }
+
+avgSSUse5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Seconds"
+	::= { oltpExecutorEntry 513 }
+
+avgSSUse30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 30 Seconds"
+	::= { oltpExecutorEntry 514 }
+
+avgSSUse5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average SS Use - Last 5 Minutes"
+	::= { oltpExecutorEntry 515 }
+
+avgWaitTime5Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Seconds"
+	::= { oltpExecutorEntry 516 }
+
+avgWaitTime30Sec  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 30 Seconds"
+	::= { oltpExecutorEntry 517 }
+
+avgWaitTime5Min  OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Wait Time - Last 5 Minutes"
+	::= { oltpExecutorEntry 518 }
+
+
+END

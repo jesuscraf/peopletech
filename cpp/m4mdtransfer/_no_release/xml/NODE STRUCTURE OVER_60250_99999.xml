@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+ Copyright 1991-2007 by Meta4, Inc.
+
+ Centro Europa Empresarial - Edf. Roma
+
+ C/ Rozabella, 8
+
+ 28230 Las Rozas - Madrid
+
+ Spain
+
+ 
+
+ Private and Confidential
+
+ The information contained in this document is the property of Meta4.
+
+ It is for the exclusive use of designated employees
+
+ and not for distribution without prior written authorization.
+
+ -->
+
+<!--
+
+ This XML defines table dependencies for overwritten repository object NODE STRUCTURE OVER
+
+ @version 1.7
+
+ -->
+
+<object name="NODE STRUCTURE OVER">
+
+	<options>
+
+		<option name="dump-parameters" value="false"/>
+
+	</options>
+
+	<param name="ID_TI"/>
+
+	<read-table name="SCH_TIS" db="client">
+
+		<with-pk name="ID_TI" select="$ID_TI_INHERIT"/>
+
+		<call-table name="SCH_TIS">
+
+			<with-pk name="ID_TI" select="$ID_TI"/>
+
+			<fields>
+
+				<field name="ID_TI" value="@ID_TI"/>
+
+				<field name="N_TIENG" value="@N_TIENG"/>
+
+				<field name="N_TIESP" value="@N_TIESP"/>
+
+				<field name="N_TIFRA" value="@N_TIFRA"/>
+
+				<field name="N_TIGEN" value="@N_TIGEN"/>
+
+				<field name="N_TIGER" value="@N_TIGER"/>
+
+				<field name="N_TIITA" value="@N_TIITA"/>
+
+				<field name="N_TIBRA" value="@N_TIBRA"/>
+
+				<field name="DT_CREATE" visible="false"/>
+
+			</fields>
+
+			<update-funtions>
+
+				<call-template name="today">
+
+					<with-arg name="date" insert="@DT_CREATE"/>
+
+				</call-template>
+
+			</update-funtions>
+
+		</call-table>
+
+	</read-table>
+
+	<read-table name="SCH_TI_MD_VERSION" db="client">
+
+		<with-pk name="ID_TI" select="$ID_TI_INHERIT"/>
+
+		<call-table name="SCH_TI_MD_VERSION">
+
+			<with-pk name="ID_TI" select="$ID_TI"/>
+
+			<fields>
+
+				<field name="ID_TI" value="@ID_TI"/>
+
+				<field name="DT_MD_VERSION" visible="false"/>
+
+				<field name="DT_SYNC" visible="false"/>
+
+			</fields>
+
+			<update-funtions>
+
+				<call-template name="today">
+
+					<with-arg name="date" insert="@DT_MD_VERSION"/>
+
+				</call-template>
+
+				<call-template name="today">
+
+					<with-arg name="date" insert="@DT_SYNC"/>
+
+				</call-template>
+
+			</update-funtions>
+
+		</call-table>
+
+	</read-table>
+
+</object>
+
+

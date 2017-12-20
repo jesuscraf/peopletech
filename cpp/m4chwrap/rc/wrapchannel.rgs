@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapChannel.WrapChannel.1 = s 'WrapChannel Class'
+	{
+		CLSID = s '{FFA8363E-FB6B-11D0-A763-00C04FB75E70}'
+	}
+	WrapChannel.WrapChannel = s 'WrapChannel Class'
+	{
+		CurVer = s 'WrapChannel.WrapChannel.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {FFA8363E-FB6B-11D0-A763-00C04FB75E70} = s 'WrapChannel Class'
+		{
+			ProgID = s 'WrapChannel.WrapChannel.1'
+			VersionIndependentProgID = s 'WrapChannel.WrapChannel'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

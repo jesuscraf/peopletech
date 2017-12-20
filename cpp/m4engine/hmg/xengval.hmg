@@ -1,0 +1,78 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<engvalue.cpp>
+//	File:				apichn.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    MIT_TGI_CHN_VALUE
+#define GROUP_BASE  MIT_TGB_CHN_VALUE
+#define TRACE_ARRAY MIT_CHN_VALUE_MSG_ARRAY
+
+enum CHNVALUE_MSG 
+{
+	CHNVALUE_MSG_10=0,	//Ojo, se usa como indice del array
+	CHNVALUE_MSG_20, CHNVALUE_MSG_30, CHNVALUE_MSG_40,	CHNVALUE_MSG_50, 
+	CHNVALUE_MSG_60, 
+	CHNVALUE_MSG_80, CHNVALUE_MSG_85, CHNVALUE_MSG_88, 
+	CHNVALUE_MSG_90,	
+	CHNVALUE_MSG_130, CHNVALUE_MSG_140,	
+	CHNVALUE_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, CHNVALUE_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Valor de tipo fijo %0:s no pudo ser inicializado al tipo %1:s." },
+
+	{ GROUP_ID, CHNVALUE_MSG_20+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Tipo de elemento no implementado." },
+
+	{ GROUP_ID, CHNVALUE_MSG_30+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Tipo de elemento incorrecto en la operación %0:s." },
+
+	{ GROUP_ID, CHNVALUE_MSG_40+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Valor booleano incorrecto." },
+
+	{ GROUP_ID, CHNVALUE_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Conversión no implementada." },
+
+	{ GROUP_ID, CHNVALUE_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No puede obtenerse un valor anónimo de un valor dado, si no es de tipo cadena." },
+
+	{ GROUP_ID, CHNVALUE_MSG_80+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Operador binario %0:s no permitido con tipos %1:s y %2:s diferentes." },
+
+	{ GROUP_ID, CHNVALUE_MSG_85+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Operador %0:s no permitido para el tipo %1:s." },
+
+	{ GROUP_ID, CHNVALUE_MSG_88+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"División por cero, %0:s/0." },
+
+	{ GROUP_ID, CHNVALUE_MSG_90+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Operador %0:s no implementado para el tipo %1:s." },
+
+	{ GROUP_ID, CHNVALUE_MSG_130+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Tipo comparación no implementado." },
+
+	{ GROUP_ID, CHNVALUE_MSG_140+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"No es posible convertir del tipo %0:s a una cadena imprimible." }
+} ;
+

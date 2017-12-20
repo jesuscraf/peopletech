@@ -1,0 +1,24 @@
+HKCR
+{
+	CProperty.CProperty.1 = s 'CProperty Class'
+	{
+		CLSID = s '{ECBA5501-1A61-11D2-9697-00C04FC2444B}'
+	}
+	CProperty.CProperty = s 'CProperty Class'
+	{
+		CurVer = s 'CProperty.CProperty.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ECBA5501-1A61-11D2-9697-00C04FC2444B} = s 'CProperty Class'
+		{
+			ProgID = s 'CProperty.CProperty.1'
+			VersionIndependentProgID = s 'CProperty.CProperty'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,69 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4serverbasedll.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/actionworker.cpp
+SRC = ../src/baserequest.cpp
+SRC = ../src/cladmintag.cpp
+SRC = ../src/clautogarbageable.cpp
+SRC = ../src/clbaseaction.cpp
+SRC = ../src/clbasedictionary.cpp
+SRC = ../src/clbaseobject.cpp
+SRC = ../src/clienttag.cpp
+SRC = ../src/connbase.cpp
+SRC = ../src/conninstance.cpp
+SRC = ../src/controlpipesmkr.cpp
+SRC = ../src/csutil.cpp
+SRC = ../src/exvariables.cpp
+SRC = ../src/fileutil.cpp
+SRC = ../src/garbagecontainer.cpp
+SRC = ../src/m4servervt.cpp
+SRC = ../src/paramlist.cpp
+SRC = ../src/rollingfile.cpp
+SRC = ../src/staterecord.cpp
+SRC = ../src/statistics.cpp
+
+# fuentes que no se optimizan.
+[aix] NO_OPTIMIZE_FILE = staterecord.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+#READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+#READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4buildversion
+LIB = m4date
+LIB = m4filemanager
+LIB = m4idgeneratordll
+LIB = m4ini
+LIB = m4ipcs
+LIB = m4log
+LIB = m4memdbg
+LIB = m4pdus
+LIB = m4tsap
+LIB = m4unicode
+
+
+
+
+
+
+
+
+
+
+
+
+
+

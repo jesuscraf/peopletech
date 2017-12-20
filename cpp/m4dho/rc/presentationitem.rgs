@@ -1,0 +1,26 @@
+HKCR
+{
+	M4DHO.PresentationItem.1 = s 'PresentationItem Class'
+	{
+		CLSID = s '{135B2E02-E60B-11D3-BDB5-00C04F71652D}'
+	}
+	M4DHO.PresentationItem = s 'PresentationItem Class'
+	{
+		CLSID = s '{135B2E02-E60B-11D3-BDB5-00C04F71652D}'
+		CurVer = s 'M4DHO.PresentationItem.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {135B2E02-E60B-11D3-BDB5-00C04F71652D} = s 'PresentationItem Class'
+		{
+			ProgID = s 'M4DHO.PresentationItem.1'
+			VersionIndependentProgID = s 'M4DHO.PresentationItem'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Both'
+			}
+			'TypeLib' = s '{135B2DF1-E60B-11D3-BDB5-00C04F71652D}'
+		}
+	}
+}

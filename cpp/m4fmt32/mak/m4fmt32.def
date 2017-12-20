@@ -1,0 +1,19 @@
+LIBRARY	"m4fmt32"
+EXPORTS
+	M4FMTApplyFormat
+	M4FMTAttachM4Fmt
+	M4FMTConvertFmtToFmt
+	M4FMTConvertFmtToIso
+	M4FMTConvertIsoToWin
+	M4FMTConvertSQLToM4
+	M4FMTConvertUserToFmt
+	M4FMTConvertWinToIso
+	M4FMTCreateAddFormat
+	M4FMTCreateNewFormat
+	M4FMTDestroyFormat
+	M4FMTDettachM4Fmt
+	M4FMTGetErrorName
+	M4FMTGetFormatHandle
+	M4FMTGetFormatName
+	M4FMTSetDesignAccess
+	M4FMTSetProperty

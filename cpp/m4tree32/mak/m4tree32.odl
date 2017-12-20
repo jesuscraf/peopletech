@@ -1,0 +1,132 @@
+// M4Tree32.odl : type library source for ActiveX Control project.
+
+// This file will be processed by the Make Type Library (mktyplib) tool to
+// produce the type library (M4Tree32.tlb) that will become a resource in
+// M4Tree32.ocx.
+
+#include <olectl.h>
+#include <idispids.h>
+
+[ uuid(64F5A7A5-BFA7-11D0-8DA1-00C04FB7146E), version(1.0),
+  helpfile("M4Tree32.hlp"),
+  helpstring("M4Tree32 ActiveX Control module"),
+  control ]
+library M4TREE32Lib
+{
+	importlib(STDOLE_TLB);
+	importlib(STDTYPE_TLB);
+
+	//  Primary dispatch interface for CM4Tree32Ctrl
+
+	[ uuid(64F5A7A6-BFA7-11D0-8DA1-00C04FB7146E),
+	  helpstring("Dispatch interface for M4Tree32 Control"), hidden ]
+	dispinterface _DM4Tree32
+	{
+		properties:
+			// NOTE - ClassWizard will maintain property information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_PROP(CM4Tree32Ctrl)
+			[id(1)] short sSiblingDistance;
+			[id(2)] short sLevelDistance;
+			[id(3)] short sLinkType;
+			[id(4)] short sLeftOffset;
+			[id(5)] short sTopOffset;
+			[id(6)] short sTreeStyle;
+			[id(7)] short sAppearance;
+			[id(8)] boolean bCompact;
+			[id(9)] boolean bBalance;
+			[id(10)] short sLinkStyle;
+			[id(11)] double dScale;
+			[id(12)] boolean bShow;
+			[id(DISPID_BACKCOLOR), bindable, requestedit] OLE_COLOR BackColor;
+			[id(DISPID_FORECOLOR), bindable, requestedit] OLE_COLOR ForeColor;
+			[id(DISPID_BORDERSTYLE), bindable, requestedit] short BorderStyle;
+			[id(13)] short sLinkWidth;
+			[id(14)] boolean bStoreBitmap;
+			[id(DISPID_APPEARANCE), bindable, requestedit] short Appearance;
+			//}}AFX_ODL_PROP
+
+		methods:
+			// NOTE - ClassWizard will maintain method information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_METHOD(CM4Tree32Ctrl)
+			[id(15)] boolean M4DeleteNode(long a_lNodeID);
+			[id(16)] long M4GetLastError();
+			[id(17)] long M4GetIDNode(long a_lType);
+			[id(18)] boolean M4PrintTree();
+			[id(19)] boolean M4CutNode(long a_lNodeID);
+			[id(20)] boolean M4PasteNode(long a_lParentID);
+			[id(21)] long M4GetLevelCount();
+			[id(22)] long M4GetNodeCount();
+			[id(23)] long M4GetNodeLevel(long a_lNodeID);
+			[id(24)] long M4GetNodeNumberChildren(long a_lNodeID);
+			[id(25)] boolean M4SetNodeValueLong(long a_lNodeID, BSTR a_szProperty, long a_lValue);
+			[id(26)] boolean M4SetNodeValueString(long a_lNodeID, BSTR a_szProperty, BSTR a_szValue);
+			[id(27)] boolean M4GetNodeValueLong(long a_lNodeID, BSTR a_szProperty, long* a_lValue);
+			[id(28)] boolean M4GetNodeValueString(long a_lNodeID, BSTR a_szProperty, BSTR* a_szValue);
+			[id(29)] boolean M4GetNodeProperty(long a_lNodeID, long a_lIndex, BSTR* a_szProperty);
+			[id(30)] long M4GetNodeNumberProperties(long a_lNodeID);
+			[id(31)] boolean M4SetStyleValueLong(long a_lStyle, BSTR a_szProperty, long a_lValue);
+			[id(32)] boolean M4SetStyleValueString(long a_lStyle, BSTR a_szProperty, BSTR a_szValue);
+			[id(33)] boolean M4GetStyleValueLong(long a_lStyle, BSTR a_szProperty, long* a_lValue);
+			[id(34)] boolean M4GetStyleValueString(long a_lStyle, BSTR a_szProperty, BSTR* a_szValue);
+			[id(35)] boolean M4GetStyleProperty(long a_lStyle, long a_lIndex, BSTR* a_szProperty);
+			[id(36)] long M4GetStyleNumberProperties(long a_lStyle);
+			[id(37)] boolean M4GetNodeExpand(long a_lNodeID);
+			[id(38)] boolean M4SetNodeExpand(long a_lNodeID, boolean a_bExpand);
+			[id(39)] boolean M4ExpandLevel(long a_lLevel);
+			[id(40)] long M4FindLongTree(BSTR a_szProperty, long a_lValue);
+			[id(41)] long M4FindStringTree(BSTR a_szProperty, BSTR a_szValue);
+			[id(42)] long M4CreateStyle();
+			[id(43)] boolean M4SetNodeStyle(long a_lNodeID, long a_lStyle);
+			[id(44)] boolean M4SetLevelStyle(long a_lLevel, long a_lStyle);
+			[id(45)] long M4GetNodeStyle(long a_lNodeID);
+			[id(46)] boolean M4DeleteNodeProperty(long a_lNodeID, BSTR a_szProperty);
+			[id(47)] boolean M4DeleteStyleProperty(long a_lStyle, BSTR a_szProperty);
+			[id(48)] long M4InsertNode(long a_lParentID);
+			[id(49)] boolean M4GetTreeStatus();
+			[id(50)] long M4GetNodeIDNode(long a_lNodeID, long a_lType);
+			//}}AFX_ODL_METHOD
+
+			[id(DISPID_ABOUTBOX)] void AboutBox();
+	};
+
+	//  Event dispatch interface for CM4Tree32Ctrl
+
+	[ uuid(64F5A7A7-BFA7-11D0-8DA1-00C04FB7146E),
+	  helpstring("Event interface for M4Tree32 Control") ]
+	dispinterface _DM4Tree32Events
+	{
+		properties:
+			//  Event interface has no properties
+
+		methods:
+			// NOTE - ClassWizard will maintain event information here.
+			//    Use extreme caution when editing this section.
+			//{{AFX_ODL_EVENT(CM4Tree32Ctrl)
+			[id(1)] void M4LClickInNode(long a_lNodeID);
+			[id(2)] void M4LDbClickInNode(long a_lNodeID);
+			[id(3)] void M4RClickInNode(long a_lNodeID);
+			[id(4)] void M4RDbClickInNode(long a_lNodeID);
+			[id(5)] void M4ClickOutNode();
+			[id(6)] void M4RClickOutNode();
+			[id(7)] void M4LClickOutNode();
+			[id(8)] void M4RDbClickOutNode();
+			[id(9)] void M4LDbClickOutNode();
+			//}}AFX_ODL_EVENT
+	};
+
+	//  Class information for CM4Tree32Ctrl
+
+	[ uuid(64F5A7A8-BFA7-11D0-8DA1-00C04FB7146E), licensed,
+	  helpstring("M4Tree32 Control"), control ]
+	coclass M4Tree32
+	{
+		[default] dispinterface _DM4Tree32;
+		[default, source] dispinterface _DM4Tree32Events;
+	};
+
+
+	//{{AFX_APPEND_ODL}}
+	//}}AFX_APPEND_ODL}}
+};

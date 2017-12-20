@@ -1,0 +1,41 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = m4cataloguer
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../lzma-16.00/7zfile.c
+SRC = ../lzma-16.00/alloc.c
+SRC = ../lzma-16.00/lzfind.c
+SRC = ../lzma-16.00/lzmaenc.c
+SRC = ../src/m4cataloguer.cpp
+SRC = ../src/m4fileinfo.cpp
+SRC = ../src/m4patternreader.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+[aix] LINKFLAGS = -bmaxdata:0x80000000 -brtl
+EH = yes
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../lzma-16.00
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+READFILE = ../../m4common/mak/m4_nobasicas_lib_dir.prj
+
+#-------------------
+# CCFLAGS locales 
+CCFLAGS = -D_7ZIP_ST
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4filemanager
+LIB = m4unicode
+LIB = xerces-c
+LIB = z
+

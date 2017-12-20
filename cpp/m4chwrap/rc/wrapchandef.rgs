@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapChanDef.WrapChanDef.1 = s 'WrapChanDef Class'
+	{
+		CLSID = s '{946A2284-3BC3-11D1-A796-00C04FB75E70}'
+	}
+	WrapChanDef.WrapChanDef = s 'WrapChanDef Class'
+	{
+		CurVer = s 'WrapChanDef.WrapChanDef.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {946A2284-3BC3-11D1-A796-00C04FB75E70} = s 'WrapChanDef Class'
+		{
+			ProgID = s 'WrapChanDef.WrapChanDef.1'
+			VersionIndependentProgID = s 'WrapChanDef.WrapChanDef'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

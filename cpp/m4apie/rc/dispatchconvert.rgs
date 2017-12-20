@@ -1,0 +1,24 @@
+HKCR
+{
+	DispatchConvert.DispatchConvert.1 = s 'DispatchConvert Class'
+	{
+		CLSID = s '{B09D59D5-B047-11D2-BCEE-00C04F71652D}'
+	}
+	DispatchConvert.DispatchConvert = s 'DispatchConvert Class'
+	{
+		CurVer = s 'DispatchConvert.DispatchConvert.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B09D59D5-B047-11D2-BCEE-00C04F71652D} = s 'DispatchConvert Class'
+		{
+			ProgID = s 'DispatchConvert.DispatchConvert.1'
+			VersionIndependentProgID = s 'DispatchConvert.DispatchConvert'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

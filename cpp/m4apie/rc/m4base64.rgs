@@ -1,0 +1,24 @@
+HKCR
+{
+	M4Base64.M4Base64.1 = s 'M4Base64 Class'
+	{
+		CLSID = s '{5B5C234F-FAAD-11D1-9672-00C04FC2444B}'
+	}
+	M4Base64.M4Base64 = s 'M4Base64 Class'
+	{
+		CurVer = s 'M4Base64.M4Base64.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {5B5C234F-FAAD-11D1-9672-00C04FC2444B} = s 'M4Base64 Class'
+		{
+			ProgID = s 'M4Base64.M4Base64.1'
+			VersionIndependentProgID = s 'M4Base64.M4Base64'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

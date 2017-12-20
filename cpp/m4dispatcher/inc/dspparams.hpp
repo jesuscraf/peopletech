@@ -1,0 +1,12 @@
+
+#ifndef _DSPPARAMS_HPP_
+#define _DSPPARAMS_HPP_
+
+
+#define		SERVER_UPDATE_SLAPSED_TIME		10
+#define		SERVER_STARTUP_TIMEOUT			480
+#define		M4_PERSISTABLE_CHANGE_WARNING	1
+
+
+#endif
+

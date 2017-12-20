@@ -1,0 +1,124 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WINDOWS
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WINDOWS
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""m4chwrap.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_PROJNAME            "m4chwrap"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Modern) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+#ifdef _WINDOWS
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+#pragma code_page(1252)
+#endif //_WINDOWS
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+IDR_WRAPNODE             REGISTRY DISCARDABLE    "wrapnode.rgs"
+IDR_WRAPCOLITEMS         REGISTRY DISCARDABLE    "wrapcolitems.rgs"
+IDR_WRAPITEM             REGISTRY DISCARDABLE    "wrapitem.rgs"
+IDR_WRAPREGISTER         REGISTRY DISCARDABLE    "wrapregister.rgs"
+IDR_WRAPCHANNEL          REGISTRY DISCARDABLE    "wrapchannel.rgs"
+IDR_WRAPACCESS           REGISTRY DISCARDABLE    "wrapaccess.rgs"
+IDR_WRAPRECORDSET        REGISTRY DISCARDABLE    "wraprecordset.rgs"
+IDR_WRAPSLICE            REGISTRY DISCARDABLE    "wrapslice.rgs"
+IDR_WRAPCOLPROP          REGISTRY DISCARDABLE    "wrapcolprop.rgs"
+IDR_WRAPCVM              REGISTRY DISCARDABLE    "wrapcvm.rgs"
+IDR_WRAPOPER             REGISTRY DISCARDABLE    "wrapoper.rgs"
+IDR_WRAPITEMDEF          REGISTRY DISCARDABLE    "wrapitemdef.rgs"
+IDR_WRAPITEMS            REGISTRY DISCARDABLE    "wrapitems.rgs"
+IDR_ENUMITEM             REGISTRY DISCARDABLE    "enumitem.rgs"
+IDR_WRAPNODEDEF          REGISTRY DISCARDABLE    "wrapnodedef.rgs"
+IDR_WRAPITIT             REGISTRY DISCARDABLE    "wrapitit.rgs"
+IDR_WRAPRGIT             REGISTRY DISCARDABLE    "wraprgit.rgs"
+IDR_WRAPCHANDEF          REGISTRY DISCARDABLE    "wrapchandef.rgs"
+IDR_WRAPSLIT             REGISTRY DISCARDABLE    "wrapslit.rgs"
+IDR_WRAPIMAP             REGISTRY DISCARDABLE    "wrapimap.rgs"
+IDR_WRAPEXECUTOR         REGISTRY DISCARDABLE    "wrapexecutor.rgs"
+IDR_WRAPBOOKMARK         REGISTRY DISCARDABLE    "wrapbookmark.rgs"
+IDR_WRAPRGIT_BLOCKWALKER REGISTRY DISCARDABLE    "wraprgit_blockwalker.rgs"
+IDR_WRAPVMSIGN           REGISTRY DISCARDABLE    "wrapvmsign.rgs"
+IDR_WRAPPROXYLISTIT      REGISTRY DISCARDABLE    "wrapproxylistit.rgs"
+IDR_WRAPSTRGMEMINFO      REGISTRY DISCARDABLE    "wrapstrgmeminfo.rgs"
+IDR_WRAPSTRSMEMINFO      REGISTRY DISCARDABLE    "wrapstrsmeminfo.rgs"
+IDR_WRAPSTNODEMEMINFO    REGISTRY DISCARDABLE    "wrapstnodememinfo.rgs"
+IDR_WRAPSTCHANNELMEMINFO REGISTRY DISCARDABLE    "wrapstchannelmeminfo.rgs"
+IDR_WRAPCHANNELMEMINFO   REGISTRY DISCARDABLE    "wrapchannelmeminfo.rgs"
+IDR_WRAPBREAKPOINT       REGISTRY DISCARDABLE    "wrapbreakpoint.rgs"
+IDR_WRAPRUNNINGINFO      REGISTRY DISCARDABLE    "wraprunninginfo.rgs"
+#endif    // Spanish (Modern) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "m4chwrap.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

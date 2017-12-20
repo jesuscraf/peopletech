@@ -1,0 +1,33 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4sysall.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/_base64.cpp
+SRC = ../src/clregexp.cpp
+SRC = ../src/clsubjct.cpp
+SRC = ../src/m4notifier.cpp
+SRC = ../src/m4sysalloc.cpp
+SRC = ../src/sizer.cpp
+
+# fuentes que no se optimizan.
+[solaris] NO_OPTIMIZE_FILE = _base64.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4unicode
+
+
+
+

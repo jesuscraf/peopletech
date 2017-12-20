@@ -1,0 +1,83 @@
+//## begin module%38DB63340186.cm preserve=no
+//## end module%38DB63340186.cm
+
+//## begin module%38DB63340186.cp preserve=no
+//	=============================================================================
+//	=
+//
+//	 (c) Copyright  1991-1997 Meta Software M.S., S.A
+//	 All rights reserved.
+//
+//	 Module:            <module>
+//	 File:                  <Ffile>.hpp
+//	 Project:            M4ComSrv
+//	 Author:            Meta Software M.S. , S.A
+//	 Date:
+//	 Language:          C++
+//	 Operating System:  WINDOWS , UNIX ( HP, DEC , AIX , SUN)
+//	 Design Document:
+//
+//	 Definition:
+//
+//	    This module defines...
+//
+//
+//	=============================================================================
+//	=
+//## end module%38DB63340186.cp
+
+//## Module: CommAction%38DB63340186; Package specification
+//## Subsystem: M4Communication::M4COML::inc%38D1FCD80387
+//## Source file: e:\source\m4communication\inc\commaction.hpp
+
+#ifndef commactionsname_h
+#define commactionsname_h 1
+
+#define M4_PARAM_PETITION_ID "M4_PARAM_PETITION_ID"
+#define M4_PARAM_SESSIONID "M4_PARAM_SESSIONID"
+#define M4_PARAM_CONNECTIONID "M4_PARAM_CONNECTIONID"
+#define M4_PARAM_HOST "M4_PARAM_HOST"
+#define  M4_PARAM_PORT "M4_PARAM_PORT"
+
+#define M4_PARAM_SSL_CACERT "M4_PARAM_SSL_CACERT"
+#define M4_PARAM_SSL_CERT "M4_PARAM_SSL_CERT"
+#define M4_PARAM_SSL_PRIVKEY "M4_PARAM_SSL_PRIVKEY"
+#define M4_PARAM_SSL_PREFERED_CIPHER "M4_PARAM_SSL_PREFERED_CIPHER"
+#define M4_PARAM_TLIID "M4_PARAM_TLIID"
+
+#define M4_PARAM_PDU "M4_PARAM_PDU"
+#define M4_PARAM_READED_PDU "M4_PARAM_READED_PDU"
+#define M4_PARAM_READED_PDU_HEADERS "M4_PARAM_READED_PDU_HEADERS"
+#define M4_PARAM_WRITE_BUFFER "M4_PARAM_WRITE_BUFFER"
+#define M4_PARAM_WRITE_BUFFER_SIZE "M4_PARAM_WRITE_BUFFER_SIZE"
+#define M4_PARAM_READED_BUFFER "M4_PARAM_READED_BUFFER"
+
+#define M4_PARAM_COMM_PROTOCOL "M4_PARAM_COMM_PROTOCOL"
+#define M4_PARAM_COMM_PROTOCOL_TYPE "M4_PARAM_COMM_PROTOCOL_TYPE"
+
+#define M4_PARAM_WRITTINGTASK "M4_PARAM_WRITTINGTASK"
+#define M4_PARAM_READINGTASK "M4_PARAM_READINGTASK"
+
+#define M4_PARAM_RETURN_ASYNC_ACTION "M4_PARAM_RETURN_ACTION"
+#define M4_PARAM_RETURN_ASYNC_ACTION_EXECUTOR  "M4_PARAM_RETURN_ACTION_EXECUTOR"
+#define M4_PARAM_RETURN_SYNC_ACTION_CONDITION "M4_PARAM_RETURN_SYNC_ACTION_CONDITION"
+
+#define M4_PARAM_RETURN_RESULT "M4_PARAM_RETURN_RESULT"
+
+
+#define M4_PARAM_START_PROCCESSING_WRITTING_TIME "M4_PARAM_START_PROCCESSING_WRITTING_TIME "
+#define M4_PARAM_START_WRITTING_TIME "M4_PARAM_START_WRITTING_TIME"
+#define M4_PARAM_FINISH_WRITTING_TIME "M4_PARAM_FINISH_WRITTING_TIME"
+#define M4_PARAM_FINISH_READING_TIME "M4_PARAM_FINISH_READING_TIME"
+#define M4_PARAM_START_READING_TIME "M4_PARAM_START_READING_TIME"
+#define M4_PARAM_START_PROCCESSING_READING_TIME "M4_PARAM_START_PROCCESSING_READING_TIME"
+
+#define M4_PARAM_COMM_URL "M4_PARAM_COMM_URL"
+#define M4_PARAM_COMM_HOSTNAME "M4_PARAM_COMM_HOSTNAME"
+#define M4_PARAM_COMM_QUEUED_READED_TIME "M4_PARAM_COMM_QUEUED_READED_TIME"
+#define M4_PARAM_COMM_EXECUTION_TIME "M4_PARAM_COMM_EXECUTION_TIME"
+
+#define M4_PARAM_COMM_LANG_ID "M4_PARAM_LANG_ID"
+
+#define M4_PARAM_REMOTE_HOST_NAME "M4_PARAM_REMOTE_HOST_NAME"
+#endif //commactionsname_h

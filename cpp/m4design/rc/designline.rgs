@@ -1,0 +1,26 @@
+HKCR
+{
+	M4Design.DesignLine.1 = s 'DesignLine Class'
+	{
+		CLSID = s '{2C1F5257-4B43-11D4-BE08-00C04F71652D}'
+	}
+	M4Design.DesignLine = s 'DesignLine Class'
+	{
+		CLSID = s '{2C1F5257-4B43-11D4-BE08-00C04F71652D}'
+		CurVer = s 'M4Design.DesignLine.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2C1F5257-4B43-11D4-BE08-00C04F71652D} = s 'DesignLine Class'
+		{
+			ProgID = s 'M4Design.DesignLine.1'
+			VersionIndependentProgID = s 'M4Design.DesignLine'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{87FB91C1-112B-11D4-BDE9-00C04F71652D}'
+		}
+	}
+}

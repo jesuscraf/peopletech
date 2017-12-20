@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapVMSign.WrapVMSign.1 = s 'WrapVMSign Class'
+	{
+		CLSID = s '{7772C1C6-0CC5-11D2-A828-00C04FA499A3}'
+	}
+	WrapVMSign.WrapVMSign = s 'WrapVMSign Class'
+	{
+		CurVer = s 'WrapVMSign.WrapVMSign.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {7772C1C6-0CC5-11D2-A828-00C04FA499A3} = s 'WrapVMSign Class'
+		{
+			ProgID = s 'WrapVMSign.WrapVMSign.1'
+			VersionIndependentProgID = s 'WrapVMSign.WrapVMSign'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

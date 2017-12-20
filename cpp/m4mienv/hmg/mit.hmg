@@ -1,0 +1,74 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<MIT.cpp>
+//	File:				MIT.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+// HAY OTROS MENSAJES DE USO GENERAL QUE ESTAN DEFINIDOS EN MIT.H
+
+#define GROUP_ID    MIT_TGI_MIT
+#define GROUP_BASE  MIT_TGB_MIT
+#define TRACE_ARRAY g_stMIT_Msg
+
+enum MIDEFINE_MSG 
+{
+	MIDEFINE_VERSION=0,	//Ojo, se usa como indice del array
+	MIDEFINE_FILE,
+	MIDEFINE_10, MIDEFINE_20, MIDEFINE_30, MIDEFINE_40, MIDEFINE_50, MIDEFINE_60, 
+	MIDEFINE_70, MIDEFINE_80, MIDEFINE_90,
+	MIDEFINE_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_VERSION, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"******** Traza del MIEnvDLL ********" },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_FILE, ClMIT_Msg::MSG_DEBUG, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Este archivo de traza está en %0:s." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_10, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Borrando objeto TM sin haber vaciado la lista de tareas o de componentes." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_20, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Identificador de Thread no encontrado, método %0:s." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_30, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Identificador de componente no encontrado, método %0:s." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_40, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Identificador de tarea no encontrado, método %0:s." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_50, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Borrando objeto TCM sin haber vaciado la lista de tareas." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_60, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Componente tiene diferentes conectores para sus padres en el grafo de componentes." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_70, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error de inserción en el método %0:s." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_80, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Error en la destrucción de la tarea %0:s. Tiene tareas hijas." },
+
+	{ GROUP_ID, GROUP_BASE+MIDEFINE_90, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		"Se intentó obtener el TM dentro de un área de acceso limitado para el inspector." }
+} ;

@@ -1,0 +1,43 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4cacertmngr.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../2fa/base32.c
+SRC = ../2fa/compute.c
+SRC = ../2fa/hmac.c
+SRC = ../2fa/sha1.c
+
+SRC = ../src/certmngr.cpp
+SRC = ../src/chmngauthent.cpp
+SRC = ../src/chmngdomainauthent.cpp
+SRC = ../src/sessioncontext.cpp
+SRC = ../src/smplsesscontextserial.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../2fa
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cacert
+LIB = m4cryptc
+LIB = m4date
+LIB = m4dm
+LIB = m4log
+LIB = m4sysall
+LIB = m4uuid
+LIB = m4variant
+
+
+
+

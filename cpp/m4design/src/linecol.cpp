@@ -1,0 +1,8 @@
+// LineCol.cpp : Implementation of CLineCol
+#include "stdafx.h"
+#include "m4design.h"
+#include "linecol.h"
+
+/////////////////////////////////////////////////////////////////////////////
+// CLineCol
+

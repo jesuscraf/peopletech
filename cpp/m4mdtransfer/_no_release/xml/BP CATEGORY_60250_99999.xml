@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object BP CATEGORY
+
+@version 1.4
+
+-->
+
+<object name="BP CATEGORY">
+
+	<param name="ID_CATEGORY"/>
+
+	<call-table name="SBP__CATEGORIES">
+
+		<with-pk name="ID_CATEGORY" select="$ID_CATEGORY"/>
+
+	</call-table>
+
+	<call-table name="SBP__BP_CATEGORY">
+
+		<with-pk name="ID_CATEGORY" select="$ID_CATEGORY"/>
+
+	</call-table>
+
+</object>
+
+

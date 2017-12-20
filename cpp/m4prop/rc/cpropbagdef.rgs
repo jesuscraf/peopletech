@@ -1,0 +1,24 @@
+HKCR
+{
+	CPropBagDef.CPropBagDef.1 = s 'CPropBagDef Class'
+	{
+		CLSID = s '{2D3708E9-64D8-11D2-BC7F-00C04F71652D}'
+	}
+	CPropBagDef.CPropBagDef = s 'CPropBagDef Class'
+	{
+		CurVer = s 'CPropBagDef.CPropBagDef.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2D3708E9-64D8-11D2-BC7F-00C04F71652D} = s 'CPropBagDef Class'
+		{
+			ProgID = s 'CPropBagDef.CPropBagDef.1'
+			VersionIndependentProgID = s 'CPropBagDef.CPropBagDef'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				
+			}
+		}
+	}
+}

@@ -1,0 +1,77 @@
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> m4_search.html  -->
+
+<script LANGUAGE='Javascript' src='<m4{brkfilelang}={m4_lang.js}m4>'></script>
+
+<body bgcolor=#ffffff topmargin=10 leftmargin=5 marginheight=10 marginwidth=5>
+<FORM METHOD=POST ACTION=/cgi-bin/m4search.pl>
+	<INPUT TYPE=hidden NAME=base VALUE=<m4{reportroot}m4>>
+	<INPUT TYPE=hidden NAME=rbase VALUE=<m4{reportroot}m4>>
+	<INPUT TYPE=hidden NAME=lang VALUE=<m4{language}m4>>
+	<INPUT TYPE=hidden NAME=bgcolor VALUE=#FFFFFF>
+	<INPUT TYPE=hidden NAME=background VALUE=>
+	<INPUT TYPE=hidden NAME=text VALUE=#000000>
+	<INPUT TYPE=hidden NAME=link VALUE=#000080>
+	<INPUT TYPE=hidden NAME=alink VALUE=#ED074D>
+	<INPUT TYPE=hidden NAME=vlink VALUE=#000080>
+	<INPUT TYPE=hidden NAME=type VALUE=all>
+<table width=100% border=0 cellpadding=2 cellspacing=0>
+  <tr>
+	
+	<script language='JavaScript'>
+
+    document.write(
+		"<td align=center bgcolor=#0879AD><font face=Arial size=2 color=#ffffff><b>"+
+			SearchMsg[0]+"</font></td>\r\n"
+		) ;
+
+	</script>
+
+  </tr>
+  <tr>
+    <td align=center><font face=Arial size=2 color=#000000><p align=justify>
+
+	<script language='JavaScript'>
+
+    document.write(
+	    "<br>"+SearchMsg[1]+"<br><br>\r\n"
+	) ;
+
+	</script>
+
+    </td>
+  </tr>
+  <tr>
+  <td>
+  <table width=100% border=1 border-color=#0879AD cellpadding=0 cellspacing=0>
+   <tr>
+    <td align=center>
+		<script language='JavaScript'>
+
+			document.write(
+
+			    "<font face=Arial size=2 color=#000000><br><b>"+
+					SearchMsg[8]+"</b><br><INPUT TYPE=TEXT NAME=sv SIZE=20 "+
+					"STYLE='font-family: Verdana; font-size: 11px'><br><br>\r\n"+
+				"<font face=Arial size=2 color=#000000><b>"+SearchMsg[2]+"</b>\r\n"+
+				"<SELECT NAME=type STYLE='font-family: Verdana; font-size: 11px'>\r\n"+
+				"<OPTION VALUE=all SELECTED>"+SearchMsg[3]+"\r\n"+
+				"<OPTION VALUE=any>"+SearchMsg[4]+"\r\n"+
+				"</SELECT> <b>"+SearchMsg[5]+"</b>\r\n"+
+
+				"<br><br>\r\n"+
+				"<input type=submit value= "+SearchMsg[6]+" STYLE='font-family: Verdana; font-size: 11px'>&nbsp;&nbsp;\r\n"+
+				"<input type=reset value= " +SearchMsg[7]+" STYLE='font-family: Verdana; font-size: 11px'></font><br><br>\r\n"
+			) ;
+
+		</script>
+
+  </tr>
+  </table>
+  </td></tr>
+ </table>
+</table>
+</FORM>
+</body>
+
+<!-- m4_search.html <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  -->
+

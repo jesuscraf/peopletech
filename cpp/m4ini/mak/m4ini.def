@@ -1,0 +1,19 @@
+LIBRARY	"m4inidll"
+EXPORTS
+	M4DeleteRegistryKey
+	M4DeleteRegistryValue
+	M4GetRegistrySubKeyNames
+	M4GetRegistryValue
+	M4GetRegistryValueNames
+	M4LoadMachineRegistry
+	M4LoadRegistry
+	M4MergeRegistry
+	M4SaveRegistry
+	M4SetRegistryValue
+	M4UnLoadRegistry
+	
+	M4WIGetRegistrySubKeyCount
+	M4WIGetRegistrySubKeyName
+	M4WIGetRegistryValue
+	M4WIGetRegistryValueCount
+	M4WIGetRegistryValueName

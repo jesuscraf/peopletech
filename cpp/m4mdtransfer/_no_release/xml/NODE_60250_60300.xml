@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines call-table dependencies for repository object NODE
+
+@version 2.0
+
+-->
+
+<object name="NODE">
+
+	<param name="ID_T3"/>
+
+	<param name="ID_NODE"/>
+
+	<call-table name="SCH_NODES">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_TRANS_NODEBRA" visible="false"/>
+
+			<field name="ID_TRANS_NODEENG" visible="false"/>
+
+			<field name="ID_TRANS_NODEESP" visible="false"/>
+
+			<field name="ID_TRANS_NODEFRA" visible="false"/>
+
+			<field name="ID_TRANS_NODEGEN" visible="false"/>
+
+			<field name="ID_TRANS_NODEGER" visible="false"/>
+
+			<field name="ID_TRANS_NODEITA" visible="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_ALIAS_RES">
+
+		<with-pk name="ID_ALIAS_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_BO_MET_ARG">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_ARGUMENT_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTOR_ARGS">
+
+		<with-pk name="ID_ITEM_CONCTOR_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTOR_ITEM">
+
+		<with-pk name="ID_ITEM_CONNECTOR_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTOR_PAR">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SCH_CONNECTORS">
+
+		<with-pk name="ID_CONNECTOR_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<read-table name="SCH_SENTENCES">
+
+			<with-pk name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			<call-object name="SENTENCE">
+
+				<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SCH_FILTER_PRED">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODO" select="$ID_NODE"/>
+
+		<read-table name="SCH_SENTENCES">
+
+			<with-pk name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			<call-object name="SENTENCE">
+
+				<with-param name="ID_SENTENCE" select="@ID_SENTENCE"/>
+
+			</call-object>
+
+		</read-table>
+
+	</call-table>
+
+	<call-table name="SCH_FILTERS">
+
+		<with-pk name="ID_FILTER_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_INDEX">
+
+		<with-pk name="ID_INDEX_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_INDEX_ITEM">
+
+		<with-pk name="ID_INDEX_ITEM_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_ITEM_CSDESC">
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+	</call-table>
+
+	<call-table name="SCH_NODE_FILTER">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SCH_OVERWRITE_NODES">
+
+		<with-pk name="ID_NODE_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SCH_T3_ALIAS_RES">
+
+		<with-pk name="ID_ALIAS_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_T3_CONNEC_ITEM">
+
+		<with-pk name="ID_LIST_ITEM_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SCH_T3_CONNECTORS">
+
+		<with-pk name="ID_LIST_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+		<fields>
+
+			<field name="ID_T3" is-printable="false"/>
+
+		</fields>
+
+	</call-table>
+
+	<call-table name="SRP_NODES_IN_GROUP">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SRP_VISIBLE_NODES">
+
+		<with-pk name="ID_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_AC_READ">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_AC_READ" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_AC_CALC">
+
+		<with-pk name="ID_NODE_AC_CALC_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_AC_CALC" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_CALC">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_AC_READ" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_CALC">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_AUX" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_CALC">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_DIF" select="$ID_NODE"/>
+
+	</call-table>	
+
+	<call-table name="SWP_NODES_CALC">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_REF" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_CALC_OUTPUT">
+
+		<with-pk name="ID_T3_PAYROLL" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_PAYROLL" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SWP_NODES_FILTER_AC_CALC">
+
+		<with-pk name="ID_ITEM_FILTER_T3" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE_AC_CALC" select="$ID_NODE"/>
+
+	</call-table>
+
+	<call-table name="SXM_NODE_MAP">
+
+		<with-pk name="ID_META4OBJECT" select="$ID_T3"/>
+
+		<with-pk name="ID_NODE" select="$ID_NODE"/>
+
+	</call-table>
+
+</object>
+
+

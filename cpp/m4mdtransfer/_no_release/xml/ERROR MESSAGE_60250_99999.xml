@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object ERROR MESSAGE
+
+@version 1.4
+
+-->
+
+<object name="ERROR MESSAGE">
+
+	<param name="ID_FUN_MOD_NUM"/>
+
+	<param name="ID_FUN_SMOD_NUM"/>
+
+	<param name="ID_ERROR_MSG"/>
+
+	<call-table name="SSY_ERROR_MSGS">
+
+		<with-pk name="ID_FUN_MOD_NUM" select="$ID_FUN_MOD_NUM"/>
+
+		<with-pk name="ID_FUN_SMOD_NUM" select="$ID_FUN_SMOD_NUM"/>
+
+		<with-pk name="ID_ERROR_MSG" select="$ID_ERROR_MSG"/>
+
+	</call-table>
+
+</object>
+
+

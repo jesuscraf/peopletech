@@ -1,0 +1,321 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{306105b1-0374-4faa-9fe6-09c9fdedaa08}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{6393957a-3600-45c9-b531-33515bb33df6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="rc">
+      <UniqueIdentifier>{99d1651b-d338-42cf-a8b2-fb6f091a98d3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mak">
+      <UniqueIdentifier>{63a374e0-3029-405e-851d-9786992a6277}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="lib">
+      <UniqueIdentifier>{247975d9-c61f-4a2b-a6aa-cddadf995063}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_debug">
+      <UniqueIdentifier>{63a14da5-a620-47f8-8bbe-13872cde1284}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win32_release">
+      <UniqueIdentifier>{31490f86-88a1-4266-b7cf-a84114215614}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_debug">
+      <UniqueIdentifier>{2be32314-c7fc-4dc6-a7d4-10337bd7b6fa}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="lib\win64_release">
+      <UniqueIdentifier>{52b144c4-349b-4ff5-bf36-6673c1a5c574}</UniqueIdentifier>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="par">
+      <UniqueIdentifier>{f78793ea-1e2c-4fd9-91af-8f5f7e34d38d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="par\mibs">
+      <UniqueIdentifier>{1a063026-db68-4792-923a-b6b32b581f0d}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\inc\m4snmpadmin_dll.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpadmin.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpadminfactory.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpadmininstance.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpinterfaces.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpobject.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpres.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmptables.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\snmpxmlutil.hpp">
+      <Filter>inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\rc\m4snmpadmin.what.cpp">
+      <Filter>rc</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpadmin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpadminfactory.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpadmininstance.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpaloneadmin.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpobject.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmptables.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\snmpxmlutil.cpp">
+      <Filter>src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="..\rc\m4snmpadmin.rc">
+      <Filter>rc</Filter>
+    </ResourceCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\..\m4ipcs\mak\win32\debug\m4ipcsdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win32\release\m4ipcsdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\debug\m4ipcsdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4ipcs\mak\win64\release\m4ipcsdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\debug\m4logdll.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win32\release\m4logdll.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\debug\m4logdll.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4log\mak\win64\release\m4logdll.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\debug\m4objlog.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win32\release\m4objlog.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\debug\m4objlog.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4objlog\mak\win64\release\m4objlog.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\debug\m4unicode.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win32\release\m4unicode.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\debug\m4unicode.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4unicode\mak\win64\release\m4unicode.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win32\debug\m4xmlutil.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win32\release\m4xmlutil.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win64\debug\m4xmlutil.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\m4xmlutil\mak\win64\release\m4xmlutil.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\agent_pp\mak\win32\debug\agent_pp.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\agent_pp\mak\win32\release\agent_pp.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\agent_pp\mak\win64\debug\agent_pp.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\agent_pp\mak\win64\release\agent_pp.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\snmp_pp\mak\win32\debug\snmp_pp.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\snmp_pp\mak\win32\release\snmp_pp.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\snmp_pp\mak\win64\debug\snmp_pp.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\snmp\snmp_pp\mak\win64\release\snmp_pp.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\debug\xerces-c.lib">
+      <Filter>lib\win32_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win32\release\xerces-c.lib">
+      <Filter>lib\win32_release</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\debug\xerces-c.lib">
+      <Filter>lib\win64_debug</Filter>
+    </Library>
+    <Library Include="..\..\public\xerces\mak\win64\release\xerces-c.lib">
+      <Filter>lib\win64_release</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="m4snmpadmin.prj">
+      <Filter>mak</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="m4snmpadmin.touch">
+      <Filter>mak</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00-global-reg.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001-products.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101-appserver.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010102-dispatcher.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010101-server.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010102-memory.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010103-ldb.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010104-cache.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010105-services.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010106-communication.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010107-trace.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010201-sitenode-table.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010201-memory-table.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010401-cache-table.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010501-metadata.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010502-users.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010503-proxy.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010504-oltp.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010505-xml.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010506-suplementary-services.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010507-jobschedule.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010701-log.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-000101010702-vm.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050101-metadata-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050201-users-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050301-proxy-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050302-proxy-s-spaces.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050401-oltp-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050501-xml-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050601-echo-service.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-00010101050701-jobschedule-service.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010105020101-session-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010105030201-proxy-space-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010105060101-echo-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+    <None Include="..\par\mibs\m4-0001010105070101-jobschedule-executor-tabledin.mib">
+      <Filter>par\mibs</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="..\par\snmp.xml">
+      <Filter>par</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

@@ -1,0 +1,445 @@
+META4-COMMUNICATION-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4ApplicationServerModule
+		FROM META4-APPLICATION-SERVER-MIB
+
+	applicationServer, applicationServerGroups
+		FROM META4-PRODUCTS-REG;
+
+
+meta4CommunicationSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Communication subsystem."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ApplicationServerModule 6 }
+
+
+--
+-- 
+
+communicationSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Communication Subsystem"
+	::= { applicationServer 6 }
+
+communicationSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		basePort,
+		communicationWorkers,
+		processedRequest,
+		avgTimeReadingReq15m,
+		avgTimeReadingReq5s,
+		avgTimeReadingReq30s,
+		avgTimeReadingReq5m,
+		avgTimeWritingReq15m,
+		avgTimeWritingReq5s,
+		avgTimeWritingReq30s,
+		avgTimeWritingReq5m,
+		avgTimeServerReq15m,
+		avgTimeServerReq5s,
+		avgTimeServerReq30s,
+		avgTimeServerReq5m,
+		avgTimeRegisterReq15m,
+		avgTimeRegisterReq5s,
+		avgTimeRegisterReq30s,
+		avgTimeRegisterReq5m,
+		avgTimeDesRegisterReq15m,
+		avgTimeDesRegisterReq5s,
+		avgTimeDesRegisterReq30s,
+		avgTimeDesRegisterReq5m,
+		avgTimeGetReqSession15m,
+		avgTimeGetReqSession5s,
+		avgTimeGetReqSession30s,
+		avgTimeGetReqSession5m,
+		avgInputBytesSec15m,
+		avgInputBytesSec5s,
+		avgInputBytesSec30s,
+		avgInputBytesSec5m,
+		avgOutputBytesSec15m,
+		avgOutputBytesSec5s,
+		avgOutputBytesSec30s,
+		avgOutputBytesSec5m,
+		avgProcessedReqSec15m,
+		avgProcessedReqSec5s,
+		avgProcessedReqSec30s,
+		avgProcessedReqSec5m,
+		activeConnections
+	}
+	STATUS current
+	DESCRIPTION
+		"Communication Group properties"
+	::= { applicationServerGroups 6 }
+
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { communicationSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { communicationSubsystem 2 }
+
+basePort OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Base Port"
+	::= { communicationSubsystem 3 }
+
+communicationWorkers OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Communication Workers"
+	::= { communicationSubsystem 4 }
+
+processedRequest OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Processed Request"
+	::= { communicationSubsystem 501 }
+
+avgTimeReadingReq15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Reading/Req in Last 15 m"
+	::= { communicationSubsystem 502 }
+
+avgTimeReadingReq5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Reading/Req in Last 5 s"
+	::= { communicationSubsystem 503 }
+
+avgTimeReadingReq30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Reading/Req in Last 30 s"
+	::= { communicationSubsystem 504 }
+
+avgTimeReadingReq5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Reading/Req in Last 5 m"
+	::= { communicationSubsystem 505 }
+
+avgTimeWritingReq15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Writing/Req in Last 15 m"
+	::= { communicationSubsystem 506 }
+
+avgTimeWritingReq5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Writing/Req in Last 5 s"
+	::= { communicationSubsystem 507 }
+
+avgTimeWritingReq30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Writing/Req in Last 30 s"
+	::= { communicationSubsystem 508 }
+
+avgTimeWritingReq5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Writing/Req in Last 5 m"
+	::= { communicationSubsystem 509 }
+
+avgTimeServerReq15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time in Server/Req in Last 15 m"
+	::= { communicationSubsystem 510 }
+
+avgTimeServerReq5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time in Server/Req in Last 5 s"
+	::= { communicationSubsystem 511 }
+
+avgTimeServerReq30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time in Server/Req in Last 30 s"
+	::= { communicationSubsystem 512 }
+
+avgTimeServerReq5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time in Server/Req in Last 5 m"
+	::= { communicationSubsystem 513 }
+
+avgTimeRegisterReq15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Registering Request in Last 15 m"
+	::= { communicationSubsystem 514 }
+
+avgTimeRegisterReq5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Registering Request in Last 5 s"
+	::= { communicationSubsystem 515 }
+
+avgTimeRegisterReq30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Registering Request in Last 30 s"
+	::= { communicationSubsystem 516 }
+
+avgTimeRegisterReq5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Registering Request in Last 5 m"
+	::= { communicationSubsystem 517 }
+
+avgTimeDesRegisterReq15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time DesRegistering Request in Last 15 m"
+	::= { communicationSubsystem 518 }
+
+avgTimeDesRegisterReq5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time DesRegistering Request in Last 5 s"
+	::= { communicationSubsystem 519 }
+
+avgTimeDesRegisterReq30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time DesRegistering Request in Last 30 s"
+	::= { communicationSubsystem 520 }
+
+avgTimeDesRegisterReq5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time DesRegistering Request in Last 5 m"
+	::= { communicationSubsystem 521 }
+
+avgTimeGetReqSession15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Getting Request Session in Last 15 m"
+	::= { communicationSubsystem 522 }
+
+avgTimeGetReqSession5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Getting Request Session in Last 5 s"
+	::= { communicationSubsystem 523 }
+
+avgTimeGetReqSession30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Getting Request Session in Last 30 s"
+	::= { communicationSubsystem 524 }
+
+avgTimeGetReqSession5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Time Getting Request Session in Last 5 m"
+	::= { communicationSubsystem 525 }
+
+avgInputBytesSec15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Input Bytes/sec in Last 15 m"
+	::= { communicationSubsystem 526 }
+
+avgInputBytesSec5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Input Bytes/sec in Last 5 s"
+	::= { communicationSubsystem 527 }
+
+avgInputBytesSec30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Input Bytes/sec in Last 30 s"
+	::= { communicationSubsystem 528 }
+
+avgInputBytesSec5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Input Bytes/sec in Last 5 m"
+	::= { communicationSubsystem 529 }
+
+avgOutputBytesSec15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Output Bytes/sec in Last 15 m"
+	::= { communicationSubsystem 530 }
+
+avgOutputBytesSec5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Output Bytes/sec in Last 5 s"
+	::= { communicationSubsystem 531 }
+
+avgOutputBytesSec30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Output Bytes/sec in Last 30 s"
+	::= { communicationSubsystem 532 }
+
+avgOutputBytesSec5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Output Bytes/sec in Last 5 m"
+	::= { communicationSubsystem 533 }
+
+avgProcessedReqSec15m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Processed Request/sec in Last 15 m"
+	::= { communicationSubsystem 534 }
+
+avgProcessedReqSec5s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Processed Request/sec in Last 5 s"
+	::= { communicationSubsystem 535 }
+
+avgProcessedReqSec30s OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Processed Request/sec in Last 30 s"
+	::= { communicationSubsystem 536 }
+
+avgProcessedReqSec5m OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Processed Request/sec in Last 5 m"
+	::= { communicationSubsystem 537 }
+
+activeConnections OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of active connections"
+	::= { communicationSubsystem 538 }
+
+   
+END

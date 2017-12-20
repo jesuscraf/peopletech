@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapItIt.WrapItIt.1 = s 'WrapItIt Class'
+	{
+		CLSID = s '{A17BA9E5-2F30-11D1-A78C-00C04FB75E70}'
+	}
+	WrapItIt.WrapItIt = s 'WrapItIt Class'
+	{
+		CurVer = s 'WrapItIt.WrapItIt.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {A17BA9E5-2F30-11D1-A78C-00C04FB75E70} = s 'WrapItIt Class'
+		{
+			ProgID = s 'WrapItIt.WrapItIt.1'
+			VersionIndependentProgID = s 'WrapItIt.WrapItIt'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

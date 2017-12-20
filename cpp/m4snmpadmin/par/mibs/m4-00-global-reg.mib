@@ -1,0 +1,85 @@
+META4-GLOBAL-REG DEFINITIONS ::= BEGIN
+
+IMPORTS
+	enterprises, MODULE-IDENTITY, OBJECT-IDENTITY
+		FROM SNMPv2-SMI;
+
+meta4GlobalRegModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"Global registration module for the META4 framework."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4Modules 1 }
+
+
+meta4 OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"The root of the sub-tree assigned to META4 by the IANA."
+	::= { enterprises 19883 }
+
+meta4Reg OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for registrations."
+	::= { meta4 1 }
+
+meta4Modules OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree to register the values assigned to modules with the MODULE-IDENTITY construct."
+	::= { meta4Reg 1 }
+
+meta4Groups OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree to register the values assigned to definitions with the OBJECT-GROUP construct."
+	::= { meta4Reg 2 }
+
+meta4Generic OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for common object and event definitions."
+	::= { meta4 2 }
+
+meta4Products OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for specific object and event definitions."
+	::= { meta4 3 }
+
+meta4Caps OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for agent profiles."
+	::= { meta4 4 }
+
+meta4Reqs OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for management application requirements."
+	::= { meta4 5 }
+
+meta4Expr OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Sub-tree for experimental definitions."
+	::= { meta4 6 }
+
+END

@@ -1,0 +1,3 @@
+LIBRARY	"m4engprn"
+EXPORTS
+	M4_SendFilePathToPrinter

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object RULE
+
+@version 1.8
+
+-->
+
+<object name="RULE">
+
+	<param name="ID_RULE_TI"/>
+
+	<param name="ID_ITEM"/>
+
+	<param name="ID_RULE"/>
+
+	<param name="DT_START"/>
+
+	<call-table name="SCH_RULES">
+
+		<with-pk name="ID_RULE_TI" select="$ID_RULE_TI"/>
+
+		<with-pk name="ID_ITEM" select="$ID_ITEM"/>
+
+		<with-pk name="ID_RULE" select="$ID_RULE"/>
+
+		<with-pk name="DT_START" select="$DT_START"/>
+
+		<fields>
+
+			<field name="ID_TI" is-printable="false"/>
+
+			<field name="DT_START_CORR" is-printable="false"/>
+
+			<field name="TEST_PARAMETERS" visible="false"/>
+
+			<field name="POLISH_CODE" visible="false"/>
+
+			<field name="SOURCE_CODE" multiline="true" content-type="rule"/>
+
+		</fields>
+
+	</call-table>
+
+</object>
+
+

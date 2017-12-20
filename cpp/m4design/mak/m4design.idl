@@ -1,0 +1,297 @@
+// M4Design.idl : IDL source for M4Design.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4Design.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+	
+
+	typedef [uuid(9BBC7770-8D51-11d4-BE35-00C04F71652D), helpstring("Property M4LineDrag")]
+    enum M4LineDrag {
+		M4DESIGN_LINE_DRAG_NORMAL = 0,
+		M4DESIGN_LINE_DRAG_NODRAG = 1
+    } M4LineDrag;
+
+	typedef [uuid(A6DF1E40-4C0E-11d4-BE09-00C04F71652D), helpstring("Property SelectionType")]
+    enum M4SelectionType {
+		M4DESIGN_NOTSELECTED = 0,
+		M4DESIGN_SELECTEDNORMAL = 1,
+		M4DESIGN_SELECTEDSECONDARY = 2
+    } M4SelectionType;
+
+	typedef [uuid(0C079AC0-5645-11d4-BE12-00C04F71652D), helpstring("Property LineStyle")]
+    enum M4LineStyle {
+		M4DESIGN_STYLE_SOLID = 0,
+		M4DESIGN_STYLE_DASH = 1,
+		M4DESIGN_STYLE_DOT = 2,
+		M4DESIGN_STYLE_DASHDOT = 3,
+		M4DESIGN_STYLE_DASHDOTDOT = 4
+    } M4LineStyle;
+	
+	typedef [uuid(84E378D0-6149-11d4-BE1A-00C04F71652D), helpstring("Property LineEndCap")]
+    enum M4LineEndCap {
+		M4DESIGN_ROUND = 0,
+		M4DESIGN_SQUARE = 1,
+		M4DESIGN_FLAT = 2
+    } M4LineEndCap;
+
+	//##ModelId=396DF31D02B9
+	[
+		object,
+		uuid(B8CBC6F4-58A0-11D4-BE14-00C04F71652D),
+		dual,
+		helpstring("IDPoint Interface"),
+		pointer_default(unique)
+	]
+	interface IDPoint : IDispatch
+	{
+		//##ModelId=396DF31D02D7
+		[propget, id(1), helpstring("property x")] HRESULT x([out, retval] long *pVal);
+		//##ModelId=396DF31D02DA
+		[propput, id(1), helpstring("property x")] HRESULT x([in] long newVal);
+		//##ModelId=396DF31D02E3
+		[propget, id(2), helpstring("property y")] HRESULT y([out, retval] long *pVal);
+		//##ModelId=396DF31D02EB
+		[propput, id(2), helpstring("property y")] HRESULT y([in] long newVal);
+	};
+
+	//##ModelId=396DF31D0205
+	[
+		object,
+		uuid(2C1F5256-4B43-11D4-BE08-00C04F71652D),
+		dual,
+		helpstring("IDesignLine Interface"),
+		pointer_default(unique)
+	]
+	interface IDesignLine : IDispatch
+	{
+		//##ModelId=396DF31D021A
+		[propget, id(1), helpstring("property Left")] HRESULT Left([out, retval] long *pVal);
+		//##ModelId=396DF31D0225
+		[propput, id(1), helpstring("property Left")] HRESULT Left([in] long newVal);
+		//##ModelId=396DF31D022D
+		[propget, id(6), helpstring("property SelectType")] HRESULT SelectType([out, retval] M4SelectionType *pVal);
+		//##ModelId=396DF31D0230
+		[propget, id(7), helpstring("property Key")] HRESULT Key([out, retval] BSTR *pVal);
+		//##ModelId=396DF31D0239
+		[propget, id(8), helpstring("property Container")] HRESULT Container([out, retval] BSTR *pVal);
+		//##ModelId=396DF31D0242
+		[propget, id(9), helpstring("property Color")] HRESULT Color([out, retval] OLE_COLOR *pVal);
+		//##ModelId=396DF31D024B
+		[propput, id(9), helpstring("property Color")] HRESULT Color([in] OLE_COLOR newVal);
+		//##ModelId=396DF31D024E
+		[propget, id(10), helpstring("property Width")] HRESULT Width([out, retval] long *pVal);
+		//##ModelId=396DF31D0257
+		[propget, id(15), helpstring("property LineDragMode")] HRESULT LineDragMode([out, retval] M4LineDrag *pVal);
+		[propput, id(15), helpstring("property LineDragMode")] HRESULT LineDragMode([in] M4LineDrag newVal);
+		[propput, id(10), helpstring("property Width")] HRESULT Width([in] long newVal);
+		//##ModelId=396DF31D0260
+		[propget, id(11), helpstring("property Style")] HRESULT Style([out, retval] M4LineStyle *pVal);
+		//##ModelId=397C1CD10300
+		[propget, id(14), helpstring("property EndCap")] HRESULT EndCap([out, retval] M4LineEndCap *pVal);
+		//##ModelId=397C1CD201C1
+		[propput, id(14), helpstring("property EndCap")] HRESULT EndCap([in] M4LineEndCap newVal);
+		//##ModelId=396DF31D0269
+		[propput, id(11), helpstring("property Style")] HRESULT Style([in] M4LineStyle newVal);
+		//##ModelId=396DF31D026C
+		[propget, id(12), helpstring("property PA")] HRESULT PA([out, retval] IDPoint * *pVal);
+		//##ModelId=396DF31D0275
+		[propget, id(13), helpstring("property PB")] HRESULT PB([out, retval] IDPoint* *pVal);
+		//##ModelId=396DF31D027E
+		[propget, id(2), helpstring("property Top")] HRESULT Top([out, retval] long *pVal);
+		//##ModelId=396DF31D0287
+		[propput, id(2), helpstring("property Top")] HRESULT Top([in] long newVal);
+		//##ModelId=396DF31D028A
+		[propget, id(3), helpstring("property Right")] HRESULT Right([out, retval] long *pVal);
+		//##ModelId=396DF31D0293
+		[propput, id(3), helpstring("property Right")] HRESULT Right([in] long newVal);
+		//##ModelId=396DF31D029B
+		[propget, id(4), helpstring("property Bottom")] HRESULT Bottom([out, retval] long *pVal);
+		//##ModelId=396DF31D029E
+		[propput, id(4), helpstring("property Bottom")] HRESULT Bottom([in] long newVal);
+		//##ModelId=396DF31D02A7
+		[id(5), helpstring("method Move")] HRESULT Move([in] long Left, [in] long Top, [in] long Right, [in] long Bottom);
+	};
+		
+
+	//##ModelId=396DF31D01D5
+	[
+		object,
+		uuid(632701F0-5665-11d4-BE12-00C04F71652D),
+		dual,
+		helpstring("ILineManEvents Interface"),
+		pointer_default(unique)
+	]
+	interface ILineManEvents : IDispatch
+	{
+		//##ModelId=396DF31D01F1
+		[id(1), helpstring("method LineSelected")] HRESULT LineSelected([in] IDesignLine * pLine);
+		//##ModelId=396DF31D01F3
+		[id(2), helpstring("method LineMoved")] HRESULT LineMoved([in] IDesignLine * pLine);
+		//##ModelId=396DF31D01FB
+		[id(3), helpstring("method LineRButton")] HRESULT LineRButton([in] IDesignLine * pLine);
+	};	
+
+
+	//##ModelId=396DF31D018E
+	[
+		object,
+		uuid(E9358D11-563E-11D4-BE12-00C04F71652D),
+		dual,
+		helpstring("ILineCol Interface"),
+		pointer_default(unique)
+	]
+	interface ILineCol : IDispatch
+	{
+		//##ModelId=396DF31D01AC
+		[id(1), helpstring("Add")] HRESULT Add([in]IDesignLine *pI, [in,optional]VARIANT index);
+		//##ModelId=396DF31D01B7
+		[propget, id(2), helpstring("Count")] HRESULT Count([out, retval] long *pVal);
+		//##ModelId=396DF31D01C0
+		[propget, id(3), helpstring("Item")] HRESULT Item([in]VARIANT index, [out, retval]IDesignLine **pvar);
+		//##ModelId=396DF31D01CA
+		[propget, id(DISPID_NEWENUM), restricted, helpstring("_NewEnum")] HRESULT _NewEnum([out, retval] LPUNKNOWN *pVal);
+		//##ModelId=396DF31D01D3
+		[id(4), helpstring("Remove")] HRESULT Remove([in]VARIANT index);
+	};
+
+	//##ModelId=396DF31D0103
+	[
+		object,
+		uuid(93450F81-481D-11D4-BE06-00C04F71652D),
+		dual,
+		helpstring("ILineMan Interface"),
+		pointer_default(unique)
+	]
+	interface ILineMan : IDispatch
+	{
+		//##ModelId=396DF31D010D
+		[id(1), helpstring("method AddLine")] HRESULT AddLine([in] long hWndHook, [in] long hWndPaint,[in] BSTR Key,[in] BSTR containerKey, [in] long pAX, [in] long pAY, [in] long pBX, [in] long pBY, [out, retval] IDesignLine ** pLine);
+		//##ModelId=396DF31D0129
+		[propget, id(2), helpstring("property GridSize")] HRESULT GridSize([out, retval] long *pVal);
+		//##ModelId=396DF31D012C
+		[id(10), helpstring("method Construct")] HRESULT Construct([in] ILineManEvents * pLineManEvents);
+		//##ModelId=396DF31D0134
+		[id(11), helpstring("method Destruct")] HRESULT Destruct();
+		//##ModelId=396DF31D0135
+		[id(12), helpstring("method UnselectAll")] HRESULT UnselectAll();
+		//##ModelId=397C1CD000C3
+		[propget, id(13), helpstring("property DragState")] HRESULT DragState([out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=397C1CD00326
+		[propput, id(13), helpstring("property DragState")] HRESULT DragState([in] VARIANT_BOOL newVal);
+		//##ModelId=396DF31D013D
+		[propput, id(2), helpstring("property GridSize")] HRESULT GridSize([in] long newVal);
+		//##ModelId=396DF31D0149
+		[propget, id(3), helpstring("property Selected")] HRESULT Selected([in] BSTR bKey, [out, retval] VARIANT_BOOL *pVal);
+		//##ModelId=396DF31D0153
+		[propput, id(3), helpstring("property Selected")] HRESULT Selected([in] BSTR bKey, [in] VARIANT_BOOL newVal);
+		//##ModelId=396DF31D015D
+		[id(4), helpstring("method DrawGrid")] HRESULT DrawGrid([in] long hWnd, [in] long nGridSize);
+		//##ModelId=396DF31D0166
+		[id(5), helpstring("method RemoveLine")] HRESULT RemoveLine([in] BSTR strKey);
+		//##ModelId=396DF31D0168
+		[id(6), helpstring("method Line")] HRESULT Line([in] VARIANT vKey, [out, retval] IDesignLine * * pRet);
+		//##ModelId=396DF31D0171
+		[id(7), helpstring("method DrawTemporalLine")] HRESULT DrawTemporalLine([in] long hWnd, [in] long Left, [in] long Top, [in] long Right, [in] long Bottom);
+		//##ModelId=396DF31D0183
+		[id(8), helpstring("method Lines")] HRESULT Lines([out, retval] ILineCol ** pVal);
+		//##ModelId=396DF31D0185
+		[id(9), helpstring("method SelectedLines")] HRESULT SelectedLines([out, retval] ILineCol ** pVal);
+	};
+
+[
+	uuid(87FB91C1-112B-11D4-BDE9-00C04F71652D),
+	version(1.0),
+	helpstring("M4Design 1.0 Type Library")
+]
+library M4DESIGNLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	//##ModelId=396891F500D5
+/*	[
+		uuid(93450F83-481D-11D4-BE06-00C04F71652D),
+		helpstring("_ILineManEvents Interface")
+	]
+	dispinterface _ILineManEvents
+	{
+		properties:
+		methods:
+		//##ModelId=396891F500EA
+		[id(1), helpstring("method LineSelected")] HRESULT LineSelected([in] IDesignLine * pLine);
+		[id(2), helpstring("method TestEvento")] HRESULT TestEvento();
+	};*/
+
+	//##ModelId=396DF31D0351
+	[
+		uuid(93450F82-481D-11D4-BE06-00C04F71652D),
+		helpstring("LineMan Class")
+	]
+	coclass LineMan
+	{
+		//##ModelId=396DF31D036D
+		[default] interface ILineMan;
+		//##ModelId=396891F500AD
+		//[default, source] dispinterface _ILineManEvents;
+	};
+	//##ModelId=396AFCCA01B8
+/*	[
+		uuid(2C1F5258-4B43-11D4-BE08-00C04F71652D),
+		helpstring("_IDesignLineEvents Interface")
+	]
+	dispinterface _IDesignLineEvents
+	{
+		properties:
+		methods:
+	};*/
+
+	//##ModelId=396DF31D0331
+	[
+		uuid(2C1F5257-4B43-11D4-BE08-00C04F71652D),
+		helpstring("DesignLine Class"),
+		noncreatable
+	]
+	coclass DesignLine
+	{
+		//##ModelId=396DF31D034F
+		[default] interface IDesignLine;
+		//##ModelId=396AFCCA0184
+		//[default, source] dispinterface _IDesignLineEvents;
+	};
+
+
+	//##ModelId=396DF31D0315
+	[
+		uuid(E9358D12-563E-11D4-BE12-00C04F71652D),
+		helpstring("LineCol Class")
+	]
+	coclass LineCol
+	{
+		//##ModelId=396DF31D0327
+		[default] interface ILineCol;
+	};
+
+
+	interface ILineManEvents;
+
+	typedef [uuid(1B57A030-532C-11d4-BE10-00C04F71652D), helpstring("Property DragMode")]
+    enum M4DragType {
+		M4_DESIGN_NORMAL = 0,
+		M4_DESIGN_RECT = 1,
+		M4_DESIGN_LINE = 2
+    } M4DragType;
+
+	//##ModelId=396DF31D02F5
+	[
+		uuid(B8CBC6F5-58A0-11D4-BE14-00C04F71652D),
+		helpstring("DPoint Class")
+	]
+	coclass DPoint
+	{
+		//##ModelId=396DF31D0313
+		[default] interface IDPoint;
+	};
+};

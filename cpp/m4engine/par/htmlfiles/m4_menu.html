@@ -1,0 +1,240 @@
+<!-- >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> m4_menu.html  -->
+
+<html>
+<META HTTP-EQUIV="Content-Type" content="text/html; charset=<m4{charset}m4>">
+<META NAME="GENERATOR" CONTENT="META4 Report Engine">
+
+<script language='JavaScript'>
+	var zoom=1;
+</script>
+
+<script LANGUAGE='Javascript' src='<m4{brkfilelang}={m4_lang.js}m4>'></script>
+
+<script language='JavaScript'>
+
+	var iCount=1;
+	var Files=[<m4{navigation_array}m4>];
+	var iMax=Files.length ;
+	
+
+	function Incr(){
+		if(iCount<iMax){
+			iCount++;
+		}
+		var m_pcFileName=Files[iCount-1];
+		parent.frames['overdrive'].frames['main'].location=m_pcFileName;
+		document.menu.page.value=iCount;
+	}
+
+	function Decr(){
+		if(iCount>1) {
+			iCount--;
+		}
+		var m_pcFileName=Files[iCount-1];
+		parent.frames['overdrive'].frames['main'].location=m_pcFileName;
+		document.menu.page.value=iCount;
+	} 
+
+	function M4Select(page){
+		if (page==-1) page=iMax;
+		var m_pcFileName=Files[page-1];
+		if (page>0 && page<=iMax){
+			parent.frames['overdrive'].frames['main'].location=m_pcFileName;
+			iCount=page;
+			document.menu.page.value=iCount;
+		};
+	} 
+
+	function M4Zoom(page, x)
+	{
+		zoom=x;
+		if (page==-1) page=iMax;
+		var m_pcFileName=Files[page-1];
+		if (page>0 && page<=iMax){
+			parent.frames['overdrive'].frames['main'].location=m_pcFileName;
+			iCount=page;
+			document.menu.page.value=iCount;
+		};
+	}
+
+	function M4SetPageValue(page)
+	{
+		document.menu.page.value=page;
+		iCount=page;
+	}
+
+	var hide=true;
+
+	function SwitchFrame()
+	{
+		if(hide){
+			parent.frames['overdrive'].location='<m4{brkfile}={m4_index_frame.html}m4>';
+		} else {
+			parent.frames['overdrive'].location='<m4{brkfile}={m4_frameoff.html}m4>';
+		};
+		hide=!hide;
+	}
+
+	function SwitchSearch()
+	{
+		if(hide){
+			parent.frames['overdrive'].location='<m4{brkfile}={m4_search_frame.html}m4>';
+		} else {
+			parent.frames['overdrive'].location='<m4{brkfile}={m4_frameoff.html}m4>';
+		};
+		hide=!hide;
+	}
+
+</script>
+
+
+<body bgcolor='#cdcdcd' topmargin=0 leftmargin=0 marginwidth=0 marginheight=0>
+
+<!---Main table, 2 columns: logo (left aligned) & options (center aligned) -->
+
+<form name='menu' method='POST' action='javascript:M4Select(menu.page.value);'>
+
+<table width="100%"> 
+<tr> 
+
+<!-- Logo, first cell of main table  
+
+<!-- Logo, first cell of main table  (71sp6@2 taken out) -->
+
+<!-- <td align="left" valign="center"  width="80">  -->
+    <!-- <img src=<m4{glbfile}={m4logo.gif}m4> border=1> --> 
+<!-- </td>  -->
+
+
+<!-- Options, second cell of main table, contains a centered table  -->
+
+<td align="center">
+	<table align ="center">
+	<tr>
+
+<!-- LEFT cell -->
+
+<td valign="center">
+     <a href='javascript:M4Select(1);'><img src=<m4{glbfile}={m4left2.gif}m4> 
+		name=l2 border=0></a>&nbsp;
+	 <a href='javascript:Decr();'><img src=<m4{glbfile}={m4left.gif}m4> 
+		name=l border=0></a>
+</td>
+
+
+<!-- Page & ZOOM -->
+
+<td valign="center">
+
+<script type="text/javascript" language="Javascript1.5">
+
+
+	document.write(
+		
+	"<font size='2' face='Verdana, Arial, Helvetica, sans-serif' color='#000000'><b>"+
+			MenuMsg[0]+"</b>\r\n"+
+	"<input type='text' name='page' value='1' size=3>\r\n"+
+		"<font size='2' face='Verdana, Arial, Helvetica, sans-serif' color='#000000'><b>"+
+			MenuMsg[1]+" "+iMax+"</b>&nbsp;&nbsp;\r\n"
+	) ;
+
+	if (<m4{zoom}m4>) {
+
+		document.write(
+			"<select name='zoom' size='1' onchange='M4Zoom(page.value, zoom.value);'>\r\n"+
+				"<option value='2'>200%</option>\r\n"+
+				"<option value='1.5'>150%</option>\r\n"+
+				"<option value='1' selected>100%</option>\r\n"+
+				"<option value='0.75'>75%</option>\r\n"+
+				"<option value='0.5'>50%</option>\r\n"+
+			"</select>\r\n"
+		) ;
+
+	} ;
+
+</script>
+
+</td>
+
+<!-- RIGHT -->
+
+<td valign="center">
+
+	<a href='javascript:Incr();'><img src=<m4{glbfile}={m4right.gif}m4> name=r border=0></a>&nbsp;
+	<a href='javascript:M4Select(-1);'><img src=<m4{glbfile}={m4right2.gif}m4> name=r2 border=0></a>
+
+</td>
+
+
+<!-- Separator for Index or search -->
+
+<script type="text/javascript" language="Javascript1.5">
+	if ( <m4{toc}m4> || <m4{search}m4> ) {
+		document.write(
+			"<td width=\"40\"/>\r\n"
+		) ;
+	} ;
+</script>
+
+<!-- INDEX -->
+
+<script type="text/javascript" language="Javascript1.5">
+	if (<m4{toc}m4>) {
+		
+		document.write(
+
+		"<td valign=\"center\">\r\n"+
+	
+		"<a href=javascript:SwitchFrame()>"+
+		"<img src=<m4{glbfile}={m4index.gif}m4> border=0 alt='"+
+			MenuMsg[2]+"'></a>\r\n"+
+
+		"</td>\r\n"
+		) ;
+	} ;
+</script>
+
+
+<!-- SEARCH -->
+
+<script type="text/javascript" language="Javascript1.5">
+
+	if (<m4{search}m4>) {
+		document.write(
+
+		"<td valign=\"center\">\r\n"+
+
+		"<a href=javascript:SwitchSearch()>"+
+		"<img src=<m4{glbfile}={m4search.gif}m4> border=0 alt='"+
+			MenuMsg[3]+"'></a>\r\n"+
+
+		"</td>\r\n"
+		) ;
+	} ;
+
+</script>
+
+<!-- SEARCH -->
+
+
+<!-- End of options table-->
+
+</tr>
+</table>
+</td> 
+
+<!---End of Main table-->
+
+</tr> 
+</table> 
+
+</form>
+
+
+<!---End of HTML file-->
+
+</body>
+</html>
+
+<!-- m4_menu.html <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<  -->
+

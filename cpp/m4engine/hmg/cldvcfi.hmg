@@ -1,0 +1,74 @@
+//==============================================================================
+//
+//	(c) Copyright  1991-1997 Meta Software M.S., S.A
+//	All rights reserved.
+//
+//	Module:				<cldvcfi.cpp>
+//	File:				cldvcfi.hmg
+//	Project:			Report Engine
+//	Author:				Meta Software M.S. , S.A
+//	Date:				17/07/1997
+//	Language:			C++
+//	Operating System:	ALL
+//	Design Document:  
+//
+//	Propietary:		Fernando Abad Garcia
+//	Modifications:	Who && Date
+//
+// Definition:
+//
+//    Message header
+//
+//
+//==============================================================================
+
+#define GROUP_ID    ENG_TGI_CLDVCFI
+#define GROUP_BASE  ENG_TGB_CLDVCFI
+#define TRACE_ARRAY g_stENG_DvcFile_Msg
+
+enum CLDVCFI_MSG 
+{
+	CLDVCFI_MSG_10=0, //Ojo, se usa como indice del array
+	CLDVCFI_MSG_50, 
+	CLDVCFI_MSG_60,
+	CLDVCFI_MSG_70,
+	CLDVCFI_MSG_120,	
+	CLDVCFI_MSG_130,
+	CLDVCFI_MSG_140,
+	CLDVCFI_MSG_150,
+	CLDVCFI_MSG_160,
+	DVCFI_COUNT
+} ;
+
+static const ClMIT_Msg::StMsgInfo TRACE_ARRAY[] =  
+{
+	{ 	GROUP_ID, CLDVCFI_MSG_10+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Number of page out of range or non-existing layout page redirection to file" }, 
+
+	{ 	GROUP_ID, CLDVCFI_MSG_50+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Not enough design characters to manage all the break files" }, 
+
+	{ 	GROUP_ID, CLDVCFI_MSG_60+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Not enough design characters to manage all the page layouts" }, 
+
+	{ 	GROUP_ID, CLDVCFI_MSG_70+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "No characters to manage layout page files" },
+	
+	{ 	GROUP_ID, CLDVCFI_MSG_120+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Pre-printing not found. Maybe you wrote a wrong identifier." },
+
+	{ 	GROUP_ID, CLDVCFI_MSG_130+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Pre-printing value will be cut short." },
+
+	{ 	GROUP_ID, CLDVCFI_MSG_140+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Pre-printing in page %0:s not resolved" },
+
+	{ 	GROUP_ID, CLDVCFI_MSG_150+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Pre-printing not inserted in the list because it already exists" },
+
+	{ 	GROUP_ID, CLDVCFI_MSG_160+GROUP_BASE, ClMIT_Msg::MSG_ERROR, ClMIT_Msg::MIXED_OUT, ClMIT_Msg::NONE_BITS,
+		 "Error printing %0:s in %1:s" }
+
+} ;
+
+

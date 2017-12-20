@@ -1,0 +1,148 @@
+BEGIN Messages Messages
+	BEGIN Message m1
+		Text = "Nº Error: %C. There is a character string after the last END."
+	END
+	BEGIN Message m2
+		Text = "Nº Error: %C. There is more than one blank space after the BEGIN."
+	END
+	BEGIN Message m3
+		Text = "Nº Error: %C. There is more than one blank space following the object declaration %O."
+	END
+	BEGIN Message m4
+		Text = "Nº Error: %C. The object %O has a blank space in the alias o \\ o /."
+	END
+	BEGIN Message m5
+		Text = "Nº Error: %C. The object %O cannot be contained by %A."
+	END
+	BEGIN Message m6
+		Text = "Nº Error: %C. The object %O has no alias."
+	END
+	BEGIN Message m7
+		Text = "Nº Error: %C. The object %O is incorrect."
+	END
+	BEGIN Message m8
+		Text = "Nº Error: %C. There is more than one blank space or the object has not been declared."
+	END
+	BEGIN Message m9
+		Text = "Nº Error: %C. The object has not been declared."
+	END
+	BEGIN Message m10
+		Text = "Nº Error: %C. There is an erroneous character string before the BEGIN."
+	END
+	BEGIN Message m11
+		Text = "Nº Error: %C. There is more than one END for the BEGIN that were found."
+	END
+	BEGIN Message m12
+		Text = "Nº Error: %C. There is a character string after the END."
+	END
+	BEGIN Message m13
+		Text = "Nº Error: %C. The property %P with the value %V has no type declared."
+	END
+	BEGIN Message m15
+		Text = "Nº Error: %C. There is a character or blank space string after the END."
+	END
+	BEGIN Message m17
+		Text = "Nº Error: %C. There is more than one blank space after = in the property %P."
+	END
+	BEGIN Message m18
+		Text = "Nº Error: %C. The property %P has no value assigned."
+	END
+	BEGIN Message m19
+		Text = "Nº Error: %C. There must be one blank space after = in the property %P."
+	END
+	BEGIN Message m20
+		Text = "Nº Error: %C. There must be one = or blank space before = in the property %P."
+	END
+	BEGIN Message m21
+		Text = "Nº Error: %C. There must be one blank space before =."
+	END
+	BEGIN Message m22
+		Text = "Nº Error: %C. Unable to find the property %P in the object %O."
+	END
+	BEGIN Message m23
+		Text = "Nº Error:23. The object %O from the line %L has no END."
+	END
+	BEGIN Message m24
+		Text = "Nº Error: %C. The object %A contains more objects %O than allowed"
+	END
+	BEGIN Message m25
+		Text = "Nº Error: %C. The alias for object %O is duplicated in a sibling."
+	END
+	BEGIN Message m26
+		Text = "Nº Error: %C. The object %O cannot be contained once more by %A and its alias is duplicated in a sibling."
+	END
+	BEGIN Message m27
+		Text = "Nº Error: %C. The required object %O is not defined for the object %A"
+	END
+	BEGIN Message m28
+		Text = "Nº Error: %C. The required property %P is not defined for the object %0"
+	END
+	BEGIN Message m29
+		Text = "Nº Error: %C. The starting or ending quote mark is missing in the string type property %P."
+	END
+	BEGIN Message m30
+		Text = "Nº Error: %C. The property %P is not a string list."
+	END
+	BEGIN Message m31
+		Text = "Nº Error: %C. The Boolean property %P does not have a boolean value."
+	END
+	BEGIN Message m32
+		Text = "Nº Error: %C. The Integer property %P is not an integer."
+	END
+	BEGIN Message m33
+		Text = "Nº Error: %C. The Integer property %P is greater than an integer number."
+	END
+	BEGIN Message m34
+		Text = "Nº Error: %C. The Long property %P is not a long integer."
+	END
+	BEGIN Message m35
+		Text = "Nº Error: %C. The Long property %P is greater than a long integer number."
+	END
+	BEGIN Message m36
+		Text = "Nº Error: %C. The object %O has an error in the property %P, where the path is invalid."
+	END
+	BEGIN Message m37
+		Text = "Nº Error: %C. The object %O has an error in the property %P, for which an incorrect runtime property has been declared."
+	END
+	BEGIN Message m38
+		Text = "Nº Error: %C. The object %O has an error in the property %P, for which an incorrect runtime method has been declared."
+	END
+	BEGIN Message m39
+		Text = "Nº Error: %C. The object %O has an error in the property %P, where the path is invalid and for which an incorrect runtime property has been declared."
+	END
+	BEGIN Message m40
+		Text = "Nº Error: %C. The object %O has an error in the property %P, where the path is invalid and for which an incorrect runtime method has been declared."
+	END
+	BEGIN Message m41
+		Text = "Nº Error: %C. The object %O has an error in the property %P, where the path is invalid and for which an incorrect runtime property and method have been declared."
+	END
+	BEGIN Message m42
+		Text = "Nº Error: %C. The object %O has an error in the property %P, for which an incorrect runtime property and method have been declared."
+	END
+	BEGIN Message m43
+            Text = "Nº Error: %C. The object %A contains more objects %O than allowed"
+        END
+BEGIN Message m44
+        Text = "Nº Error: %C. The base object is not defined."
+	END
+	BEGIN Message m45
+        Text = "Nº Error: %C. There is a BEGIN without its respective END"
+	END
+	BEGIN Message m101
+		Text = "Nº Error: %C. Action does not cover the range of values."
+	END
+        BEGIN Message m201
+            Text = "Line No.      Error"
+        END
+        BEGIN Message m202
+            Text = "There was an error opening the file."
+        END
+        BEGIN Message m203
+            Text = "Number of errors: "
+        END
+        BEGIN Message m204
+            Text = "errors."
+        END
+END
+
+

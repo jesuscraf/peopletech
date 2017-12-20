@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapColProp.WrapColProp.1 = s 'WrapColProp Class'
+	{
+		CLSID = s '{0364B2D8-0438-11D1-A76A-00C04FB75E70}'
+	}
+	WrapColProp.WrapColProp = s 'WrapColProp Class'
+	{
+		CurVer = s 'WrapColProp.WrapColProp.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {0364B2D8-0438-11D1-A76A-00C04FB75E70} = s 'WrapColProp Class'
+		{
+			ProgID = s 'WrapColProp.WrapColProp.1'
+			VersionIndependentProgID = s 'WrapColProp.WrapColProp'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

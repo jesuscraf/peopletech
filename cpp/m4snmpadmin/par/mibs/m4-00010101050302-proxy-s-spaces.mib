@@ -1,0 +1,118 @@
+META4-PROXY-S-SPACES-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32, Unsigned32
+		FROM SNMPv2-SMI
+
+	meta4ProxySubsystemModule, proxySubsystem, proxySubsystemGroup
+		FROM META4-PROXY-SUBSYSTEM-MIB;
+
+
+meta4ProxySSpacesSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200405141200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the Proxy Spaces."
+
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4ProxySubsystemModule 2 }
+
+
+--
+--
+
+proxySSpacesSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"Proxy Spaces Subsystem"
+	::= { proxySubsystem 1002 }
+
+
+proxySSpacesSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		startDate,
+		state,
+		maxProxySpaces,
+		cacheName
+	}
+	STATUS current
+	DESCRIPTION
+        "-"
+    ::= { proxySubsystemGroup 2 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySSpacesSubsystem 1 }
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { proxySSpacesSubsystem 2 }
+
+startDate OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "GMT"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Start Date"
+	::= { proxySSpacesSubsystem 3 }
+
+state OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Current Status"
+	::= { proxySSpacesSubsystem 4 }
+
+maxProxySpaces OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Proxy Spaces"
+	::= { proxySSpacesSubsystem 5 }
+
+cacheName OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Cache Name"
+	::= { proxySSpacesSubsystem 6 }
+
+
+END

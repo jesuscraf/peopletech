@@ -1,0 +1,38 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4filemanager.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../zip/dounzip.c
+SRC = ../zip/dozip.c
+SRC = ../zip/ioapi.c
+SRC = ../zip/mztools.c
+SRC = ../zip/unzip.c
+SRC = ../zip/zip.c
+
+SRC = ../src/file_adv.cpp
+SRC = ../src/file_event.cpp
+SRC = ../src/file_finder.cpp
+SRC = ../src/file_manager.cpp
+SRC = ../src/file_misc.cpp
+SRC = ../src/generic_event.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../../m4doc/inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+LIB = m4ipcs
+LIB = m4unicode
+LIB = z

@@ -1,0 +1,44 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4obl.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/analizad.cpp
+SRC = ../src/arraprop.cpp
+SRC = ../src/arraymat.cpp
+SRC = ../src/arrayobj.cpp
+SRC = ../src/arrhand.cpp
+SRC = ../src/bloques.cpp
+SRC = ../src/busque.cpp
+SRC = ../src/lobj.cpp
+SRC = ../src/m4cppobl.cpp
+SRC = ../src/m4lgobj.cpp
+SRC = ../src/m4string.cpp
+SRC = ../src/match.cpp
+SRC = ../src/oblutil.cpp
+SRC = ../src/propied.cpp
+SRC = ../src/resource.cpp
+SRC = ../src/unix/hstring.cpp
+SRC = ../src/unix/m4uxwin.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# override CCFLAGS.
+CCFLAGS = -DMAIN_OBL
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+INC = ../inc/unix
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4date
+
+

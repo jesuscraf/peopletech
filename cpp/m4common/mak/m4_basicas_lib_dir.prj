@@ -1,0 +1,112 @@
+# Fichero .prj que contiene los path de todas las librerias basicas. 
+#-------------------------------------------------------------------
+
+INC = ../../m4common/sinc
+
+INC = ../../m4java/inc
+LIBDIR = ../../m4java/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4unicode/inc
+LIBDIR = ../../m4unicode/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4variant/inc
+LIBDIR = ../../m4variant/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4sysall/inc
+LIBDIR = ../../m4sysall/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4buildversion/inc
+LIBDIR = ../../m4buildversion/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4appclient/inc
+LIBDIR = ../../m4appclient/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4compress/inc
+LIBDIR = ../../m4compress/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4cryptc/inc
+LIBDIR = ../../m4cryptc/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4date/inc
+LIBDIR = ../../m4date/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4filemanager/inc
+INC = ../../m4filemanager/zip
+LIBDIR = ../../m4filemanager/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4idgenerator/inc
+LIBDIR = ../../m4idgenerator/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4ini/inc
+LIBDIR = ../../m4ini/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4ipcs/unix
+INC = ../../m4ipcs/inc
+LIBDIR = ../../m4ipcs/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4log/inc
+LIBDIR = ../../m4log/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4obl/inc
+INC = ../../m4obl/inc/unix
+LIBDIR = ../../m4obl/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4pdus/inc
+LIBDIR = ../../m4pdus/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4servenv/inc
+LIBDIR = ../../m4servenv/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4serverbase/inc
+LIBDIR = ../../m4serverbase/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4serverevent/inc
+LIBDIR = ../../m4serverevent/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4tsap/inc
+LIBDIR = ../../m4tsap/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4win2ux/inc
+LIBDIR = ../../m4win2ux/mak/$PLATFORM/$LINKTYPE  
+
+INC = ../../m4eventhandler/inc
+LIBDIR = ../../m4eventhandler/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4loadll/inc
+LIBDIR = ../../m4loadll/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4communication/inc
+LIBDIR = ../../m4communication/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4transport/inc
+LIBDIR = ../../m4transport/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4credentials/inc
+LIBDIR = ../../m4credentials/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4memdbg/inc
+LIBDIR = ../../m4memdbg/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4meminfo/inc
+LIBDIR = ../../m4meminfo/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4cacert/inc
+LIBDIR = ../../m4cacert/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4cacertmngr/inc
+LIBDIR = ../../m4cacertmngr/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4objlog/inc
+LIBDIR = ../../m4objlog/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4objglb/inc
+LIBDIR = ../../m4objglb/mak/$PLATFORM/$LINKTYPE
+
+INC = ../../m4krb5/inc
+LIBDIR = ../../m4krb5/mak/$PLATFORM/$LINKTYPE 
+
+INC = ../../m4objreg/inc
+LIBDIR = ../../m4objreg/mak/$PLATFORM/$LINKTYPE 
+
+
+

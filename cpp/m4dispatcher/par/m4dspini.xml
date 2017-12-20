@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE dispatcher SYSTEM "m4dspini.dtd">
+<dispatcher>
+	<config name="m4dispatcher">
+        <params 
+            CypherMethod="DES-CBC3-SHA" MaxStartRetries="3" NumWorkers="30" ServerStartTimeout="120" baseport="3030" 
+			dump_trace="Disabled" server_polling="Disabled" polling_delay="300" polling_timeout="60" polling_executor_delay="60"
+			LoadSessionsWeight="1" LoadSrvMemWeight="3" LoadSysMemWeight= "3" LoadCPUWeight="2" LoadExecTimeWeight="3" LoadExecTimeThresholdMsecs="1000"
+            snmp_active = "false"
+            snmp_port = "161" 
+            snmp_admintype = "SNMP_STANDALONE" 
+            snmp_configfile = "Z:\build\win32\m4serversite\m4dispatcher\conf\snmp.xml" 
+            snmp_productname = "dispatcher"
+            snmp_v1v2c_state = "enabled"
+            snmp_read_community = "public"
+            snmp_write_community = "private"
+            snmp_v3_public_usr = "enabled"
+            snmp_v3_public_usr_name = "v3publicuser"
+            snmp_v3_boots_file = "snmpv3bootcounter"
+			site_id=""
+        />
+	</config>
+<!--	<config name="m4appctl"> -->
+		<!-- <params host="myhost" port="3005"/> -->
+<!--	</config> -->
+</dispatcher>

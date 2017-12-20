@@ -1,0 +1,24 @@
+HKCR
+{
+	M4Collection.M4Collection.1 = s 'M4Collection Class'
+	{
+		CLSID = s '{8BF31737-7AE2-11D2-BD0C-00C04FA49636}'
+	}
+	M4Collection.M4Collection = s 'M4Collection Class'
+	{
+		CurVer = s 'M4Collection.M4Collection.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {8BF31737-7AE2-11D2-BD0C-00C04FA49636} = s 'M4Collection Class'
+		{
+			ProgID = s 'M4Collection.M4Collection.1'
+			VersionIndependentProgID = s 'M4Collection.M4Collection'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

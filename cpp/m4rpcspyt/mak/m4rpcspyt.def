@@ -1,0 +1,20 @@
+LIBRARY	"rpcspyt"
+EXPORTS
+	BindSpyServer
+	DLLEntry
+	GetDebugFile
+	GetEndPoint
+	GetFileDescription
+	GetFileFixedVersion
+	GetLogLevel
+	GetNetAddr
+	GetProtocolSequence
+	LogEvent
+	LogEventEx
+	OutDebug
+	SetDebugFile
+	SetEndPoint
+	SetLogLevel
+	SetNetAddr
+	SetProtocolSequence
+	UnbindSpyServer

@@ -1,0 +1,9 @@
+# default configuration for any component.
+
+#-------------------
+# optimizacion
+# el -fast se mantiene para todas las componentes menos m4dm
+[solaris] CCFLAGS_OPT = -fast
+
+#-------------------
+READFILE = ../../m4common/mak/default_config_base.prj

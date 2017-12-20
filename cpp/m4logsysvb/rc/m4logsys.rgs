@@ -1,0 +1,23 @@
+HKCR
+{
+	M4logsysvb.M4LogSys.1 = s 'M4LogSys Class'
+	{
+		CLSID = s '{533F7DA2-4D82-476C-B1A0-CDBC085202BE}'
+	}
+	M4logsysvb.M4LogSys = s 'M4LogSys Class'
+	{
+		CLSID = s '{533F7DA2-4D82-476C-B1A0-CDBC085202BE}'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {533F7DA2-4D82-476C-B1A0-CDBC085202BE} = s 'M4LogSys Class'
+		{
+			ProgID = s 'M4logsysvb.M4LogSys.1'
+			VersionIndependentProgID = s 'M4logsysvb.M4LogSys'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'both'
+			}
+		}
+	}
+}

@@ -1,0 +1,12 @@
+#############################################################
+#	CCFLAGS
+#############################################################
+
+#-------------------
+# optimizacion
+# el -fast se mantiene para todas las componentes menos m4dm
+[solaris] CCFLAGS_OPT = -fast
+
+#-------------------
+# compiler flags.
+READFILE = ../../m4common/mak/ccflags_base.prj

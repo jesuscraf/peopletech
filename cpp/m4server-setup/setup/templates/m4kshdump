@@ -1,0 +1,88 @@
+#!/bin/ksh
+#==============================================================================
+# @(#) FileVersion: [M4_FILE_VERSION]
+# @(#) FileDescription: This script generates debuging info of a process.
+# @(#) CompanyName: Meta4 Spain, S.A.
+# @(#) LegalCopyright: (c) [M4_YEAR]
+# @(#) ProductName:  PeopleNet
+#==============================================================================
+
+#-----------------------------------------------------------------------
+# Check arguments
+#-----------------------------------------------------------------------
+if [ "$1x" = "x" ]; then
+	echo "Usage:"
+        echo "  m4kshdump pid [threadId]"
+	exit 0
+fi
+
+if [ "$2x" = "x" ]; then
+	threadId="nthrd"
+else
+	threadId=$2
+fi
+
+#-----------------------------------------------------------------------
+# Globals
+#-----------------------------------------------------------------------
+platform=`uname -s`
+
+echo "[m4kshdump] Collecting debug info."
+echo "[m4kshdump] Process $1 ($threadId)"
+
+#-----------------------------------------------------------------------
+# Dump directory creation
+#-----------------------------------------------------------------------
+if [ ! -d m4dumps ]; then
+	mkdir m4dumps
+fi
+
+cd m4dumps
+
+outDir=m4dump-`date '+%y-%m-%d-%H-%M-%S'`-$1-$threadId
+
+mkdir $outDir
+
+cd $outDir
+
+#-----------------------------------------------------------------------
+# Process core creation
+#-----------------------------------------------------------------------
+if [ ${platform} = "SunOS" ]; then
+	gcore -o core $1 
+fi
+
+if [ ${platform} = "AIX" ]; then
+	gencore $1 core.$1
+fi
+
+#-----------------------------------------------------------------------
+# Process debug info
+#-----------------------------------------------------------------------
+if [ ${platform} = "SunOS" ]; then
+	/bin/pstack $1 > pstack
+	/bin/pmap -x $1 > pmap
+	/bin/pldd $1 > pldd
+	/bin/ptree $1 > ptree
+	/bin/plimit -m $1 > plimit
+	/bin/pwdx $1 > pwdx
+	/bin/pfiles $1 > pfiles
+fi
+
+if [ ${platform} = "AIX" ]; then
+	/bin/procstack $1 > pstack
+	/bin/procmap $1 > pmap
+	/bin/procldd $1 > pldd
+	/bin/proctree $1 > ptree
+	/bin/procwdx $1 > pwdx
+	/bin/procfiles $1 > pfiles
+fi
+
+#-----------------------------------------------------------------------
+# Generate extended process debug info
+#-----------------------------------------------------------------------
+cd ..
+
+../m4kshdumpext $outDir &
+
+exit 0

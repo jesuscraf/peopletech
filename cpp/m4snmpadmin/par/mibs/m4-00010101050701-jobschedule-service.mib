@@ -1,0 +1,194 @@
+META4-JOBSCHEDULE-SERVICE-SUBSYSTEM-MIB DEFINITIONS ::= BEGIN
+
+IMPORTS
+	OBJECT-GROUP
+		FROM SNMPv2-CONF
+
+	DisplayString
+		FROM SNMPv2-TC
+
+	MODULE-IDENTITY, OBJECT-IDENTITY, OBJECT-TYPE, Integer32
+		FROM SNMPv2-SMI
+
+	meta4JobScheduleSubsystemModule, jobScheduleSubsystem, jobScheduleSubsystemGroup
+		FROM META4-JOBSCHEDULE-SUBSYSTEM-MIB;
+
+meta4JobScheduleServiceSubsystemModule MODULE-IDENTITY
+	LAST-UPDATED "200406031200Z"
+	ORGANIZATION "Meta4 Spain S.A."
+	CONTACT-INFO
+		"Meta4 Spain S.A.
+		Postal:	Centro Europa Empresarial
+			c/ Rozabella, 8
+			28230 Las Rozas
+			Madrid
+			Spain
+		Tel.:	(+34) 91 634 85 00
+		Fax:	(+34) 91 634 86 86
+		Email:	pedrojam@meta4.com
+		Web:	www.meta4.com"
+
+	DESCRIPTION
+		"This module defines the JobSchedule subsystem."
+
+	REVISION "200406031200Z"
+	DESCRIPTION
+		"maxExecutionTime change to DisplayString"
+	REVISION "200405141200Z"
+	DESCRIPTION
+		"Initial version."
+	::= { meta4JobScheduleSubsystemModule 1 }
+
+
+--
+-- 
+
+jobScheduleServiceSubsystem OBJECT-IDENTITY
+	STATUS current
+	DESCRIPTION
+		"JobSchedule Service Subsystem"
+	::= { jobScheduleSubsystem 1001 }
+
+jobScheduleServiceSubsystemGroup OBJECT-GROUP
+	OBJECTS {
+		name,
+		type,
+		minExecutorsService,
+		maxExecutorsService,
+		outServiceExecutors,
+		maxExecutionTime,
+		numJobGroupsLaunched,
+		numJobGroupsCanceled,
+		numJobsCompletedSuccessfully,
+		numJobsCompletedWithErrors,
+		avgExecutionTimeJobs,
+		avgDelayJobGroups,
+		serviceUsageRatio,
+		numExecutorsInUse
+	}
+	STATUS current
+	DESCRIPTION
+		"JobSchedule Service Group properties"
+	::= { jobScheduleSubsystemGroup 1 }
+
+--
+--
+
+name OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleServiceSubsystem 1 }
+
+
+type OBJECT-TYPE
+	SYNTAX DisplayString
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"-"
+	::= { jobScheduleServiceSubsystem 2 }
+
+minExecutorsService OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Min. Number of Executors for the Service"
+	::= { jobScheduleServiceSubsystem 3 }
+
+maxExecutorsService OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max. Number of Executors for the Service"
+	::= { jobScheduleServiceSubsystem 4 }
+
+outServiceExecutors OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Out of Service Executors"
+	::= { jobScheduleServiceSubsystem 5 }
+
+maxExecutionTime OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "h"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Max Execution Time (hours)"
+	::= { jobScheduleServiceSubsystem 6 }
+
+numJobGroupsLaunched OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Job Groups Launched"
+	::= { jobScheduleServiceSubsystem 501 }
+
+numJobGroupsCanceled OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Job Groups Canceled"
+	::= { jobScheduleServiceSubsystem 502 }
+
+numJobsCompletedSuccessfully OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Jobs Completed Successfully"
+	::= { jobScheduleServiceSubsystem 503 }
+
+numJobsCompletedWithErrors OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Jobs Completed with Errors"
+	::= { jobScheduleServiceSubsystem 504 }
+
+avgExecutionTimeJobs OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "sec"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Execution Time for Jobs"
+	::= { jobScheduleServiceSubsystem 505 }
+
+avgDelayJobGroups OBJECT-TYPE
+	SYNTAX DisplayString
+	UNITS "sec"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Average Delay for Job Groups"
+	::= { jobScheduleServiceSubsystem 506 }
+
+serviceUsageRatio OBJECT-TYPE
+	SYNTAX Integer32
+	UNITS "%"
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Service Usage Ratio"
+	::= { jobScheduleServiceSubsystem 507 }
+
+numExecutorsInUse OBJECT-TYPE
+	SYNTAX Integer32
+	MAX-ACCESS read-only
+	STATUS current
+	DESCRIPTION
+		"Number of Executors in Use"
+	::= { jobScheduleServiceSubsystem 508 }
+
+END

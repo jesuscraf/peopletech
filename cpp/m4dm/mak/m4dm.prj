@@ -1,0 +1,189 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4dm.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/acc_dir.cpp
+SRC = ../src/access.cpp
+SRC = ../src/acno_dir.cpp
+SRC = ../src/arecset.cpp
+SRC = ../src/aregister.cpp
+SRC = ../src/aregwrite.cpp
+SRC = ../src/blockref.cpp
+SRC = ../src/bnihil.cpp
+SRC = ../src/bookmark.cpp
+SRC = ../src/ch_blck2.cpp
+SRC = ../src/ch_block.cpp
+SRC = ../src/ch_nod_s.cpp
+SRC = ../src/ch_process.cpp
+SRC = ../src/ch_route.cpp
+SRC = ../src/chan_dir.cpp
+SRC = ../src/chan_knl.cpp
+SRC = ../src/chandata_ser.cpp
+SRC = ../src/chandef.cpp
+SRC = ../src/changelistener.cpp
+SRC = ../src/channel.cpp
+SRC = ../src/channel_ser.cpp
+SRC = ../src/channelprocess.cpp
+SRC = ../src/chanprop.cpp
+SRC = ../src/checkmem.cpp
+SRC = ../src/clargume.cpp
+SRC = ../src/clbsearch.cpp
+SRC = ../src/clcodejit.cpp
+SRC = ../src/cldbgutil.cpp
+SRC = ../src/clfilemap.cpp
+SRC = ../src/clfufast.cpp
+SRC = ../src/clfuvar.cpp
+SRC = ../src/clrgstrs.cpp
+SRC = ../src/cltotacum.cpp
+SRC = ../src/colitdef2.cpp
+SRC = ../src/colitemdefit.cpp
+SRC = ../src/colprop.cpp
+SRC = ../src/compss_vector.cpp
+SRC = ../src/compssit_vector.cpp
+SRC = ../src/compst_common.cpp
+SRC = ../src/compst_fac.cpp
+SRC = ../src/compst_map.cpp
+SRC = ../src/compstit_common.cpp
+SRC = ../src/compstit_map.cpp
+SRC = ../src/computil.cpp
+SRC = ../src/conitinf.cpp
+SRC = ../src/cp_exe.cpp
+SRC = ../src/cp_find.cpp
+SRC = ../src/cstracesize.cpp
+SRC = ../src/curopennotify.cpp
+SRC = ../src/datacache.cpp
+SRC = ../src/dm.cpp
+SRC = ../src/dmsort.cpp
+SRC = ../src/dsitem.cpp
+SRC = ../src/dump_vst.cpp
+SRC = ../src/emd.cpp
+SRC = ../src/filter_i.cpp
+SRC = ../src/gds.cpp
+SRC = ../src/gm_intrf.cpp
+SRC = ../src/groupinfo.cpp
+SRC = ../src/handles.cpp
+SRC = ../src/index.cpp
+SRC = ../src/instmap.cpp
+SRC = ../src/item.cpp
+SRC = ../src/item_prx.cpp
+SRC = ../src/itemconn.cpp
+SRC = ../src/itemdef.cpp
+SRC = ../src/itemdfit.cpp
+SRC = ../src/itemhash.cpp
+SRC = ../src/iteminfo.cpp
+SRC = ../src/itempx_c.cpp
+SRC = ../src/itemsimp.cpp
+SRC = ../src/itnd_prx.cpp
+SRC = ../src/lanecon.cpp
+SRC = ../src/laneinfo.cpp
+SRC = ../src/laneman.cpp
+SRC = ../src/level2.cpp
+SRC = ../src/level2relation.cpp
+SRC = ../src/m4dmcommon.cpp
+SRC = ../src/m4jmanager.cpp
+SRC = ../src/mchtoemd.cpp
+SRC = ../src/mcrowner.cpp
+SRC = ../src/meminfo.cpp
+SRC = ../src/memman.cpp
+SRC = ../src/mmarray.cpp
+SRC = ../src/mmindex.cpp
+SRC = ../src/nod_data.cpp
+SRC = ../src/node.cpp
+SRC = ../src/node_knl.cpp
+SRC = ../src/node_ser.cpp
+SRC = ../src/nodedef.cpp
+SRC = ../src/not_cdat.cpp
+SRC = ../src/not_cli.cpp
+SRC = ../src/notifier.cpp
+SRC = ../src/objdatacacheimpl.cpp
+SRC = ../src/objdatacacheinterface.cpp
+SRC = ../src/objdatacachemanager.cpp
+SRC = ../src/operation.cpp
+SRC = ../src/pl_data.cpp
+SRC = ../src/prnewrecid.cpp
+SRC = ../src/property.cpp
+SRC = ../src/prsetrecins.cpp
+SRC = ../src/prxyfact.cpp
+SRC = ../src/px_blck2.cpp
+SRC = ../src/px_block.cpp
+SRC = ../src/px_block_ser.cpp
+SRC = ../src/rblck_it.cpp
+SRC = ../src/rec_tran.cpp
+SRC = ../src/recorset.cpp
+SRC = ../src/reg_filt.cpp
+SRC = ../src/reg_load.cpp
+SRC = ../src/reg_plf.cpp
+SRC = ../src/regi_smp.cpp
+SRC = ../src/register.cpp
+SRC = ../src/regpipe.cpp
+SRC = ../src/regtot.cpp
+SRC = ../src/replaceliterals.cpp
+SRC = ../src/reusing.cpp
+SRC = ../src/ritbwalk.cpp
+SRC = ../src/rm.cpp
+SRC = ../src/rsfollow.cpp
+SRC = ../src/rthierdes.cpp
+SRC = ../src/serializedchanneldata.cpp
+SRC = ../src/slices_fixed.cpp
+SRC = ../src/slices_variable.cpp
+SRC = ../src/smarthan.cpp
+SRC = ../src/sttchn.cpp
+SRC = ../src/sttlib.cpp
+SRC = ../src/sttstate.cpp
+SRC = ../src/sttwrap.cpp
+SRC = ../src/totalize.cpp
+SRC = ../src/usractaudit.cpp
+SRC = ../src/v_contxt.cpp
+SRC = ../src/val.cpp
+SRC = ../src/val_ge.cpp
+SRC = ../src/val_read.cpp
+SRC = ../src/val_write.cpp
+SRC = ../src/valh_rs.cpp
+SRC = ../src/valh_rws.cpp
+SRC = ../src/vdelta.cpp
+SRC = ../src/virt_val.cpp
+SRC = ../src/vrb.cpp
+SRC = ../src/rowsquota.cpp
+
+[aix] NO_OPTIMIZE_FILE = chan_dir.cpp
+
+[solaris] NO_OPTIMIZE_FILE = dsitem.cpp
+[solaris] NO_OPTIMIZE_FILE = valh_rws.cpp
+
+#-------------------
+# configuración.
+# Se compila sin el -fast en sun
+READFILE = ../../m4common/mak/default_config_base.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+READFILE = ../../m4common/mak/m4_mvc_lib_dir.prj
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4cache
+LIB = m4compress
+LIB = m4cryptc
+LIB = m4date
+LIB = m4filemanager
+LIB = m4ipcs
+LIB = m4java
+LIB = m4log
+LIB = m4logsys
+LIB = m4mdrt
+LIB = m4objglb
+LIB = m4objlog
+LIB = m4objreg
+LIB = m4pdus
+LIB = m4serial
+LIB = m4serverbasedll
+LIB = m4sysall
+LIB = m4unicode
+LIB = m4variant
+
+

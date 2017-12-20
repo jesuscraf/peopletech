@@ -1,0 +1,50 @@
+// M4DHO.idl : IDL source for M4DHO.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4DHO.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+import "Definitions.idl";
+
+[
+	uuid(135B2DF1-E60B-11D3-BDB5-00C04F71652D),
+	version(1.0),
+	helpstring("M4DHO Design Helper Objects")
+]
+library M4DHOLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+	
+	interface IDataAccess;
+	
+	[
+		uuid(135B2E02-E60B-11D3-BDB5-00C04F71652D),
+		helpstring("PresentationItem Class")
+	]
+	coclass PresentationItem
+	{
+		[default] interface IPresentationItem;
+	};
+
+	[
+		uuid(135B2E04-E60B-11D3-BDB5-00C04F71652D),
+		helpstring("PresentationCol Class")
+	]
+	coclass PresentationCol
+	{
+		[default] interface IPresentationCol;
+	};
+
+	[
+		uuid(135B2E06-E60B-11D3-BDB5-00C04F71652D),
+		helpstring("OFCollection Class")
+	]
+	coclass OFCollection
+	{
+		[default] interface IOFCollection;
+	};
+
+};

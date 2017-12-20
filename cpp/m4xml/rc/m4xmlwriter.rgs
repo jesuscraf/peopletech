@@ -1,0 +1,26 @@
+HKCR
+{
+	M4xml.M4XmlWriter.1 = s 'M4XmlWriter Class'
+	{
+		CLSID = s '{397C2180-DFBF-48E7-BE62-1B1DFD485182}'
+	}
+	M4xml.M4XmlWriter = s 'M4XmlWriter Class'
+	{
+		CLSID = s '{397C2180-DFBF-48E7-BE62-1B1DFD485182}'
+		CurVer = s 'M4xml.M4XmlWriter.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {397C2180-DFBF-48E7-BE62-1B1DFD485182} = s 'M4XmlWriter Class'
+		{
+			ProgID = s 'M4xml.M4XmlWriter.1'
+			VersionIndependentProgID = s 'M4xml.M4XmlWriter'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{7B06E07C-CAF9-4752-9B32-00FE6D220F83}'
+		}
+	}
+}

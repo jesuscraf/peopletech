@@ -1,0 +1,24 @@
+HKCR
+{
+	prueba.prueba.1 = s 'prueba Class'
+	{
+		CLSID = s '{21161065-CBF5-11D2-BCEB-00A0248A69E8}'
+	}
+	prueba.prueba = s 'prueba Class'
+	{
+		CurVer = s 'prueba.prueba.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {21161065-CBF5-11D2-BCEB-00A0248A69E8} = s 'prueba Class'
+		{
+			ProgID = s 'prueba.prueba.1'
+			VersionIndependentProgID = s 'prueba.prueba'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

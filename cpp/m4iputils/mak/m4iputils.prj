@@ -1,0 +1,30 @@
+#-------------------
+# Nombre de la LIBRERIA o EJECUTABLE
+EXE = libm4iputils.*
+
+#-------------------
+# SRCs - Fuentes. Por cada fichero hay que escribir una linea SRC. 
+SRC = ../src/m4ipaddress.cpp
+SRC = ../src/m4iprange.cpp
+SRC = ../src/m4iputils.cpp
+
+#-------------------
+# configuración.
+READFILE = ../../m4common/mak/default_config.prj
+
+#-------------------
+# dependencias (includes y libs).
+INC = ../inc
+READFILE = ../../m4common/mak/3rd_lib_dir.prj
+READFILE = ../../m4common/mak/m4_basicas_lib_dir.prj
+
+[solaris] INC = ../../public/gmp/inc/solaris
+[aix] INC = ../../public/gmp/inc/aix
+LIBDIR = ../../public/gmp/mak/$PLATFORM/$LINKTYPE
+
+#-------------------
+# libs. Por cada librería se incluye una línea LIB.
+LIB = m4log
+LIB = m4sysall
+LIB = m4variant
+LIB = gmp

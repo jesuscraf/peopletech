@@ -1,0 +1,194 @@
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "afxres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// Spanish (Modern) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ESN)
+#ifdef _WIN32
+LANGUAGE LANG_SPANISH, SUBLANG_SPANISH_MODERN
+#pragma code_page(1252)
+#endif //_WIN32
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""afxres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "1 TYPELIB ""m4tree32.tlb""\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_ABOUTDLL            ICON    DISCARDABLE     "m4tree32.ico"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BOOK                BITMAP  DISCARDABLE     "book.bmp"
+IDB_CLOSE               BITMAP  DISCARDABLE     "close.bmp"
+IDB_DATABASE            BITMAP  DISCARDABLE     "database.bmp"
+IDB_M4TREE32            BITMAP  DISCARDABLE     "m4tree32.bmp"
+IDB_NODE                BITMAP  DISCARDABLE     "node.bmp"
+IDB_OBJECT              BITMAP  DISCARDABLE     "object.bmp"
+IDB_OPEN                BITMAP  DISCARDABLE     "open.bmp"
+IDB_SERVER              BITMAP  DISCARDABLE     "server.bmp"
+IDB_TABLE               BITMAP  DISCARDABLE     "table.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX_M4TREE32 DIALOG DISCARDABLE  34, 22, 260, 55
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "About M4Tree32 Control"
+FONT 8, "MS Sans Serif"
+BEGIN
+    ICON            IDI_ABOUTDLL,IDC_STATIC,10,10,20,20
+    LTEXT           "M4Tree32 Control, Version 1.0",IDC_STATIC,40,10,170,8
+    LTEXT           "(c) Copyright 1991-1997 Meta Software M.S. S.A.",
+                    IDC_STATIC,40,25,170,8
+    DEFPUSHBUTTON   "OK",IDOK,221,7,32,14,WS_GROUP
+END
+
+IDD_PROPPAGE_M4TREE32 DIALOG DISCARDABLE  0, 0, 250, 62
+STYLE WS_CHILD
+FONT 8, "MS Sans Serif"
+BEGIN
+    LTEXT           "TODO: Place controls to manipulate properties of M4Tree32 Control on this dialog.",
+                    IDC_STATIC,7,25,229,16
+END
+
+IDD_DG_PRINT DIALOG DISCARDABLE  0, 0, 219, 112
+STYLE DS_MODALFRAME | DS_3DLOOK | DS_CENTER | WS_POPUP | WS_CAPTION | 
+    WS_SYSMENU
+CAPTION "Opciones de impresión"
+FONT 8, "MS Sans Serif"
+BEGIN
+    DEFPUSHBUTTON   "Imprimir",IDOK,130,15,73,15
+    PUSHBUTTON      "Cancelar",IDCANCEL,130,32,73,15
+    GROUPBOX        "Campo de impresión",IDC_ST_FIELD,15,15,100,65
+    CONTROL         "Ventana actual",IDC_RD_WINDOW,"Button",
+                    BS_AUTORADIOBUTTON,25,29,75,10
+    CONTROL         "Arbol completo",IDC_RD_TREE,"Button",BS_AUTORADIOBUTTON,
+                    25,44,75,10
+    CONTROL         "Subarbol",IDC_RD_SUBTREE,"Button",BS_AUTORADIOBUTTON,25,
+                    59,75,10
+    PUSHBUTTON      "Configurar Impresora",IDC_BT_PRINTER,130,49,73,15
+    EDITTEXT        IDC_ED_SCALE,48,86,27,12,ES_AUTOHSCROLL
+    LTEXT           "Escala:",IDC_ST_SCALE,17,88,28,8
+    GROUPBOX        "",IDC_STATIC,7,7,205,98
+    CTEXT           "Preparando documento...",IDC_ST_PROGRESS,33,33,155,11,
+                    WS_BORDER
+    PUSHBUTTON      "Cancelar",IDC_BT_CANCEL,71,71,73,15
+    CONTROL         "Contorno",IDC_CK_BORDER,"Button",BS_AUTOCHECKBOX | 
+                    WS_TABSTOP,155,71,46,8
+    LTEXT           "Numero de páginas:",IDC_ST_PAGE,99,88,69,8
+    EDITTEXT        IDC_ED_PAGE,171,86,27,12,ES_AUTOHSCROLL
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_ABOUTBOX_M4TREE32, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 253
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 48
+    END
+
+    IDD_PROPPAGE_M4TREE32, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 243
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 55
+    END
+
+    IDD_DG_PRINT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 212
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 105
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_M4TREE32            "M4Tree32 Control"
+    IDS_M4TREE32_PPG        "M4Tree32 Property Page"
+END
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    IDS_M4TREE32_PPG_CAPTION "General"
+    IDS_M4TREE32_DEBUG       "Debug"
+END
+
+#endif    // Spanish (Modern) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+1 TYPELIB "m4tree32.tlb"
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

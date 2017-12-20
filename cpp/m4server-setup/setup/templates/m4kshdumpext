@@ -1,0 +1,81 @@
+#!/bin/ksh
+#==============================================================================
+# @(#) FileVersion: [M4_FILE_VERSION]
+# @(#) FileDescription: This script collects extended debuging info of a process.
+# @(#) CompanyName: Meta4 Spain, S.A.
+# @(#) LegalCopyright: (c) [M4_YEAR]
+# @(#) ProductName:  PeopleNet
+#==============================================================================
+
+#-----------------------------------------------------------------------
+# Check arguments
+#-----------------------------------------------------------------------
+if [ "$1x" != "x" ]; then
+	cd $1
+fi
+
+inputDir=`pwd`
+
+#-----------------------------------------------------------------------
+# Globals
+#-----------------------------------------------------------------------
+platform=`uname -s`
+
+if [ ${platform} = "SunOS" ]; then
+	ignoreLines="+2"
+fi
+
+if [ ${platform} = "AIX" ]; then
+	ignoreLines="+3"
+fi
+
+#-----------------------------------------------------------------------
+# Library what info
+#-----------------------------------------------------------------------
+rm -fr what-info
+mkdir what-info
+
+for filepath in `tail ${ignoreLines} pldd | sed -e 's/\[.*$//'`; do
+	name=`echo $filepath | sed -e 's/^.*\///'`
+	what $filepath > what-info/$name
+done
+
+#-----------------------------------------------------------------------
+# System libraries
+#-----------------------------------------------------------------------
+rm -fr system
+mkdir system
+
+for filepath in `tail ${ignoreLines} pldd | sed -e '/libm4/d' -e 's/\[.*$//'`; do
+	name=`echo $filepath | sed -e 's/^.*\///'`
+	if [ ! -f system/$name ]; then
+		cp $filepath system/
+	fi
+done
+
+#-----------------------------------------------------------------------
+# Server traces
+#-----------------------------------------------------------------------
+mkdir temp
+
+cp ../../temp/*.* ./temp
+cp -r ../../temp/m4debug ./temp
+
+#-----------------------------------------------------------------------
+# Compress all
+#-----------------------------------------------------------------------
+cd ..
+name=`echo $inputDir | sed -e 's/^.*\///'`
+
+rm -f $name.tar
+rm -f $name.tar.Z
+tar cf $name.tar $name
+
+compress $name.tar
+
+rm -fr $name
+
+echo "[m4kshdumpext] Debug info output file: $name.tar.Z"
+
+exit 0
+

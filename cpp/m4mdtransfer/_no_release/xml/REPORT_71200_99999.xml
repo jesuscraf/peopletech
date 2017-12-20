@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright 1991-2007 by Meta4, Inc.
+Centro Europa Empresarial - Edf. Roma
+C/ Rozabella, 8
+28230 Las Rozas - Madrid
+Spain
+
+Private and Confidential
+The information contained in this document is the property of Meta4.
+It is for the exclusive use of designated employees
+and not for distribution without prior written authorization.
+-->
+<!--
+This XML defines table dependencies for repository object REPORT
+@version 2.3
+-->
+<object name="REPORT">
+	<param name="ID_REPORT"/>
+	<call-table name="SRP_REPORTS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+		<fields>
+			<field name="DT_CONCURRENCY" visible="false"/>
+		</fields>
+	</call-table>
+	<call-table name="SRP_PUB_REPORTS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_EXECUTION_TPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_FAMILY_SECTS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_PARAMETERS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_AXIS_OLAP">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_DEF_TABLE">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_DETAILS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_INFO_PARAMETERS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_FILTER_POB">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_RELATIONS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_TABLE">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_LONG_EXPRESS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_PAGE_FLD_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_PAGE_FIELDS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+		<fields>
+			<field name="BMP_BN" visible="false"/>
+			<field name="BMP_COLOR" visible="false"/>
+		</fields>
+		<calculated-fields>
+			<field name="BMP_BN_DESC"/>
+			<field name="BMP_BN_EXT"/>
+			<field name="BMP_BN_FILE" content-type="external"/>
+			<field name="BMP_COLOR_DESC"/>
+			<field name="BMP_COLOR_EXT"/>
+			<field name="BMP_COLOR_FILE" content-type="external"/>
+		</calculated-fields>
+		<generate-funtions>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@BMP_BN"/>
+				<with-arg name="pk1" select="@ID_PAGE"/>
+				<with-arg name="pk2" select="@ID_FIELD"/>
+				<with-arg name="description" insert="@BMP_BN_DESC"/>
+				<with-arg name="extension" insert="@BMP_BN_EXT"/>
+				<with-arg name="file" insert="@BMP_BN_FILE"/>
+			</call-template>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@BMP_COLOR"/>
+				<with-arg name="pk1" select="@ID_PAGE"/>
+				<with-arg name="pk2" select="@ID_FIELD"/>
+				<with-arg name="description" insert="@BMP_COLOR_DESC"/>
+				<with-arg name="extension" insert="@BMP_COLOR_EXT"/>
+				<with-arg name="file" insert="@BMP_COLOR_FILE"/>
+			</call-template>
+		</generate-funtions>
+		<update-funtions>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@BMP_BN_DESC"/>
+				<with-arg name="extension" select="@BMP_BN_EXT"/>
+				<with-arg name="file" select="@BMP_BN_FILE"/>
+				<with-arg name="blob" insert="@BMP_BN"/>
+			</call-template>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@BMP_COLOR_DESC"/>
+				<with-arg name="extension" select="@BMP_COLOR_EXT"/>
+				<with-arg name="file" select="@BMP_COLOR_FILE"/>
+				<with-arg name="blob" insert="@BMP_COLOR"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SRP_PAGE_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_CODE">
+		<with-pk name="ID_REPORT_ODBC" select="$ID_REPORT"/>
+		<fields>
+			<field name="REPORT_CODE" visible="false"/>
+		</fields>
+		<calculated-fields>
+			<field name="REPORT_CODE_DESC"/>
+			<field name="REPORT_CODE_EXT"/>
+			<field name="REPORT_CODE_FILE" content-type="external"/>
+		</calculated-fields>
+		<generate-funtions>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@REPORT_CODE"/>
+				<with-arg name="description" insert="@REPORT_CODE_DESC"/>
+				<with-arg name="extension" insert="@REPORT_CODE_EXT"/>
+				<with-arg name="file" insert="@REPORT_CODE_FILE"/>
+			</call-template>
+		</generate-funtions>
+		<update-funtions>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@REPORT_CODE_DESC"/>
+				<with-arg name="extension" select="@REPORT_CODE_EXT"/>
+				<with-arg name="file" select="@REPORT_CODE_FILE"/>
+				<with-arg name="blob" insert="@REPORT_CODE"/>
+			</call-template>
+		</update-funtions>
+		<with-pk name="ID_REPORT_ODBC" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_COLORS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_FONTS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_PAGES">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_SECTS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_STR">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_FORMATS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORTS_ODBC">
+		<with-pk name="ID_REPORT_ODBC" select="$ID_REPORT"/>
+		<fields>
+			<field name="REPORT_CODE" visible="false"/>
+		</fields>
+		<calculated-fields>
+			<field name="REPORT_CODE_DESC"/>
+			<field name="REPORT_CODE_EXT"/>
+			<field name="REPORT_CODE_FILE" content-type="external"/>
+		</calculated-fields>
+		<generate-funtions>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@REPORT_CODE"/>
+				<with-arg name="description" insert="@REPORT_CODE_DESC"/>
+				<with-arg name="extension" insert="@REPORT_CODE_EXT"/>
+				<with-arg name="file" insert="@REPORT_CODE_FILE"/>
+			</call-template>
+		</generate-funtions>
+		<update-funtions>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@REPORT_CODE_DESC"/>
+				<with-arg name="extension" select="@REPORT_CODE_EXT"/>
+				<with-arg name="file" select="@REPORT_CODE_FILE"/>
+				<with-arg name="blob" insert="@REPORT_CODE"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SRP_RPT_CT">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_RPT_CT_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_REPORT_JIT_CLIENT">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_RPT_SECT_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_SC_CNT_FLD_PRP">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_SEC_CONT_PROPS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_SECT_CONT_FLDS">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+		<fields>
+			<field name="BMP_BN" visible="false"/>
+			<field name="BMP_COLOR" visible="false"/>
+		</fields>
+		<calculated-fields>
+			<field name="BMP_BN_DESC"/>
+			<field name="BMP_BN_EXT"/>
+			<field name="BMP_BN_FILE" content-type="external"/>
+			<field name="BMP_COLOR_DESC"/>
+			<field name="BMP_COLOR_EXT"/>
+			<field name="BMP_COLOR_FILE" content-type="external"/>
+		</calculated-fields>
+		<generate-funtions>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@BMP_BN"/>
+				<with-arg name="pk1" select="@ID_SECTION"/>
+				<with-arg name="pk2" select="@ID_CONTAINER"/>
+				<with-arg name="pk3" select="@ID_FIELD"/>
+				<with-arg name="description" insert="@BMP_BN_DESC"/>
+				<with-arg name="extension" insert="@BMP_BN_EXT"/>
+				<with-arg name="file" insert="@BMP_BN_FILE"/>
+			</call-template>
+			<call-template name="BLOB2External">
+				<with-arg name="blob" select="@BMP_COLOR"/>
+				<with-arg name="pk1" select="@ID_SECTION"/>
+				<with-arg name="pk2" select="@ID_CONTAINER"/>
+				<with-arg name="pk3" select="@ID_FIELD"/>
+				<with-arg name="description" insert="@BMP_COLOR_DESC"/>
+				<with-arg name="extension" insert="@BMP_COLOR_EXT"/>
+				<with-arg name="file" insert="@BMP_COLOR_FILE"/>
+			</call-template>
+		</generate-funtions>
+		<update-funtions>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@BMP_BN_DESC"/>
+				<with-arg name="extension" select="@BMP_BN_EXT"/>
+				<with-arg name="file" select="@BMP_BN_FILE"/>
+				<with-arg name="blob" insert="@BMP_BN"/>
+			</call-template>
+			<call-template name="External2BLOB">
+				<with-arg name="description" select="@BMP_COLOR_DESC"/>
+				<with-arg name="extension" select="@BMP_COLOR_EXT"/>
+				<with-arg name="file" select="@BMP_COLOR_FILE"/>
+				<with-arg name="blob" insert="@BMP_COLOR"/>
+			</call-template>
+		</update-funtions>
+	</call-table>
+	<call-table name="SRP_SECT_CONTAIN">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+	</call-table>
+	<call-table name="SRP_GRAPH_PUBLISH">
+		<with-pk name="ID_REPORT" select="$ID_REPORT"/>
+		<call-object name="REPORT PARAMS">
+			<with-param name="ID_PARAM_REQUEST" select="@ID_PARAM_REQUEST"/>
+		</call-object>
+	</call-table>
+</object>
+

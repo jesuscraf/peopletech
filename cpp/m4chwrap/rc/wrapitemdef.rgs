@@ -1,0 +1,24 @@
+HKCR
+{
+	WrapItemDef.WrapItemDef.1 = s 'WrapItemDef Class'
+	{
+		CLSID = s '{CA0DB14C-116A-11D1-A774-00C04FB75E70}'
+	}
+	WrapItemDef.WrapItemDef = s 'WrapItemDef Class'
+	{
+		CurVer = s 'WrapItemDef.WrapItemDef.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {CA0DB14C-116A-11D1-A774-00C04FB75E70} = s 'WrapItemDef Class'
+		{
+			ProgID = s 'WrapItemDef.WrapItemDef.1'
+			VersionIndependentProgID = s 'WrapItemDef.WrapItemDef'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+		}
+	}
+}

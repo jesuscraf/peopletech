@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+
+Copyright 1991-2007 by Meta4, Inc.
+
+Centro Europa Empresarial - Edf. Roma
+
+C/ Rozabella, 8
+
+28230 Las Rozas - Madrid
+
+Spain
+
+
+
+Private and Confidential
+
+The information contained in this document is the property of Meta4.
+
+It is for the exclusive use of designated employees
+
+and not for distribution without prior written authorization.
+
+-->
+
+<!--
+
+This XML defines table dependencies for repository object DMD COMPONENT
+
+@version 1.4
+
+-->
+
+<object name="DMD COMPONENT">
+
+	<param name="ID_DMD"/>
+
+	<param name="ID_DMD_COMPONENT"/>
+
+	<call-table name="SCH_DMD_COMPONENTS">
+
+		<with-pk name="ID_DMD" select="$ID_DMD"/>
+
+		<with-pk name="ID_DMD_COMPONENT" select="$ID_DMD_COMPONENT"/>
+
+	</call-table>
+
+	<call-table name="SCH_DMD_GRP_COMP">
+
+		<with-pk name="ID_DMD" select="$ID_DMD"/>
+
+		<with-pk name="ID_DMD_COMPONENT" select="$ID_DMD_COMPONENT"/>
+
+	</call-table>
+
+</object>
+
+

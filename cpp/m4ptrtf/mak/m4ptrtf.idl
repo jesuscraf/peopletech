@@ -1,0 +1,67 @@
+// M4PTRTF.idl : IDL source for M4PTRTF.dll
+//
+
+// This file will be processed by the MIDL tool to
+// produce the type library (M4PTRTF.tlb) and marshalling code.
+
+import "oaidl.idl";
+import "ocidl.idl";
+
+	[
+		object,
+		uuid(7775813A-640A-4D7F-8993-2D2954620A57),
+		dual,
+		helpstring("IM4PTRTF Interface"),
+		pointer_default(unique)
+	]
+	interface IM4PTRTF : IDispatch
+	{
+		[id(1), helpstring("Generate RTF from plain text using patterns")] HRESULT GenerateRTF([in] BSTR sPlainText, [in, optional, defaultvalue(0)] long lStartLine, [in, out, optional, defaultvalue(0)] VARIANT_BOOL * bPostProcess, [out, optional] long * lEndLine, [out, retval] BSTR * sRTFText);
+		[propget, id(2), helpstring("Parse Mode")] HRESULT ParseMode([out, retval] short *pVal);
+		[propput, id(2), helpstring("Parse Mode")] HRESULT ParseMode([in] short newVal);
+		[propget, id(3), helpstring("Active Line")] HRESULT ActiveLine([out, retval] long *pVal);
+		[propput, id(3), helpstring("Active Line")] HRESULT ActiveLine([in] long newVal);
+		[id(4), helpstring("Clear text status")] HRESULT ClearStatus();
+		[id(5), helpstring("Adjust text status due to adding or deleting lines")] HRESULT AdjustTextStatus([in] long lStartLine, [in] long lOldNumLines, [in] long lNewNumLines);
+		[propget, id(6), helpstring("Manages selection mark in a line")] HRESULT SelectionMark([in] long Line, [out, retval] short *pVal);
+		[propput, id(6), helpstring("Manages selection mark in a line")] HRESULT SelectionMark([in] long Line, [in] short newVal);
+		[propget, id(7), helpstring("Manages BreakPoints marks in a line")] HRESULT BreakPointMark([in] long Line, [out, retval] short *pVal);
+		[propput, id(7), helpstring("Manages BreakPoints marks in a line")] HRESULT BreakPointMark([in] long Line, [in] short newVal);
+		[id(8), helpstring("Return the next selection line that follows to the indicated line")] HRESULT NextSelectionLine([in, optional, defaultvalue(-1)] long Line, [out, retval] long *pVal);
+		[id(9), helpstring("Return the next breakpoint line that follows to the indicated line")] HRESULT NextBreakPointLine([in, optional, defaultvalue(-1)] long Line, [out, retval] long *pVal);
+		[id(10), helpstring("Get color info for token 'Id'")] HRESULT GetColorInfo([in] short Id, [out, optional] long * Color, [out, optional] long * DefaultColor, [out, optional] short * iKind, [out, optional] BSTR * Description, [out, retval] VARIANT_BOOL * bRet);
+		[id(11), helpstring("Set color info for token 'Id'")] HRESULT SetColorInfo([in] short Id, [in] long Color, [out, retval] VARIANT_BOOL * bRet);
+		[propget, id(12), helpstring("LCID")] HRESULT LCID([out, retval] long *pVal);
+		[propput, id(12), helpstring("LCID")] HRESULT LCID([in] long newVal);
+	};
+
+[
+	uuid(69D54578-6296-4896-90ED-C585205A56B2),
+	version(1.0),
+	helpstring("M4PTRTF 1.0 Type Library")
+]
+library M4PTRTFLib
+{
+	importlib("stdole32.tlb");
+	importlib("stdole2.tlb");
+
+	typedef [ uuid(F071BC04-34A2-4ED3-AF28-B8CD0EE8C759),
+				helpstring("Parse Type")
+			]
+	enum ParseType
+    {
+		M4PT_DISABLED = -1,
+		M4PT_LN4	  = 0,
+		M4PT_OBL	  = 1,
+		M4PT_SQL	  = 2
+    }	ParseType;
+
+	[
+		uuid(D9C6666E-A955-4114-99D6-711AACB01FF7),
+		helpstring("M4PTRTF Class")
+	]
+	coclass M4PTRTF
+	{
+		[default] interface IM4PTRTF;
+	};
+};
