@@ -1,7 +1,4 @@
 <components>
-	
-	
-	
 	<!-- cpp -->
 	<cpp path='m4logmsg' artifact='logmsg.ini'/>
 	<cpp path='m4server-setup' artifact='m4server.exe'/>
