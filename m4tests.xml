@@ -1,4 +1,5 @@
 <tests>
+	<otro>
 	<test id='proxy'/>
 	<test id='ldb'/>
 </tests>
