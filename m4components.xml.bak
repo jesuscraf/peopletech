@@ -1,0 +1,147 @@
+<components>
+	<!-- cpp -->
+	<cpp path='m4logmsg' artifact='logmsg.ini'/>
+	<cpp path='m4server-setup' artifact='m4server.exe'/>
+	<cpp path='m4common'/>
+	<cpp path='m4fmtpor'/>
+	<cpp path='m4ldbparse' artifact='m4ldbparse.exe'/>
+	<cpp path='m4hodll'/>
+	<cpp path='m4systray' artifact='m4systray.exe'/>
+	<cpp path='m4loadll'/>
+	<cpp path='m4col'/>
+	<cpp path='m4tree32' artifact='m4tree32.obl'/>
+	<cpp path='m4dho'/>
+	<cpp path='m4lcid'/>
+	<cpp path='m4design'/>
+	<cpp path='m4anim'/>
+	<cpp path='m4ptrtf'/>
+	<cpp path='m4csdll'/>
+	<cpp path='m4ipcs' artifact='m4ipcsdll.dll'/>
+	<cpp path='m4compress' artifact='m4compressdll.dll'/>
+	<cpp path='m4cryptc'/>
+	<cpp path='m4cryptwrap'/>
+	<cpp path='m4xml'/>
+	<cpp path='m4unicode'/>
+	<cpp path='m4sysall'/>
+	<cpp path='m4anle'/>
+	<cpp path='m4engprn'/>
+	<cpp path='m4cryptstore' artifact='m4cryptstoredll.dll'/>
+	<cpp path='m4cryptfile' artifact='m4cryptfile.exe'/>
+	<cpp path='m4win2ux'/>
+	<cpp path='m4date' artifact='m4datedll.dll'/>
+	<cpp path='m4ctlhelper'/>
+	<cpp path='m4obl' artifact='m4obl32.dll'/>
+	<cpp path='m4meminfo'/>
+	<cpp path='m4idgenerator' artifact='m4idgeneratordll.dll'/>
+	<cpp path='m4serverevent'/>
+	<cpp path='m4filemanager'/>
+	<cpp path='m4pdus' artifact='m4pdusdll.dll'/>
+	<cpp path='m4cataloguer' artifact='m4cataloguer.exe'/>
+	<cpp path='m4credentials'/>
+	<cpp path='m4buildversion'/>
+	<cpp path='m4ini' artifact='m4inidll.dll'/>
+	<cpp path='m4apie'/>
+	<cpp path='m4rpcspy' artifact='rpcspy.exe'/>
+	<cpp path='m4rpcspyt' artifact='rpcspyt.dll'/>
+	<cpp path='m4log' artifact='m4logdll.dll'/>
+	<cpp path='m4hsparser'/>
+	<cpp path='m4memdbg'/>
+	<cpp path='m4tsap' artifact='m4tsapdll.dll'/>
+	<cpp path='m4objlog'/>
+	<cpp path='m4serial'/>
+	<cpp path='m4objglb'/>
+	<cpp path='m4variant'/>
+	<cpp path='m4emind'/>
+	<cpp path='m4iputils'/>
+	<cpp path='m4uuid'/>
+	<cpp path='m4cacert'/>
+	<cpp path='m4objreg'/>
+	<cpp path='m4cryptpwd' artifact='cryptpwd.exe'/>
+	<cpp path='m4logsys'/>
+	<cpp path='m4cache' artifact='m4cachedll.dll'/>
+	<cpp path='m4mdrt'/>
+	<cpp path='m4serverbase' artifact='m4serverbasedll.dll'/>
+	<cpp path='m4xmlutil'/>
+	<cpp path='m4launcher' artifact='m4launcher.exe'/>
+	<cpp path='m4servenv' artifact='m4servenvdll.dll'/>
+	<cpp path='m4eventhandler' artifact='m4eventhandlerdll.dll'/>
+	<cpp path='m4configtree' artifact='m4configtreedll.dll'/>
+	<cpp path='m4configuration' artifact='m4configurationdll.dll'/>
+	<cpp path='m4transport'/>
+	<cpp path='m4modkey'/>
+	<cpp path='m4modkeywrap'/>
+	<cpp path='m4modkeyutil' artifact='m4modkeyutil.exe'/>
+	<cpp path='m4communication'/>
+	<cpp path='m4appctl' artifact='m4appctl.exe'/>
+	<cpp path='m4xmladminclient'/>
+	<cpp path='m4appclient' artifact='m4appclientdll.dll'/>
+	<cpp path='m4srvping' artifact='m4srvping.exe'/>
+	<cpp path='m4java'/>
+	<cpp path='m4dm'/>
+	<cpp path='m4prop'/>
+	<cpp path='m4cacertmngr'/>
+	<cpp path='m4objcachedirectory'/>
+	<cpp path='m4dbwrap'>
+		<project id='m4dbwrap-oci'/>
+		<project id='m4dbwrap-odbc'/>
+		<project id='m4dbwrap-mdt'/>
+		<project id='m4dbwrap-oci11g'/>
+		<project id='m4dbwrap-oci12c'/>
+	</cpp>
+	<cpp path='m4ldb'/>
+	<cpp path='m4mdtransfer'/>
+	<cpp path='m4mdtwrapper'/>
+	<cpp path='m4mdfac'/>
+	<cpp path='m4presentation'/>
+	<cpp path='m4vm'/>
+	<cpp path='m4xlapi'/>
+	<cpp path='m4ln4unit'/>
+	<cpp path='m4ldap'/>
+	<cpp path='m4dmsxml'/>
+	<cpp path='m4javaapi'/>
+	<cpp path='m4jnisoapclient'/>
+	<cpp path='m4oeinit'>
+		<project id='m4oeinit-dic'/>
+		<project id='m4oeinit-server'/>
+		<project id='m4oeinit-sm'/>
+	</cpp>
+	<cpp path='m4chwrap'/>
+	<cpp path='m4logsysvb'/>
+	<cpp path='m4doc'/>
+	<cpp path='m4mienv' artifact='mienv.dll'/>
+	<cpp path='m4fmetrics' artifact='fmetrics.dll'/>
+	<cpp path='m4rfnbuilder' artifact='rfnbuilder.exe'/>
+	<cpp path='m4fmt32'/>
+	<cpp path='m4engine' artifact='engindll.dll'/>
+	<cpp path='m4mailnet' artifact='m4mail.dll'/>
+	<cpp path='m4oleexec' artifact='oleexec.dll'/>
+	<cpp path='m4printpdf'/>
+	<cpp path='m4request' artifact='m4requestdll.dll'/>
+	<cpp path='m4userinterface' artifact='m4userinterfacedll.dll'/>
+	<cpp path='m4snmpadmin'/>
+	<cpp path='m4executive' artifact='m4executivedll.dll'/>
+	<cpp path='m4subsystems' artifact='m4subsystemsdll.dll'/>
+	<cpp path='m4snmpss'/>
+	<cpp path='m4ldbsubsy' artifact='m4ldbsubsydll.dll'/>
+	<cpp path='m4echoservice'/>
+	<cpp path='m4cachesubsystem' artifact='m4cachesubsystemdll.dll'/>
+	<cpp path='m4adminsrv' artifact='m4adminsrvdll.dll'/>
+	<cpp path='m4exeforchannel' artifact='m4exeforchanneldll.dll'/>
+	<cpp path='m4exefactory' artifact='m4exefactorydll.dll'/>
+	<cpp path='m4jsexejob' artifact='m4jsexejobdll.dll'/>
+	<cpp path='m4jsrecover' artifact='m4jsrecoverdll.dll'/>
+	<cpp path='m4jssubsystem' artifact='m4jssubsystemdll.dll'/>
+	<cpp path='m4jsutils'/>
+	<cpp path='m4comsrv' artifact='m4comsrvdll.dll'/>
+	<cpp path='m4sdown' artifact='m4sdown.exe'/>
+	<cpp path='m4parser' artifact='m4parserdll.dll'/>
+	<cpp path='m4adminclient' artifact='m4adminclientdll.dll'/>
+	<cpp path='m4dispatcher' artifact='m4dispatcher.exe'/>
+	<cpp path='m4server' artifact='m4server.exe'/>
+	<!-- vb -->
+	<!-- net -->
+	<!-- java -->
+	<!-- data -->
+</components>
+
+
